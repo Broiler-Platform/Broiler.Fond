@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <RootNamespace>Broiler.Fond.Host.Windows</RootNamespace>
+    <AssemblyName>Broiler.Fond.Host.Windows</AssemblyName>
+    <IsPackable>false</IsPackable>
+    <Description>Milestone 0 Windows host shell for Broiler Fond - Finance on Demand.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Broiler.Fond.Kernel\Broiler.Fond.Kernel.csproj" />
+  </ItemGroup>
+</Project>

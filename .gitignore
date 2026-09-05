@@ -1,0 +1,29 @@
+# Build outputs
+bin/
+obj/
+artifacts/
+TestResults/
+
+# IDE and user-local files
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+
+# Diagnostics
+*.dmp
+*.dump
+*.trace
+*.trx
+
+# Banking profiles and transient profile files
+*.bffond
+*.bffond.*
+profile.lock
+profile.new-*.tmp
+
+# Operating-system files
+.DS_Store
+Thumbs.db

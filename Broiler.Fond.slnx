@@ -1,0 +1,33 @@
+<Solution>
+  <Folder Name="/solution items/">
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Build.targets" />
+    <File Path="global.json" />
+    <File Path="NuGet.config" />
+    <File Path="README.md" />
+    <File Path="HUMAN_REVIEW.md" />
+    <File Path="SECURITY.md" />
+    <File Path="LICENSE" />
+  </Folder>
+  <Folder Name="/solution items/docs/">
+    <File Path="docs/roadmap.md" />
+    <File Path="docs/milestone-0.md" />
+    <File Path="docs/adr/README.md" />
+    <File Path="docs/adr/0001-kernel-boundary.md" />
+    <File Path="docs/adr/0002-portable-profile-container.md" />
+    <File Path="docs/adr/0003-user-operated-boundary.md" />
+    <File Path="docs/compatibility/README.md" />
+    <File Path="docs/release/prerelease-checklist.md" />
+  </Folder>
+  <Folder Name="/solution items/eng/">
+    <File Path="eng/Invoke-CI.ps1" />
+    <File Path="eng/Verify-KernelBoundary.ps1" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Broiler.Fond.Kernel/Broiler.Fond.Kernel.csproj" />
+    <Project Path="src/Broiler.Fond.Host.Windows/Broiler.Fond.Host.Windows.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Broiler.Fond.Kernel.Tests/Broiler.Fond.Kernel.Tests.csproj" />
+  </Folder>
+</Solution>

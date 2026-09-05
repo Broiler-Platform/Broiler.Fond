@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Broiler.Fond.Kernel</RootNamespace>
+    <AssemblyName>Broiler.Fond.Kernel</AssemblyName>
+    <BroilerFondKernel>true</BroilerFondKernel>
+    <IsPackable>false</IsPackable>
+    <Description>Platform-independent banking kernel for Broiler Fond - Finance on Demand.</Description>
+  </PropertyGroup>
+</Project>

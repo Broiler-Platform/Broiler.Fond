@@ -1,0 +1,20 @@
+<Project>
+  <Target Name="VerifyKernelProjectModel"
+          BeforeTargets="PrepareForBuild"
+          Condition="'$(BroilerFondKernel)' == 'true'">
+    <Error Condition="'$(TargetFramework)' != 'net10.0'"
+           Text="Broiler.Fond.Kernel must target exactly net10.0." />
+    <Error Condition="'$(RuntimeIdentifier)' != '' Or '$(RuntimeIdentifiers)' != ''"
+           Text="Broiler.Fond.Kernel must not declare a runtime identifier." />
+    <Error Condition="'$(UseWPF)' == 'true' Or '$(UseWindowsForms)' == 'true' Or '$(UseMaui)' == 'true'"
+           Text="Broiler.Fond.Kernel must not depend on a platform UI framework." />
+    <Error Condition="'$(AllowUnsafeBlocks)' == 'true'"
+           Text="Broiler.Fond.Kernel must not enable unsafe code." />
+    <Error Condition="'@(PackageReference)' != ''"
+           Text="Broiler.Fond.Kernel must not contain PackageReference items." />
+    <Error Condition="'@(ProjectReference)' != ''"
+           Text="Broiler.Fond.Kernel must not contain ProjectReference items." />
+    <Error Condition="'@(NativeReference)' != '' Or '@(COMReference)' != ''"
+           Text="Broiler.Fond.Kernel must not contain native or COM references." />
+  </Target>
+</Project>
