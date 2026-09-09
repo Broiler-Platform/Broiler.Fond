@@ -1,0 +1,270 @@
+{
+  "schemaVersion": 1,
+  "vectors": [
+    {
+      "name": "identified-handed-out-once",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+      "expectedUserId": "PUBLIC-USER",
+      "responses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDM0MCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVVBEOjc6NjozK1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK1BVQkxJQy1JQkFOK1BVQkxJQy1DVVNUT01FUisxK0VVUitQVUJMSUMtSE9MREVSJ0hOSEJTOjg6MSsxJw=="
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "expected": "RequestRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": false
+        },
+        {
+          "action": "response",
+          "expected": "ExecutionReported",
+          "state": "ExecutionReported",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": true
+        },
+        {
+          "action": "response",
+          "expected": "Terminal",
+          "state": "ExecutionReported",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": false
+        },
+        {
+          "action": "start",
+          "expected": "Terminal",
+          "state": "ExecutionReported",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": false
+        }
+      ]
+    },
+    {
+      "name": "anonymous-bank-only",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDExOSszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrOTk5OTk5OTk5OSswKzAnSEtWVkI6MzozKzArMCswK1BVQkxJQy1QUk9EVUNUKzAuMSdITkhCUzo0OjErMSc=",
+      "expectedUserId": null,
+      "responses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDIyMiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSE5IQlM6NjoxKzEn"
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "expected": "RequestRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": false
+        },
+        {
+          "action": "response",
+          "expected": "ExecutionReported",
+          "state": "ExecutionReported",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": true
+        }
+      ]
+    },
+    {
+      "name": "foreign-reference-keeps-pending",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+      "expectedUserId": "PUBLIC-USER",
+      "responses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDMzNiszMDArU1lOVEhFVElDKzErT1RIRVI6MSdISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjoyKzAwMjA6OlBVQkxJQy1JRC1SRVBMWSdISVJNUzo0OjI6MyswMDIwOjpQVUJMSUMtUFJFUC1SRVBMWSdISUJQQTo1OjM6MysxKzI4MDpQVUJMSUMtQkFOSytQVUJMSUMtQkFOSy1MQUJFTCsxKzE6MjozKzMwMCdISVVQQTo2OjQ6MytQVUJMSUMtVVNFUisyKzAnSElVUEQ6Nzo2OjMrUFVCTElDLTAwMTowMDoyODA6UFVCTElDLUJBTksrUFVCTElDLUlCQU4rUFVCTElDLUNVU1RPTUVSKzErRVVSK1BVQkxJQy1IT0xERVInSE5IQlM6ODoxKzEn",
+        "SE5IQks6MTozKzAwMDAwMDAwMDM0MCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVVBEOjc6NjozK1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK1BVQkxJQy1JQkFOK1BVQkxJQy1DVVNUT01FUisxK0VVUitQVUJMSUMtSE9MREVSJ0hOSEJTOjg6MSsxJw=="
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "expected": "RequestRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": false
+        },
+        {
+          "action": "response",
+          "expected": "ContextMismatch",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": false
+        },
+        {
+          "action": "response",
+          "expected": "ExecutionReported",
+          "state": "ExecutionReported",
+          "atMilliseconds": 0,
+          "index": 1,
+          "evidence": true
+        }
+      ]
+    },
+    {
+      "name": "missing-user-context-at-start",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+      "expectedUserId": null,
+      "responses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDM0MCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVVBEOjc6NjozK1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK1BVQkxJQy1JQkFOK1BVQkxJQy1DVVNUT01FUisxK0VVUitQVUJMSUMtSE9MREVSJ0hOSEJTOjg6MSsxJw=="
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "expected": "RejectedForReview",
+          "state": "NeedsReview",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": false
+        },
+        {
+          "action": "response",
+          "expected": "Terminal",
+          "state": "NeedsReview",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": false
+        }
+      ]
+    },
+    {
+      "name": "missing-parameters-returned-for-review",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+      "expectedUserId": "PUBLIC-USER",
+      "responses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDE2MiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFknSE5IQlM6NToxKzEn"
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "expected": "RequestRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": false
+        },
+        {
+          "action": "response",
+          "expected": "RejectedForReview",
+          "state": "NeedsReview",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": true
+        },
+        {
+          "action": "response",
+          "expected": "Terminal",
+          "state": "NeedsReview",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": false
+        }
+      ]
+    },
+    {
+      "name": "cancel-before-response",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+      "expectedUserId": "PUBLIC-USER",
+      "responses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDM0MCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVVBEOjc6NjozK1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK1BVQkxJQy1JQkFOK1BVQkxJQy1DVVNUT01FUisxK0VVUitQVUJMSUMtSE9MREVSJ0hOSEJTOjg6MSsxJw=="
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "expected": "RequestRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": false
+        },
+        {
+          "action": "cancel",
+          "expected": "Cancelled",
+          "state": "Cancelled",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": false
+        },
+        {
+          "action": "response",
+          "expected": "Terminal",
+          "state": "Cancelled",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": false
+        }
+      ]
+    },
+    {
+      "name": "absolute-timeout",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+      "expectedUserId": "PUBLIC-USER",
+      "responses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDM0MCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVVBEOjc6NjozK1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK1BVQkxJQy1JQkFOK1BVQkxJQy1DVVNUT01FUisxK0VVUitQVUJMSUMtSE9MREVSJ0hOSEJTOjg6MSsxJw=="
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "expected": "RequestRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": false
+        },
+        {
+          "action": "snapshot",
+          "expected": "Snapshot",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 9999,
+          "index": 0,
+          "evidence": false
+        },
+        {
+          "action": "response",
+          "expected": "Terminal",
+          "state": "TimedOut",
+          "atMilliseconds": 10000,
+          "index": 0,
+          "evidence": false
+        }
+      ]
+    },
+    {
+      "name": "stop-before-start",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+      "expectedUserId": "PUBLIC-USER",
+      "responses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDM0MCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVVBEOjc6NjozK1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK1BVQkxJQy1JQkFOK1BVQkxJQy1DVVNUT01FUisxK0VVUitQVUJMSUMtSE9MREVSJ0hOSEJTOjg6MSsxJw=="
+      ],
+      "steps": [
+        {
+          "action": "stop",
+          "expected": "Stopped",
+          "state": "Stopped",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": false
+        },
+        {
+          "action": "start",
+          "expected": "Terminal",
+          "state": "Stopped",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": false
+        },
+        {
+          "action": "response",
+          "expected": "Terminal",
+          "state": "Stopped",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": false
+        }
+      ]
+    }
+  ]
+}

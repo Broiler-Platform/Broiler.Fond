@@ -1,0 +1,276 @@
+{
+  "schemaVersion": 1,
+  "vectors": [
+    {
+      "name": "assigned-system-escaped",
+      "mode": 0,
+      "input": {
+        "country": "280",
+        "institution": "PUBLIC-BANK",
+        "customerId": "PUBLIC-CUSTOMER",
+        "systemId": "0",
+        "systemStatus": 1,
+        "bankParameterVersion": 0,
+        "userParameterVersion": 0,
+        "language": 0,
+        "productIdentifier": "PUBLIC-PRODUCT",
+        "productVersion": "1.0"
+      },
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE1OCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NCtQVUJMSUM/Kz86Pyc/Pz9A/CdITkhCUzo1OjErMSc=",
+      "reports": [
+        {
+          "shape": "SystemId",
+          "systemId": "PUBLIC+:'?@\u00fc",
+          "messageNumber": null,
+          "signingReference": null,
+          "digitalReference": null
+        }
+      ],
+      "uninterpreted": 0
+    },
+    {
+      "name": "last-message-maximum",
+      "mode": 1,
+      "input": {
+        "country": "280",
+        "institution": "PUBLIC-BANK",
+        "customerId": "PUBLIC-CUSTOMER",
+        "systemId": "PUBLIC-SYSTEM",
+        "systemStatus": 1,
+        "bankParameterVersion": 1,
+        "userParameterVersion": 2,
+        "language": 2,
+        "productIdentifier": "PUBLIC-PRODUCT",
+        "productVersion": "1.0"
+      },
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE0OCszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MysxJ0hOSEJTOjU6MSsxJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE0NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NCsrOTk5OSdITkhCUzo1OjErMSc=",
+      "reports": [
+        {
+          "shape": "LastMessageNumber",
+          "systemId": null,
+          "messageNumber": 9999,
+          "signingReference": null,
+          "digitalReference": null
+        }
+      ],
+      "uninterpreted": 0
+    },
+    {
+      "name": "signing-reference-exact-maximum",
+      "mode": 2,
+      "input": {
+        "country": "280",
+        "institution": "PUBLIC-BANK",
+        "customerId": "PUBLIC-CUSTOMER",
+        "systemId": "PUBLIC-SYSTEM",
+        "systemStatus": 1,
+        "bankParameterVersion": 1,
+        "userParameterVersion": 2,
+        "language": 2,
+        "productIdentifier": "PUBLIC-PRODUCT",
+        "productVersion": "1.0"
+      },
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE0OCszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MysyJ0hOSEJTOjU6MSsxJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE1OSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NCsrKzk5OTk5OTk5OTk5OTk5OTknSE5IQlM6NToxKzEn",
+      "reports": [
+        {
+          "shape": "SignatureReferences",
+          "systemId": null,
+          "messageNumber": null,
+          "signingReference": "9999999999999999",
+          "digitalReference": null
+        }
+      ],
+      "uninterpreted": 0
+    },
+    {
+      "name": "separate-signature-references",
+      "mode": 2,
+      "input": {
+        "country": "280",
+        "institution": "PUBLIC-BANK",
+        "customerId": "PUBLIC-CUSTOMER",
+        "systemId": "PUBLIC-SYSTEM",
+        "systemStatus": 1,
+        "bankParameterVersion": 1,
+        "userParameterVersion": 2,
+        "language": 2,
+        "productIdentifier": "PUBLIC-PRODUCT",
+        "productVersion": "1.0"
+      },
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE0OCszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MysyJ0hOSEJTOjU6MSsxJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE2MSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NCsrKzArOTk5OTk5OTk5OTk5OTk5OCdITkhCUzo1OjErMSc=",
+      "reports": [
+        {
+          "shape": "SignatureReferences",
+          "systemId": null,
+          "messageNumber": null,
+          "signingReference": "0",
+          "digitalReference": "9999999999999998"
+        }
+      ],
+      "uninterpreted": 0
+    },
+    {
+      "name": "empty-report",
+      "mode": 0,
+      "input": {
+        "country": "280",
+        "institution": "PUBLIC-BANK",
+        "customerId": "PUBLIC-CUSTOMER",
+        "systemId": "0",
+        "systemStatus": 1,
+        "bankParameterVersion": 0,
+        "userParameterVersion": 0,
+        "language": 0,
+        "productIdentifier": "PUBLIC-PRODUCT",
+        "productVersion": "1.0"
+      },
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE0MCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NCdITkhCUzo1OjErMSc=",
+      "reports": [
+        {
+          "shape": "Empty",
+          "systemId": null,
+          "messageNumber": null,
+          "signingReference": null,
+          "digitalReference": null
+        }
+      ],
+      "uninterpreted": 0
+    },
+    {
+      "name": "conflicting-system-and-message",
+      "mode": 0,
+      "input": {
+        "country": "280",
+        "institution": "PUBLIC-BANK",
+        "customerId": "PUBLIC-CUSTOMER",
+        "systemId": "0",
+        "systemStatus": 1,
+        "bankParameterVersion": 0,
+        "userParameterVersion": 0,
+        "language": 0,
+        "productIdentifier": "PUBLIC-PRODUCT",
+        "productVersion": "1.0"
+      },
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE1OCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NCtQVUJMSUMtU1lTVEVNKzErKydITkhCUzo1OjErMSc=",
+      "reports": [
+        {
+          "shape": "Conflicting",
+          "systemId": "PUBLIC-SYSTEM",
+          "messageNumber": 1,
+          "signingReference": null,
+          "digitalReference": null
+        }
+      ],
+      "uninterpreted": 0
+    },
+    {
+      "name": "digital-reference-without-signing",
+      "mode": 2,
+      "input": {
+        "country": "280",
+        "institution": "PUBLIC-BANK",
+        "customerId": "PUBLIC-CUSTOMER",
+        "systemId": "PUBLIC-SYSTEM",
+        "systemStatus": 1,
+        "bankParameterVersion": 1,
+        "userParameterVersion": 2,
+        "language": 2,
+        "productIdentifier": "PUBLIC-PRODUCT",
+        "productVersion": "1.0"
+      },
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE0OCszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MysyJ0hOSEJTOjU6MSsxJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE0NSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NCsrKysxJ0hOSEJTOjU6MSsxJw==",
+      "reports": [
+        {
+          "shape": "Conflicting",
+          "systemId": null,
+          "messageNumber": null,
+          "signingReference": null,
+          "digitalReference": "1"
+        }
+      ],
+      "uninterpreted": 0
+    },
+    {
+      "name": "duplicate-reports-preserved",
+      "mode": 0,
+      "input": {
+        "country": "280",
+        "institution": "PUBLIC-BANK",
+        "customerId": "PUBLIC-CUSTOMER",
+        "systemId": "0",
+        "systemStatus": 1,
+        "bankParameterVersion": 0,
+        "userParameterVersion": 0,
+        "language": 0,
+        "productIdentifier": "PUBLIC-PRODUCT",
+        "productVersion": "1.0"
+      },
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE3MCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NCtQVUJMSUMtQSdISVNZTjo1OjQ6NCtQVUJMSUMtQidITkhCUzo2OjErMSc=",
+      "reports": [
+        {
+          "shape": "SystemId",
+          "systemId": "PUBLIC-A",
+          "messageNumber": null,
+          "signingReference": null,
+          "digitalReference": null
+        },
+        {
+          "shape": "SystemId",
+          "systemId": "PUBLIC-B",
+          "messageNumber": null,
+          "signingReference": null,
+          "digitalReference": null
+        }
+      ],
+      "uninterpreted": 0
+    },
+    {
+      "name": "unsupported-response-opaque",
+      "mode": 0,
+      "input": {
+        "country": "280",
+        "institution": "PUBLIC-BANK",
+        "customerId": "PUBLIC-CUSTOMER",
+        "systemId": "0",
+        "systemStatus": 1,
+        "bankParameterVersion": 0,
+        "userParameterVersion": 0,
+        "language": 0,
+        "productIdentifier": "PUBLIC-PRODUCT",
+        "productVersion": "1.0"
+      },
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE1NSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjU6NCtQVUJMSUMtVU5LTk9XTidITkhCUzo1OjErMSc=",
+      "reports": [],
+      "uninterpreted": 1
+    },
+    {
+      "name": "error-without-report",
+      "mode": 1,
+      "input": {
+        "country": "280",
+        "institution": "PUBLIC-BANK",
+        "customerId": "PUBLIC-CUSTOMER",
+        "systemId": "PUBLIC-SYSTEM",
+        "systemStatus": 1,
+        "bankParameterVersion": 1,
+        "userParameterVersion": 2,
+        "language": 2,
+        "productIdentifier": "PUBLIC-PRODUCT",
+        "productVersion": "1.0"
+      },
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE0OCszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MysxJ0hOSEJTOjU6MSsxJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEyOCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzkwNTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdITkhCUzo0OjErMSc=",
+      "reports": [],
+      "uninterpreted": 0
+    }
+  ]
+}

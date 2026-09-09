@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 1,
+  "vectors": [
+    {
+      "name": "receipt",
+      "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA5OSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1TRUNSRVQtUkVQTFknSE5IQlM6MzoxKzEn",
+      "segments": [
+        {
+          "code": "HIRMG",
+          "number": 2,
+          "version": 2,
+          "reference": null,
+          "fields": [
+            [
+              {
+                "binary": false,
+                "hex": "30303130"
+              },
+              {
+                "binary": false,
+                "hex": ""
+              },
+              {
+                "binary": false,
+                "hex": "5055424c49432d5345435245542d5245504c59"
+              }
+            ]
+          ]
+        }
+      ],
+      "meanings": [
+        "ReceiptReported"
+      ],
+      "conflicting": false
+    },
+    {
+      "name": "pending-and-pagination",
+      "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzOSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMzA6OlBlbmRpbmcnSElSTVM6MzoyOjIrMzA0MDozLDQ6TW9yZSA/KyBkYXRhPz86b3BhcXVlPzpjdXJzb3I6J0hOSEJTOjQ6MSsxJw==",
+      "segments": [
+        {
+          "code": "HIRMG",
+          "number": 2,
+          "version": 2,
+          "reference": null,
+          "fields": [
+            [
+              {
+                "binary": false,
+                "hex": "30303330"
+              },
+              {
+                "binary": false,
+                "hex": ""
+              },
+              {
+                "binary": false,
+                "hex": "50656e64696e67"
+              }
+            ]
+          ]
+        },
+        {
+          "code": "HIRMS",
+          "number": 3,
+          "version": 2,
+          "reference": 2,
+          "fields": [
+            [
+              {
+                "binary": false,
+                "hex": "33303430"
+              },
+              {
+                "binary": false,
+                "hex": "332c34"
+              },
+              {
+                "binary": false,
+                "hex": "4d6f7265202b20646174613f"
+              },
+              {
+                "binary": false,
+                "hex": "6f70617175653a637572736f72"
+              },
+              {
+                "binary": false,
+                "hex": ""
+              }
+            ]
+          ]
+        }
+      ],
+      "meanings": [
+        "AuthorizationPending",
+        "MoreInformationAvailable"
+      ],
+      "conflicting": false
+    },
+    {
+      "name": "indeterminate",
+      "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEwNCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzkwMDA6OlBVQkxJQy1TRUNSRVQtUkVQTFk6WlJFUSdITkhCUzozOjErMSc=",
+      "segments": [
+        {
+          "code": "HIRMG",
+          "number": 2,
+          "version": 2,
+          "reference": null,
+          "fields": [
+            [
+              {
+                "binary": false,
+                "hex": "39303030"
+              },
+              {
+                "binary": false,
+                "hex": ""
+              },
+              {
+                "binary": false,
+                "hex": "5055424c49432d5345435245542d5245504c59"
+              },
+              {
+                "binary": false,
+                "hex": "5a524551"
+              }
+            ]
+          ]
+        }
+      ],
+      "meanings": [
+        "ProcessingIndeterminate"
+      ],
+      "conflicting": false
+    },
+    {
+      "name": "unknown-code-and-data",
+      "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEwOSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzcwMDE6OlVua25vd24nWk5FVzozOjQyOjIrVU5UUlVTVEVEJ0hOSEJTOjQ6MSsxJw==",
+      "segments": [
+        {
+          "code": "HIRMG",
+          "number": 2,
+          "version": 2,
+          "reference": null,
+          "fields": [
+            [
+              {
+                "binary": false,
+                "hex": "37303031"
+              },
+              {
+                "binary": false,
+                "hex": ""
+              },
+              {
+                "binary": false,
+                "hex": "556e6b6e6f776e"
+              }
+            ]
+          ]
+        },
+        {
+          "code": "ZNEW",
+          "number": 3,
+          "version": 42,
+          "reference": 2,
+          "fields": [
+            [
+              {
+                "binary": false,
+                "hex": "554e54525553544544"
+              }
+            ]
+          ]
+        }
+      ],
+      "meanings": [
+        "Uninterpreted"
+      ],
+      "conflicting": false
+    },
+    {
+      "name": "conflicting-status",
+      "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEyMSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlJlY2VpdmVkJ0hJUk1TOjM6MjoyKzkwMTA6OkNhbm5vdCBwcm9jZXNzJ0hOSEJTOjQ6MSsxJw==",
+      "segments": [
+        {
+          "code": "HIRMG",
+          "number": 2,
+          "version": 2,
+          "reference": null,
+          "fields": [
+            [
+              {
+                "binary": false,
+                "hex": "30303130"
+              },
+              {
+                "binary": false,
+                "hex": ""
+              },
+              {
+                "binary": false,
+                "hex": "5265636569766564"
+              }
+            ]
+          ]
+        },
+        {
+          "code": "HIRMS",
+          "number": 3,
+          "version": 2,
+          "reference": 2,
+          "fields": [
+            [
+              {
+                "binary": false,
+                "hex": "39303130"
+              },
+              {
+                "binary": false,
+                "hex": ""
+              },
+              {
+                "binary": false,
+                "hex": "43616e6e6f742070726f63657373"
+              }
+            ]
+          ]
+        }
+      ],
+      "meanings": [
+        "ReceiptReported",
+        "Uninterpreted"
+      ],
+      "conflicting": true
+    }
+  ]
+}

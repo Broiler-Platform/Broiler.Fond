@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:f="urn:broiler:fond:profile:1" targetNamespace="urn:broiler:fond:profile:1" elementFormDefault="qualified">
+  <xs:simpleType name="uuid">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="positiveId">
+    <xs:restriction base="xs:unsignedLong">
+      <xs:minInclusive value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="digest">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9a-f]{64}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="profile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="label" type="xs:string" />
+        <xs:element name="note" type="xs:string" />
+      </xs:sequence>
+      <xs:attribute name="version" type="xs:string" use="required" fixed="1" />
+      <xs:attribute name="profileId" type="f:uuid" use="required" />
+      <xs:attribute name="branchId" type="f:uuid" use="required" />
+      <xs:attribute name="generation" type="f:positiveId" use="required" />
+      <xs:attribute name="nextId" type="f:positiveId" use="required" />
+      <xs:attribute name="savedAt" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="manifest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="entry">
+          <xs:complexType>
+            <xs:attribute name="name" type="xs:string" use="required" fixed="profile.xml" />
+            <xs:attribute name="schema" type="xs:string" use="required" fixed="1" />
+            <xs:attribute name="bytes" type="f:positiveId" use="required" />
+            <xs:attribute name="sha256" type="f:digest" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="version" type="xs:string" use="required" fixed="1" />
+      <xs:attribute name="profileId" type="f:uuid" use="required" />
+      <xs:attribute name="branchId" type="f:uuid" use="required" />
+      <xs:attribute name="generation" type="f:positiveId" use="required" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

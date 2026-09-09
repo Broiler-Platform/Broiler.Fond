@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "vectors": [
+    {
+      "name": "bank-and-listed",
+      "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI5MyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlJlY2VpdmVkJ0hJQlBBOjM6Mys3KzI4MDoxMDAyMDAzMCtTeW50aGV0aWMgQmFuayswKzE6MiszMDA6MjIwKzArMTIwKzAnSElVUEE6NDo0K1BVQkxJQy1VU0VSKzArMSdISVVQRDo1OjYrUFVCTElDLUFDQ09VTlQtU0VOVElORUw6OjI4MDoxMDAyMDAzMCtTWU5USEVUSUMtTk9ULUlCQU4rQ1VTVE9NRVIrMStFVVIrU3ludGhldGljIE93bmVyKysrK0hLU0FMOjErSEtDQVo6MidITkhCUzo2OjErMSc=",
+      "accounts": 1,
+      "uninterpreted": 0,
+      "dialogueScoped": true,
+      "queries": [
+        {
+          "account": 0,
+          "operation": "HKSAL",
+          "expected": "Listed"
+        },
+        {
+          "account": 0,
+          "operation": "HKXYZ",
+          "expected": "Unknown"
+        }
+      ]
+    },
+    {
+      "name": "unlisted-blocked",
+      "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDIyMyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlJlY2VpdmVkJ0hJVVBBOjM6NCtQVUJMSUMtVVNFUiswKzAnSElVUEQ6NDo2K1BVQkxJQy1BQ0NPVU5ULVNFTlRJTkVMOjoyODA6MTAwMjAwMzArU1lOVEhFVElDLU5PVC1JQkFOK0NVU1RPTUVSKzErRVVSK1N5bnRoZXRpYyBPd25lcisrKytIS1NBTDoxJ0hOSEJTOjU6MSsxJw==",
+      "accounts": 1,
+      "uninterpreted": 0,
+      "dialogueScoped": true,
+      "queries": [
+        {
+          "account": 0,
+          "operation": "HKXYZ",
+          "expected": "UnlistedBlocked"
+        }
+      ]
+    },
+    {
+      "name": "missing-user-scope",
+      "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE5NyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlJlY2VpdmVkJ0hJVVBEOjM6NitQVUJMSUMtQUNDT1VOVC1TRU5USU5FTDo6MjgwOjEwMDIwMDMwK1NZTlRIRVRJQy1OT1QtSUJBTitDVVNUT01FUisxK0VVUitTeW50aGV0aWMgT3duZXIrKysrSEtTQUw6MSdITkhCUzo0OjErMSc=",
+      "accounts": 1,
+      "uninterpreted": 0,
+      "dialogueScoped": null,
+      "queries": [
+        {
+          "account": 0,
+          "operation": "HKXYZ",
+          "expected": "Unknown"
+        }
+      ]
+    },
+    {
+      "name": "duplicates-preserved",
+      "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM0MCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlJlY2VpdmVkJ0hJVVBBOjM6NCtQVUJMSUMtVVNFUiswKzEnSElVUEQ6NDo2K1BVQkxJQy1BQ0NPVU5ULVNFTlRJTkVMOjoyODA6MTAwMjAwMzArU1lOVEhFVElDLU5PVC1JQkFOK0NVU1RPTUVSKzErRVVSK1N5bnRoZXRpYyBPd25lcisrKytIS1NBTDoxK0hLU0FMOjInSElVUEQ6NTo2K1BVQkxJQy1BQ0NPVU5ULVNFTlRJTkVMOjoyODA6MTAwMjAwMzArU1lOVEhFVElDLU5PVC1JQkFOK0NVU1RPTUVSKzErRVVSK1N5bnRoZXRpYyBPd25lcisrKytIS1NBTDoxJ0hOSEJTOjY6MSsxJw==",
+      "accounts": 2,
+      "uninterpreted": 0,
+      "dialogueScoped": true,
+      "queries": [
+        {
+          "account": 0,
+          "operation": "HKSAL",
+          "expected": "Ambiguous"
+        },
+        {
+          "account": 1,
+          "operation": "HKSAL",
+          "expected": "Listed"
+        }
+      ]
+    },
+    {
+      "name": "no-accounts-unknown-endpoint",
+      "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE0NSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlJlY2VpdmVkJ0hJVVBBOjM6NCtQVUJMSUMtVVNFUiswKzEnSElLT006NDo0K1VOQUNUSVZBVEVELUVORFBPSU5UJ0hOSEJTOjU6MSsxJw==",
+      "accounts": 0,
+      "uninterpreted": 1,
+      "dialogueScoped": true,
+      "queries": []
+    }
+  ]
+}

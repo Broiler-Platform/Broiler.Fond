@@ -8,7 +8,7 @@
 
 **Status:** Draft for product and architecture review
 
-**Last reviewed:** 2026-09-04
+**Last reviewed:** 2026-09-05
 
 **Initial market:** Germany, consumer homebanking, EUR/SEPA
 
@@ -846,6 +846,64 @@ claims, packaging, and release approval.
 
 ### M1 — Create access to accounts and list values
 
+**Implementation status:** In progress. The manual endpoint validation,
+confirmation, and quarantine domain model is implemented. Proposed storage
+envelope/bootstrap specifications and independent test vectors now exist;
+in-memory identity allocation, startup validation, lossless source locators and
+exact rediscovery planning, exact money and account-value/freshness projections
+are implemented. A test-only scripted read workflow and opt-in structured
+in-memory diagnostic previews now cover synthetic outcomes and secret sentinels;
+bounded FinTS byte syntax, element encoding and outer framing now have independent
+synthetic vectors. Typed HIRMG/HIRMS responses and local dialogue correlation
+are also implemented, together with bounded HIBPA/HIUPA/HIUPD evidence.
+Read-operation parameter schemas and explicit-version capability evidence are
+implemented, alongside credential-free account-discovery/balance schemas and
+a bounded synthetic SCA attempt model. Pure single-account read context matching
+and partial-page provenance checks are implemented, along with a bounded local
+read-refresh attempt, scoped unavailable outcomes and bounded all-account
+discovery evidence with a local one-response attempt lifecycle. Typed unsigned
+discovery/balance request encoding has independent exact wire fixtures.
+Restricted initialization identification/preparation schemas and unsigned
+encoding also have independent fixtures; no authenticated session is established.
+Pure initialization response binding checks dialogue/reference and parameter
+identity scope, with missing data and unknown observations retained for review.
+A bounded local initialization attempt now adds pinned request/user context,
+one-time evidence handoff, timeout, cancellation and terminal reference cleanup.
+Synchronization schemas and unsigned encoding now preserve system identifiers,
+message numbers and exact signature references without applying recovery state.
+Pure synchronization context comparison now checks mode/profile and prior-dialogue
+scope, with matching observations requiring close and reinitialization.
+Dialogue-end schemas and unsigned encoding now compare standard closing replies,
+preserving reported closure, explicit abort and unresolved scope separately.
+A bounded local synchronization-and-closing attempt now requires explicit closing,
+hands each stage's evidence out once and enforces a shared absolute deadline.
+Restricted PIN/TAN signature-header schemas now preserve identity, reference,
+timestamp and filler observations with explicit profile/code constraints.
+Pure signature-header context checks now bind initialization/synchronization
+identity and explicit procedure origins, preserving missing and ambiguous evidence.
+Typed signature-header encoding now emits independently verified bytes with
+strict text preservation, canonical optional fields and explicit precision bounds.
+A local credential ownership primitive now clears transferred input, consumes
+TAN copy-out once and zeroes private storage on termination. Access expiry is
+checked on calls; secure input and live session cleanup integration remain pending.
+Local HNSHA-2 encoding now checks TAN placement and writes bounded caller-owned
+output with temporary/failure-path cleanup and one-time TAN consumption.
+Plain PIN/TAN initialization/synchronization assembly now preserves bound
+fields, renumbers segments, computes exact framing and clears staged/failed
+whole-message output. Plaintext request-envelope assembly now binds public
+metadata and exact binary payloads with cleanup through final output handoff.
+Immutable assembled-request metadata now compares response references against
+actual segment roles without capturing credential output. Assembled initialization
+now compares bound status and parameter/envelope identities with exact response
+provenance. Assembled synchronization now checks unique report shape, bound status,
+envelope identity and explicit recovery limits, retaining close/reinitialization as
+the required next step. Assembled attempt lifecycles and broader session integration
+remain pending.
+Broader request/session context,
+security conformance and actual SCA qualification remain pending. Full storage
+schemas, durable integration, calibration, format approval, Windows setup and
+banking flows remain pending. See the [M1 acceptance backlog](milestone-1.md).
+
 **Outcome:** A technical alpha can connect to existing accounts and show
 trustworthy bank-supplied balances.
 
@@ -1512,6 +1570,59 @@ advice.
   and durable write primitives.
 
 ## Change log
+
+- **2026-09-06:** Added HISALS/HISPAS read-parameter schemas and conservative
+  explicit-version capability evidence. Five independent fixtures and 108 checks
+  cover options, limits, unknown versions, scope and signature conflicts.
+  ADR 0013 keeps security validation, actual request/response codecs and live
+  capability activation pending.
+
+- **2026-09-06:** Added bounded BPD/UPD parameter evidence and explicit listed,
+  blocked, unknown and ambiguous permission states. Five independent fixtures
+  and 181 checks cover fields, duplicates, limits, optional data and resource
+  bounds. ADR 0012 leaves capability activation, security and live ingestion pending.
+
+- **2026-09-05:** Added typed HIRMG/HIRMS response schemas and atomic in-memory
+  dialogue correlation, with explicit unknown, pending and indeterminate states.
+  Five independent fixtures and 177 checks cover schemas, references, replays,
+  concurrency and counter exhaustion. ADR 0011 retains BPD/UPD, security,
+  transport and authenticated domain ingestion as pending work.
+
+- **2026-09-05:** Added bounded FinTS 3.0 byte syntax, individual element encoding
+  and outer framing based on the reviewed Formals specification. Six independent
+  synthetic vectors and 1,350 checks cover byte preservation, malformed input,
+  truncations and resource limits. ADR 0010 keeps typed schemas, dialogue,
+  security, transport and live banking explicitly pending.
+
+- **2026-09-05:** Added a test-only read workflow simulator, abstract manual
+  challenge continuation, structured in-memory diagnostics/support previews and
+  280 checks. Fixed missing refresh/offline warnings on rows without a unique
+  balance. ADR 0009 records scope; FinTS codecs, live SCA, encrypted logs and
+  export UI remain pending.
+
+- **2026-09-05:** Implemented exact money parsing/addition, a frozen currency-code
+  reference, immutable balance provenance and pure account-value projections with
+  freshness, exclusions and per-currency totals. Added ADR 0008 and 109 checks
+  including a 10,000-account projection; live ingestion and UI remain pending.
+
+- **2026-09-05:** Implemented lossless account source locators and a pure exact
+  rediscovery planner with quarantined changed, ambiguous and closed-lifetime
+  candidates. Added ADR 0007 and 90 checks including a 10,000-account batch.
+  Authentication, durable application and user-reviewed relinking remain pending.
+
+- **2026-09-05:** Implemented in-memory store-wide identity allocation batches,
+  stale-writer rejection, exhaustion and startup integrity validation; added
+  ADR 0006 and 84 checks including a 100,000-record revision chain. Durable
+  payload commits, branch integration and exact rediscovery remain pending.
+
+- **2026-09-05:** Added proposed storage envelope and bootstrap snapshot ADRs,
+  trusted bootstrap XSD, five independently generated synthetic vectors, and
+  BCL-only reference/tamper verification in the test project. No user profile
+  persistence enabled; full schemas, KDF calibration and human review pending.
+
+- **2026-09-05:** Started M1 with manual endpoint validation, explicit URL
+  confirmation, endpoint-change quarantine, and executable verification. Added
+  the M1 acceptance backlog; live banking and release approval remain pending.
 
 - **2026-09-04:** Added the implementation-free M0 repository baseline; clarified
   store purge/passphrase portability, endpoint verification, provenance and

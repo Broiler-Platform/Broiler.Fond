@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "vectors": [
+    {
+      "name": "discovery-all-with-non-sepa-shell",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzEnSEtTUEE6MjoxJ0hOSEJTOjM6MSsxJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE4OCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVNQQTozOjE6MitKOlBVQkxJQy1JQkFOOlBVQkxJQy1CSUM6UFVCTElDLTAwMTowMDoyODA6UFVCTElDLUJBTksrTjo6OlBVQkxJQy0wMDI6OjI4MDpQVUJMSUMtQkFOSydITkhCUzo0OjErMSc=",
+      "allAccounts": true,
+      "requestAccounts": 0,
+      "discoveredAccounts": 2,
+      "unknownReports": 0,
+      "balances": []
+    },
+    {
+      "name": "selected-discovery-retains-duplicates",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEyMSszMDArU1lOVEhFVElDKzEnSEtTUEE6MjoxK1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LJ0hOSEJTOjM6MSsxJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDIxMSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVNQQTozOjE6MitKOlBVQkxJQy1JQkFOOlBVQkxJQy1CSUM6UFVCTElDLTAwMTowMDoyODA6UFVCTElDLUJBTksrSjpQVUJMSUMtSUJBTjpQVUJMSUMtQklDOlBVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LJ0hOSEJTOjQ6MSsxJw==",
+      "allAccounts": false,
+      "requestAccounts": 2,
+      "discoveredAccounts": 2,
+      "unknownReports": 0,
+      "balances": []
+    },
+    {
+      "name": "empty-discovery",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzEnSEtTUEE6MjoxJ0hOSEJTOjM6MSsxJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEwMSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVNQQTozOjE6MidITkhCUzo0OjErMSc=",
+      "allAccounts": true,
+      "requestAccounts": 0,
+      "discoveredAccounts": 0,
+      "unknownReports": 0,
+      "balances": []
+    },
+    {
+      "name": "ambiguous-new-discovery-versions-stay-opaque",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzEnSEtTUEE6MjoxJ0hOSEJTOjM6MSsxJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEyNyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVNQQTozOjI6MitvcGFxdWUnSElTUEE6NDozOjIrb3BhcXVlJ0hOSEJTOjU6MSsxJw==",
+      "allAccounts": true,
+      "requestAccounts": 0,
+      "discoveredAccounts": 0,
+      "unknownReports": 2,
+      "balances": []
+    },
+    {
+      "name": "balance-v6-exact-and-optional",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA5MyszMDArU1lOVEhFVElDKzEnSEtTQUw6Mjo2K1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK04nSE5IQlM6MzoxKzEn",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE4OSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVNBTDozOjY6MitQVUJMSUMtMDAxOjAwOjI4MDpQVUJMSUMtQkFOSytQVUJMSUMgPysgUHJvZHVjdD86IEE/PytFVVIrRDoxMjM0LDU2OkVVUjoyMDI2MDkwNzoxMjM0NTYnSE5IQlM6NDoxKzEn",
+      "allAccounts": false,
+      "requestAccounts": 1,
+      "discoveredAccounts": 0,
+      "unknownReports": 0,
+      "balances": [
+        {
+          "booked": "-1234.56",
+          "currency": "EUR",
+          "available": null,
+          "currencyConflict": false,
+          "accountNumber": "PUBLIC-001",
+          "productLabel": "PUBLIC + Product: A?"
+        }
+      ]
+    },
+    {
+      "name": "balance-v7-exact-and-optional",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDExNiszMDArU1lOVEhFVElDKzEnSEtTQUw6Mjo3K1BVQkxJQy1JQkFOOlBVQkxJQy1CSUM6UFVCTElDLTAwMTowMDoyODA6UFVCTElDLUJBTksrTidITkhCUzozOjErMSc=",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI3NSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVNBTDozOjc6MitQVUJMSUMtSUJBTjpQVUJMSUMtQklDOlBVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK1BVQkxJQyA/KyBQcm9kdWN0PzogQT8/K0VVUitEOjEyMzQsNTY6RVVSOjIwMjYwOTA3OjEyMzQ1NitDOjEyLDM0OkVVUjoyMDI2MDkwNys1MDAsOkVVUiswLDpFVVIrKzMsOkVVUisyMDI2MDkwNCsyMDI2MTAwMSdITkhCUzo0OjErMSc=",
+      "allAccounts": false,
+      "requestAccounts": 1,
+      "discoveredAccounts": 0,
+      "unknownReports": 0,
+      "balances": [
+        {
+          "booked": "-1234.56",
+          "currency": "EUR",
+          "available": "0",
+          "currencyConflict": false,
+          "accountNumber": "PUBLIC-001",
+          "productLabel": "PUBLIC + Product: A?"
+        }
+      ]
+    },
+    {
+      "name": "balance-v8-exact-and-optional",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDExNiszMDArU1lOVEhFVElDKzEnSEtTQUw6Mjo4K1BVQkxJQy1JQkFOOlBVQkxJQy1CSUM6UFVCTElDLTAwMTowMDoyODA6UFVCTElDLUJBTksrTidITkhCUzozOjErMSc=",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI4NSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVNBTDozOjg6MitQVUJMSUMtSUJBTjpQVUJMSUMtQklDOlBVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK1BVQkxJQyA/KyBQcm9kdWN0PzogQT8/K0VVUitEOjEyMzQsNTY6RVVSOjIwMjYwOTA3OjEyMzQ1NitDOjEyLDM0OkVVUjoyMDI2MDkwNys1MDAsOkVVUiswLDpFVVIrKzMsOkVVUisyMDI2MDkwNCsyMDI2MTAwMSs0NSw2NzpFVVInSE5IQlM6NDoxKzEn",
+      "allAccounts": false,
+      "requestAccounts": 1,
+      "discoveredAccounts": 0,
+      "unknownReports": 0,
+      "balances": [
+        {
+          "booked": "-1234.56",
+          "currency": "EUR",
+          "available": "0",
+          "currencyConflict": false,
+          "accountNumber": "PUBLIC-001",
+          "productLabel": "PUBLIC + Product: A?"
+        }
+      ]
+    },
+    {
+      "name": "debit-zero-and-currency-conflict",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzMSszMDArU1lOVEhFVElDKzEnSEtTQUw6Mjo4K1BVQkxJQy1JQkFOOlBVQkxJQy1CSUM6UFVCTElDLTAwMTowMDoyODA6UFVCTElDLUJBTksrSisxK1BVQkxJQz8rUEFHRSdITkhCUzozOjErMSc=",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE5NCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVNBTDozOjg6MitQVUJMSUMtSUJBTjpQVUJMSUMtQklDOlBVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK1BVQkxJQytFVVIrRDowLDpFVVI6MjAyNDAyMjkrKysxLDIzOlVTRCdITkhCUzo0OjErMSc=",
+      "allAccounts": true,
+      "requestAccounts": 1,
+      "discoveredAccounts": 0,
+      "unknownReports": 0,
+      "balances": [
+        {
+          "booked": "0",
+          "currency": "EUR",
+          "available": "1.23",
+          "currencyConflict": true,
+          "accountNumber": "PUBLIC-001",
+          "productLabel": "PUBLIC"
+        }
+      ]
+    }
+  ]
+}

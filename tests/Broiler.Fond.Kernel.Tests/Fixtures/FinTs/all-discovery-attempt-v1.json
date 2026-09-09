@@ -1,0 +1,270 @@
+{
+  "schemaVersion": 1,
+  "vectors": [
+    {
+      "name": "execution-handed-out-once",
+      "parametersBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMyMiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISUJQQTozOjMrMSsyODA6UFVCTElDLUJBTksrQmFuaysxKzErMzAwJ0hJVVBBOjQ6NCtQVUJMSUMtVVNFUisxKzEnSElVUEQ6NTo2K1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK1BVQkxJQy1JQkFOK0MrMStFVVIrT3duZXIrKysrSEtTUEE6MSdISVVQRDo2OjYrUFVCTElDLTAwMjowMDoyODA6UFVCTElDLUJBTksrK0MrMStFVVIrT3duZXIrKysrSEtTUEE6MSdISVNQQVM6NzoxKzErMSswK046SjpOJ0hOSEJTOjg6MSsxJw==",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+      "responses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDIxOCszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiswMDIwOjpTeW50aGV0aWMnSElTUEE6NDoxOjIrSjpQVUJMSUMtSUJBTjpQVUJMSUMtQklDOlBVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK046OjpQVUJMSUMtMDAyOjAwOjI4MDpQVUJMSUMtQkFOSydITkhCUzo1OjErMic="
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "expected": "RequestRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": false
+        },
+        {
+          "action": "response",
+          "expected": "ExecutionReported",
+          "state": "ExecutionReported",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": true
+        },
+        {
+          "action": "response",
+          "expected": "Terminal",
+          "state": "ExecutionReported",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": false
+        },
+        {
+          "action": "start",
+          "expected": "Terminal",
+          "state": "ExecutionReported",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": false
+        }
+      ]
+    },
+    {
+      "name": "unavailable-preserves-unmatched-evidence",
+      "parametersBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI1NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISUJQQTozOjMrMSsyODA6UFVCTElDLUJBTksrQmFuaysxKzErMzAwJ0hJVVBBOjQ6NCtQVUJMSUMtVVNFUisxKzEnSElVUEQ6NTo2K1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK1BVQkxJQy1JQkFOK0MrMStFVVIrT3duZXIrKysrSEtTUEE6MSdISVNQQVM6NjoxKzErMSswK046SjpOJ0hOSEJTOjc6MSsxJw==",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+      "responses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDEyOSszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiszMDEwOjpTeW50aGV0aWMnSElTUEE6NDoxOjInSE5IQlM6NToxKzIn"
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "expected": "RequestRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": false
+        },
+        {
+          "action": "response",
+          "expected": "UnavailableReported",
+          "state": "UnavailableReported",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": true
+        }
+      ]
+    },
+    {
+      "name": "conflicting-candidates-returned-for-review",
+      "parametersBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMyMiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISUJQQTozOjMrMSsyODA6UFVCTElDLUJBTksrQmFuaysxKzErMzAwJ0hJVVBBOjQ6NCtQVUJMSUMtVVNFUisxKzEnSElVUEQ6NTo2K1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK1BVQkxJQy1JQkFOK0MrMStFVVIrT3duZXIrKysrSEtTUEE6MSdISVVQRDo2OjYrUFVCTElDLTAwMjowMDoyODA6UFVCTElDLUJBTksrK0MrMStFVVIrT3duZXIrKysrSEtTUEE6MSdISVNQQVM6NzoxKzErMSswK046SjpOJ0hOSEJTOjg6MSsxJw==",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+      "responses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDE4NCszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiswMDIwOjpTeW50aGV0aWMnSElTUEE6NDoxOjIrSjpQVUJMSUMtSUJBTjpQVUJMSUMtQklDOlBVQkxJQy0wMDI6MDA6MjgwOlBVQkxJQy1CQU5LJ0hOSEJTOjU6MSsyJw=="
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "expected": "RequestRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": false
+        },
+        {
+          "action": "response",
+          "expected": "RejectedForReview",
+          "state": "NeedsReview",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": true
+        },
+        {
+          "action": "response",
+          "expected": "Terminal",
+          "state": "NeedsReview",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": false
+        }
+      ]
+    },
+    {
+      "name": "cancel-before-response",
+      "parametersBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMyMiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISUJQQTozOjMrMSsyODA6UFVCTElDLUJBTksrQmFuaysxKzErMzAwJ0hJVVBBOjQ6NCtQVUJMSUMtVVNFUisxKzEnSElVUEQ6NTo2K1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK1BVQkxJQy1JQkFOK0MrMStFVVIrT3duZXIrKysrSEtTUEE6MSdISVVQRDo2OjYrUFVCTElDLTAwMjowMDoyODA6UFVCTElDLUJBTksrK0MrMStFVVIrT3duZXIrKysrSEtTUEE6MSdISVNQQVM6NzoxKzErMSswK046SjpOJ0hOSEJTOjg6MSsxJw==",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+      "responses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDIxOCszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiswMDIwOjpTeW50aGV0aWMnSElTUEE6NDoxOjIrSjpQVUJMSUMtSUJBTjpQVUJMSUMtQklDOlBVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK046OjpQVUJMSUMtMDAyOjAwOjI4MDpQVUJMSUMtQkFOSydITkhCUzo1OjErMic="
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "expected": "RequestRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": false
+        },
+        {
+          "action": "cancel",
+          "expected": "Cancelled",
+          "state": "Cancelled",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": false
+        },
+        {
+          "action": "response",
+          "expected": "Terminal",
+          "state": "Cancelled",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": false
+        }
+      ]
+    },
+    {
+      "name": "absolute-timeout",
+      "parametersBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMyMiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISUJQQTozOjMrMSsyODA6UFVCTElDLUJBTksrQmFuaysxKzErMzAwJ0hJVVBBOjQ6NCtQVUJMSUMtVVNFUisxKzEnSElVUEQ6NTo2K1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK1BVQkxJQy1JQkFOK0MrMStFVVIrT3duZXIrKysrSEtTUEE6MSdISVVQRDo2OjYrUFVCTElDLTAwMjowMDoyODA6UFVCTElDLUJBTksrK0MrMStFVVIrT3duZXIrKysrSEtTUEE6MSdISVNQQVM6NzoxKzErMSswK046SjpOJ0hOSEJTOjg6MSsxJw==",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+      "responses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDIxOCszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiswMDIwOjpTeW50aGV0aWMnSElTUEE6NDoxOjIrSjpQVUJMSUMtSUJBTjpQVUJMSUMtQklDOlBVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK046OjpQVUJMSUMtMDAyOjAwOjI4MDpQVUJMSUMtQkFOSydITkhCUzo1OjErMic="
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "expected": "RequestRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": false
+        },
+        {
+          "action": "snapshot",
+          "expected": "Snapshot",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 9999,
+          "index": 0,
+          "evidence": false
+        },
+        {
+          "action": "response",
+          "expected": "Terminal",
+          "state": "TimedOut",
+          "atMilliseconds": 10000,
+          "index": 0,
+          "evidence": false
+        }
+      ]
+    },
+    {
+      "name": "foreign-reference-keeps-pending",
+      "parametersBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMyMiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISUJQQTozOjMrMSsyODA6UFVCTElDLUJBTksrQmFuaysxKzErMzAwJ0hJVVBBOjQ6NCtQVUJMSUMtVVNFUisxKzEnSElVUEQ6NTo2K1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK1BVQkxJQy1JQkFOK0MrMStFVVIrT3duZXIrKysrSEtTUEE6MSdISVVQRDo2OjYrUFVCTElDLTAwMjowMDoyODA6UFVCTElDLUJBTksrK0MrMStFVVIrT3duZXIrKysrSEtTUEE6MSdISVNQQVM6NzoxKzErMSswK046SjpOJ0hOSEJTOjg6MSsxJw==",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+      "responses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDIxOCszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiswMDIwOjpTeW50aGV0aWMnSElTUEE6NDoxOjErSjpQVUJMSUMtSUJBTjpQVUJMSUMtQklDOlBVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK046OjpQVUJMSUMtMDAyOjAwOjI4MDpQVUJMSUMtQkFOSydITkhCUzo1OjErMic=",
+        "SE5IQks6MTozKzAwMDAwMDAwMDIxOCszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiswMDIwOjpTeW50aGV0aWMnSElTUEE6NDoxOjIrSjpQVUJMSUMtSUJBTjpQVUJMSUMtQklDOlBVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK046OjpQVUJMSUMtMDAyOjAwOjI4MDpQVUJMSUMtQkFOSydITkhCUzo1OjErMic="
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "expected": "RequestRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": false
+        },
+        {
+          "action": "response",
+          "expected": "ContextMismatch",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": false
+        },
+        {
+          "action": "response",
+          "expected": "ExecutionReported",
+          "state": "ExecutionReported",
+          "atMilliseconds": 0,
+          "index": 1,
+          "evidence": true
+        }
+      ]
+    },
+    {
+      "name": "stop-before-start",
+      "parametersBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMyMiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISUJQQTozOjMrMSsyODA6UFVCTElDLUJBTksrQmFuaysxKzErMzAwJ0hJVVBBOjQ6NCtQVUJMSUMtVVNFUisxKzEnSElVUEQ6NTo2K1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK1BVQkxJQy1JQkFOK0MrMStFVVIrT3duZXIrKysrSEtTUEE6MSdISVVQRDo2OjYrUFVCTElDLTAwMjowMDoyODA6UFVCTElDLUJBTksrK0MrMStFVVIrT3duZXIrKysrSEtTUEE6MSdISVNQQVM6NzoxKzErMSswK046SjpOJ0hOSEJTOjg6MSsxJw==",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+      "responses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDIxOCszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiswMDIwOjpTeW50aGV0aWMnSElTUEE6NDoxOjIrSjpQVUJMSUMtSUJBTjpQVUJMSUMtQklDOlBVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK046OjpQVUJMSUMtMDAyOjAwOjI4MDpQVUJMSUMtQkFOSydITkhCUzo1OjErMic="
+      ],
+      "steps": [
+        {
+          "action": "stop",
+          "expected": "Stopped",
+          "state": "Stopped",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": false
+        },
+        {
+          "action": "start",
+          "expected": "Terminal",
+          "state": "Stopped",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": false
+        },
+        {
+          "action": "response",
+          "expected": "Terminal",
+          "state": "Stopped",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": false
+        }
+      ]
+    },
+    {
+      "name": "unsupported-partial-requires-review",
+      "parametersBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMyMiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISUJQQTozOjMrMSsyODA6UFVCTElDLUJBTksrQmFuaysxKzErMzAwJ0hJVVBBOjQ6NCtQVUJMSUMtVVNFUisxKzEnSElVUEQ6NTo2K1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK1BVQkxJQy1JQkFOK0MrMStFVVIrT3duZXIrKysrSEtTUEE6MSdISVVQRDo2OjYrUFVCTElDLTAwMjowMDoyODA6UFVCTElDLUJBTksrK0MrMStFVVIrT3duZXIrKysrSEtTUEE6MSdISVNQQVM6NzoxKzErMSswK046SjpOJ0hOSEJTOjg6MSsxJw==",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+      "responses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDIxOCszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiszMDQwOjpTeW50aGV0aWMnSElTUEE6NDoxOjIrSjpQVUJMSUMtSUJBTjpQVUJMSUMtQklDOlBVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK046OjpQVUJMSUMtMDAyOjAwOjI4MDpQVUJMSUMtQkFOSydITkhCUzo1OjErMic="
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "expected": "RequestRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": false
+        },
+        {
+          "action": "response",
+          "expected": "RejectedForReview",
+          "state": "NeedsReview",
+          "atMilliseconds": 0,
+          "index": 0,
+          "evidence": true
+        }
+      ]
+    }
+  ]
+}

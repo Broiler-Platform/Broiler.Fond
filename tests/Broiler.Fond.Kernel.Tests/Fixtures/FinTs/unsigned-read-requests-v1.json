@@ -1,0 +1,192 @@
+{
+  "schemaVersion": 1,
+  "vectors": [
+    {
+      "name": "discovery-all",
+      "operation": "HKSPA",
+      "version": 1,
+      "dialogue": "SYNTHETIC",
+      "messageNumber": 1,
+      "accounts": [],
+      "allAccounts": true,
+      "maximumEntries": null,
+      "continuationToken": null,
+      "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzEnSEtTUEE6MjoxJ0hOSEJTOjM6MSsxJw=="
+    },
+    {
+      "name": "discovery-selected-empty-subaccount",
+      "operation": "HKSPA",
+      "version": 1,
+      "dialogue": "SYNTHETIC",
+      "messageNumber": 2,
+      "accounts": [
+        {
+          "number": "PUBLIC-001",
+          "subaccount": "",
+          "country": "280",
+          "institution": "PUBLIC-BANK"
+        }
+      ],
+      "allAccounts": false,
+      "maximumEntries": null,
+      "continuationToken": null,
+      "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA4OSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxK1BVQkxJQy0wMDE6OjI4MDpQVUJMSUMtQkFOSydITkhCUzozOjErMic="
+    },
+    {
+      "name": "discovery-duplicate-escaped-identifiers",
+      "operation": "HKSPA",
+      "version": 1,
+      "dialogue": "D+:'?@\u00fc",
+      "messageNumber": 2,
+      "accounts": [
+        {
+          "number": "A+:'?@\u00df",
+          "subaccount": " 00 ",
+          "country": "280",
+          "institution": "B\u00e4nk"
+        },
+        {
+          "number": "A+:'?@\u00df",
+          "subaccount": " 00 ",
+          "country": "280",
+          "institution": "B\u00e4nk"
+        }
+      ],
+      "allAccounts": false,
+      "maximumEntries": null,
+      "continuationToken": null,
+      "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDExOCszMDArRD8rPzo/Jz8/P0D8KzInSEtTUEE6MjoxK0E/Kz86Pyc/Pz9A3zogMDAgOjI4MDpC5G5rK0E/Kz86Pyc/Pz9A3zogMDAgOjI4MDpC5G5rJ0hOSEJTOjM6MSsyJw=="
+    },
+    {
+      "name": "balance-six-maximum",
+      "operation": "HKSAL",
+      "version": 6,
+      "dialogue": "SYNTHETIC",
+      "messageNumber": 2,
+      "accounts": [
+        {
+          "number": "PUBLIC-001",
+          "subaccount": "",
+          "country": "280",
+          "institution": "PUBLIC-BANK"
+        }
+      ],
+      "allAccounts": false,
+      "maximumEntries": 9999,
+      "continuationToken": null,
+      "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA5NiszMDArU1lOVEhFVElDKzInSEtTQUw6Mjo2K1BVQkxJQy0wMDE6OjI4MDpQVUJMSUMtQkFOSytOKzk5OTknSE5IQlM6MzoxKzIn"
+    },
+    {
+      "name": "balance-seven-international",
+      "operation": "HKSAL",
+      "version": 7,
+      "dialogue": "SYNTHETIC",
+      "messageNumber": 2,
+      "accounts": [
+        {
+          "iban": "PUBLIC-IBAN",
+          "bic": "PUBLIC-BIC"
+        }
+      ],
+      "allAccounts": false,
+      "maximumEntries": null,
+      "continuationToken": null,
+      "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA4NiszMDArU1lOVEhFVElDKzInSEtTQUw6Mjo3K1BVQkxJQy1JQkFOOlBVQkxJQy1CSUMrTidITkhCUzozOjErMic="
+    },
+    {
+      "name": "balance-eight-combined-all",
+      "operation": "HKSAL",
+      "version": 8,
+      "dialogue": "SYNTHETIC",
+      "messageNumber": 2,
+      "accounts": [
+        {
+          "number": "PUBLIC-001",
+          "subaccount": "",
+          "country": "280",
+          "institution": "PUBLIC-BANK",
+          "iban": "PUBLIC-IBAN",
+          "bic": "PUBLIC-BIC"
+        }
+      ],
+      "allAccounts": true,
+      "maximumEntries": null,
+      "continuationToken": null,
+      "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDExNCszMDArU1lOVEhFVElDKzInSEtTQUw6Mjo4K1BVQkxJQy1JQkFOOlBVQkxJQy1CSUM6UFVCTElDLTAwMTo6MjgwOlBVQkxJQy1CQU5LK0onSE5IQlM6MzoxKzIn"
+    },
+    {
+      "name": "balance-eight-national-token",
+      "operation": "HKSAL",
+      "version": 8,
+      "dialogue": "SYNTHETIC",
+      "messageNumber": 2,
+      "accounts": [
+        {
+          "number": "PUBLIC-001",
+          "subaccount": "",
+          "country": "280",
+          "institution": "PUBLIC-BANK"
+        }
+      ],
+      "allAccounts": false,
+      "maximumEntries": null,
+      "continuationToken": "page+:'?@\u00fc",
+      "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDExMCszMDArU1lOVEhFVElDKzInSEtTQUw6Mjo4Kzo6UFVCTElDLTAwMTo6MjgwOlBVQkxJQy1CQU5LK04rK3BhZ2U/Kz86Pyc/Pz9A/CdITkhCUzozOjErMic="
+    },
+    {
+      "name": "balance-six-omitted-institution",
+      "operation": "HKSAL",
+      "version": 6,
+      "dialogue": "SYNTHETIC",
+      "messageNumber": 2,
+      "accounts": [
+        {
+          "number": "0001",
+          "country": "280"
+        }
+      ],
+      "allAccounts": false,
+      "maximumEntries": 1,
+      "continuationToken": "next",
+      "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA4MCszMDArU1lOVEhFVElDKzInSEtTQUw6Mjo2KzAwMDE6OjI4MCtOKzErbmV4dCdITkhCUzozOjErMic="
+    },
+    {
+      "name": "balance-eight-field-limits",
+      "operation": "HKSAL",
+      "version": 8,
+      "dialogue": "??????????????????????????????",
+      "messageNumber": 9999,
+      "accounts": [
+        {
+          "number": "NNNNNNNNNNNNNNNNNNNNNNNNNNNNNN",
+          "subaccount": "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+          "country": "280",
+          "institution": "IIIIIIIIIIIIIIIIIIIIIIIIIIIIII",
+          "iban": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "bic": "BBBBBBBBBBB"
+        }
+      ],
+      "allAccounts": false,
+      "maximumEntries": 1,
+      "continuationToken": "???????????????????????????????????",
+      "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMzNyszMDArPz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Kzk5OTknSEtTQUw6Mjo4K0FBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUE6QkJCQkJCQkJCQkI6Tk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OOlNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTUzoyODA6SUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJK04rMSs/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/J0hOSEJTOjM6MSs5OTk5Jw=="
+    },
+    {
+      "name": "balance-seven-national-minimum",
+      "operation": "HKSAL",
+      "version": 7,
+      "dialogue": "SYNTHETIC",
+      "messageNumber": 2,
+      "accounts": [
+        {
+          "number": "0001",
+          "country": "280"
+        }
+      ],
+      "allAccounts": false,
+      "maximumEntries": null,
+      "continuationToken": null,
+      "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA3NSszMDArU1lOVEhFVElDKzInSEtTQUw6Mjo3Kzo6MDAwMTo6MjgwK04nSE5IQlM6MzoxKzIn"
+    }
+  ]
+}

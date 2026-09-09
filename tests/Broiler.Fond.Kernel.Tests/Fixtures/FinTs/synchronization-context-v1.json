@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "vectors": [
+    {
+      "name": "pin-system-assignment",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE1OCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NCtQVUJMSUM/Kz86Pyc/Pz9A/CdITkhCUzo1OjErMSc=",
+      "profile": "PinTan2",
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "issues": [],
+      "nextStep": "CloseAndReinitializeRequired"
+    },
+    {
+      "name": "rah-software-system-assignment",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE1OCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NCtQVUJMSUM/Kz86Pyc/Pz9A/CdITkhCUzo1OjErMSc=",
+      "profile": "Rah10",
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "issues": [],
+      "nextStep": "CloseAndReinitializeRequired"
+    },
+    {
+      "name": "message-recovery-explicit-prior-scope",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE0OCszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MysxJ0hOSEJTOjU6MSsxJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE0NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NCsrOTk5OSdITkhCUzo1OjErMSc=",
+      "profile": "PinTan2",
+      "previousDialogueId": "PUBLIC-PREVIOUS",
+      "lastSubmittedMessageNumber": 9999,
+      "issues": [],
+      "nextStep": "CloseAndReinitializeRequired"
+    },
+    {
+      "name": "message-recovery-missing-prior-scope",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE0OCszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MysxJ0hOSEJTOjU6MSsxJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE0NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NCsrOTk5OSdITkhCUzo1OjErMSc=",
+      "profile": "PinTan2",
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "issues": [
+        "RecoveryContextMissing"
+      ],
+      "nextStep": "StopForReview"
+    },
+    {
+      "name": "rah-software-single-reference",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE0OCszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MysyJ0hOSEJTOjU6MSsxJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE0NSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NCsrKzQyJ0hOSEJTOjU6MSsxJw==",
+      "profile": "Rah10",
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "issues": [],
+      "nextStep": "CloseAndReinitializeRequired"
+    },
+    {
+      "name": "rah-card-separate-references",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE0NiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1DQVJEKzAnSEtWVkI6MzozKzErMisyK1BVQkxJQy1QUk9EVUNUKzEuMCdIS1NZTjo0OjMrMidITkhCUzo1OjErMSc=",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE2MSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NCsrKzArOTk5OTk5OTk5OTk5OTk5OCdITkhCUzo1OjErMSc=",
+      "profile": "Rah7",
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "issues": [],
+      "nextStep": "CloseAndReinitializeRequired"
+    },
+    {
+      "name": "pin-signature-recovery-prohibited",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE0OCszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MysyJ0hOSEJTOjU6MSsxJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE0NSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NCsrKzQyJ0hOSEJTOjU6MSsxJw==",
+      "profile": "PinTan2",
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "issues": [
+        "ModeNotPermitted"
+      ],
+      "nextStep": "StopForReview"
+    },
+    {
+      "name": "card-system-assignment-prohibited",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE1OCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NCtQVUJMSUM/Kz86Pyc/Pz9A/CdITkhCUzo1OjErMSc=",
+      "profile": "Rah7",
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "issues": [
+        "ModeNotPermitted",
+        "RequestSystemMismatch"
+      ],
+      "nextStep": "StopForReview"
+    },
+    {
+      "name": "rah-nine-layout-unresolved",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE0NiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1DQVJEKzAnSEtWVkI6MzozKzErMisyK1BVQkxJQy1QUk9EVUNUKzEuMCdIS1NZTjo0OjMrMidITkhCUzo1OjErMSc=",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE2MSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NCsrKzArOTk5OTk5OTk5OTk5OTk5OCdITkhCUzo1OjErMSc=",
+      "profile": "Rah9",
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "issues": [
+        "ProfileNeedsReview"
+      ],
+      "nextStep": "StopForReview"
+    },
+    {
+      "name": "wrong-mode-shape",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE0OCszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MysxJ0hOSEJTOjU6MSsxJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE1OCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NCtQVUJMSUM/Kz86Pyc/Pz9A/CdITkhCUzo1OjErMSc=",
+      "profile": "PinTan2",
+      "previousDialogueId": "PUBLIC-PREVIOUS",
+      "lastSubmittedMessageNumber": 9999,
+      "issues": [
+        "ModeShapeMismatch"
+      ],
+      "nextStep": "StopForReview"
+    },
+    {
+      "name": "empty-report-needs-review",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE0MCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NCdITkhCUzo1OjErMSc=",
+      "profile": "PinTan2",
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "issues": [
+        "ModeShapeMismatch"
+      ],
+      "nextStep": "StopForReview"
+    },
+    {
+      "name": "unknown-response-needs-review",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE1NSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjU6NCtQVUJMSUMtVU5LTk9XTidITkhCUzo1OjErMSc=",
+      "profile": "PinTan2",
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "issues": [
+        "MissingReport",
+        "UninterpretedReports"
+      ],
+      "nextStep": "StopForReview"
+    },
+    {
+      "name": "duplicate-responses-needs-review",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE3MCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NCtQVUJMSUMtQSdISVNZTjo1OjQ6NCtQVUJMSUMtQidITkhCUzo2OjErMSc=",
+      "profile": "PinTan2",
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "issues": [
+        "DuplicateReport"
+      ],
+      "nextStep": "StopForReview"
+    },
+    {
+      "name": "foreign-synchronization-reference",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE1OCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6MytQVUJMSUM/Kz86Pyc/Pz9A/CdITkhCUzo1OjErMSc=",
+      "profile": "PinTan2",
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "issues": [
+        "ReferenceMismatch"
+      ],
+      "nextStep": "StopForReview"
+    },
+    {
+      "name": "reported-message-exceeds-submitted",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE0OCszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MysxJ0hOSEJTOjU6MSsxJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE0NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NCsrOTk5OSdITkhCUzo1OjErMSc=",
+      "profile": "PinTan2",
+      "previousDialogueId": "PUBLIC-PREVIOUS",
+      "lastSubmittedMessageNumber": 9,
+      "issues": [
+        "RecoveryContextMismatch"
+      ],
+      "nextStep": "StopForReview"
+    }
+  ]
+}

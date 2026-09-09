@@ -1,4 +1,4 @@
-name: Milestone 0 CI
+name: Engineering CI
 
 on:
   pull_request:

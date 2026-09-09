@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "vectors": [
+    {
+      "name": "known-sepa-and-national-shell",
+      "parametersBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMyMiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISUJQQTozOjMrMSsyODA6UFVCTElDLUJBTksrQmFuaysxKzErMzAwJ0hJVVBBOjQ6NCtQVUJMSUMtVVNFUisxKzEnSElVUEQ6NTo2K1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK1BVQkxJQy1JQkFOK0MrMStFVVIrT3duZXIrKysrSEtTUEE6MSdISVVQRDo2OjYrUFVCTElDLTAwMjowMDoyODA6UFVCTElDLUJBTksrK0MrMStFVVIrT3duZXIrKysrSEtTUEE6MSdISVNQQVM6NzoxKzErMSswK046SjpOJ0hOSEJTOjg6MSsxJw==",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDIxOCszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiswMDIwOjpTeW50aGV0aWMnSElTUEE6NDoxOjIrSjpQVUJMSUMtSUJBTjpQVUJMSUMtQklDOlBVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK046OjpQVUJMSUMtMDAyOjAwOjI4MDpQVUJMSUMtQkFOSydITkhCUzo1OjErMic=",
+      "issues": [],
+      "rowIssues": [
+        [],
+        []
+      ],
+      "candidateCounts": [
+        1,
+        1
+      ],
+      "unmatched": 0,
+      "outcome": "ExecutionReported"
+    },
+    {
+      "name": "new-source-account-needs-review",
+      "parametersBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI1NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISUJQQTozOjMrMSsyODA6UFVCTElDLUJBTksrQmFuaysxKzErMzAwJ0hJVVBBOjQ6NCtQVUJMSUMtVVNFUisxKzEnSElVUEQ6NTo2K1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK1BVQkxJQy1JQkFOK0MrMStFVVIrT3duZXIrKysrSEtTUEE6MSdISVNQQVM6NjoxKzErMSswK046SjpOJ0hOSEJTOjc6MSsxJw==",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDIxOCszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiswMDIwOjpTeW50aGV0aWMnSElTUEE6NDoxOjIrSjpQVUJMSUMtSUJBTjpQVUJMSUMtQklDOlBVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK046OjpQVUJMSUMtMDAyOjAwOjI4MDpQVUJMSUMtQkFOSydITkhCUzo1OjErMic=",
+      "issues": [
+        "AccountNeedsReview"
+      ],
+      "rowIssues": [
+        [],
+        [
+          "UnknownAccount"
+        ]
+      ],
+      "candidateCounts": [
+        1,
+        0
+      ],
+      "unmatched": 0,
+      "outcome": "NeedsReview"
+    },
+    {
+      "name": "duplicate-returned-account",
+      "parametersBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI1NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISUJQQTozOjMrMSsyODA6UFVCTElDLUJBTksrQmFuaysxKzErMzAwJ0hJVVBBOjQ6NCtQVUJMSUMtVVNFUisxKzEnSElVUEQ6NTo2K1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK1BVQkxJQy1JQkFOK0MrMStFVVIrT3duZXIrKysrSEtTUEE6MSdISVNQQVM6NjoxKzErMSswK046SjpOJ0hOSEJTOjc6MSsxJw==",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDIzOSszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiswMDIwOjpTeW50aGV0aWMnSElTUEE6NDoxOjIrSjpQVUJMSUMtSUJBTjpQVUJMSUMtQklDOlBVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK0o6UFVCTElDLUlCQU46UFVCTElDLUJJQzpQVUJMSUMtMDAxOjAwOjI4MDpQVUJMSUMtQkFOSydITkhCUzo1OjErMic=",
+      "issues": [
+        "AccountNeedsReview",
+        "UnmatchedUserAccounts"
+      ],
+      "rowIssues": [
+        [
+          "DuplicateReturnedIdentity"
+        ],
+        [
+          "DuplicateReturnedIdentity"
+        ]
+      ],
+      "candidateCounts": [
+        1,
+        1
+      ],
+      "unmatched": 1,
+      "outcome": "NeedsReview"
+    },
+    {
+      "name": "national-and-iban-point-to-different-upd",
+      "parametersBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMyMiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISUJQQTozOjMrMSsyODA6UFVCTElDLUJBTksrQmFuaysxKzErMzAwJ0hJVVBBOjQ6NCtQVUJMSUMtVVNFUisxKzEnSElVUEQ6NTo2K1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK1BVQkxJQy1JQkFOK0MrMStFVVIrT3duZXIrKysrSEtTUEE6MSdISVVQRDo2OjYrUFVCTElDLTAwMjowMDoyODA6UFVCTElDLUJBTksrK0MrMStFVVIrT3duZXIrKysrSEtTUEE6MSdISVNQQVM6NzoxKzErMSswK046SjpOJ0hOSEJTOjg6MSsxJw==",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE4NCszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiswMDIwOjpTeW50aGV0aWMnSElTUEE6NDoxOjIrSjpQVUJMSUMtSUJBTjpQVUJMSUMtQklDOlBVQkxJQy0wMDI6MDA6MjgwOlBVQkxJQy1CQU5LJ0hOSEJTOjU6MSsyJw==",
+      "issues": [
+        "AccountNeedsReview",
+        "UnmatchedUserAccounts"
+      ],
+      "rowIssues": [
+        [
+          "IdentityConflict",
+          "AmbiguousUserAccount"
+        ]
+      ],
+      "candidateCounts": [
+        2
+      ],
+      "unmatched": 2,
+      "outcome": "NeedsReview"
+    },
+    {
+      "name": "duplicate-upd-candidates",
+      "parametersBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMzMyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISUJQQTozOjMrMSsyODA6UFVCTElDLUJBTksrQmFuaysxKzErMzAwJ0hJVVBBOjQ6NCtQVUJMSUMtVVNFUisxKzEnSElVUEQ6NTo2K1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK1BVQkxJQy1JQkFOK0MrMStFVVIrT3duZXIrKysrSEtTUEE6MSdISVVQRDo2OjYrUFVCTElDLTAwMTowMDoyODA6UFVCTElDLUJBTksrUFVCTElDLUlCQU4rQysxK0VVUitPd25lcisrKytIS1NQQToxJ0hJU1BBUzo3OjErMSsxKzArTjpKOk4nSE5IQlM6ODoxKzEn",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE4NCszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiswMDIwOjpTeW50aGV0aWMnSElTUEE6NDoxOjIrSjpQVUJMSUMtSUJBTjpQVUJMSUMtQklDOlBVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LJ0hOSEJTOjU6MSsyJw==",
+      "issues": [
+        "AccountNeedsReview",
+        "UnmatchedUserAccounts"
+      ],
+      "rowIssues": [
+        [
+          "AmbiguousUserAccount"
+        ]
+      ],
+      "candidateCounts": [
+        2
+      ],
+      "unmatched": 2,
+      "outcome": "NeedsReview"
+    },
+    {
+      "name": "known-account-not-returned",
+      "parametersBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMyMiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISUJQQTozOjMrMSsyODA6UFVCTElDLUJBTksrQmFuaysxKzErMzAwJ0hJVVBBOjQ6NCtQVUJMSUMtVVNFUisxKzEnSElVUEQ6NTo2K1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK1BVQkxJQy1JQkFOK0MrMStFVVIrT3duZXIrKysrSEtTUEE6MSdISVVQRDo2OjYrUFVCTElDLTAwMjowMDoyODA6UFVCTElDLUJBTksrK0MrMStFVVIrT3duZXIrKysrSEtTUEE6MSdISVNQQVM6NzoxKzErMSswK046SjpOJ0hOSEJTOjg6MSsxJw==",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE4NCszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiswMDIwOjpTeW50aGV0aWMnSElTUEE6NDoxOjIrSjpQVUJMSUMtSUJBTjpQVUJMSUMtQklDOlBVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LJ0hOSEJTOjU6MSsyJw==",
+      "issues": [
+        "UnmatchedUserAccounts"
+      ],
+      "rowIssues": [
+        []
+      ],
+      "candidateCounts": [
+        1
+      ],
+      "unmatched": 1,
+      "outcome": "NeedsReview"
+    },
+    {
+      "name": "permission-is-not-assumed",
+      "parametersBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI1NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISUJQQTozOjMrMSsyODA6UFVCTElDLUJBTksrQmFuaysxKzErMzAwJ0hJVVBBOjQ6NCtQVUJMSUMtVVNFUisxKzEnSElVUEQ6NTo2K1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK1BVQkxJQy1JQkFOK0MrMStFVVIrT3duZXIrKysrSEtTQUw6MSdISVNQQVM6NjoxKzErMSswK046SjpOJ0hOSEJTOjc6MSsxJw==",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE4NCszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiswMDIwOjpTeW50aGV0aWMnSElTUEE6NDoxOjIrSjpQVUJMSUMtSUJBTjpQVUJMSUMtQklDOlBVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LJ0hOSEJTOjU6MSsyJw==",
+      "issues": [
+        "AccountNeedsReview",
+        "UnmatchedUserAccounts"
+      ],
+      "rowIssues": [
+        [
+          "PermissionNeedsReview"
+        ]
+      ],
+      "candidateCounts": [
+        1
+      ],
+      "unmatched": 1,
+      "outcome": "NeedsReview"
+    },
+    {
+      "name": "unavailable-does-not-remove-upd",
+      "parametersBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI1NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISUJQQTozOjMrMSsyODA6UFVCTElDLUJBTksrQmFuaysxKzErMzAwJ0hJVVBBOjQ6NCtQVUJMSUMtVVNFUisxKzEnSElVUEQ6NTo2K1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK1BVQkxJQy1JQkFOK0MrMStFVVIrT3duZXIrKysrSEtTUEE6MSdISVNQQVM6NjoxKzErMSswK046SjpOJ0hOSEJTOjc6MSsxJw==",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEyOSszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiszMDEwOjpTeW50aGV0aWMnSElTUEE6NDoxOjInSE5IQlM6NToxKzIn",
+      "issues": [],
+      "rowIssues": [],
+      "candidateCounts": [],
+      "unmatched": 1,
+      "outcome": "UnavailableReported"
+    }
+  ]
+}

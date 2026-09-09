@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "vectors": [
+    {
+      "name": "empty-discovery-unavailable",
+      "parametersBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI4MyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISUJQQTozOjMrMSsyODA6UFVCTElDLUJBTksrQmFuaysxKzErMzAwJ0hJVVBBOjQ6NCtQVUJMSUMtVVNFUisxKzEnSElVUEQ6NTo2K1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK1BVQkxJQy1JQkFOK0MrMStFVVIrT3duZXIrKysrSEtTQUw6MStIS1NQQToxJ0hJU0FMUzo2OjgrMSsxKzArSidISVNQQVM6NzoxKzErMSswK0o6SjpOJ0hOSEJTOjg6MSsxJw==",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA5MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxK1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LJ0hOSEJTOjM6MSsyJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEyOSszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiszMDEwOjpTeW50aGV0aWMnSElTUEE6NDoxOjInSE5IQlM6NToxKzIn",
+      "issues": [],
+      "outcome": "UnavailableReported",
+      "discoveryReports": 1,
+      "balanceReports": 0
+    },
+    {
+      "name": "status-only-discovery-unavailable",
+      "parametersBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI4MyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISUJQQTozOjMrMSsyODA6UFVCTElDLUJBTksrQmFuaysxKzErMzAwJ0hJVVBBOjQ6NCtQVUJMSUMtVVNFUisxKzEnSElVUEQ6NTo2K1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK1BVQkxJQy1JQkFOK0MrMStFVVIrT3duZXIrKysrSEtTQUw6MStIS1NQQToxJ0hJU0FMUzo2OjgrMSsxKzArSidISVNQQVM6NzoxKzErMSswK0o6SjpOJ0hOSEJTOjg6MSsxJw==",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA5MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxK1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LJ0hOSEJTOjM6MSsyJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDExNyszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiszMDEwOjpTeW50aGV0aWMnSE5IQlM6NDoxKzIn",
+      "issues": [],
+      "outcome": "UnavailableReported",
+      "discoveryReports": 0,
+      "balanceReports": 0
+    },
+    {
+      "name": "status-only-balance-unavailable",
+      "parametersBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI4MyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISUJQQTozOjMrMSsyODA6UFVCTElDLUJBTksrQmFuaysxKzErMzAwJ0hJVVBBOjQ6NCtQVUJMSUMtVVNFUisxKzEnSElVUEQ6NTo2K1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK1BVQkxJQy1JQkFOK0MrMStFVVIrT3duZXIrKysrSEtTQUw6MStIS1NQQToxJ0hJU0FMUzo2OjgrMSsxKzArSidISVNQQVM6NzoxKzErMSswK0o6SjpOJ0hOSEJTOjg6MSsxJw==",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA4NiszMDArU1lOVEhFVElDKzInSEtTQUw6Mjo4K1BVQkxJQy1JQkFOOlBVQkxJQy1CSUMrTidITkhCUzozOjErMic=",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDExNyszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiszMDEwOjpTeW50aGV0aWMnSE5IQlM6NDoxKzIn",
+      "issues": [],
+      "outcome": "UnavailableReported",
+      "discoveryReports": 0,
+      "balanceReports": 0
+    },
+    {
+      "name": "zero-balance-conflicts-with-unavailable",
+      "parametersBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI4MyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISUJQQTozOjMrMSsyODA6UFVCTElDLUJBTksrQmFuaysxKzErMzAwJ0hJVVBBOjQ6NCtQVUJMSUMtVVNFUisxKzEnSElVUEQ6NTo2K1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK1BVQkxJQy1JQkFOK0MrMStFVVIrT3duZXIrKysrSEtTQUw6MStIS1NQQToxJ0hJU0FMUzo2OjgrMSsxKzArSidISVNQQVM6NzoxKzErMSswK0o6SjpOJ0hOSEJTOjg6MSsxJw==",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA4NiszMDArU1lOVEhFVElDKzInSEtTQUw6Mjo4K1BVQkxJQy1JQkFOOlBVQkxJQy1CSUMrTidITkhCUzozOjErMic=",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE4MSszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiszMDEwOjpTeW50aGV0aWMnSElTQUw6NDo4OjIrUFVCTElDLUlCQU46UFVCTElDLUJJQytQVUJMSUMrRVVSK0M6MCw6RVVSOjIwMjYwOTA3J0hOSEJTOjU6MSsyJw==",
+      "issues": [
+        "AvailabilityConflict"
+      ],
+      "outcome": "NeedsReview",
+      "discoveryReports": 0,
+      "balanceReports": 1
+    },
+    {
+      "name": "missing-report-is-not-unavailable",
+      "parametersBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI4MyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISUJQQTozOjMrMSsyODA6UFVCTElDLUJBTksrQmFuaysxKzErMzAwJ0hJVVBBOjQ6NCtQVUJMSUMtVVNFUisxKzEnSElVUEQ6NTo2K1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK1BVQkxJQy1JQkFOK0MrMStFVVIrT3duZXIrKysrSEtTQUw6MStIS1NQQToxJ0hJU0FMUzo2OjgrMSsxKzArSidISVNQQVM6NzoxKzErMSswK0o6SjpOJ0hOSEJTOjg6MSsxJw==",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA4NiszMDArU1lOVEhFVElDKzInSEtTQUw6Mjo4K1BVQkxJQy1JQkFOOlBVQkxJQy1CSUMrTidITkhCUzozOjErMic=",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDExNyszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiswMDIwOjpTeW50aGV0aWMnSE5IQlM6NDoxKzIn",
+      "issues": [
+        "MissingReport"
+      ],
+      "outcome": "NeedsReview",
+      "discoveryReports": 0,
+      "balanceReports": 0
+    },
+    {
+      "name": "empty-discovery-needs-explicit-status",
+      "parametersBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI4MyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISUJQQTozOjMrMSsyODA6UFVCTElDLUJBTksrQmFuaysxKzErMzAwJ0hJVVBBOjQ6NCtQVUJMSUMtVVNFUisxKzEnSElVUEQ6NTo2K1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK1BVQkxJQy1JQkFOK0MrMStFVVIrT3duZXIrKysrSEtTQUw6MStIS1NQQToxJ0hJU0FMUzo2OjgrMSsxKzArSidISVNQQVM6NzoxKzErMSswK0o6SjpOJ0hOSEJTOjg6MSsxJw==",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA5MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxK1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LJ0hOSEJTOjM6MSsyJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEyOSszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiswMDIwOjpTeW50aGV0aWMnSElTUEE6NDoxOjInSE5IQlM6NToxKzIn",
+      "issues": [
+        "MissingReport"
+      ],
+      "outcome": "NeedsReview",
+      "discoveryReports": 1,
+      "balanceReports": 0
+    },
+    {
+      "name": "9210-remains-an-error",
+      "parametersBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI4MyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISUJQQTozOjMrMSsyODA6UFVCTElDLUJBTksrQmFuaysxKzErMzAwJ0hJVVBBOjQ6NCtQVUJMSUMtVVNFUisxKzEnSElVUEQ6NTo2K1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK1BVQkxJQy1JQkFOK0MrMStFVVIrT3duZXIrKysrSEtTQUw6MStIS1NQQToxJ0hJU0FMUzo2OjgrMSsxKzArSidISVNQQVM6NzoxKzErMSswK0o6SjpOJ0hOSEJTOjg6MSsxJw==",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA4NiszMDArU1lOVEhFVElDKzInSEtTQUw6Mjo4K1BVQkxJQy1JQkFOOlBVQkxJQy1CSUMrTidITkhCUzozOjErMic=",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDExNyszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6Mis5MjEwOjpTeW50aGV0aWMnSE5IQlM6NDoxKzIn",
+      "issues": [
+        "MissingReport",
+        "ResponseNeedsReview",
+        "StatusNeedsReview"
+      ],
+      "outcome": "NeedsReview",
+      "discoveryReports": 0,
+      "balanceReports": 0
+    },
+    {
+      "name": "partial-and-unavailable-conflict",
+      "parametersBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI4MyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISUJQQTozOjMrMSsyODA6UFVCTElDLUJBTksrQmFuaysxKzErMzAwJ0hJVVBBOjQ6NCtQVUJMSUMtVVNFUisxKzEnSElVUEQ6NTo2K1BVQkxJQy0wMDE6MDA6MjgwOlBVQkxJQy1CQU5LK1BVQkxJQy1JQkFOK0MrMStFVVIrT3duZXIrKysrSEtTQUw6MStIS1NQQToxJ0hJU0FMUzo2OjgrMSsxKzArSidISVNQQVM6NzoxKzErMSswK0o6SjpOJ0hOSEJTOjg6MSsxJw==",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA4NiszMDArU1lOVEhFVElDKzInSEtTQUw6Mjo4K1BVQkxJQy1JQkFOOlBVQkxJQy1CSUMrTidITkhCUzozOjErMic=",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzOCszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiszMDEwOjpTeW50aGV0aWMrMzA0MDo6U3ludGhldGljOlBBR0UnSE5IQlM6NDoxKzIn",
+      "issues": [
+        "AvailabilityConflict"
+      ],
+      "outcome": "NeedsReview",
+      "discoveryReports": 0,
+      "balanceReports": 0
+    }
+  ]
+}

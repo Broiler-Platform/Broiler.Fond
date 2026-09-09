@@ -1,7 +1,7 @@
 namespace Broiler.Fond.Kernel.Product;
 
 /// <summary>
-/// Identifies the product and the currently scaffolded milestone.
+/// Identifies the product and the milestone currently in development.
 /// </summary>
 public static class KernelProduct
 {
@@ -14,6 +14,6 @@ public static class KernelProduct
     /// <summary>The complete user-facing product name.</summary>
     public const string FullDisplayName = "Broiler Fond - Finance on Demand";
 
-    /// <summary>The scaffold milestone. Banking capabilities begin after M0.</summary>
-    public const int Milestone = 0;
+    /// <summary>The development milestone, not a declaration of release readiness.</summary>
+    public const int Milestone = 1;
 }

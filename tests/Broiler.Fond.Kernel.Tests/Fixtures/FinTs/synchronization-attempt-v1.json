@@ -1,0 +1,705 @@
+{
+  "schemaVersion": 1,
+  "vectors": [
+    {
+      "name": "system-sync-close-once",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+      "profile": "PinTan2",
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "closeRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA3MSszMDArU1lOVEhFVElDKzInSEtFTkQ6MjoxK1NZTlRIRVRJQydITkhCUzozOjErMic=",
+      "synchronizationResponses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDE1OCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NCtQVUJMSUM/Kz86Pyc/Pz9A/CdITkhCUzo1OjErMSc="
+      ],
+      "closingResponses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDA5MiszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAxMDA6OlBVQkxJQy1SRVBMWSdITkhCUzozOjErMic="
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "expected": "RequestRecorded",
+          "state": "AwaitingSynchronization",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": false,
+          "requests": 1,
+          "accepted": 0
+        },
+        {
+          "action": "synchronization",
+          "expected": "CloseRequired",
+          "state": "AwaitingCloseRequest",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": true,
+          "closingEvidence": false,
+          "requests": 1,
+          "accepted": 1
+        },
+        {
+          "action": "recordClose",
+          "expected": "CloseRequestRecorded",
+          "state": "AwaitingCloseResponse",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": false,
+          "requests": 2,
+          "accepted": 1
+        },
+        {
+          "action": "close",
+          "expected": "ReinitializationRequired",
+          "state": "ReinitializationRequired",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": true,
+          "requests": 2,
+          "accepted": 2
+        },
+        {
+          "action": "close",
+          "expected": "Terminal",
+          "state": "ReinitializationRequired",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": false,
+          "requests": 2,
+          "accepted": 2
+        }
+      ]
+    },
+    {
+      "name": "message-recovery-close",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE0OCszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MysxJ0hOSEJTOjU6MSsxJw==",
+      "profile": "PinTan2",
+      "previousDialogueId": "PUBLIC-PREVIOUS",
+      "lastSubmittedMessageNumber": 9999,
+      "closeRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA3MSszMDArU1lOVEhFVElDKzInSEtFTkQ6MjoxK1NZTlRIRVRJQydITkhCUzozOjErMic=",
+      "synchronizationResponses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDE0NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NCsrOTk5OSdITkhCUzo1OjErMSc="
+      ],
+      "closingResponses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDA5MiszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAxMDA6OlBVQkxJQy1SRVBMWSdITkhCUzozOjErMic="
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "expected": "RequestRecorded",
+          "state": "AwaitingSynchronization",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": false,
+          "requests": 1,
+          "accepted": 0
+        },
+        {
+          "action": "synchronization",
+          "expected": "CloseRequired",
+          "state": "AwaitingCloseRequest",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": true,
+          "closingEvidence": false,
+          "requests": 1,
+          "accepted": 1
+        },
+        {
+          "action": "recordClose",
+          "expected": "CloseRequestRecorded",
+          "state": "AwaitingCloseResponse",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": false,
+          "requests": 2,
+          "accepted": 1
+        },
+        {
+          "action": "close",
+          "expected": "ReinitializationRequired",
+          "state": "ReinitializationRequired",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": true,
+          "requests": 2,
+          "accepted": 2
+        }
+      ]
+    },
+    {
+      "name": "signature-recovery-close",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE0NiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1DQVJEKzAnSEtWVkI6MzozKzErMisyK1BVQkxJQy1QUk9EVUNUKzEuMCdIS1NZTjo0OjMrMidITkhCUzo1OjErMSc=",
+      "profile": "Rah7",
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "closeRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA3MSszMDArU1lOVEhFVElDKzInSEtFTkQ6MjoxK1NZTlRIRVRJQydITkhCUzozOjErMic=",
+      "synchronizationResponses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDE2MSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NCsrKzArOTk5OTk5OTk5OTk5OTk5OCdITkhCUzo1OjErMSc="
+      ],
+      "closingResponses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDA5MiszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAxMDA6OlBVQkxJQy1SRVBMWSdITkhCUzozOjErMic="
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "expected": "RequestRecorded",
+          "state": "AwaitingSynchronization",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": false,
+          "requests": 1,
+          "accepted": 0
+        },
+        {
+          "action": "synchronization",
+          "expected": "CloseRequired",
+          "state": "AwaitingCloseRequest",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": true,
+          "closingEvidence": false,
+          "requests": 1,
+          "accepted": 1
+        },
+        {
+          "action": "recordClose",
+          "expected": "CloseRequestRecorded",
+          "state": "AwaitingCloseResponse",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": false,
+          "requests": 2,
+          "accepted": 1
+        },
+        {
+          "action": "close",
+          "expected": "ReinitializationRequired",
+          "state": "ReinitializationRequired",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": true,
+          "requests": 2,
+          "accepted": 2
+        }
+      ]
+    },
+    {
+      "name": "foreign-sync-keeps-pending",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+      "profile": "PinTan2",
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "closeRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA3MSszMDArU1lOVEhFVElDKzInSEtFTkQ6MjoxK1NZTlRIRVRJQydITkhCUzozOjErMic=",
+      "synchronizationResponses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDE1OCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6MytQVUJMSUM/Kz86Pyc/Pz9A/CdITkhCUzo1OjErMSc=",
+        "SE5IQks6MTozKzAwMDAwMDAwMDE1OCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NCtQVUJMSUM/Kz86Pyc/Pz9A/CdITkhCUzo1OjErMSc="
+      ],
+      "closingResponses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDA5MiszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAxMDA6OlBVQkxJQy1SRVBMWSdITkhCUzozOjErMic="
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "expected": "RequestRecorded",
+          "state": "AwaitingSynchronization",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": false,
+          "requests": 1,
+          "accepted": 0
+        },
+        {
+          "action": "synchronization",
+          "expected": "ContextMismatch",
+          "state": "AwaitingSynchronization",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": false,
+          "requests": 1,
+          "accepted": 0
+        },
+        {
+          "action": "synchronization",
+          "expected": "CloseRequired",
+          "state": "AwaitingCloseRequest",
+          "atMilliseconds": 0,
+          "index": 1,
+          "synchronizationEvidence": true,
+          "closingEvidence": false,
+          "requests": 1,
+          "accepted": 1
+        },
+        {
+          "action": "recordClose",
+          "expected": "CloseRequestRecorded",
+          "state": "AwaitingCloseResponse",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": false,
+          "requests": 2,
+          "accepted": 1
+        },
+        {
+          "action": "close",
+          "expected": "ReinitializationRequired",
+          "state": "ReinitializationRequired",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": true,
+          "requests": 2,
+          "accepted": 2
+        }
+      ]
+    },
+    {
+      "name": "foreign-close-keeps-pending",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+      "profile": "PinTan2",
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "closeRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA3MSszMDArU1lOVEhFVElDKzInSEtFTkQ6MjoxK1NZTlRIRVRJQydITkhCUzozOjErMic=",
+      "synchronizationResponses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDE1OCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NCtQVUJMSUM/Kz86Pyc/Pz9A/CdITkhCUzo1OjErMSc="
+      ],
+      "closingResponses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDA4OCszMDArU1lOVEhFVElDKzIrT1RIRVI6MidISVJNRzoyOjIrMDEwMDo6UFVCTElDLVJFUExZJ0hOSEJTOjM6MSsyJw==",
+        "SE5IQks6MTozKzAwMDAwMDAwMDA5MiszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAxMDA6OlBVQkxJQy1SRVBMWSdITkhCUzozOjErMic="
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "expected": "RequestRecorded",
+          "state": "AwaitingSynchronization",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": false,
+          "requests": 1,
+          "accepted": 0
+        },
+        {
+          "action": "synchronization",
+          "expected": "CloseRequired",
+          "state": "AwaitingCloseRequest",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": true,
+          "closingEvidence": false,
+          "requests": 1,
+          "accepted": 1
+        },
+        {
+          "action": "recordClose",
+          "expected": "CloseRequestRecorded",
+          "state": "AwaitingCloseResponse",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": false,
+          "requests": 2,
+          "accepted": 1
+        },
+        {
+          "action": "close",
+          "expected": "ContextMismatch",
+          "state": "AwaitingCloseResponse",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": false,
+          "requests": 2,
+          "accepted": 1
+        },
+        {
+          "action": "close",
+          "expected": "ReinitializationRequired",
+          "state": "ReinitializationRequired",
+          "atMilliseconds": 0,
+          "index": 1,
+          "synchronizationEvidence": false,
+          "closingEvidence": true,
+          "requests": 2,
+          "accepted": 2
+        }
+      ]
+    },
+    {
+      "name": "bound-sync-review",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+      "profile": "PinTan2",
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "closeRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA3MSszMDArU1lOVEhFVElDKzInSEtFTkQ6MjoxK1NZTlRIRVRJQydITkhCUzozOjErMic=",
+      "synchronizationResponses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDE0MCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NCdITkhCUzo1OjErMSc="
+      ],
+      "closingResponses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDA5MiszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAxMDA6OlBVQkxJQy1SRVBMWSdITkhCUzozOjErMic="
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "expected": "RequestRecorded",
+          "state": "AwaitingSynchronization",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": false,
+          "requests": 1,
+          "accepted": 0
+        },
+        {
+          "action": "synchronization",
+          "expected": "RejectedForReview",
+          "state": "NeedsReview",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": true,
+          "closingEvidence": false,
+          "requests": 1,
+          "accepted": 0
+        },
+        {
+          "action": "recordClose",
+          "expected": "Terminal",
+          "state": "NeedsReview",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": false,
+          "requests": 1,
+          "accepted": 0
+        }
+      ]
+    },
+    {
+      "name": "bound-close-review",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+      "profile": "PinTan2",
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "closeRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA3MSszMDArU1lOVEhFVElDKzInSEtFTkQ6MjoxK1NZTlRIRVRJQydITkhCUzozOjErMic=",
+      "synchronizationResponses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDE1OCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NCtQVUJMSUM/Kz86Pyc/Pz9A/CdITkhCUzo1OjErMSc="
+      ],
+      "closingResponses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDEyOSszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtQ0xPU0UtUkVQTFknSE5IQlM6NDoxKzIn"
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "expected": "RequestRecorded",
+          "state": "AwaitingSynchronization",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": false,
+          "requests": 1,
+          "accepted": 0
+        },
+        {
+          "action": "synchronization",
+          "expected": "CloseRequired",
+          "state": "AwaitingCloseRequest",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": true,
+          "closingEvidence": false,
+          "requests": 1,
+          "accepted": 1
+        },
+        {
+          "action": "recordClose",
+          "expected": "CloseRequestRecorded",
+          "state": "AwaitingCloseResponse",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": false,
+          "requests": 2,
+          "accepted": 1
+        },
+        {
+          "action": "close",
+          "expected": "RejectedForReview",
+          "state": "NeedsReview",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": true,
+          "requests": 2,
+          "accepted": 1
+        }
+      ]
+    },
+    {
+      "name": "explicit-abort-prevents-another-close",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+      "profile": "PinTan2",
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "closeRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA3MSszMDArU1lOVEhFVElDKzInSEtFTkQ6MjoxK1NZTlRIRVRJQydITkhCUzozOjErMic=",
+      "synchronizationResponses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDE1OCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NCtQVUJMSUM/Kz86Pyc/Pz9A/CdITkhCUzo1OjErMSc="
+      ],
+      "closingResponses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDA5MiszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzk4MDA6OlBVQkxJQy1SRVBMWSdITkhCUzozOjErMic="
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "expected": "RequestRecorded",
+          "state": "AwaitingSynchronization",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": false,
+          "requests": 1,
+          "accepted": 0
+        },
+        {
+          "action": "synchronization",
+          "expected": "CloseRequired",
+          "state": "AwaitingCloseRequest",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": true,
+          "closingEvidence": false,
+          "requests": 1,
+          "accepted": 1
+        },
+        {
+          "action": "recordClose",
+          "expected": "CloseRequestRecorded",
+          "state": "AwaitingCloseResponse",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": false,
+          "requests": 2,
+          "accepted": 1
+        },
+        {
+          "action": "close",
+          "expected": "AbortReported",
+          "state": "Aborted",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": true,
+          "requests": 2,
+          "accepted": 2
+        },
+        {
+          "action": "recordClose",
+          "expected": "Terminal",
+          "state": "Aborted",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": false,
+          "requests": 2,
+          "accepted": 2
+        }
+      ]
+    },
+    {
+      "name": "cancel-between-stages",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+      "profile": "PinTan2",
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "closeRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA3MSszMDArU1lOVEhFVElDKzInSEtFTkQ6MjoxK1NZTlRIRVRJQydITkhCUzozOjErMic=",
+      "synchronizationResponses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDE1OCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NCtQVUJMSUM/Kz86Pyc/Pz9A/CdITkhCUzo1OjErMSc="
+      ],
+      "closingResponses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDA5MiszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAxMDA6OlBVQkxJQy1SRVBMWSdITkhCUzozOjErMic="
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "expected": "RequestRecorded",
+          "state": "AwaitingSynchronization",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": false,
+          "requests": 1,
+          "accepted": 0
+        },
+        {
+          "action": "synchronization",
+          "expected": "CloseRequired",
+          "state": "AwaitingCloseRequest",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": true,
+          "closingEvidence": false,
+          "requests": 1,
+          "accepted": 1
+        },
+        {
+          "action": "cancel",
+          "expected": "Cancelled",
+          "state": "Cancelled",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": false,
+          "requests": 1,
+          "accepted": 1
+        },
+        {
+          "action": "recordClose",
+          "expected": "Terminal",
+          "state": "Cancelled",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": false,
+          "requests": 1,
+          "accepted": 1
+        }
+      ]
+    },
+    {
+      "name": "deadline-includes-close-wait",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+      "profile": "PinTan2",
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "closeRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA3MSszMDArU1lOVEhFVElDKzInSEtFTkQ6MjoxK1NZTlRIRVRJQydITkhCUzozOjErMic=",
+      "synchronizationResponses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDE1OCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NCtQVUJMSUM/Kz86Pyc/Pz9A/CdITkhCUzo1OjErMSc="
+      ],
+      "closingResponses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDA5MiszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAxMDA6OlBVQkxJQy1SRVBMWSdITkhCUzozOjErMic="
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "expected": "RequestRecorded",
+          "state": "AwaitingSynchronization",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": false,
+          "requests": 1,
+          "accepted": 0
+        },
+        {
+          "action": "synchronization",
+          "expected": "CloseRequired",
+          "state": "AwaitingCloseRequest",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": true,
+          "closingEvidence": false,
+          "requests": 1,
+          "accepted": 1
+        },
+        {
+          "action": "recordClose",
+          "expected": "CloseRequestRecorded",
+          "state": "AwaitingCloseResponse",
+          "atMilliseconds": 9999,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": false,
+          "requests": 2,
+          "accepted": 1
+        },
+        {
+          "action": "close",
+          "expected": "Terminal",
+          "state": "TimedOut",
+          "atMilliseconds": 10000,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": false,
+          "requests": 2,
+          "accepted": 1
+        }
+      ]
+    },
+    {
+      "name": "missing-recovery-before-recording",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE0OCszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MysxJ0hOSEJTOjU6MSsxJw==",
+      "profile": "PinTan2",
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "closeRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA3MSszMDArU1lOVEhFVElDKzInSEtFTkQ6MjoxK1NZTlRIRVRJQydITkhCUzozOjErMic=",
+      "synchronizationResponses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDE0NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NCsrOTk5OSdITkhCUzo1OjErMSc="
+      ],
+      "closingResponses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDA5MiszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAxMDA6OlBVQkxJQy1SRVBMWSdITkhCUzozOjErMic="
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "expected": "RejectedForReview",
+          "state": "NeedsReview",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": false,
+          "requests": 0,
+          "accepted": 0
+        }
+      ]
+    },
+    {
+      "name": "stop-before-start",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+      "profile": "PinTan2",
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "closeRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA3MSszMDArU1lOVEhFVElDKzInSEtFTkQ6MjoxK1NZTlRIRVRJQydITkhCUzozOjErMic=",
+      "synchronizationResponses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDE1OCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NCtQVUJMSUM/Kz86Pyc/Pz9A/CdITkhCUzo1OjErMSc="
+      ],
+      "closingResponses": [
+        "SE5IQks6MTozKzAwMDAwMDAwMDA5MiszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAxMDA6OlBVQkxJQy1SRVBMWSdITkhCUzozOjErMic="
+      ],
+      "steps": [
+        {
+          "action": "stop",
+          "expected": "Stopped",
+          "state": "Stopped",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": false,
+          "requests": 0,
+          "accepted": 0
+        },
+        {
+          "action": "start",
+          "expected": "Terminal",
+          "state": "Stopped",
+          "atMilliseconds": 0,
+          "index": 0,
+          "synchronizationEvidence": false,
+          "closingEvidence": false,
+          "requests": 0,
+          "accepted": 0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,358 @@
+{
+  "schemaVersion": 1,
+  "vectors": [
+    {
+      "name": "single-user-handoff",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2OSszMDArU1lOVEhFVElDKzEnSEtUQU46Mjo3KzQrSEtJRE4nSE5IQlM6MzoxKzEn",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI4NyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiszOTIwOjpNZXRob2RzOjkwMCswMDMwOjpTdGF0ZSdISVRBTlM6NDo3KzErMSswK046TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjA6Ojo6OidISVRBTjo1Ojc6Mis0KytQVUJMSUMtT1JERVIrUHVibGljIGNoYWxsZW5nZSdITkhCUzo2OjErMSc=",
+      "queries": [
+        {
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA4MSszMDArU1lOVEhFVElDKzInSEtUQU46Mjo3K1MrKysrUFVCTElDLU9SREVSK04nSE5IQlM6MzoxKzIn",
+          "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE1MyszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiszOTU2OjpTdGF0ZSdISVRBTjo0Ojc6MitTKytQVUJMSUMtT1JERVIrbm9jaGFsbGVuZ2UnSE5IQlM6NToxKzIn"
+        },
+        {
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA4MSszMDArU1lOVEhFVElDKzMnSEtUQU46Mjo3K1MrKysrUFVCTElDLU9SREVSK04nSE5IQlM6MzoxKzMn",
+          "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE1MyszMDArU1lOVEhFVElDKzMrU1lOVEhFVElDOjMnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiswMDIwOjpTdGF0ZSdISVRBTjo0Ojc6MitTKytQVUJMSUMtT1JERVIrbm9jaGFsbGVuZ2UnSE5IQlM6NToxKzMn"
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "expected": "Started",
+          "state": "AwaitingUserContinuation",
+          "atMilliseconds": 0,
+          "query": 0
+        },
+        {
+          "action": "continue",
+          "expected": "UserContinuationRecorded",
+          "state": "UserContinuationRecorded",
+          "atMilliseconds": 0,
+          "query": 0
+        },
+        {
+          "action": "continue",
+          "expected": "Terminal",
+          "state": "UserContinuationRecorded",
+          "atMilliseconds": 0,
+          "query": 0
+        }
+      ]
+    },
+    {
+      "name": "pending-then-execution-with-replay",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2OSszMDArU1lOVEhFVElDKzEnSEtUQU46Mjo3KzQrSEtJRE4nSE5IQlM6MzoxKzEn",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI5NyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiszOTIwOjpNZXRob2RzOjkwMCswMDMwOjpTdGF0ZSdISVRBTlM6NDo3KzErMSswK046TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6RGVjb3VwbGVkOjEuMDpQdWJsaWMgbWV0aG9kOjo6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjEwOjI6NTpOOkonSElUQU46NTo3OjIrNCsrUFVCTElDLU9SREVSK1B1YmxpYyBjaGFsbGVuZ2UnSE5IQlM6NjoxKzEn",
+      "queries": [
+        {
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA4MSszMDArU1lOVEhFVElDKzInSEtUQU46Mjo3K1MrKysrUFVCTElDLU9SREVSK04nSE5IQlM6MzoxKzIn",
+          "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE1MyszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiszOTU2OjpTdGF0ZSdISVRBTjo0Ojc6MitTKytQVUJMSUMtT1JERVIrbm9jaGFsbGVuZ2UnSE5IQlM6NToxKzIn"
+        },
+        {
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA4MSszMDArU1lOVEhFVElDKzMnSEtUQU46Mjo3K1MrKysrUFVCTElDLU9SREVSK04nSE5IQlM6MzoxKzMn",
+          "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE1MyszMDArU1lOVEhFVElDKzMrU1lOVEhFVElDOjMnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiswMDIwOjpTdGF0ZSdISVRBTjo0Ojc6MitTKytQVUJMSUMtT1JERVIrbm9jaGFsbGVuZ2UnSE5IQlM6NToxKzMn"
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "expected": "Started",
+          "state": "WaitingToQuery",
+          "atMilliseconds": 0,
+          "query": 0
+        },
+        {
+          "action": "query",
+          "expected": "TooEarly",
+          "state": "WaitingToQuery",
+          "atMilliseconds": 1999,
+          "query": 0
+        },
+        {
+          "action": "query",
+          "expected": "QueryRecorded",
+          "state": "AwaitingQueryResponse",
+          "atMilliseconds": 2000,
+          "query": 0
+        },
+        {
+          "action": "query",
+          "expected": "WrongState",
+          "state": "AwaitingQueryResponse",
+          "atMilliseconds": 2000,
+          "query": 0
+        },
+        {
+          "action": "response",
+          "expected": "PendingAccepted",
+          "state": "WaitingToQuery",
+          "atMilliseconds": 2000,
+          "query": 0
+        },
+        {
+          "action": "response",
+          "expected": "ReplayRejected",
+          "state": "WaitingToQuery",
+          "atMilliseconds": 2000,
+          "query": 0
+        },
+        {
+          "action": "query",
+          "expected": "TooEarly",
+          "state": "WaitingToQuery",
+          "atMilliseconds": 6999,
+          "query": 1
+        },
+        {
+          "action": "query",
+          "expected": "QueryRecorded",
+          "state": "AwaitingQueryResponse",
+          "atMilliseconds": 7000,
+          "query": 1
+        },
+        {
+          "action": "response",
+          "expected": "ExecutionReported",
+          "state": "ExecutionReported",
+          "atMilliseconds": 7000,
+          "query": 1
+        }
+      ]
+    },
+    {
+      "name": "absolute-timeout",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2OSszMDArU1lOVEhFVElDKzEnSEtUQU46Mjo3KzQrSEtJRE4nSE5IQlM6MzoxKzEn",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI4NyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiszOTIwOjpNZXRob2RzOjkwMCswMDMwOjpTdGF0ZSdISVRBTlM6NDo3KzErMSswK046TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjA6Ojo6OidISVRBTjo1Ojc6Mis0KytQVUJMSUMtT1JERVIrUHVibGljIGNoYWxsZW5nZSdITkhCUzo2OjErMSc=",
+      "queries": [
+        {
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA4MSszMDArU1lOVEhFVElDKzInSEtUQU46Mjo3K1MrKysrUFVCTElDLU9SREVSK04nSE5IQlM6MzoxKzIn",
+          "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE1MyszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiszOTU2OjpTdGF0ZSdISVRBTjo0Ojc6MitTKytQVUJMSUMtT1JERVIrbm9jaGFsbGVuZ2UnSE5IQlM6NToxKzIn"
+        },
+        {
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA4MSszMDArU1lOVEhFVElDKzMnSEtUQU46Mjo3K1MrKysrUFVCTElDLU9SREVSK04nSE5IQlM6MzoxKzMn",
+          "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE1MyszMDArU1lOVEhFVElDKzMrU1lOVEhFVElDOjMnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiswMDIwOjpTdGF0ZSdISVRBTjo0Ojc6MitTKytQVUJMSUMtT1JERVIrbm9jaGFsbGVuZ2UnSE5IQlM6NToxKzMn"
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "expected": "Started",
+          "state": "AwaitingUserContinuation",
+          "atMilliseconds": 0,
+          "query": 0
+        },
+        {
+          "action": "snapshot",
+          "expected": "Snapshot",
+          "state": "AwaitingUserContinuation",
+          "atMilliseconds": 9999,
+          "query": 0
+        },
+        {
+          "action": "continue",
+          "expected": "Terminal",
+          "state": "TimedOut",
+          "atMilliseconds": 10000,
+          "query": 0
+        }
+      ]
+    },
+    {
+      "name": "cancel-in-flight",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2OSszMDArU1lOVEhFVElDKzEnSEtUQU46Mjo3KzQrSEtJRE4nSE5IQlM6MzoxKzEn",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI5NyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiszOTIwOjpNZXRob2RzOjkwMCswMDMwOjpTdGF0ZSdISVRBTlM6NDo3KzErMSswK046TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6RGVjb3VwbGVkOjEuMDpQdWJsaWMgbWV0aG9kOjo6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjEwOjI6NTpOOkonSElUQU46NTo3OjIrNCsrUFVCTElDLU9SREVSK1B1YmxpYyBjaGFsbGVuZ2UnSE5IQlM6NjoxKzEn",
+      "queries": [
+        {
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA4MSszMDArU1lOVEhFVElDKzInSEtUQU46Mjo3K1MrKysrUFVCTElDLU9SREVSK04nSE5IQlM6MzoxKzIn",
+          "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE1MyszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiszOTU2OjpTdGF0ZSdISVRBTjo0Ojc6MitTKytQVUJMSUMtT1JERVIrbm9jaGFsbGVuZ2UnSE5IQlM6NToxKzIn"
+        },
+        {
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA4MSszMDArU1lOVEhFVElDKzMnSEtUQU46Mjo3K1MrKysrUFVCTElDLU9SREVSK04nSE5IQlM6MzoxKzMn",
+          "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE1MyszMDArU1lOVEhFVElDKzMrU1lOVEhFVElDOjMnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiswMDIwOjpTdGF0ZSdISVRBTjo0Ojc6MitTKytQVUJMSUMtT1JERVIrbm9jaGFsbGVuZ2UnSE5IQlM6NToxKzMn"
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "expected": "Started",
+          "state": "WaitingToQuery",
+          "atMilliseconds": 0,
+          "query": 0
+        },
+        {
+          "action": "query",
+          "expected": "QueryRecorded",
+          "state": "AwaitingQueryResponse",
+          "atMilliseconds": 2000,
+          "query": 0
+        },
+        {
+          "action": "cancel",
+          "expected": "Cancelled",
+          "state": "Cancelled",
+          "atMilliseconds": 2000,
+          "query": 0
+        },
+        {
+          "action": "response",
+          "expected": "Terminal",
+          "state": "Cancelled",
+          "atMilliseconds": 2000,
+          "query": 0
+        },
+        {
+          "action": "start",
+          "expected": "Terminal",
+          "state": "Cancelled",
+          "atMilliseconds": 2000,
+          "query": 0
+        }
+      ]
+    },
+    {
+      "name": "bank-query-limit",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2OSszMDArU1lOVEhFVElDKzEnSEtUQU46Mjo3KzQrSEtJRE4nSE5IQlM6MzoxKzEn",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiszOTIwOjpNZXRob2RzOjkwMCswMDMwOjpTdGF0ZSdISVRBTlM6NDo3KzErMSswK046TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6RGVjb3VwbGVkOjEuMDpQdWJsaWMgbWV0aG9kOjo6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjE6Mjo1Ok46SidISVRBTjo1Ojc6Mis0KytQVUJMSUMtT1JERVIrUHVibGljIGNoYWxsZW5nZSdITkhCUzo2OjErMSc=",
+      "queries": [
+        {
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA4MSszMDArU1lOVEhFVElDKzInSEtUQU46Mjo3K1MrKysrUFVCTElDLU9SREVSK04nSE5IQlM6MzoxKzIn",
+          "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE1MyszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiszOTU2OjpTdGF0ZSdISVRBTjo0Ojc6MitTKytQVUJMSUMtT1JERVIrbm9jaGFsbGVuZ2UnSE5IQlM6NToxKzIn"
+        },
+        {
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA4MSszMDArU1lOVEhFVElDKzMnSEtUQU46Mjo3K1MrKysrUFVCTElDLU9SREVSK04nSE5IQlM6MzoxKzMn",
+          "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE1MyszMDArU1lOVEhFVElDKzMrU1lOVEhFVElDOjMnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiswMDIwOjpTdGF0ZSdISVRBTjo0Ojc6MitTKytQVUJMSUMtT1JERVIrbm9jaGFsbGVuZ2UnSE5IQlM6NToxKzMn"
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "expected": "Started",
+          "state": "WaitingToQuery",
+          "atMilliseconds": 0,
+          "query": 0
+        },
+        {
+          "action": "query",
+          "expected": "QueryRecorded",
+          "state": "AwaitingQueryResponse",
+          "atMilliseconds": 2000,
+          "query": 0
+        },
+        {
+          "action": "response",
+          "expected": "Terminal",
+          "state": "QueryLimitReached",
+          "atMilliseconds": 2000,
+          "query": 0
+        }
+      ]
+    },
+    {
+      "name": "push-awaits-external-notification",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2OSszMDArU1lOVEhFVElDKzEnSEtUQU46Mjo3KzQrSEtJRE4nSE5IQlM6MzoxKzEn",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI5NSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiszOTIwOjpNZXRob2RzOjkwMCswMDMwOjpTdGF0ZSdISVRBTlM6NDo3KzErMSswK046TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6RGVjb3VwbGVkUHVzaDoxLjA6UHVibGljIG1ldGhvZDo6OkFwcHJvdmFsOjIwNDg6TjoxOk46MDowOk46SjowMDowOk46MDo6Ojo6J0hJVEFOOjU6NzoyKzQrK1BVQkxJQy1PUkRFUitQdWJsaWMgY2hhbGxlbmdlJ0hOSEJTOjY6MSsxJw==",
+      "queries": [
+        {
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA4MSszMDArU1lOVEhFVElDKzInSEtUQU46Mjo3K1MrKysrUFVCTElDLU9SREVSK04nSE5IQlM6MzoxKzIn",
+          "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE1MyszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiszOTU2OjpTdGF0ZSdISVRBTjo0Ojc6MitTKytQVUJMSUMtT1JERVIrbm9jaGFsbGVuZ2UnSE5IQlM6NToxKzIn"
+        },
+        {
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA4MSszMDArU1lOVEhFVElDKzMnSEtUQU46Mjo3K1MrKysrUFVCTElDLU9SREVSK04nSE5IQlM6MzoxKzMn",
+          "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE1MyszMDArU1lOVEhFVElDKzMrU1lOVEhFVElDOjMnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiswMDIwOjpTdGF0ZSdISVRBTjo0Ojc6MitTKytQVUJMSUMtT1JERVIrbm9jaGFsbGVuZ2UnSE5IQlM6NToxKzMn"
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "expected": "Started",
+          "state": "AwaitingExternalNotification",
+          "atMilliseconds": 0,
+          "query": 0
+        },
+        {
+          "action": "continue",
+          "expected": "WrongState",
+          "state": "AwaitingExternalNotification",
+          "atMilliseconds": 0,
+          "query": 0
+        },
+        {
+          "action": "stop",
+          "expected": "Stopped",
+          "state": "Stopped",
+          "atMilliseconds": 0,
+          "query": 0
+        }
+      ]
+    },
+    {
+      "name": "exemption-report-is-terminal",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2OSszMDArU1lOVEhFVElDKzEnSEtUQU46Mjo3KzQrSEtJRE4nSE5IQlM6MzoxKzEn",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI3NSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiszOTIwOjpNZXRob2RzOjkwMCszMDc2OjpTdGF0ZSdISVRBTlM6NDo3KzErMSswK046TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjA6Ojo6OidISVRBTjo1Ojc6Mis0Kytub3JlZitub2NoYWxsZW5nZSdITkhCUzo2OjErMSc=",
+      "queries": [
+        {
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA4MSszMDArU1lOVEhFVElDKzInSEtUQU46Mjo3K1MrKysrUFVCTElDLU9SREVSK04nSE5IQlM6MzoxKzIn",
+          "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE1MyszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiszOTU2OjpTdGF0ZSdISVRBTjo0Ojc6MitTKytQVUJMSUMtT1JERVIrbm9jaGFsbGVuZ2UnSE5IQlM6NToxKzIn"
+        },
+        {
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA4MSszMDArU1lOVEhFVElDKzMnSEtUQU46Mjo3K1MrKysrUFVCTElDLU9SREVSK04nSE5IQlM6MzoxKzMn",
+          "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE1MyszMDArU1lOVEhFVElDKzMrU1lOVEhFVElDOjMnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiswMDIwOjpTdGF0ZSdISVRBTjo0Ojc6MitTKytQVUJMSUMtT1JERVIrbm9jaGFsbGVuZ2UnSE5IQlM6NToxKzMn"
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "expected": "ExemptionReported",
+          "state": "ExemptionReported",
+          "atMilliseconds": 0,
+          "query": 0
+        },
+        {
+          "action": "continue",
+          "expected": "Terminal",
+          "state": "ExemptionReported",
+          "atMilliseconds": 0,
+          "query": 0
+        }
+      ]
+    },
+    {
+      "name": "mismatched-bound-response-stops",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2OSszMDArU1lOVEhFVElDKzEnSEtUQU46Mjo3KzQrSEtJRE4nSE5IQlM6MzoxKzEn",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI5NyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiszOTIwOjpNZXRob2RzOjkwMCswMDMwOjpTdGF0ZSdISVRBTlM6NDo3KzErMSswK046TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6RGVjb3VwbGVkOjEuMDpQdWJsaWMgbWV0aG9kOjo6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjEwOjI6NTpOOkonSElUQU46NTo3OjIrNCsrUFVCTElDLU9SREVSK1B1YmxpYyBjaGFsbGVuZ2UnSE5IQlM6NjoxKzEn",
+      "queries": [
+        {
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA4MSszMDArU1lOVEhFVElDKzInSEtUQU46Mjo3K1MrKysrUFVCTElDLU9SREVSK04nSE5IQlM6MzoxKzIn",
+          "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE1MiszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiszOTU2OjpTdGF0ZSdISVRBTjo0Ojc6MitTKytPVEhFUi1PUkRFUitub2NoYWxsZW5nZSdITkhCUzo1OjErMic="
+        },
+        {
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA4MSszMDArU1lOVEhFVElDKzMnSEtUQU46Mjo3K1MrKysrUFVCTElDLU9SREVSK04nSE5IQlM6MzoxKzMn",
+          "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE1MiszMDArU1lOVEhFVElDKzMrU1lOVEhFVElDOjMnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiswMDIwOjpTdGF0ZSdISVRBTjo0Ojc6MitTKytPVEhFUi1PUkRFUitub2NoYWxsZW5nZSdITkhCUzo1OjErMyc="
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "expected": "Started",
+          "state": "WaitingToQuery",
+          "atMilliseconds": 0,
+          "query": 0
+        },
+        {
+          "action": "query",
+          "expected": "QueryRecorded",
+          "state": "AwaitingQueryResponse",
+          "atMilliseconds": 2000,
+          "query": 0
+        },
+        {
+          "action": "response",
+          "expected": "RejectedForReview",
+          "state": "NeedsReview",
+          "atMilliseconds": 2000,
+          "query": 0
+        }
+      ]
+    }
+  ]
+}

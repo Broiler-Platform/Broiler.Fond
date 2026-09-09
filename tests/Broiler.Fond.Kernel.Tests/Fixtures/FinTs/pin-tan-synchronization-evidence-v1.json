@@ -1,0 +1,914 @@
+{
+  "schemaVersion": 1,
+  "vectors": [
+    {
+      "name": "two-step-assigned-system",
+      "context": {
+        "name": "system-id-synchronization-zero",
+        "issues": [],
+        "requestKind": "synchronization",
+        "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+        "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+        "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+        "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjowKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+        "expectedUserId": "PUBLIC-USER",
+        "controlReference": "PUBLIC-REF",
+        "profileVersion": 2,
+        "securityFunction": 900,
+        "tanSegmentVersion": 7,
+        "missingProcedureContext": false
+      },
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI3NyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLUFTU0lHTkVEKzErMjoyOjEzOkA4QAAAAAAAAAAAOjU6MSsyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6VjowOjArMCdITlZTRDo5OTk6MStAOTNASElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NSswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NStQVUJMSUMtQVNTSUdORUQnJ0hOSEJTOjU6MSsxJw==",
+      "wrapped": true,
+      "issues": [],
+      "synchronizationIssues": [],
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "reportCount": 1
+    },
+    {
+      "name": "one-step-assigned-system",
+      "context": {
+        "name": "system-id-synchronization-zero",
+        "issues": [],
+        "requestKind": "synchronization",
+        "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+        "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+        "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+        "headerBase64": "SE5TSEs6Mjo0K1BJTjoxKzk5OStQVUJMSUMtUkVGKzErMSsxOjowKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+        "expectedUserId": "PUBLIC-USER",
+        "controlReference": "PUBLIC-REF",
+        "profileVersion": 1,
+        "securityFunction": 999,
+        "tanSegmentVersion": 7,
+        "missingProcedureContext": false
+      },
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI3NyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjErOTk4KzErMTo6UFVCTElDLUFTU0lHTkVEKzErMjoyOjEzOkA4QAAAAAAAAAAAOjU6MSsyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6VjowOjArMCdITlZTRDo5OTk6MStAOTNASElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NSswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NStQVUJMSUMtQVNTSUdORUQnJ0hOSEJTOjU6MSsxJw==",
+      "wrapped": true,
+      "issues": [],
+      "synchronizationIssues": [],
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "reportCount": 1
+    },
+    {
+      "name": "escaped-assigned-system",
+      "context": {
+        "name": "system-id-synchronization-zero",
+        "issues": [],
+        "requestKind": "synchronization",
+        "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+        "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+        "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+        "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjowKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+        "expectedUserId": "PUBLIC-USER",
+        "controlReference": "PUBLIC-REF",
+        "profileVersion": 2,
+        "securityFunction": 900,
+        "tanSegmentVersion": 7,
+        "missingProcedureContext": false
+      },
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI4MSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDPys/Oj8nPz8/QPwrMSsyOjI6MTM6QDhAAAAAAAAAAAA6NToxKzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpWOjA6MCswJ0hOVlNEOjk5OToxK0A5NUBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6Mjo1KzAwMjA6OlBVQkxJQy1TWU5DLVJFUExZJ0hJU1lOOjQ6NDo1K1BVQkxJQz8rPzo/Jz8/P0D8JydITkhCUzo1OjErMSc=",
+      "wrapped": true,
+      "issues": [],
+      "synchronizationIssues": [],
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "reportCount": 1
+    },
+    {
+      "name": "bounded-message-recovery",
+      "context": {
+        "name": "two-step-initialization",
+        "issues": [],
+        "requestKind": "synchronization",
+        "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE0OCszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MysxJ0hOSEJTOjU6MSsxJw==",
+        "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+        "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+        "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjpQVUJMSUMtU1lTVEVNKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+        "expectedUserId": "PUBLIC-USER",
+        "controlReference": "PUBLIC-REF",
+        "profileVersion": 2,
+        "securityFunction": 900,
+        "tanSegmentVersion": 7,
+        "missingProcedureContext": false
+      },
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI2MyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDgxQEhJUk1HOjI6MiswMDEwOjpQVUJMSUMtUkVQTFknSElSTVM6MzoyOjUrMDAyMDo6UFVCTElDLVNZTkMtUkVQTFknSElTWU46NDo0OjUrKzEwJydITkhCUzo1OjErMSc=",
+      "wrapped": true,
+      "issues": [],
+      "synchronizationIssues": [],
+      "previousDialogueId": "PUBLIC-PREVIOUS",
+      "lastSubmittedMessageNumber": 10,
+      "reportCount": 1
+    },
+    {
+      "name": "maximum-message-recovery",
+      "context": {
+        "name": "two-step-initialization",
+        "issues": [],
+        "requestKind": "synchronization",
+        "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE0OCszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MysxJ0hOSEJTOjU6MSsxJw==",
+        "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+        "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+        "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjpQVUJMSUMtU1lTVEVNKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+        "expectedUserId": "PUBLIC-USER",
+        "controlReference": "PUBLIC-REF",
+        "profileVersion": 2,
+        "securityFunction": 900,
+        "tanSegmentVersion": 7,
+        "missingProcedureContext": false
+      },
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI2NSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDgzQEhJUk1HOjI6MiswMDEwOjpQVUJMSUMtUkVQTFknSElSTVM6MzoyOjUrMDAyMDo6UFVCTElDLVNZTkMtUkVQTFknSElTWU46NDo0OjUrKzk5OTknJ0hOSEJTOjU6MSsxJw==",
+      "wrapped": true,
+      "issues": [],
+      "synchronizationIssues": [],
+      "previousDialogueId": "PUBLIC-PREVIOUS",
+      "lastSubmittedMessageNumber": 9999,
+      "reportCount": 1
+    },
+    {
+      "name": "missing-recovery-context",
+      "context": {
+        "name": "two-step-initialization",
+        "issues": [],
+        "requestKind": "synchronization",
+        "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE0OCszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MysxJ0hOSEJTOjU6MSsxJw==",
+        "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+        "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+        "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjpQVUJMSUMtU1lTVEVNKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+        "expectedUserId": "PUBLIC-USER",
+        "controlReference": "PUBLIC-REF",
+        "profileVersion": 2,
+        "securityFunction": 900,
+        "tanSegmentVersion": 7,
+        "missingProcedureContext": false
+      },
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI2MyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDgxQEhJUk1HOjI6MiswMDEwOjpQVUJMSUMtUkVQTFknSElSTVM6MzoyOjUrMDAyMDo6UFVCTElDLVNZTkMtUkVQTFknSElTWU46NDo0OjUrKzEwJydITkhCUzo1OjErMSc=",
+      "wrapped": true,
+      "issues": [
+        "SynchronizationNeedsReview"
+      ],
+      "synchronizationIssues": [
+        "RecoveryContextMissing"
+      ],
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "reportCount": 1
+    },
+    {
+      "name": "reported-counter-exceeds-submission",
+      "context": {
+        "name": "two-step-initialization",
+        "issues": [],
+        "requestKind": "synchronization",
+        "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE0OCszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MysxJ0hOSEJTOjU6MSsxJw==",
+        "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+        "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+        "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjpQVUJMSUMtU1lTVEVNKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+        "expectedUserId": "PUBLIC-USER",
+        "controlReference": "PUBLIC-REF",
+        "profileVersion": 2,
+        "securityFunction": 900,
+        "tanSegmentVersion": 7,
+        "missingProcedureContext": false
+      },
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI2MyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDgxQEhJUk1HOjI6MiswMDEwOjpQVUJMSUMtUkVQTFknSElSTVM6MzoyOjUrMDAyMDo6UFVCTElDLVNZTkMtUkVQTFknSElTWU46NDo0OjUrKzEwJydITkhCUzo1OjErMSc=",
+      "wrapped": true,
+      "issues": [
+        "SynchronizationNeedsReview"
+      ],
+      "synchronizationIssues": [
+        "RecoveryContextMismatch"
+      ],
+      "previousDialogueId": "PUBLIC-PREVIOUS",
+      "lastSubmittedMessageNumber": 9,
+      "reportCount": 1
+    },
+    {
+      "name": "reused-prior-dialogue",
+      "context": {
+        "name": "two-step-initialization",
+        "issues": [],
+        "requestKind": "synchronization",
+        "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE0OCszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MysxJ0hOSEJTOjU6MSsxJw==",
+        "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+        "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+        "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjpQVUJMSUMtU1lTVEVNKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+        "expectedUserId": "PUBLIC-USER",
+        "controlReference": "PUBLIC-REF",
+        "profileVersion": 2,
+        "securityFunction": 900,
+        "tanSegmentVersion": 7,
+        "missingProcedureContext": false
+      },
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI2MyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDgxQEhJUk1HOjI6MiswMDEwOjpQVUJMSUMtUkVQTFknSElSTVM6MzoyOjUrMDAyMDo6UFVCTElDLVNZTkMtUkVQTFknSElTWU46NDo0OjUrKzEwJydITkhCUzo1OjErMSc=",
+      "wrapped": true,
+      "issues": [
+        "SynchronizationNeedsReview"
+      ],
+      "synchronizationIssues": [
+        "RecoveryContextMismatch"
+      ],
+      "previousDialogueId": "SYNTHETIC",
+      "lastSubmittedMessageNumber": 10,
+      "reportCount": 1
+    },
+    {
+      "name": "recovery-context-on-assignment",
+      "context": {
+        "name": "system-id-synchronization-zero",
+        "issues": [],
+        "requestKind": "synchronization",
+        "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+        "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+        "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+        "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjowKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+        "expectedUserId": "PUBLIC-USER",
+        "controlReference": "PUBLIC-REF",
+        "profileVersion": 2,
+        "securityFunction": 900,
+        "tanSegmentVersion": 7,
+        "missingProcedureContext": false
+      },
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI3NyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLUFTU0lHTkVEKzErMjoyOjEzOkA4QAAAAAAAAAAAOjU6MSsyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6VjowOjArMCdITlZTRDo5OTk6MStAOTNASElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NSswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NStQVUJMSUMtQVNTSUdORUQnJ0hOSEJTOjU6MSsxJw==",
+      "wrapped": true,
+      "issues": [
+        "SynchronizationNeedsReview"
+      ],
+      "synchronizationIssues": [
+        "RecoveryContextMismatch"
+      ],
+      "previousDialogueId": "PUBLIC-PREVIOUS",
+      "lastSubmittedMessageNumber": 10,
+      "reportCount": 1
+    },
+    {
+      "name": "missing-report",
+      "context": {
+        "name": "system-id-synchronization-zero",
+        "issues": [],
+        "requestKind": "synchronization",
+        "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+        "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+        "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+        "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjowKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+        "expectedUserId": "PUBLIC-USER",
+        "controlReference": "PUBLIC-REF",
+        "profileVersion": 2,
+        "securityFunction": 900,
+        "tanSegmentVersion": 7,
+        "missingProcedureContext": false
+      },
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI0OSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLUFTU0lHTkVEKzErMjoyOjEzOkA4QAAAAAAAAAAAOjU6MSsyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6VjowOjArMCdITlZTRDo5OTk6MStANjVASElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NSswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWScnSE5IQlM6NDoxKzEn",
+      "wrapped": true,
+      "issues": [
+        "SynchronizationNeedsReview"
+      ],
+      "synchronizationIssues": [
+        "MissingReport"
+      ],
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "reportCount": 0
+    },
+    {
+      "name": "duplicate-assignment-reports",
+      "context": {
+        "name": "system-id-synchronization-zero",
+        "issues": [],
+        "requestKind": "synchronization",
+        "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+        "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+        "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+        "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjowKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+        "expectedUserId": "PUBLIC-USER",
+        "controlReference": "PUBLIC-REF",
+        "profileVersion": 2,
+        "securityFunction": 900,
+        "tanSegmentVersion": 7,
+        "missingProcedureContext": false
+      },
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI5MiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLUFTU0lHTkVEKzErMjoyOjEzOkA4QAAAAAAAAAAAOjU6MSsyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6VjowOjArMCdITlZTRDo5OTk6MStAMTA3QEhJUk1HOjI6MiswMDEwOjpQVUJMSUMtUkVQTFknSElSTVM6MzoyOjUrMDAyMDo6UFVCTElDLVNZTkMtUkVQTFknSElTWU46NDo0OjUrUFVCTElDLUEnSElTWU46NTo0OjUrUFVCTElDLUInJ0hOSEJTOjY6MSsxJw==",
+      "wrapped": true,
+      "issues": [
+        "SynchronizationNeedsReview"
+      ],
+      "synchronizationIssues": [
+        "DuplicateReport"
+      ],
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "reportCount": 2
+    },
+    {
+      "name": "future-report-version",
+      "context": {
+        "name": "system-id-synchronization-zero",
+        "issues": [],
+        "requestKind": "synchronization",
+        "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+        "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+        "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+        "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjowKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+        "expectedUserId": "PUBLIC-USER",
+        "controlReference": "PUBLIC-REF",
+        "profileVersion": 2,
+        "securityFunction": 900,
+        "tanSegmentVersion": 7,
+        "missingProcedureContext": false
+      },
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI3NyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLUFTU0lHTkVEKzErMjoyOjEzOkA4QAAAAAAAAAAAOjU6MSsyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6VjowOjArMCdITlZTRDo5OTk6MStAOTNASElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NSswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjU6NStQVUJMSUMtQVNTSUdORUQnJ0hOSEJTOjU6MSsxJw==",
+      "wrapped": true,
+      "issues": [
+        "BindingNeedsReview",
+        "SynchronizationNeedsReview"
+      ],
+      "synchronizationIssues": [
+        "MissingReport",
+        "UninterpretedReports"
+      ],
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "reportCount": 0
+    },
+    {
+      "name": "empty-report",
+      "context": {
+        "name": "system-id-synchronization-zero",
+        "issues": [],
+        "requestKind": "synchronization",
+        "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+        "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+        "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+        "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjowKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+        "expectedUserId": "PUBLIC-USER",
+        "controlReference": "PUBLIC-REF",
+        "profileVersion": 2,
+        "securityFunction": 900,
+        "tanSegmentVersion": 7,
+        "missingProcedureContext": false
+      },
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI2MSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLUFTU0lHTkVEKzErMjoyOjEzOkA4QAAAAAAAAAAAOjU6MSsyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6VjowOjArMCdITlZTRDo5OTk6MStANzdASElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NSswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NScnSE5IQlM6NToxKzEn",
+      "wrapped": true,
+      "issues": [
+        "SynchronizationNeedsReview"
+      ],
+      "synchronizationIssues": [
+        "ModeShapeMismatch"
+      ],
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "reportCount": 1
+    },
+    {
+      "name": "conflicting-report-fields",
+      "context": {
+        "name": "system-id-synchronization-zero",
+        "issues": [],
+        "requestKind": "synchronization",
+        "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+        "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+        "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+        "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjowKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+        "expectedUserId": "PUBLIC-USER",
+        "controlReference": "PUBLIC-REF",
+        "profileVersion": 2,
+        "securityFunction": 900,
+        "tanSegmentVersion": 7,
+        "missingProcedureContext": false
+      },
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI3OSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLUFTU0lHTkVEKzErMjoyOjEzOkA4QAAAAAAAAAAAOjU6MSsyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6VjowOjArMCdITlZTRDo5OTk6MStAOTVASElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NSswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NStQVUJMSUMtQVNTSUdORUQrMScnSE5IQlM6NToxKzEn",
+      "wrapped": true,
+      "issues": [
+        "SynchronizationNeedsReview"
+      ],
+      "synchronizationIssues": [
+        "ModeShapeMismatch"
+      ],
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "reportCount": 1
+    },
+    {
+      "name": "cross-mode-message-report",
+      "context": {
+        "name": "system-id-synchronization-zero",
+        "issues": [],
+        "requestKind": "synchronization",
+        "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+        "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+        "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+        "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjowKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+        "expectedUserId": "PUBLIC-USER",
+        "controlReference": "PUBLIC-REF",
+        "profileVersion": 2,
+        "securityFunction": 900,
+        "tanSegmentVersion": 7,
+        "missingProcedureContext": false
+      },
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI2NCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLUFTU0lHTkVEKzErMjoyOjEzOkA4QAAAAAAAAAAAOjU6MSsyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6VjowOjArMCdITlZTRDo5OTk6MStAODBASElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NSswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NSsrMScnSE5IQlM6NToxKzEn",
+      "wrapped": true,
+      "issues": [
+        "SynchronizationNeedsReview"
+      ],
+      "synchronizationIssues": [
+        "ModeShapeMismatch"
+      ],
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "reportCount": 1
+    },
+    {
+      "name": "reserved-zero-assignment",
+      "context": {
+        "name": "system-id-synchronization-zero",
+        "issues": [],
+        "requestKind": "synchronization",
+        "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+        "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+        "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+        "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjowKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+        "expectedUserId": "PUBLIC-USER",
+        "controlReference": "PUBLIC-REF",
+        "profileVersion": 2,
+        "securityFunction": 900,
+        "tanSegmentVersion": 7,
+        "missingProcedureContext": false
+      },
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI2MyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLUFTU0lHTkVEKzErMjoyOjEzOkA4QAAAAAAAAAAAOjU6MSsyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6VjowOjArMCdITlZTRDo5OTk6MStANzlASElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NSswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NSswJydITkhCUzo1OjErMSc=",
+      "wrapped": true,
+      "issues": [
+        "SynchronizationNeedsReview"
+      ],
+      "synchronizationIssues": [
+        "InvalidSystemId"
+      ],
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "reportCount": 1
+    },
+    {
+      "name": "unknown-assignment",
+      "context": {
+        "name": "system-id-synchronization-zero",
+        "issues": [],
+        "requestKind": "synchronization",
+        "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+        "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+        "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+        "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjowKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+        "expectedUserId": "PUBLIC-USER",
+        "controlReference": "PUBLIC-REF",
+        "profileVersion": 2,
+        "securityFunction": 900,
+        "tanSegmentVersion": 7,
+        "missingProcedureContext": false
+      },
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI3MSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLUFTU0lHTkVEKzErMjoyOjEzOkA4QAAAAAAAAAAAOjU6MSsyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6VjowOjArMCdITlZTRDo5OTk6MStAODdASElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NSswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NSt1bmJla2FubnQnJ0hOSEJTOjU6MSsxJw==",
+      "wrapped": true,
+      "issues": [
+        "SynchronizationNeedsReview"
+      ],
+      "synchronizationIssues": [
+        "InvalidSystemId"
+      ],
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "reportCount": 1
+    },
+    {
+      "name": "preparation-success-not-sync",
+      "context": {
+        "name": "system-id-synchronization-zero",
+        "issues": [],
+        "requestKind": "synchronization",
+        "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+        "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+        "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+        "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjowKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+        "expectedUserId": "PUBLIC-USER",
+        "controlReference": "PUBLIC-REF",
+        "profileVersion": 2,
+        "securityFunction": 900,
+        "tanSegmentVersion": 7,
+        "missingProcedureContext": false
+      },
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI3NyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLUFTU0lHTkVEKzErMjoyOjEzOkA4QAAAAAAAAAAAOjU6MSsyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6VjowOjArMCdITlZTRDo5OTk6MStAOTNASElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NCswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NStQVUJMSUMtQVNTSUdORUQnJ0hOSEJTOjU6MSsxJw==",
+      "wrapped": true,
+      "issues": [
+        "StatusNeedsReview"
+      ],
+      "synchronizationIssues": [],
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "reportCount": 1
+    },
+    {
+      "name": "signature-success-not-sync",
+      "context": {
+        "name": "system-id-synchronization-zero",
+        "issues": [],
+        "requestKind": "synchronization",
+        "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+        "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+        "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+        "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjowKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+        "expectedUserId": "PUBLIC-USER",
+        "controlReference": "PUBLIC-REF",
+        "profileVersion": 2,
+        "securityFunction": 900,
+        "tanSegmentVersion": 7,
+        "missingProcedureContext": false
+      },
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI3NyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLUFTU0lHTkVEKzErMjoyOjEzOkA4QAAAAAAAAAAAOjU6MSsyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6VjowOjArMCdITlZTRDo5OTk6MStAOTNASElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NStQVUJMSUMtQVNTSUdORUQnJ0hOSEJTOjU6MSsxJw==",
+      "wrapped": true,
+      "issues": [
+        "StatusNeedsReview"
+      ],
+      "synchronizationIssues": [],
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "reportCount": 1
+    },
+    {
+      "name": "message-level-execution",
+      "context": {
+        "name": "system-id-synchronization-zero",
+        "issues": [],
+        "requestKind": "synchronization",
+        "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+        "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+        "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+        "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjowKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+        "expectedUserId": "PUBLIC-USER",
+        "controlReference": "PUBLIC-REF",
+        "profileVersion": 2,
+        "securityFunction": 900,
+        "tanSegmentVersion": 7,
+        "missingProcedureContext": false
+      },
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI3NyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLUFTU0lHTkVEKzErMjoyOjEzOkA4QAAAAAAAAAAAOjU6MSsyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6VjowOjArMCdITlZTRDo5OTk6MStAOTNASElSTUc6MjoyKzAwMjA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MyswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NStQVUJMSUMtQVNTSUdORUQnJ0hOSEJTOjU6MSsxJw==",
+      "wrapped": true,
+      "issues": [],
+      "synchronizationIssues": [],
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "reportCount": 1
+    },
+    {
+      "name": "pending-sync",
+      "context": {
+        "name": "system-id-synchronization-zero",
+        "issues": [],
+        "requestKind": "synchronization",
+        "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+        "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+        "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+        "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjowKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+        "expectedUserId": "PUBLIC-USER",
+        "controlReference": "PUBLIC-REF",
+        "profileVersion": 2,
+        "securityFunction": 900,
+        "tanSegmentVersion": 7,
+        "missingProcedureContext": false
+      },
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI3NyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLUFTU0lHTkVEKzErMjoyOjEzOkA4QAAAAAAAAAAAOjU6MSsyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6VjowOjArMCdITlZTRDo5OTk6MStAOTNASElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NSswMDMwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NStQVUJMSUMtQVNTSUdORUQnJ0hOSEJTOjU6MSsxJw==",
+      "wrapped": true,
+      "issues": [
+        "StatusNeedsReview"
+      ],
+      "synchronizationIssues": [],
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "reportCount": 1
+    },
+    {
+      "name": "bank-abort",
+      "context": {
+        "name": "system-id-synchronization-zero",
+        "issues": [],
+        "requestKind": "synchronization",
+        "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+        "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+        "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+        "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjowKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+        "expectedUserId": "PUBLIC-USER",
+        "controlReference": "PUBLIC-REF",
+        "profileVersion": 2,
+        "securityFunction": 900,
+        "tanSegmentVersion": 7,
+        "missingProcedureContext": false
+      },
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI3NyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLUFTU0lHTkVEKzErMjoyOjEzOkA4QAAAAAAAAAAAOjU6MSsyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6VjowOjArMCdITlZTRDo5OTk6MStAOTNASElSTUc6MjoyKzk4MDA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NSswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NStQVUJMSUMtQVNTSUdORUQnJ0hOSEJTOjU6MSsxJw==",
+      "wrapped": true,
+      "issues": [
+        "ResponseNeedsReview",
+        "StatusNeedsReview"
+      ],
+      "synchronizationIssues": [],
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "reportCount": 1
+    },
+    {
+      "name": "duplicate-status",
+      "context": {
+        "name": "system-id-synchronization-zero",
+        "issues": [],
+        "requestKind": "synchronization",
+        "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+        "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+        "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+        "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjowKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+        "expectedUserId": "PUBLIC-USER",
+        "controlReference": "PUBLIC-REF",
+        "profileVersion": 2,
+        "securityFunction": 900,
+        "tanSegmentVersion": 7,
+        "missingProcedureContext": false
+      },
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMwMSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLUFTU0lHTkVEKzErMjoyOjEzOkA4QAAAAAAAAAAAOjU6MSsyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6VjowOjArMCdITlZTRDo5OTk6MStAMTE2QEhJUk1HOjI6MiswMDEwOjpQVUJMSUMtUkVQTFknSElSTVM6MzoyOjUrMDAyMDo6UFVCTElDLVNZTkMtUkVQTFkrMDAyMDo6UFVCTElDLURVUExJQ0FURSdISVNZTjo0OjQ6NStQVUJMSUMtQVNTSUdORUQnJ0hOSEJTOjU6MSsxJw==",
+      "wrapped": true,
+      "issues": [
+        "ResponseNeedsReview",
+        "StatusNeedsReview"
+      ],
+      "synchronizationIssues": [],
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "reportCount": 1
+    },
+    {
+      "name": "status-parameter",
+      "context": {
+        "name": "system-id-synchronization-zero",
+        "issues": [],
+        "requestKind": "synchronization",
+        "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+        "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+        "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+        "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjowKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+        "expectedUserId": "PUBLIC-USER",
+        "controlReference": "PUBLIC-REF",
+        "profileVersion": 2,
+        "securityFunction": 900,
+        "tanSegmentVersion": 7,
+        "missingProcedureContext": false
+      },
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI5MSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLUFTU0lHTkVEKzErMjoyOjEzOkA4QAAAAAAAAAAAOjU6MSsyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6VjowOjArMCdITlZTRDo5OTk6MStAMTA2QEhJUk1HOjI6MiswMDEwOjpQVUJMSUMtUkVQTFknSElSTVM6MzoyOjUrMDAyMDo6UFVCTElDLVNZTkMtUkVQTFk6UFVCTElDLVBBUkFNJ0hJU1lOOjQ6NDo1K1BVQkxJQy1BU1NJR05FRCcnSE5IQlM6NToxKzEn",
+      "wrapped": true,
+      "issues": [
+        "StatusNeedsReview"
+      ],
+      "synchronizationIssues": [],
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "reportCount": 1
+    },
+    {
+      "name": "old-report-reference",
+      "context": {
+        "name": "system-id-synchronization-zero",
+        "issues": [],
+        "requestKind": "synchronization",
+        "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+        "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+        "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+        "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjowKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+        "expectedUserId": "PUBLIC-USER",
+        "controlReference": "PUBLIC-REF",
+        "profileVersion": 2,
+        "securityFunction": 900,
+        "tanSegmentVersion": 7,
+        "missingProcedureContext": false
+      },
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI3NyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLUFTU0lHTkVEKzErMjoyOjEzOkA4QAAAAAAAAAAAOjU6MSsyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6VjowOjArMCdITlZTRDo5OTk6MStAOTNASElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NSswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NCtQVUJMSUMtQVNTSUdORUQnJ0hOSEJTOjU6MSsxJw==",
+      "wrapped": true,
+      "issues": [
+        "BindingNeedsReview"
+      ],
+      "synchronizationIssues": [],
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "reportCount": 1
+    },
+    {
+      "name": "assignment-envelope-zero",
+      "context": {
+        "name": "system-id-synchronization-zero",
+        "issues": [],
+        "requestKind": "synchronization",
+        "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+        "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+        "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+        "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjowKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+        "expectedUserId": "PUBLIC-USER",
+        "controlReference": "PUBLIC-REF",
+        "profileVersion": 2,
+        "securityFunction": 900,
+        "tanSegmentVersion": 7,
+        "missingProcedureContext": false
+      },
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI2MyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6MCsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDkzQEhJUk1HOjI6MiswMDEwOjpQVUJMSUMtUkVQTFknSElSTVM6MzoyOjUrMDAyMDo6UFVCTElDLVNZTkMtUkVQTFknSElTWU46NDo0OjUrUFVCTElDLUFTU0lHTkVEJydITkhCUzo1OjErMSc=",
+      "wrapped": true,
+      "issues": [
+        "EnvelopeIdentityMismatch"
+      ],
+      "synchronizationIssues": [],
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "reportCount": 1
+    },
+    {
+      "name": "foreign-envelope-user",
+      "context": {
+        "name": "system-id-synchronization-zero",
+        "issues": [],
+        "requestKind": "synchronization",
+        "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+        "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+        "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+        "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjowKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+        "expectedUserId": "PUBLIC-USER",
+        "controlReference": "PUBLIC-REF",
+        "profileVersion": 2,
+        "securityFunction": 900,
+        "tanSegmentVersion": 7,
+        "missingProcedureContext": false
+      },
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI3NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLUFTU0lHTkVEKzErMjoyOjEzOkA4QAAAAAAAAAAAOjU6MSsyODA6UFVCTElDLUJBTks6T1RIRVItVVNFUjpWOjA6MCswJ0hOVlNEOjk5OToxK0A5M0BISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6Mjo1KzAwMjA6OlBVQkxJQy1TWU5DLVJFUExZJ0hJU1lOOjQ6NDo1K1BVQkxJQy1BU1NJR05FRCcnSE5IQlM6NToxKzEn",
+      "wrapped": true,
+      "issues": [
+        "EnvelopeIdentityMismatch"
+      ],
+      "synchronizationIssues": [],
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "reportCount": 1
+    },
+    {
+      "name": "foreign-envelope-bank",
+      "context": {
+        "name": "system-id-synchronization-zero",
+        "issues": [],
+        "requestKind": "synchronization",
+        "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+        "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+        "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+        "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjowKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+        "expectedUserId": "PUBLIC-USER",
+        "controlReference": "PUBLIC-REF",
+        "profileVersion": 2,
+        "securityFunction": 900,
+        "tanSegmentVersion": 7,
+        "missingProcedureContext": false
+      },
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI3NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLUFTU0lHTkVEKzErMjoyOjEzOkA4QAAAAAAAAAAAOjU6MSsyODA6T1RIRVItQkFOSzpQVUJMSUMtVVNFUjpWOjA6MCswJ0hOVlNEOjk5OToxK0A5M0BISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6Mjo1KzAwMjA6OlBVQkxJQy1TWU5DLVJFUExZJ0hJU1lOOjQ6NDo1K1BVQkxJQy1BU1NJR05FRCcnSE5IQlM6NToxKzEn",
+      "wrapped": true,
+      "issues": [
+        "EnvelopeIdentityMismatch"
+      ],
+      "synchronizationIssues": [],
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "reportCount": 1
+    },
+    {
+      "name": "foreign-envelope-country",
+      "context": {
+        "name": "system-id-synchronization-zero",
+        "issues": [],
+        "requestKind": "synchronization",
+        "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+        "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+        "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+        "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjowKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+        "expectedUserId": "PUBLIC-USER",
+        "controlReference": "PUBLIC-REF",
+        "profileVersion": 2,
+        "securityFunction": 900,
+        "tanSegmentVersion": 7,
+        "missingProcedureContext": false
+      },
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI3NyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLUFTU0lHTkVEKzErMjoyOjEzOkA4QAAAAAAAAAAAOjU6MSs5OTk6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6VjowOjArMCdITlZTRDo5OTk6MStAOTNASElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NSswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NStQVUJMSUMtQVNTSUdORUQnJ0hOSEJTOjU6MSsxJw==",
+      "wrapped": true,
+      "issues": [
+        "EnvelopeIdentityMismatch"
+      ],
+      "synchronizationIssues": [],
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "reportCount": 1
+    },
+    {
+      "name": "recovery-envelope-system-mismatch",
+      "context": {
+        "name": "two-step-initialization",
+        "issues": [],
+        "requestKind": "synchronization",
+        "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE0OCszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MysxJ0hOSEJTOjU6MSsxJw==",
+        "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+        "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+        "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjpQVUJMSUMtU1lTVEVNKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+        "expectedUserId": "PUBLIC-USER",
+        "controlReference": "PUBLIC-REF",
+        "profileVersion": 2,
+        "securityFunction": 900,
+        "tanSegmentVersion": 7,
+        "missingProcedureContext": false
+      },
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI2MiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6T1RIRVItU1lTVEVNKzErMjoyOjEzOkA4QAAAAAAAAAAAOjU6MSsyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6VjowOjArMCdITlZTRDo5OTk6MStAODFASElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NSswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NSsrMTAnJ0hOSEJTOjU6MSsxJw==",
+      "wrapped": true,
+      "issues": [
+        "EnvelopeIdentityMismatch"
+      ],
+      "synchronizationIssues": [],
+      "previousDialogueId": "PUBLIC-PREVIOUS",
+      "lastSubmittedMessageNumber": 10,
+      "reportCount": 1
+    },
+    {
+      "name": "foreign-profile",
+      "context": {
+        "name": "system-id-synchronization-zero",
+        "issues": [],
+        "requestKind": "synchronization",
+        "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+        "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+        "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+        "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjowKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+        "expectedUserId": "PUBLIC-USER",
+        "controlReference": "PUBLIC-REF",
+        "profileVersion": 2,
+        "securityFunction": 900,
+        "tanSegmentVersion": 7,
+        "missingProcedureContext": false
+      },
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI3NyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjErOTk4KzErMTo6UFVCTElDLUFTU0lHTkVEKzErMjoyOjEzOkA4QAAAAAAAAAAAOjU6MSsyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6VjowOjArMCdITlZTRDo5OTk6MStAOTNASElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NSswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NStQVUJMSUMtQVNTSUdORUQnJ0hOSEJTOjU6MSsxJw==",
+      "wrapped": true,
+      "issues": [
+        "BindingNeedsReview"
+      ],
+      "synchronizationIssues": [],
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "reportCount": 1
+    },
+    {
+      "name": "plain-response",
+      "context": {
+        "name": "system-id-synchronization-zero",
+        "issues": [],
+        "requestKind": "synchronization",
+        "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+        "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+        "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+        "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjowKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+        "expectedUserId": "PUBLIC-USER",
+        "controlReference": "PUBLIC-REF",
+        "profileVersion": 2,
+        "securityFunction": 900,
+        "tanSegmentVersion": 7,
+        "missingProcedureContext": false
+      },
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE1NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6NSswMDIwOjpQVUJMSUMtU1lOQy1SRVBMWSdISVNZTjo0OjQ6NStQVUJMSUMtQVNTSUdORUQnSE5IQlM6NToxKzEn",
+      "wrapped": false,
+      "issues": [
+        "BindingNeedsReview"
+      ],
+      "synchronizationIssues": [],
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "reportCount": 1
+    },
+    {
+      "name": "returned-parameters-need-integration",
+      "context": {
+        "name": "system-id-synchronization-zero",
+        "issues": [],
+        "requestKind": "synchronization",
+        "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSKzArMSdIS1ZWQjozOjMrMCswKzArUFVCTElDLVBST0RVQ1QrMS4wJ0hLU1lOOjQ6MyswJ0hOSEJTOjU6MSsxJw==",
+        "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+        "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+        "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjowKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+        "expectedUserId": "PUBLIC-USER",
+        "controlReference": "PUBLIC-REF",
+        "profileVersion": 2,
+        "securityFunction": 900,
+        "tanSegmentVersion": 7,
+        "missingProcedureContext": false
+      },
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMzMiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLUFTU0lHTkVEKzErMjoyOjEzOkA4QAAAAAAAAAAAOjU6MSsyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6VjowOjArMCdITlZTRDo5OTk6MStAMTQ3QEhJUk1HOjI6MiswMDEwOjpQVUJMSUMtUkVQTFknSElSTVM6MzoyOjUrMDAyMDo6UFVCTElDLVNZTkMtUkVQTFknSElTWU46NDo0OjUrUFVCTElDLUFTU0lHTkVEJ0hJQlBBOjU6Mzo0KzErMjgwOlBVQkxJQy1CQU5LK1BVQkxJQy1CQU5LKzErMToyOjMrMzAwJydITkhCUzo2OjErMSc=",
+      "wrapped": true,
+      "issues": [
+        "SynchronizationNeedsReview"
+      ],
+      "synchronizationIssues": [
+        "UninterpretedReports"
+      ],
+      "previousDialogueId": null,
+      "lastSubmittedMessageNumber": null,
+      "reportCount": 1
+    }
+  ]
+}

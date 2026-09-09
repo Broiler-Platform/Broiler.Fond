@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "vectors": [
+    {
+      "name": "request-bound-challenge",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA3MyszMDArU1lOVEhFVElDKzEnSEtUQU46Mjo3KzQrSEtJRE4rKysrJ0hOSEJTOjM6MSsxJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMwNSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiszOTIwOjpSZXBvcnRlZCBtZXRob2RzOjkwMCswMDMwOjpSZXBvcnRlZCBzdGF0ZSdISVRBTlM6NDo3KzErMSswK046TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjA6Ojo6OidISVRBTjo1Ojc6Mis0KytQVUJMSUMtT1JERVIrUHVibGljIGNoYWxsZW5nZSdITkhCUzo2OjErMSc=",
+      "issues": [],
+      "observation": "ChallengeReported"
+    },
+    {
+      "name": "exemption-report-with-dummy",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA3MyszMDArU1lOVEhFVElDKzEnSEtUQU46Mjo3KzQrSEtJRE4rKysrJ0hOSEJTOjM6MSsxJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI5MyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiszOTIwOjpSZXBvcnRlZCBtZXRob2RzOjkwMCszMDc2OjpSZXBvcnRlZCBzdGF0ZSdISVRBTlM6NDo3KzErMSswK046TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjA6Ojo6OidISVRBTjo1Ojc6Mis0Kytub3JlZitub2NoYWxsZW5nZSdITkhCUzo2OjErMSc=",
+      "issues": [],
+      "observation": "ExemptionReported"
+    },
+    {
+      "name": "hash-must-mirror-request",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA4OSszMDArU1lOVEhFVElDKzEnSEtUQU46Mjo2KzErSEtJRE4rK0AxMUBwdWJsaWMgaGFzaCsrTidITkhCUzozOjErMSc=",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMxNCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiszOTIwOjpSZXBvcnRlZCBtZXRob2RzOjkwMCswMDMwOjpSZXBvcnRlZCBzdGF0ZSdISVRBTlM6NDo2KzErMSswK046TjoxOjkwMDoxOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46NDpOOjA6MDpOOko6MDA6MDpOOjAnSElUQU46NTo2OjIrMStAMTBAd3JvbmcgaGFzaCtQVUJMSUMtT1JERVIrUHVibGljIGNoYWxsZW5nZSdITkhCUzo2OjErMSc=",
+      "issues": [
+        "HashMismatch"
+      ],
+      "observation": "NeedsReview"
+    },
+    {
+      "name": "decoupled-pending-report",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA4MSszMDArU1lOVEhFVElDKzEnSEtUQU46Mjo3K1MrKysrUFVCTElDLU9SREVSK04nSE5IQlM6MzoxKzEn",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMxNSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiszOTIwOjpSZXBvcnRlZCBtZXRob2RzOjkwMCszOTU2OjpSZXBvcnRlZCBzdGF0ZSdISVRBTlM6NDo3KzErMSswK046TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6RGVjb3VwbGVkOjEuMDpQdWJsaWMgbWV0aG9kOjo6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjEwOjI6NTpOOkonSElUQU46NTo3OjIrUysrUFVCTElDLU9SREVSK1B1YmxpYyBjaGFsbGVuZ2UnSE5IQlM6NjoxKzEn",
+      "issues": [],
+      "observation": "DecoupledPendingReported"
+    },
+    {
+      "name": "status-order-reference-mismatch",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA4MSszMDArU1lOVEhFVElDKzEnSEtUQU46Mjo3K1MrKysrUFVCTElDLU9SREVSK04nSE5IQlM6MzoxKzEn",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMxNCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiszOTIwOjpSZXBvcnRlZCBtZXRob2RzOjkwMCszOTU2OjpSZXBvcnRlZCBzdGF0ZSdISVRBTlM6NDo3KzErMSswK046TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6RGVjb3VwbGVkOjEuMDpQdWJsaWMgbWV0aG9kOjo6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjEwOjI6NTpOOkonSElUQU46NTo3OjIrUysrT1RIRVItT1JERVIrUHVibGljIGNoYWxsZW5nZSdITkhCUzo2OjErMSc=",
+      "issues": [
+        "OrderReferenceMismatch"
+      ],
+      "observation": "NeedsReview"
+    },
+    {
+      "name": "procedure-not-listed",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA3MyszMDArU1lOVEhFVElDKzEnSEtUQU46Mjo3KzQrSEtJRE4rKysrJ0hOSEJTOjM6MSsxJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMwNSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISVJNUzozOjI6MiszOTIwOjpSZXBvcnRlZCBtZXRob2RzOjkwMSswMDMwOjpSZXBvcnRlZCBzdGF0ZSdISVRBTlM6NDo3KzErMSswK046TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjA6Ojo6OidISVRBTjo1Ojc6Mis0KytQVUJMSUMtT1JERVIrUHVibGljIGNoYWxsZW5nZSdITkhCUzo2OjErMSc=",
+      "issues": [
+        "ProcedureNotListed"
+      ],
+      "observation": "NeedsReview"
+    },
+    {
+      "name": "aborted-dialogue-still-reports-methods",
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA3MyszMDArU1lOVEhFVElDKzEnSEtUQU46Mjo3KzQrSEtJRE4rKysrJ0hOSEJTOjM6MSsxJw==",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMwNSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzk4MDA6OlN5bnRoZXRpYydISVJNUzozOjI6MiszOTIwOjpSZXBvcnRlZCBtZXRob2RzOjkwMCswMDMwOjpSZXBvcnRlZCBzdGF0ZSdISVRBTlM6NDo3KzErMSswK046TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjA6Ojo6OidISVRBTjo1Ojc6Mis0KytQVUJMSUMtT1JERVIrUHVibGljIGNoYWxsZW5nZSdITkhCUzo2OjErMSc=",
+      "issues": [
+        "ParameterResponseNeedsReview",
+        "ResponseNeedsReview"
+      ],
+      "observation": "NeedsReview"
+    }
+  ]
+}

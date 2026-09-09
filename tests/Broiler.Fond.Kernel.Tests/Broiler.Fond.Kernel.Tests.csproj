@@ -5,9 +5,43 @@
     <RootNamespace>Broiler.Fond.Kernel.Tests</RootNamespace>
     <AssemblyName>Broiler.Fond.Kernel.Tests</AssemblyName>
     <IsPackable>false</IsPackable>
-    <Description>BCL-only Milestone 0 verification runner.</Description>
+    <Description>BCL-only kernel, protocol syntax and storage format candidate verification runner.</Description>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Broiler.Fond.Kernel\Broiler.Fond.Kernel.csproj" />
+    <EmbeddedResource Include="Fixtures/ProfileEnvelope/v1.json" LogicalName="ProfileEnvelope.v1.json" />
+    <EmbeddedResource Include="Fixtures/ProfileEnvelope/bootstrap-v1.xsd" LogicalName="ProfileEnvelope.bootstrap-v1.xsd" />
+    <EmbeddedResource Include="Fixtures/FinTs/syntax-v1.json" LogicalName="FinTs.syntax-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/responses-v1.json" LogicalName="FinTs.responses-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/parameters-v1.json" LogicalName="FinTs.parameters-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/read-capabilities-v1.json" LogicalName="FinTs.read-capabilities-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-v1.json" LogicalName="FinTs.pin-tan-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/tan-schemas-v1.json" LogicalName="FinTs.tan-schemas-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/tan-context-v1.json" LogicalName="FinTs.tan-context-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/sca-continuation-v1.json" LogicalName="FinTs.sca-continuation-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/read-data-v1.json" LogicalName="FinTs.read-data-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/read-context-v1.json" LogicalName="FinTs.read-context-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/read-refresh-v1.json" LogicalName="FinTs.read-refresh-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/read-availability-v1.json" LogicalName="FinTs.read-availability-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/all-discovery-v1.json" LogicalName="FinTs.all-discovery-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/all-discovery-attempt-v1.json" LogicalName="FinTs.all-discovery-attempt-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/unsigned-read-requests-v1.json" LogicalName="FinTs.unsigned-read-requests-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/initialization-v1.json" LogicalName="FinTs.initialization-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/initialization-context-v1.json" LogicalName="FinTs.initialization-context-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/initialization-attempt-v1.json" LogicalName="FinTs.initialization-attempt-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/synchronization-v1.json" LogicalName="FinTs.synchronization-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/synchronization-context-v1.json" LogicalName="FinTs.synchronization-context-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/dialogue-end-v1.json" LogicalName="FinTs.dialogue-end-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/synchronization-attempt-v1.json" LogicalName="FinTs.synchronization-attempt-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-signature-header-v1.json" LogicalName="FinTs.pin-tan-signature-header-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-signature-context-v1.json" LogicalName="FinTs.pin-tan-signature-context-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-signature-encoding-v1.json" LogicalName="FinTs.pin-tan-signature-encoding-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/credential-buffer-v1.json" LogicalName="FinTs.credential-buffer-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-signature-trailer-v1.json" LogicalName="FinTs.pin-tan-signature-trailer-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-request-assembly-v1.json" LogicalName="FinTs.pin-tan-request-assembly-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-request-envelope-v1.json" LogicalName="FinTs.pin-tan-request-envelope-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-request-binding-v1.json" LogicalName="FinTs.pin-tan-request-binding-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-initialization-evidence-v1.json" LogicalName="FinTs.pin-tan-initialization-evidence-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-synchronization-evidence-v1.json" LogicalName="FinTs.pin-tan-synchronization-evidence-v1.json" />
   </ItemGroup>
 </Project>

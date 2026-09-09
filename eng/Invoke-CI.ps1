@@ -38,7 +38,7 @@ function Invoke-WindowsHostSmoke {
     }
 
     $expectedLines = @(
-        "Broiler Fond - Finance on Demand - Milestone 0 skeleton",
+        "Broiler Fond - Finance on Demand - Milestone 1 development shell",
         "Banking, storage, credential, UI, and network operations are not implemented."
     )
     if ($actualLines.Count -ne $expectedLines.Count) {

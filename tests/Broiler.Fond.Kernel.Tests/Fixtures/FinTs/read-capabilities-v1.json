@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "vectors": [
+    {
+      "name": "balance-matching",
+      "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI1NyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISUJQQTozOjMrMSsyODA6MTAwMjAwMzArQmFuaysxKzErMzAwJ0hJVVBBOjQ6NCtQVUJMSUMtVVNFUisxKzEnSElVUEQ6NTo2K1BVQkxJQy1BQ0NPVU5UOjoyODA6MTAwMjAwMzArU1lOVEhFVElDLUlCQU4rQysxK0VVUitPd25lcisrKytIS1NBTDoyK0hLU1BBOjInSElTQUxTOjY6Nys5KzErMCdITkhCUzo3OjErMSc=",
+      "operation": "Balance",
+      "version": 7,
+      "issues": []
+    },
+    {
+      "name": "duplicate-bank-version",
+      "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI3NCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISUJQQTozOjMrMSsyODA6MTAwMjAwMzArQmFuaysxKzErMzAwJ0hJVVBBOjQ6NCtQVUJMSUMtVVNFUisxKzEnSElVUEQ6NTo2K1BVQkxJQy1BQ0NPVU5UOjoyODA6MTAwMjAwMzArU1lOVEhFVElDLUlCQU4rQysxK0VVUitPd25lcisrKytIS1NBTDoyK0hLU1BBOjInSElTQUxTOjY6Nys5KzErMCdISVNBTFM6Nzo3KzkrMSswJ0hOSEJTOjg6MSsxJw==",
+      "operation": "Balance",
+      "version": 7,
+      "issues": [
+        "DuplicateAdvertisement"
+      ]
+    },
+    {
+      "name": "future-version-no-fallback",
+      "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI3NSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISUJQQTozOjMrMSsyODA6MTAwMjAwMzArQmFuaysxKzErMzAwJ0hJVVBBOjQ6NCtQVUJMSUMtVVNFUisxKzEnSElVUEQ6NTo2K1BVQkxJQy1BQ0NPVU5UOjoyODA6MTAwMjAwMzArU1lOVEhFVElDLUlCQU4rQysxK0VVUitPd25lcisrKytIS1NBTDoyK0hLU1BBOjInSElTQUxTOjY6Nys5KzErMCdISVNBTFM6Nzo5K29wYXF1ZSdITkhCUzo4OjErMSc=",
+      "operation": "Balance",
+      "version": 9,
+      "issues": [
+        "MissingAdvertisement",
+        "UnsupportedVersion"
+      ]
+    },
+    {
+      "name": "single-account-disabled",
+      "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI2NyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlN5bnRoZXRpYydISUJQQTozOjMrMSsyODA6MTAwMjAwMzArQmFuaysxKzErMzAwJ0hJVVBBOjQ6NCtQVUJMSUMtVVNFUisxKzEnSElVUEQ6NTo2K1BVQkxJQy1BQ0NPVU5UOjoyODA6MTAwMjAwMzArU1lOVEhFVElDLUlCQU4rQysxK0VVUitPd25lcisrKytIS1NBTDoyK0hLU1BBOjInSElTUEFTOjY6MysxKzErMCtOOko6TjpOOjAnSE5IQlM6NzoxKzEn",
+      "operation": "SepaAccountDetails",
+      "version": 3,
+      "issues": [
+        "SingleAccountRequestNotAdvertised"
+      ]
+    },
+    {
+      "name": "indeterminate-response",
+      "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI1NyszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzkwMDA6OlN5bnRoZXRpYydISUJQQTozOjMrMSsyODA6MTAwMjAwMzArQmFuaysxKzErMzAwJ0hJVVBBOjQ6NCtQVUJMSUMtVVNFUisxKzEnSElVUEQ6NTo2K1BVQkxJQy1BQ0NPVU5UOjoyODA6MTAwMjAwMzArU1lOVEhFVElDLUlCQU4rQysxK0VVUitPd25lcisrKytIS1NBTDoyK0hLU1BBOjInSElTQUxTOjY6Nys5KzErMCdITkhCUzo3OjErMSc=",
+      "operation": "Balance",
+      "version": 7,
+      "issues": [
+        "ResponseNeedsReview"
+      ]
+    }
+  ]
+}

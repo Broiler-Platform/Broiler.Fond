@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "vectors": [
+    {
+      "name": "message-close",
+      "dialogueId": "SYNTHETIC",
+      "clientMessageNumber": 2,
+      "expectedBankMessageNumber": 2,
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA3MSszMDArU1lOVEhFVElDKzInSEtFTkQ6MjoxK1NZTlRIRVRJQydITkhCUzozOjErMic=",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA5MiszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAxMDA6OlBVQkxJQy1SRVBMWSdITkhCUzozOjErMic=",
+      "issues": [],
+      "outcome": "ClosureReported",
+      "closeReported": true,
+      "abortReported": false
+    },
+    {
+      "name": "scoped-close",
+      "dialogueId": "SYNTHETIC",
+      "clientMessageNumber": 2,
+      "expectedBankMessageNumber": 2,
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA3MSszMDArU1lOVEhFVElDKzInSEtFTkQ6MjoxK1NZTlRIRVRJQydITkhCUzozOjErMic=",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEyOSszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMTAwOjpQVUJMSUMtQ0xPU0UtUkVQTFknSE5IQlM6NDoxKzIn",
+      "issues": [],
+      "outcome": "ClosureReported",
+      "closeReported": true,
+      "abortReported": false
+    },
+    {
+      "name": "escaped-dialogue-independent-counters",
+      "dialogueId": "D+:'?@\u00fc",
+      "clientMessageNumber": 9,
+      "expectedBankMessageNumber": 4,
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA3NyszMDArRD8rPzo/Jz8/P0D8KzknSEtFTkQ6MjoxK0Q/Kz86Pyc/Pz9A/CdITkhCUzozOjErOSc=",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA5OCszMDArRD8rPzo/Jz8/P0D8KzQrRD8rPzo/Jz8/P0D8OjknSElSTUc6MjoyKzAxMDA6OlBVQkxJQy1SRVBMWSdITkhCUzozOjErNCc=",
+      "issues": [],
+      "outcome": "ClosureReported",
+      "closeReported": true,
+      "abortReported": false
+    },
+    {
+      "name": "dialogue-and-counter-limits",
+      "dialogueId": "??????????????????????????????",
+      "clientMessageNumber": 9999,
+      "expectedBankMessageNumber": 9999,
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE3OSszMDArPz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Kzk5OTknSEtFTkQ6MjoxKz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/PydITkhCUzozOjErOTk5OSc=",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDIwMyszMDArPz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Kzk5OTkrPz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Ojk5OTknSElSTUc6MjoyKzAxMDA6OlBVQkxJQy1SRVBMWSdITkhCUzozOjErOTk5OSc=",
+      "issues": [],
+      "outcome": "ClosureReported",
+      "closeReported": true,
+      "abortReported": false
+    },
+    {
+      "name": "explicit-abort",
+      "dialogueId": "SYNTHETIC",
+      "clientMessageNumber": 2,
+      "expectedBankMessageNumber": 2,
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA3MSszMDArU1lOVEhFVElDKzInSEtFTkQ6MjoxK1NZTlRIRVRJQydITkhCUzozOjErMic=",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA5MiszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzk4MDA6OlBVQkxJQy1SRVBMWSdITkhCUzozOjErMic=",
+      "issues": [],
+      "outcome": "AbortReported",
+      "closeReported": false,
+      "abortReported": true
+    },
+    {
+      "name": "execution-without-close",
+      "dialogueId": "SYNTHETIC",
+      "clientMessageNumber": 2,
+      "expectedBankMessageNumber": 2,
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA3MSszMDArU1lOVEhFVElDKzInSEtFTkQ6MjoxK1NZTlRIRVRJQydITkhCUzozOjErMic=",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEyOSszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtQ0xPU0UtUkVQTFknSE5IQlM6NDoxKzIn",
+      "issues": [
+        "MissingTermination"
+      ],
+      "outcome": "NeedsReview",
+      "closeReported": false,
+      "abortReported": false
+    },
+    {
+      "name": "close-abort-conflict",
+      "dialogueId": "SYNTHETIC",
+      "clientMessageNumber": 2,
+      "expectedBankMessageNumber": 2,
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA3MSszMDArU1lOVEhFVElDKzInSEtFTkQ6MjoxK1NZTlRIRVRJQydITkhCUzozOjErMic=",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDExMSszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAxMDA6OlBVQkxJQy1SRVBMWSs5ODAwOjpQVUJMSUMtUkVQTFknSE5IQlM6MzoxKzIn",
+      "issues": [
+        "ConflictingTermination",
+        "ResponseNeedsReview"
+      ],
+      "outcome": "NeedsReview",
+      "closeReported": true,
+      "abortReported": true
+    },
+    {
+      "name": "data-on-close",
+      "dialogueId": "SYNTHETIC",
+      "clientMessageNumber": 2,
+      "expectedBankMessageNumber": 2,
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA3MSszMDArU1lOVEhFVElDKzInSEtFTkQ6MjoxK1NZTlRIRVRJQydITkhCUzozOjErMic=",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDExNiszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAxMDA6OlBVQkxJQy1SRVBMWSdaREFUQTozOjE6MitQVUJMSUMtREFUQSdITkhCUzo0OjErMic=",
+      "issues": [
+        "UnexpectedData"
+      ],
+      "outcome": "NeedsReview",
+      "closeReported": true,
+      "abortReported": false
+    },
+    {
+      "name": "foreign-close-reference",
+      "dialogueId": "SYNTHETIC",
+      "clientMessageNumber": 2,
+      "expectedBankMessageNumber": 2,
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA3MSszMDArU1lOVEhFVElDKzInSEtFTkQ6MjoxK1NZTlRIRVRJQydITkhCUzozOjErMic=",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA4OCszMDArU1lOVEhFVElDKzIrT1RIRVI6MidISVJNRzoyOjIrMDEwMDo6UFVCTElDLVJFUExZJ0hOSEJTOjM6MSsyJw==",
+      "issues": [
+        "MessageMismatch"
+      ],
+      "outcome": "NeedsReview",
+      "closeReported": true,
+      "abortReported": false
+    },
+    {
+      "name": "duplicate-close-across-levels",
+      "dialogueId": "SYNTHETIC",
+      "clientMessageNumber": 2,
+      "expectedBankMessageNumber": 2,
+      "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA3MSszMDArU1lOVEhFVElDKzInSEtFTkQ6MjoxK1NZTlRIRVRJQydITkhCUzozOjErMic=",
+      "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEyOSszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAxMDA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMTAwOjpQVUJMSUMtQ0xPU0UtUkVQTFknSE5IQlM6NDoxKzIn",
+      "issues": [
+        "StatusNeedsReview"
+      ],
+      "outcome": "NeedsReview",
+      "closeReported": true,
+      "abortReported": false
+    }
+  ]
+}
