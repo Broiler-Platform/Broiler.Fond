@@ -4,7 +4,7 @@ namespace Broiler.Fond.Kernel.FinTs;
 public enum FinTsPinTanInitializationIssue
 {
     None = 0, RequestKindMismatch = 1, ParameterSourceMismatch = 2, BindingNeedsReview = 4,
-    EnvelopeIdentityMismatch = 8, ResponseNeedsReview = 16, StatusNeedsReview = 32, ParametersNeedReview = 64,
+    EnvelopeIdentityMismatch = 8, ResponseNeedsReview = 16, StatusNeedsReview = 32, ParametersNeedReview = 64, ProceduresNeedReview = 128, RequirementsNeedReview = 256,
 }
 
 /// <summary>Pure semantic comparison for one assembled initialization candidate and one bound response.
@@ -29,7 +29,11 @@ public sealed class FinTsPinTanInitializationEvidence
     private bool CanCompareParameters => Request.SignatureEvidence.Request.Initialization is not null && ReferenceEquals(Parameters.Source, Response);
 
     public static FinTsPinTanInitializationEvidence Evaluate(FinTsPinTanResponseBinding binding, FinTsParameterSet parameters,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default) => EvaluateCore(binding, parameters, null, null, cancellationToken);
+
+    internal static FinTsPinTanInitializationEvidence EvaluateCore(FinTsPinTanResponseBinding binding, FinTsParameterSet parameters,
+        FinTsTanParameterSet? procedures, FinTsPermittedProcedureSet? permissions, CancellationToken cancellationToken,
+        FinTsPinTanParameterSet? pinTan = null, FinTsReadParameterSet? reads = null)
     {
         ArgumentNullException.ThrowIfNull(binding); ArgumentNullException.ThrowIfNull(parameters); cancellationToken.ThrowIfCancellationRequested();
         var issues = FinTsPinTanInitializationIssue.None;
@@ -43,6 +47,7 @@ public sealed class FinTsPinTanInitializationEvidence
         { return new(binding, parameters, issues, FinTsInitializationIssue.None); }
 
         var response = binding.Response;
+        bool procedureSource = ReferenceEquals(procedures?.Source, parameters) && ReferenceEquals(permissions?.Source, response);
         if (response.PinTanEnvelope is { } envelope)
         {
             var key = envelope.SecurityHeader.Fields[6].Elements;
@@ -63,9 +68,11 @@ public sealed class FinTsPinTanInitializationEvidence
             foreach (var reply in segment.Replies)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                if (!seen.Add(reply.Code) || !reply.ElementReference.IsEmpty || reply.Parameters.Any(p => !p.IsEmpty))
+                bool permission = procedureSource && role == FinTsPinTanRequestSegmentRole.Preparation &&
+                    permissions!.Reports.Any(r => ReferenceEquals(r.Reply, reply));
+                if (!seen.Add(reply.Code) || !reply.ElementReference.IsEmpty || !permission && reply.Parameters.Any(p => !p.IsEmpty))
                 { issues |= FinTsPinTanInitializationIssue.StatusNeedsReview; }
-                bool supported = segment.IsMessageLevel ? reply.Code is "0010" or "0020" : reply.Code == "0020";
+                bool supported = permission || (segment.IsMessageLevel ? reply.Code is "0010" or "0020" : reply.Code == "0020");
                 if (role == FinTsPinTanRequestSegmentRole.Preparation && reply.Code == "3050" && (parameters.Bank is not null || parameters.User is not null))
                 { supported = true; }
                 if (!supported) { issues |= FinTsPinTanInitializationIssue.StatusNeedsReview; }
@@ -76,8 +83,11 @@ public sealed class FinTsPinTanInitializationEvidence
             }
         }
         if (!messageExecution && !(identityExecution && preparationExecution)) { issues |= FinTsPinTanInitializationIssue.StatusNeedsReview; }
+        var interpreted = procedureSource ? procedures!.Advertisements.Select(a => a.Source).ToList() : [];
+        if (procedureSource && ReferenceEquals(pinTan?.Source, parameters)) { interpreted.AddRange(pinTan!.Advertisements.Select(a => a.Source)); }
+        if (procedureSource && ReferenceEquals(reads?.Source, parameters)) { interpreted.AddRange(reads!.Advertisements.Select(a => a.Source)); }
         var parameterIssues = FinTsInitializationEvidence.ParameterIssues(initialization!.Identification, initialization.Preparation, parameters,
-            request.ExpectedUserId, cancellationToken);
+            request.ExpectedUserId, cancellationToken, interpreted);
         if (parameterIssues != FinTsInitializationIssue.None) { issues |= FinTsPinTanInitializationIssue.ParametersNeedReview; }
         cancellationToken.ThrowIfCancellationRequested();
         return new(binding, parameters, issues, parameterIssues);

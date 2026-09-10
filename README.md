@@ -81,6 +81,30 @@ or payment instructions.
 > envelope identities, retaining missing data and version changes without activation.
 > Assembled synchronization now checks report and recovery scope, retaining exact
 > values and requiring close/reinitialization after matching observations.
+> An assembled initialization attempt now pins one candidate, returns scoped
+> evidence once and releases pending metadata on terminal outcomes or disposal.
+> An assembled synchronization attempt now owns candidate/recovery metadata and
+> returns evidence once under a fixed deadline, requiring closing/reinitialization.
+> PIN/TAN closing candidates now bind synchronization dialogue and identity scope,
+> encoding PIN-only envelopes with exact framing and failed-output cleanup.
+> Assembled closing replies now bind actual segment roles, dialogue and envelope
+> identity, distinguishing reported closure, abort and unresolved observations.
+> A closing attempt now owns one candidate and deadline, returns scoped evidence
+> once, and releases metadata after closure, abort, review or abandonment.
+> An explicit initialization path now combines returned TAN procedures and
+> permission reports with exact source checks and one-time evidence handoff.
+> Combined initialization now checks HIPINS length bounds and reported TAN flags,
+> preserving missing or conflicting requirements without granting permission.
+> First-read signature context now binds returned initialization evidence to
+> dialogue, counters and unchanged procedure selection without signing a request.
+> Initialization now integrates returned read advertisements; first-read account
+> checks compare explicit permissions and request options without enabling reads.
+> First-read credential comparison now checks supplied PIN/TAN bytes against
+> reported length and format requirements without retaining or consuming them.
+> PIN-only read trailers now validate owned staging bytes against reported bounds
+> and clear temporary or failed output bytes through expiry and cancellation.
+> Plain first-read assembly now preserves bound fields and segment roles,
+> computes exact framing and clears staged or failed whole-message output.
 > The host remains an inert development shell.
 > It has no bank connection, credential handling,
 > persistence, payment, transaction-sync, or graphical UI implementation. It is

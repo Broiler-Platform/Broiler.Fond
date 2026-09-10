@@ -264,6 +264,112 @@ submission evidence or replay protection. Shared report checks retain the unsign
 comparator's restrictions. See
 [ADR 0041](docs/adr/0041-pin-tan-synchronization-response-semantics.md).
 
+The assembled initialization attempt now pins one immutable candidate, recomputes
+response checks and returns scoped evidence once under an absolute deadline.
+Terminal outcomes and disposal release pending metadata; late cancellation,
+expiry or clock failure withhold evidence. Diagnostics contain scalar fields only.
+It takes no credentials or encoded output and proves no transmission, session
+authentication or cross-instance replay protection. See
+[ADR 0042](docs/adr/0042-pin-tan-initialization-attempt-lifecycle.md).
+
+The assembled synchronization attempt now pins candidate and recovery context,
+rejects invalid recovery inputs before ownership and returns scoped evidence once.
+Every terminal path releases both references; snapshots contain scalar diagnostics.
+Matching evidence requires closing/reinitialization and never applies identifiers
+or counters. Its deadline ends at handoff and does not time subsequent closing.
+No credentials, output buffers, authentication or transmission are owned here. See
+[ADR 0043](docs/adr/0043-pin-tan-synchronization-attempt-lifecycle.md).
+
+PIN/TAN dialogue-end encoding now requires matching synchronization evidence and
+explicit closing header/request metadata. It binds dialogue, counters, identity,
+profile and procedure before accessing a PIN owner. The PIN-only envelope uses
+bounded staging cleared on every exit and erases published output on late failure;
+successful caller output must be cleared separately. It applies no recovery values,
+consumes no lifecycle handoff and proves no closure or authentication. See
+[ADR 0044](docs/adr/0044-pin-tan-dialogue-end-context-encoding.md).
+
+Assembled closing-response comparison now requires the exact candidate dialogue,
+counters, profile and envelope identity. Replies map to actual outgoing roles;
+signature/wrapper success cannot qualify as HKEND termination. Closure and abort
+remain distinct from review; raw flags survive foreign scope and must not be used
+as matching outcomes. Comparison consumes no response and proves no socket
+closure, authentication or session readiness. See
+[ADR 0045](docs/adr/0045-pin-tan-closing-response-binding.md).
+
+The assembled closing attempt now pins one candidate, recomputes response checks
+and returns scoped closure/abort/review evidence once under an absolute deadline.
+Every terminal outcome releases the pending candidate and inherited synchronization
+metadata; snapshots contain scalar diagnostics. Reported closure requires fresh
+initialization; an abort cannot restart closing. The synchronization and closing
+phases have separate deadlines and no automatic dispatch or cross-instance replay
+registry. Credentials, output buffers and transport remain outside this owner. See
+[ADR 0046](docs/adr/0046-pin-tan-closing-attempt-lifecycle.md).
+
+The explicit assembled initialization procedure path now recognizes parsed HITANS
+and preparation-scoped 3920 observations only from the same bound response. It
+retains all other initialization checks, rejects source mixing and withholds matching
+objects for ambiguous or missing selection/permission evidence. The initialization
+attempt hands combined evidence out once under its existing deadline. Component
+execution evidence alone does not qualify a procedure; combined issues and the
+transition must be inspected. Activation remains pending. See
+[ADR 0047](docs/adr/0047-assembled-initialization-procedure-integration.md).
+
+Combined initialization now integrates HIPINS only from the same parameter tree
+and bound response as the TAN/permission evidence. Missing bounds remain unknown;
+zero or conflicting lengths, duplicate flags and unsupported versions require
+review. Only a fully matching combined result exposes qualified operation flags;
+N grants no permission or SCA exemption. One-time handoff shares the initialization
+deadline and terminal cleanup. No credential validation or HIPINS/HITANS length
+precedence is implemented. See
+[ADR 0048](docs/adr/0048-assembled-initialization-hipins-requirements.md).
+
+First-read signature context now reuses the complete returned initialization
+requirements result, requiring the same dialogue, next counters, original identity
+and unchanged procedure selection. Matching component evidence cannot bypass
+outer requirements issues. Qualified objects come from the exact returned sources;
+unlisted operations, continuation tokens and any unresolved context require review.
+This pure comparator adds no replay gate, account authorization, credential access,
+signature assembly or transport. See
+[ADR 0049](docs/adr/0049-first-read-pin-tan-signature-context.md).
+
+Initialization can now explicitly integrate read schemas from the exact shared
+parameter tree. Known read-advertisement references bind to preparation; unknown
+versions and unrelated data remain unresolved. The initialization attempt shares
+its existing one-time handoff and cleanup across the new acceptance path.
+First-read single-account comparison reuses permission, identity, advertisement
+and request-option checks. Missing/duplicate observations, unsupported signature
+counts and unhandled limits require review. Only the complete outer result exposes
+qualified account/advertisement objects. No account authorization, credential access,
+state activation or sending is added. See
+[ADR 0050](docs/adr/0050-initialization-read-capability-integration.md).
+
+First-read credential comparison now checks one supplied PIN or TAN against a
+fully matching account/capability context. It preserves missing bounds, applies
+reported TAN maxima independently and checks numeric/text formats. The result is
+scalar flags only; the comparator retains no credential bytes or lengths, accesses
+no credential owner and leaves input unchanged. Callers must clear their buffers.
+A matching value does not prove credential completeness, TAN placement, challenge
+scope, authenticity or SCA exemption. See
+[ADR 0051](docs/adr/0051-first-read-credential-requirement-comparison.md).
+
+PIN-only first-read trailer encoding now checks reported bounds on the actual
+owned PIN staging bytes. Unresolved context and missing bounds fail before owner
+access; invalid text or out-of-range PINs emit no output. Shared cleanup clears
+temporary buffers and any secret prefix copied before a late failure. Cancellation
+clears the owner, and encoding does not renew its lifetime. A successful PIN-only
+component does not establish that TAN omission is permitted or that the request
+is ready to send. See
+[ADR 0052](docs/adr/0052-first-read-pin-only-trailer-encoding.md).
+
+Plain first-read PIN-only assembly now preserves the exact bound dialogue,
+signature/read fields and logical segment roles. It computes final framing in
+bounded staging and validates the actual owned PIN through the trailer writer.
+Failure publishes no message; a late failure erases the entire copied message
+prefix. Only public metadata enters string building. Successful output contains
+plaintext PIN bytes that the caller must clear. Assembly grants no TAN omission,
+SCA readiness or sending authority. See
+[ADR 0053](docs/adr/0053-first-read-pin-only-request-assembly.md).
+
 ## Supported versions
 
 There are no supported public versions yet.

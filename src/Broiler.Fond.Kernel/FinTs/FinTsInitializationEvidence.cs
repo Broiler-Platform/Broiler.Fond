@@ -74,7 +74,7 @@ public sealed class FinTsInitializationEvidence
     }
 
     internal static FinTsInitializationIssue ParameterIssues(FinTsInitializationIdentification identity, FinTsInitializationPreparation preparation,
-        FinTsParameterSet parameters, string? expectedUserId, CancellationToken cancellationToken)
+        FinTsParameterSet parameters, string? expectedUserId, CancellationToken cancellationToken, IReadOnlyCollection<FinTsSegment>? interpreted = null)
     {
         var issues = FinTsInitializationIssue.None;
         if (parameters.Bank is not { } bank) { issues |= FinTsInitializationIssue.MissingBankParameters; }
@@ -105,7 +105,7 @@ public sealed class FinTsInitializationEvidence
             if (connection[2].HeaderText() != identity.Country || connection.Count != 4 || connection[3].HeaderText() != identity.Institution)
             { issues |= FinTsInitializationIssue.AccountInstitutionMismatch; }
         }
-        if (parameters.UninterpretedSegments.Count != 0) { issues |= FinTsInitializationIssue.UninterpretedParameters; }
+        if (parameters.UninterpretedSegments.Any(s => interpreted is null || !interpreted.Contains(s))) { issues |= FinTsInitializationIssue.UninterpretedParameters; }
         cancellationToken.ThrowIfCancellationRequested();
         return issues;
     }

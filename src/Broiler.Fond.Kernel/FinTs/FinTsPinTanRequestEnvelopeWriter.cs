@@ -68,10 +68,10 @@ public static class FinTsPinTanRequestEnvelopeWriter
         }
     }
 
-    private static string PublicPrefix(FinTsPinTanSignatureHeader header)
+    internal static string PublicPrefix(FinTsPinTanSignatureHeader header, string messageHeader = MessageHeader)
     {
         string Text(string value) => FinTsUnsignedWireEncoding.Text(value, 30, FinTsSyntaxError.InvalidSignatureContext);
-        var output = new StringBuilder(MessageHeader).Append("HNVSK:998:3+PIN:")
+        var output = new StringBuilder(messageHeader).Append("HNVSK:998:3+PIN:")
             .Append(header.ProfileVersion.ToString(CultureInfo.InvariantCulture)).Append("+998+1+1::").Append(Text(header.SystemId)).Append("+1");
         // Reuse explicit caller-supplied signature timestamp metadata; never sample a wall clock or assert freshness.
         if (header.SecurityDate is { } date)

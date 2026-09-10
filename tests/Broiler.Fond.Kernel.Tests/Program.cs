@@ -55,6 +55,18 @@ internal static class Program
         FinTsPinTanRequestBindingTests.Run(Check);
         FinTsPinTanInitializationEvidenceTests.Run(Check);
         FinTsPinTanSynchronizationEvidenceTests.Run(Check);
+        FinTsPinTanInitializationAttemptTests.Run(Check);
+        FinTsPinTanSynchronizationAttemptTests.Run(Check);
+        FinTsPinTanDialogueEndTests.Run(Check);
+        FinTsPinTanDialogueEndResponseTests.Run(Check);
+        FinTsPinTanDialogueEndAttemptTests.Run(Check);
+        FinTsPinTanInitializationProcedureTests.Run(Check);
+        FinTsPinTanInitializationRequirementsTests.Run(Check);
+        FinTsPinTanReadSignatureContextTests.Run(Check);
+        FinTsPinTanReadCapabilityContextTests.Run(Check);
+        FinTsPinTanReadCredentialComparisonTests.Run(Check);
+        FinTsPinTanReadPinTrailerTests.Run(Check);
+        FinTsPinTanReadRequestWriterTests.Run(Check);
         StorageFormatTests.Run(Check);
 
         Check(new AccountId(42) == new AccountId(42), "Typed local IDs must retain value equality.");

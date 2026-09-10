@@ -4,7 +4,7 @@ namespace Broiler.Fond.Kernel.FinTs;
 
 public enum FinTsPinTanRequestSegmentRole
 {
-    MessageHeader, EnvelopeHeader, EnvelopeData, SignatureHeader, Identification, Preparation, Synchronization, SignatureTrailer, MessageTrailer,
+    MessageHeader, EnvelopeHeader, EnvelopeData, SignatureHeader, Identification, Preparation, Synchronization, SignatureTrailer, MessageTrailer, DialogueEnd,
 }
 
 /// <summary>Credential-free description of one actual outgoing segment position, including reserved wrapper numbers.</summary>
@@ -114,11 +114,11 @@ public sealed class FinTsPinTanResponseBinding
             if (segment.Code == "HIRMS") { continue; }
             int? expected = segment.Code switch
             {
-                "HIBPA" or "HIUPA" or "HIUPD" or "HIPINS" or "HITANS" => request.PreparationNumber,
+                "HIBPA" or "HIUPA" or "HIUPD" or "HIPINS" or "HITANS" or "HISALS" or "HISPAS" => request.PreparationNumber,
                 "HISYN" => request.SynchronizationNumber,
                 _ => null,
             };
-            bool supported = (segment.Code, segment.Version) is ("HIBPA", 3) or ("HIUPA", 4) or ("HIUPD", 6) or ("HIPINS", 1) or ("HITANS", 6 or 7) or ("HISYN", 4);
+            bool supported = (segment.Code, segment.Version) is ("HIBPA", 3) or ("HIUPA", 4) or ("HIUPD", 6) or ("HIPINS", 1) or ("HITANS", 6 or 7) or ("HISYN", 4) or ("HISALS", 6 or 7 or 8) or ("HISPAS", 1 or 2 or 3);
             if (!supported) { issues |= FinTsPinTanResponseBindingIssue.UninterpretedData; }
             if (segment.Code == "HISYN" && expected is null || expected is not null && segment.Reference != expected)
             { issues |= FinTsPinTanResponseBindingIssue.SegmentRoleMismatch; }

@@ -477,3 +477,157 @@ mandatory close/reinitialize next steps, null/cancellation/concurrency behavior 
 message-recovery envelope-writer integration. Shared report-check extraction retains
 all unsigned behavior. See
 [ADR 0041](../../../../docs/adr/0041-pin-tan-synchronization-response-semantics.md).
+
+## Assembled PIN/TAN initialization attempt traces
+
+`pin-tan-initialization-attempt-v1.json` adds thirteen independent lifecycle traces
+with exact state, transition, count and evidence-handoff expectations. Cases cover
+both profiles, foreign references, scoped review, cancellation, disposal, timeout,
+deadline nonrenewal, clock regression and wrong candidate kind.
+
+The .NET suite additionally checks exact pending references, cleanup at processing
+boundaries, clock exceptions, reentrant abandonment, scalar diagnostics and
+concurrent one-time handoff. Data are synthetic; the attempt accepts no credential
+owners or encoded request bytes. See
+[ADR 0042](../../../../docs/adr/0042-pin-tan-initialization-attempt-lifecycle.md).
+
+## Assembled PIN/TAN synchronization attempt traces
+
+`pin-tan-synchronization-attempt-v1.json` adds twenty-one independent lifecycle
+traces with public candidate, recovery and response inputs and explicit expected
+transitions, counts and evidence handoffs. The 228 checks cover both profiles,
+mandatory closing/reinitialization, foreign scope, scoped review/abort, recovery
+bounds and replacement rejection, terminal cleanup, deadline nonrenewal, late
+cancellation/expiry/clock faults and concurrent one-time handoff. Snapshots remain
+scalar; the exact recovery context survives only in caller-owned evidence.
+The attempt neither applies reported values nor performs closing. See
+[ADR 0043](../../../../docs/adr/0043-pin-tan-synchronization-attempt-lifecycle.md).
+
+## PIN/TAN dialogue-end context and encoding vectors
+
+`pin-tan-dialogue-end-v1.json` adds twenty independent closing candidates, nested
+synchronization inputs, expected context flags and complete envelope/payload bytes.
+The 187 checks cover both profiles, assignment/recovery, escaped text, maximum PIN
+length, identity/counter/profile mismatches and bank abort. Additional checks cover
+credential-kind/preflight rejection, invalid/disposed PINs, cancellation/expiry/clock
+failure at seven boundaries, whole-envelope cleanup, exact source preservation and
+culture independence. Every value is public synthetic data; no bank traffic or real
+credential is recorded. See
+[ADR 0044](../../../../docs/adr/0044-pin-tan-dialogue-end-context-encoding.md).
+
+## Assembled PIN/TAN closing response vectors
+
+`pin-tan-dialogue-end-response-v1.json` adds forty-six independent fixtures with
+nested closing context, complete response bytes, expected reference roles, binding
+and semantic flags, raw termination observations and qualified outcomes. The 409
+checks cover both profiles, escaped identifiers, recovered counters, closure/abort,
+foreign scope, all mapped framing/security roles, duplicate/conflicting termination,
+unknown status and unexpected data. Additional checks compare the map with actual
+synthetic writer output, reject unresolved candidates and verify source ownership,
+immutable mappings, cancellation and concurrent pure comparison. See
+[ADR 0045](../../../../docs/adr/0045-pin-tan-closing-response-binding.md).
+
+## Assembled PIN/TAN closing attempt traces
+
+`pin-tan-dialogue-end-attempt-v1.json` adds twenty independent traces with exact
+candidate/response inputs and expected transitions, counts and evidence handoffs.
+The 260 checks cover both profiles, recovery/escaped context, closure/abort/review,
+foreign scope retention, deadline equality/nonrenewal and terminal cleanup. Added
+checks cover late expiry/cancellation/clock faults for both closure and abort,
+reentrant abandonment, immutable terminal state, scalar diagnostics, concurrent
+handoff and the exact evidence path from synchronization into closing. No attempt
+owns credentials or transport. See
+[ADR 0046](../../../../docs/adr/0046-pin-tan-closing-attempt-lifecycle.md).
+
+## Assembled initialization procedure vectors
+
+`pin-tan-initialization-procedures-v1.json` adds twenty-eight independent returned
+procedure/permission response fixtures with expected combined flags and pinned
+candidate context. The 261 checks cover both profiles, versions 6/7, missing or
+duplicate advertisements, permission scope and ambiguity, foreign identity/message
+scope, unknown data and legacy restrictions. Additional checks cover identical-byte
+source mixing, one-time combined lifecycle handoff, cross-entry-point replay,
+late failures and concurrent comparison/submission. No procedure activation or
+credential handling occurs. See
+[ADR 0047](../../../../docs/adr/0047-assembled-initialization-procedure-integration.md).
+
+## Assembled initialization HIPINS requirements fixtures
+
+`pin-tan-initialization-requirements-v1.json` adds thirty independently generated
+responses and 312 checks. Cases cover both PIN profiles, TAN versions 6/7,
+nullable/zero/conflicting bounds, absent or duplicate HIPINS, future versions,
+duplicate matching/conflicting TAN flags, absent operations, escaped labels,
+foreign references and identities, missing permissions and unsupported counts.
+Additional checks verify exact parameter-tree provenance, identical-byte source
+mixing, unchanged legacy behavior, one-time combined lifecycle handoff, replay
+rejection, late cancellation/expiry/clock failure and concurrency. All data is
+public and synthetic; no credentials are validated and no TAN flag grants an
+SCA exemption. See
+[ADR 0048](../../../../docs/adr/0048-assembled-initialization-hipins-requirements.md).
+
+## First-read PIN/TAN signature-context fixtures
+
+`pin-tan-read-signature-context-v1.json` adds thirty-seven independently generated
+contexts and 230 checks. Each retains complete synthetic initialization inputs,
+a separate unsigned read and a detached header. Cases cover HKSPA 1, HKSAL 6/7/8,
+both PIN profiles, TAN versions 6/7, foreign dialogue/counters/identity/system,
+changed selections, control/header-role mismatch, continuation tokens and missing,
+ambiguous or unsupported initialization requirements. Further checks cover exact
+returned source objects, no fallback to older advertisements, one-time handoff
+reuse, source mixing, nullable bounds, cancellation, fixed diagnostics, malformed
+inputs, cultures and concurrency. No request is signed or sent. See
+[ADR 0049](../../../../docs/adr/0049-first-read-pin-tan-signature-context.md).
+
+## Integrated first-read capability fixtures
+
+`pin-tan-read-capability-context-v1.json` adds forty-three independent contexts
+and 390 checks for explicit initialization read-schema integration and one-account
+permission/capability comparison. Cases include both PIN profiles, TAN versions
+6/7, HISALS 6/7/8 and HISPAS 1/2/3, missing/blocked/duplicate permissions, account
+and advertisement ambiguity, signature counts, limits, account identifiers,
+entry-count/national options, unsupported all-account scope, unknown data and
+foreign references. Additional checks cover shared-tree provenance, identical-byte
+copies, legacy semantics, component qualification, one-time handoff across all four
+entry points, late failures and concurrency. The older initialization fixture for
+uninterpreted read parameters now expects a recognized reference, while its
+unresolved semantic outcome remains unchanged. See
+[ADR 0050](../../../../docs/adr/0050-initialization-read-capability-integration.md).
+
+## First-read credential comparison fixtures
+
+`pin-tan-read-credential-comparison-v1.json` adds forty-five independent fixtures
+and 659 checks. Each includes public synthetic credential bytes and the complete
+returned context. Cases cover PIN boundaries, missing bounds, independent HIPINS
+and procedure TAN maxima, numeric/alphanumeric formats, both profiles, TAN versions
+6/7, decoupled input, unsupported values and unresolved capability context. An
+exhaustive octet sweep checks the supported text and numeric alphabets; other
+checks cover unchanged input, culture independence, cancellation, invalid arguments,
+repeatability and concurrency. Tests clear synthetic input buffers after use.
+No credential is consumed or request encoded. See
+[ADR 0051](../../../../docs/adr/0051-first-read-credential-requirement-comparison.md).
+
+## First-read PIN-only trailer fixtures
+
+`pin-tan-read-pin-trailer-v1.json` adds twenty-two independent wire fixtures and
+243 checks. Cases cover both profiles, TAN versions 6/7, decoupled PIN components,
+missing or contradictory bounds, exact short/long/maximum PIN behavior, Latin-1,
+control bytes, whitespace and escaped control/PIN delimiters. Additional checks
+cover output reserve, preflight without owner access, wrong credential kind,
+unavailable owners, and cancellation/disposal/expiry/clock failures at every
+ownership boundary. Tests inspect actual owned-array erasure and failed-output
+prefix cleanup, plus cultures and concurrency. Parsing of credential-bearing
+output is restricted to these public synthetic fixtures. See
+[ADR 0052](../../../../docs/adr/0052-first-read-pin-only-trailer-encoding.md).
+
+## First-read PIN-only request-assembly fixtures
+
+`pin-tan-read-request-assembly-v1.json` adds thirty-one independent full-message
+fixtures and 334 checks. Cases cover PIN profiles, TAN versions, discovery/balance
+request versions, exact framing, escaped dialogue/account/control/PIN fields,
+preserved request options, requirement failures and unsupported account scope.
+Additional checks cover untouched source frames, preflight reserve, wrong owner
+kind, null inputs, cultures, concurrency and ownership failures at all seven
+nested-trailer/whole-message boundaries. Tests verify actual PIN-array erasure
+and complete failed-output prefix cleanup. Production performs no parsing of
+credential-bearing output; all fixtures are public synthetic data. See
+[ADR 0053](../../../../docs/adr/0053-first-read-pin-only-request-assembly.md).

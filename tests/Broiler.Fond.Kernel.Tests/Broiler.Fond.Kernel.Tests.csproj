@@ -43,5 +43,17 @@
     <EmbeddedResource Include="Fixtures/FinTs/pin-tan-request-binding-v1.json" LogicalName="FinTs.pin-tan-request-binding-v1.json" />
     <EmbeddedResource Include="Fixtures/FinTs/pin-tan-initialization-evidence-v1.json" LogicalName="FinTs.pin-tan-initialization-evidence-v1.json" />
     <EmbeddedResource Include="Fixtures/FinTs/pin-tan-synchronization-evidence-v1.json" LogicalName="FinTs.pin-tan-synchronization-evidence-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-initialization-attempt-v1.json" LogicalName="FinTs.pin-tan-initialization-attempt-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-synchronization-attempt-v1.json" LogicalName="FinTs.pin-tan-synchronization-attempt-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-dialogue-end-v1.json" LogicalName="FinTs.pin-tan-dialogue-end-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-dialogue-end-response-v1.json" LogicalName="FinTs.pin-tan-dialogue-end-response-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-dialogue-end-attempt-v1.json" LogicalName="FinTs.pin-tan-dialogue-end-attempt-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-initialization-procedures-v1.json" LogicalName="FinTs.pin-tan-initialization-procedures-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-initialization-requirements-v1.json" LogicalName="FinTs.pin-tan-initialization-requirements-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-read-signature-context-v1.json" LogicalName="FinTs.pin-tan-read-signature-context-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-read-capability-context-v1.json" LogicalName="FinTs.pin-tan-read-capability-context-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-read-credential-comparison-v1.json" LogicalName="FinTs.pin-tan-read-credential-comparison-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-read-pin-trailer-v1.json" LogicalName="FinTs.pin-tan-read-pin-trailer-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-read-request-assembly-v1.json" LogicalName="FinTs.pin-tan-read-request-assembly-v1.json" />
   </ItemGroup>
 </Project>

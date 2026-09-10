@@ -663,11 +663,226 @@ local comparison. Execution reports do not activate authenticated sessions.
       every match; unresolved evidence stops for review without recovery application.
 - [x] Add thirty-three independent fixtures and 217 checks, including source mixing,
       report ambiguity, recovery bounds, writer integration and concurrent comparison.
-- [ ] Add assembled attempt/closing lifecycle ownership, procedure/challenge checks,
+- [x] Add bounded assembled synchronization attempt ownership with mandatory
+      closing/reinitialization handoff (ADR 0043).
+- [x] Add bounded assembled closing lifecycle ownership (ADR 0046).
+- [ ] Add procedure/challenge checks,
       secure input and authenticated transport.
 
 [ADR 0041](adr/0041-pin-tan-synchronization-response-semantics.md) defines the
 local comparison. Matching synchronization never activates a banking session.
+
+## Assembled PIN/TAN initialization attempt lifecycle
+
+- [x] Pin one initialization candidate without taking credentials or encoded output;
+      recompute binding and semantics against its exact metadata.
+- [x] Leave foreign message/reference responses pending, return scoped evidence once
+      for execution or review, and preserve immutable terminal states.
+- [x] Enforce an absolute deadline with cancellation and clock-failure checks before
+      handoff; release metadata on every terminal outcome and disposal.
+- [x] Add thirteen independent traces and 156 checks, including source ownership,
+      late failures, nonrenewal, scalar diagnostics and concurrent response handoff.
+- [x] Add assembled synchronization lifecycle and closing/reinitialization handoff.
+- [x] Add bounded assembled closing lifecycle (ADR 0046).
+- [ ] Add procedure/challenge integration,
+      secure input and authenticated transport.
+
+[ADR 0042](adr/0042-pin-tan-initialization-attempt-lifecycle.md) defines the local
+attempt. Recording a candidate does not prove transmission or activate a session.
+
+## Assembled PIN/TAN synchronization attempt lifecycle
+
+- [x] Pin one candidate and exact recovery context; reject wrong request kinds and
+      invalid recovery inputs before recording metadata.
+- [x] Preserve foreign response scope without renewing the deadline; hand scoped
+      synchronization or review evidence to the caller once.
+- [x] Require closing/reinitialization after every match, without applying reported
+      values or claiming closure; release both references on every terminal path.
+- [x] Add twenty-one independent traces and 228 checks for recovery ownership,
+      mandatory handoff, review, late failures, scalar diagnostics and concurrency.
+- [x] Add credential-aware dialogue-end context/encoding (ADR 0044).
+- [x] Add assembled closing response binding and termination semantics (ADR 0045).
+- [x] Add bounded assembled closing lifecycle (ADR 0046).
+- [ ] Add procedure/challenge integration, secure input and transport.
+
+[ADR 0043](adr/0043-pin-tan-synchronization-attempt-lifecycle.md) defines the local
+attempt. Its deadline ends at response handoff; the caller explicitly starts the
+separately bounded closing phase defined in ADR 0046.
+
+## PIN/TAN dialogue-end context and encoding
+
+- [x] Bind an explicit closing request/header to matching synchronization evidence,
+      with exact dialogue, counters, identity, system, profile and procedure scope.
+- [x] Encode a PIN-only closing envelope with HKEND at logical segment 3, exact
+      whole-message and binary lengths, and explicit caller header metadata.
+- [x] Clear bounded secret staging on every exit and erase published output on
+      late credential failure; preflight leaves caller buffers untouched.
+- [x] Add twenty independent fixtures and 187 checks for scoped context, escaping,
+      recovery counters, failure boundaries and shared-writer compatibility.
+- [x] Add assembled closing response binding/termination semantics (ADR 0045).
+- [x] Add bounded assembled closing lifecycle (ADR 0046).
+- [ ] Add secure input, authenticated transport and live qualification.
+
+[ADR 0044](adr/0044-pin-tan-dialogue-end-context-encoding.md) defines the restricted
+candidate. Successful encoding neither closes a dialogue nor activates a session.
+
+## Assembled PIN/TAN closing response binding and termination
+
+- [x] Map candidate metadata to actual encoded segment roles and versions, with
+      exact closing dialogue, independent counters and profile comparison.
+- [x] Compare envelope identity and restricted termination replies, retaining
+      raw closure/abort observations while withholding foreign or unresolved scope.
+- [x] Distinguish closure, abort and review without accepting signature/wrapper
+      success, duplicate/conflicting termination, unexpected data or unknown status.
+- [x] Add forty-six independent fixtures and 409 checks, including actual writer
+      integration, source ownership, immutable mappings and concurrent comparison.
+- [x] Add bounded closing lifecycle ownership with one-time response handling
+      and terminal cleanup (ADR 0046).
+- [ ] Add secure input and authenticated transport.
+
+[ADR 0045](adr/0045-pin-tan-closing-response-binding.md) defines the local comparison.
+Reported closure is not authenticated closure; reinitialization remains required.
+
+## Assembled PIN/TAN closing attempt lifecycle
+
+- [x] Pin one qualified closing candidate and absolute deadline, recomputing
+      reference and semantic checks from the incoming response.
+- [x] Return closure, abort or review evidence once; require fresh initialization
+      after closure and prevent another close after terminal abort.
+- [x] Keep foreign scope pending without deadline renewal; release candidate and
+      inherited synchronization metadata on every terminal outcome and disposal.
+- [x] Add twenty independent traces and 260 checks for late failures, immutable
+      outcomes, scalar diagnostics, concurrency and the synchronization handoff.
+- [x] Integrate assembled initialization procedure/permission evidence (ADR 0047).
+- [x] Add assembled HIPINS requirements integration (ADR 0048).
+- [ ] Add broader session coordination, secure input and
+      authenticated transport.
+
+[ADR 0046](adr/0046-pin-tan-closing-attempt-lifecycle.md) defines the local lifecycle.
+Synchronization and closing use separate deadlines; neither phase activates a session.
+
+## Assembled initialization procedure and permission integration
+
+- [x] Combine returned HITANS versions 6/7 and preparation-scoped 3920 reports
+      with the exact bound response and outgoing pinned selection.
+- [x] Preserve all initialization identity/status/parameter checks while recognizing
+      only parsed source objects; retain missing, ambiguous and unknown data for review.
+- [x] Add explicit one-time combined handoff through the initialization attempt,
+      with scalar procedure diagnostics and cleanup across existing failure boundaries.
+- [x] Add twenty-eight independent fixtures and 261 checks for version/profile scope,
+      source mixing, unresolved observations, legacy behavior and lifecycle integration.
+- [x] Integrate HIPINS requirements (ADR 0048).
+- [x] Reuse returned evidence in first-read signature context (ADR 0049).
+- [ ] Integrate SCA/challenge handling, secure input and authenticated transport.
+
+[ADR 0047](adr/0047-assembled-initialization-procedure-integration.md) defines the
+explicit path. Combined matching evidence does not activate or authorize a procedure.
+
+## Assembled initialization HIPINS requirements
+
+- [x] Combine HIPINS with initialization and HITANS/3920 evidence from the exact
+      same parameter tree and bound response, recognizing only parsed source segments.
+- [x] Preserve optional bounds and operation flags; require review for missing,
+      duplicate, contradictory, zero or unsupported requirement observations.
+- [x] Expose qualified TAN flags only on full combined matching evidence; keep
+      absent operations unlisted and grant no permission or SCA exemption.
+- [x] Add explicit one-time requirements handoff with scalar diagnostics and
+      existing deadline, cancellation, replay and terminal cleanup guarantees.
+- [x] Add thirty independent fixtures and 312 checks for source provenance,
+      requirement ambiguity, legacy behavior, lifecycle failures and concurrency.
+- [x] Reuse returned evidence in first-read signature context (ADR 0049).
+- [ ] Apply credential requirements and integrate session/SCA context, secure
+      input and transport.
+
+[ADR 0048](adr/0048-assembled-initialization-hipins-requirements.md) defines the
+combined path. Bounds remain reported metadata; no credentials are inspected.
+
+## First-read PIN/TAN signature context
+
+- [x] Reuse the complete returned initialization requirements result for a detached
+      first discovery/balance signature header, preserving exact source objects.
+- [x] Check dialogue and next counters, original identity/system, unchanged
+      profile/function/version, expected control reference and single-header roles.
+- [x] Require a reported operation TAN flag and reject continuation tokens;
+      withhold all qualified objects when any part of the context needs review.
+- [x] Add thirty-seven independent fixtures and 230 checks for provenance,
+      scope, unresolved requirements, lifecycle handoff reuse and concurrency.
+- [x] Integrate returned read capabilities and single-account permissions (ADR 0050).
+- [ ] Integrate credential requirements, signed read encoding, session/SCA context
+      and transport.
+
+[ADR 0049](adr/0049-first-read-pin-tan-signature-context.md) defines the pure
+comparison. Matching does not authorize an account read or consume a request.
+
+## Initialization read-capability and first-read account integration
+
+- [x] Recognize supported read-advertisement references at preparation and explicitly
+      integrate parsed schemas from the exact shared initialization parameter tree.
+- [x] Return read schemas through the existing one-time requirements handoff, with
+      shared deadline, replay rejection, foreign-scope handling and terminal cleanup.
+- [x] Compare one exact returned account's permissions, identity, advertisement
+      version and signature requirements against the first-read request.
+- [x] Reuse request-option checks and require review for unhandled limits;
+      preserve detailed component issues and qualify only the complete result.
+- [x] Add forty-three independent fixtures and 390 checks for source mixing,
+      permissions, request options, scope, limits, lifecycle failures and concurrency.
+- [x] Compare first-read credential requirements (ADR 0051).
+- [ ] Integrate owned-credential checks, signed reads, all-account capabilities,
+      session/SCA context, secure input and authenticated transport.
+
+[ADR 0050](adr/0050-initialization-read-capability-integration.md) defines the
+explicit path. Matching observations activate no capabilities or account state.
+
+## First-read credential requirement comparison
+
+- [x] Compare one supplied PIN or TAN span against a fully matching first-read
+      context, returning only scalar issues and retaining no credential bytes.
+- [x] Preserve missing PIN bounds and TAN maxima; apply known limits independently
+      and validate numeric or supported alphanumeric text without normalization.
+- [x] Reject TAN input for decoupled procedures while preserving PIN comparison;
+      keep credential completeness, placement and SCA checks separate.
+- [x] Add forty-five independent fixtures and 659 checks, including every octet,
+      unchanged buffers, cancellation, cultures and concurrent immutable inputs.
+- [x] Integrate comparison into PIN-only trailer encoding with owned credential
+      validation, expiry/cancellation checks and secret cleanup (ADR 0052).
+
+[ADR 0051](adr/0051-first-read-credential-requirement-comparison.md) defines the
+individual-value comparison. A matching result does not authorize submission.
+
+## First-read PIN-only signature-trailer encoding
+
+- [x] Encode HNSHA 2 at fixed first-read segment 4, preserving escaped control
+      and PIN bytes without accepting a TAN owner or mutating the unsigned request.
+- [x] Require full account context and known PIN bounds before owner access;
+      compare actual copied staging bytes with the reported PIN requirements.
+- [x] Preserve bounded reserve, lifetime/cancellation checks and temporary-buffer
+      erasure; zero the published prefix when a late failure withholds success.
+- [x] Add twenty-two independent fixtures and 243 checks for exact bytes,
+      preflight, all ownership failure boundaries, cultures and concurrent encoding.
+- [x] Assemble the plain PIN-only first-read message with segment/context scope
+      and whole-message cleanup (ADR 0053).
+- [ ] Integrate read envelopes, TAN/challenge and response handling.
+
+[ADR 0052](adr/0052-first-read-pin-only-trailer-encoding.md) defines the component.
+Encoding does not decide TAN omission, establish SCA readiness or authorize sending.
+
+## First-read PIN-only request assembly
+
+- [x] Assemble HNHBK/HNSHK/read/HNSHA/HNHBS with exact assigned dialogue,
+      message counters and logical segment numbers, preserving original inputs.
+- [x] Preserve explicit operation versions, account fields and optional request
+      values with delimiter escaping and an exact final byte-size calculation.
+- [x] Require the full bounded reserve before PIN access and apply the existing
+      owned-PIN trailer validation, including distinct requirement-review outcomes.
+- [x] Clear whole-message staging and any failed published prefix, retaining
+      expiry/cancellation checks through final output handoff.
+- [x] Add thirty-one independent fixtures and 334 checks for exact frames,
+      source preservation, seven ownership boundaries, cultures and concurrency.
+- [ ] Add the read security envelope and credential-free candidate metadata,
+      then integrate response binding, TAN/challenge and session coordination.
+
+[ADR 0053](adr/0053-first-read-pin-only-request-assembly.md) defines the plain
+candidate. Assembly does not authorize sending or establish TAN/SCA completeness.
 
 ## Remaining acceptance backlog
 
@@ -677,7 +892,7 @@ local comparison. Matching synchronization never activates a banking session.
 | M1-02 Profile lifecycle | Lock/unlock, one writer, encrypted generation round-trip, wrong passphrase, tamper/truncation, hostile XML/ZIP, interrupted save and prior-generation recovery, lost-key behavior; verified deletion of retained files | Pending |
 | M1-03 Identity | Store-wide allocator and atomic entity allocation, startup invariants, exhaustion, exact rediscovery, separate account/incarnation/binding identity, ambiguous and reused locators without overwrite | Allocation, startup checks, lossless locators and rediscovery planner implemented; durable/domain/connector integration and reviewed relinking pending |
 | M1-04 Simulator and diagnostics | Synthetic fixtures for success, invalid credentials, locked access, one SCA path, cancellation, timeout, maintenance, changed parameters, malformed and partial responses; sentinel-secret checks across errors and support export | Synthetic workflows, syntax/response vectors, correlation checks, structured diagnostics and preview sentinels implemented; business/security conformance, actual SCA and export integration pending |
-| M1-05 FinTS read-only slice | Registered product identity before user-facing live dialogue, initialization, BPD/UPD and capability negotiation, session-only PIN/TAN, one challenge continuation, discovery and balances | Protocol/parameter/TAN and discovery/balance schemas, unsigned read/initialization/synchronization encoding, synchronization schemas/context/closing attempt, PIN/TAN signature-header schemas/context/encoding, local credential ownership, signature-trailer encoding, plain PIN/TAN request/envelope assembly and assembled-request reference binding/initialization/synchronization semantics, dialogue-end schemas/encoding/reply evidence, initialization schemas/response scope/attempt, selected-account read context/attempt, unavailable and all-account discovery evidence/attempt, restricted challenge comparison and synthetic SCA state implemented; recovery application, full security codecs, authenticated security, activation, transport and live ingestion pending |
+| M1-05 FinTS read-only slice | Registered product identity before user-facing live dialogue, initialization, BPD/UPD and capability negotiation, session-only PIN/TAN, one challenge continuation, discovery and balances | Protocol/parameter/TAN and discovery/balance schemas, unsigned read/initialization/synchronization encoding, synchronization schemas/context/closing attempt, PIN/TAN signature-header schemas/context/encoding, local credential ownership, signature-trailer encoding, plain PIN/TAN request/envelope assembly and assembled-request reference binding/initialization/synchronization semantics and initialization/synchronization attempts, assembled initialization procedure/permission/HIPINS requirements integration, first-read PIN/TAN signature context, single-account read-capability integration, credential requirement comparison and PIN-only read trailer/request assembly, PIN/TAN dialogue-end context/encoding/response binding/termination/attempt, dialogue-end schemas/encoding/reply evidence, initialization schemas/response scope/attempt, selected-account read context/attempt, unavailable and all-account discovery evidence/attempt, restricted challenge comparison and synthetic SCA state implemented; recovery application, full security codecs, authenticated security, activation, transport and live ingestion pending |
 | M1-06 Windows setup | Manual setup UI and endpoint-review integration, session invalidation on endpoint edits, application lock, account selection/list/detail, progress, actionable errors, keyboard/screen-reader/high-contrast/text-scale operation | Domain endpoint model implemented; UI pending |
 | M1-07 Truthful cached values | Exact amounts/currency and bank/retrieval timestamps, booked/available distinction, missing as unavailable, stale/partial/offline states, no mixed-currency totals, durable replay evidence, unsupported account shells | Exact money and pure account-value/freshness/total projections implemented; connector, replay, durable storage and UI integration pending |
 | M1-08 Disconnect and support | Session-buffer cleanup, connection removal with separate cached-data deletion and purge, encrypted local diagnostics, previewed redacted export, no reporting channel | Test-only synthetic buffer cleanup and in-memory structured preview implemented; live session lifecycle, deletion/purge, encrypted logs and export UI pending |
@@ -725,6 +940,18 @@ PIN/TAN request-envelope assembly adds seventeen independent vectors and 207 che
 assembled PIN/TAN reference binding adds twenty-three independent vectors and 361 checks;
 assembled PIN/TAN initialization semantics adds thirty independent vectors and 199 checks;
 assembled PIN/TAN synchronization semantics adds thirty-three independent vectors and 217 checks;
+assembled PIN/TAN initialization attempts add thirteen independent traces and 156 checks;
+assembled PIN/TAN synchronization attempts add twenty-one independent traces and 228 checks;
+PIN/TAN dialogue-end context/encoding adds twenty independent vectors and 187 checks;
+PIN/TAN closing response binding/termination adds forty-six independent vectors and 409 checks;
+PIN/TAN closing attempts add twenty independent traces and 260 checks;
+assembled initialization procedure integration adds twenty-eight independent vectors and 261 checks;
+assembled initialization HIPINS requirements add thirty independent vectors and 312 checks;
+first-read PIN/TAN signature context adds thirty-seven independent vectors and 230 checks;
+integrated first-read capability context adds forty-three independent vectors and 390 checks;
+first-read credential requirement comparison adds forty-five independent vectors and 659 checks;
+first-read PIN-only trailer encoding adds twenty-two independent vectors and 243 checks;
+first-read PIN-only request assembly adds thirty-one independent vectors and 334 checks;
 storage adds five independent vectors and 1,752 checks. The checks include a
 100,000-record revision chain and 10,000-account rediscovery/value projections.
 
@@ -849,8 +1076,68 @@ synchronization semantics, thirty-three independent fixtures and 217 new checks,
 with zero build warnings or errors. All FinTS fixtures reproduced byte-for-byte
 and documentation links passed.
 
-Next implementation increment: bounded assembled PIN/TAN initialization attempt
-lifecycle under M1-05, with explicit candidate/response ownership and terminal cleanup.
+The full Windows CI command passed on 2026-09-09 with the assembled PIN/TAN
+initialization attempt, thirteen independent traces and 156 new checks, with zero
+build warnings or errors. All FinTS fixtures reproduced byte-for-byte and
+documentation links passed.
+
+The full Windows CI command passed on 2026-09-09 with the assembled PIN/TAN
+synchronization attempt, twenty-one independent traces and 228 new checks, with
+zero build warnings or errors. All FinTS fixtures reproduced byte-for-byte and
+documentation links passed.
+
+The full Windows CI command passed on 2026-09-09 with PIN/TAN dialogue-end
+context/encoding, twenty independent vectors and 187 new checks, with zero build
+warnings or errors. All FinTS fixtures reproduced byte-for-byte and documentation
+links passed.
+
+The full Windows CI command passed on 2026-09-09 with assembled PIN/TAN closing
+response binding/termination, forty-six independent vectors and 409 new checks,
+with zero build warnings or errors. All FinTS fixtures reproduced byte-for-byte
+and documentation links passed.
+
+The full Windows CI command passed on 2026-09-09 with the assembled PIN/TAN
+closing attempt, twenty independent traces and 260 new checks, with zero build
+warnings or errors. All FinTS fixtures reproduced byte-for-byte and documentation
+links passed.
+
+The full Windows CI command passed on 2026-09-09 with assembled initialization
+procedure/permission integration, twenty-eight independent vectors and 261 new
+checks, with zero build warnings or errors. All FinTS fixtures reproduced
+byte-for-byte and documentation links passed.
+
+The full Windows CI command passed on 2026-09-10 with assembled initialization
+HIPINS requirements, thirty independent vectors and 312 new checks, with zero
+build warnings or errors. All FinTS fixtures reproduced byte-for-byte and
+documentation links passed.
+
+The full Windows CI command passed on 2026-09-10 with first-read PIN/TAN
+signature context, thirty-seven independent vectors and 230 new checks, with zero
+build warnings or errors. All FinTS fixtures reproduced byte-for-byte and
+documentation links passed.
+
+The full Windows CI command passed on 2026-09-10 with initialization read-schema
+integration and first-read account capability checks, forty-three independent
+vectors and 390 new checks, with zero build warnings or errors. All FinTS fixtures
+reproduced byte-for-byte and documentation links passed.
+
+The full Windows CI command passed on 2026-09-10 with first-read credential
+requirement comparison, forty-five independent vectors and 659 new checks, with
+zero build warnings or errors. All FinTS fixtures reproduced byte-for-byte and
+documentation links passed.
+
+The full Windows CI command passed on 2026-09-10 with first-read PIN-only trailer
+encoding, twenty-two independent vectors and 243 new checks, with zero build
+warnings or errors. All FinTS fixtures reproduced byte-for-byte and documentation
+links passed.
+
+The full Windows CI command passed on 2026-09-10 with first-read PIN-only request
+assembly, thirty-one independent vectors and 334 new checks, with zero build
+warnings or errors. All FinTS fixtures reproduced byte-for-byte and documentation
+links passed.
+
+Next implementation increment: first-read PIN-only request-envelope assembly with
+credential-free candidate metadata under M1-05, without activation.
 M1-01 remains open for full storage schemas,
 calibration and review. Registration,
 legal review, controlled-account access, and release-owner assignment require

@@ -1373,7 +1373,7 @@ pin_tan_initialization_vector("foreign-user", ["ParametersNeedReview"], ["UserMi
 pin_tan_initialization_vector("foreign-account-customer", ["ParametersNeedReview"], ["CustomerMismatch"], source_index=8)
 pin_tan_initialization_vector("foreign-account-bank", ["ParametersNeedReview"], ["AccountInstitutionMismatch"], source_index=9)
 pin_tan_initialization_vector("parameter-update-at-preparation-four", source_index=10, bank_version=2, user_version=3)
-pin_tan_initialization_vector("uninterpreted-parameters", ["BindingNeedsReview", "ParametersNeedReview"], ["UninterpretedParameters"], source_index=11)
+pin_tan_initialization_vector("uninterpreted-parameters", ["ParametersNeedReview"], ["UninterpretedParameters"], source_index=11)
 pin_tan_initialization_vector("receipt-only", ["StatusNeedsReview"], source_index=12)
 pin_tan_initialization_vector("bank-error-with-parameters", ["ResponseNeedsReview", "StatusNeedsReview"], source_index=13)
 pin_tan_initialization_vector("signature-success-is-not-identification", ["StatusNeedsReview"], edits=[(b"HIRMS:3:2:3", b"HIRMS:3:2:2")])
@@ -1469,3 +1469,791 @@ pin_tan_synchronization_vector("returned-parameters-need-integration", ["Synchro
 target.with_name("pin-tan-synchronization-evidence-v1.json").write_text(
     json.dumps({"schemaVersion": 1, "vectors": pin_tan_synchronization_vectors}, indent=2) + "\n", encoding="utf-8")
 print(f"Generated {len(pin_tan_synchronization_vectors)} public synthetic assembled PIN/TAN synchronization-evidence vectors.")
+
+pin_tan_initialization_attempt_vectors = []
+
+
+def owned_init_step(action, transition, state, at=0, candidates=1, handled=0, evidence=False, index=0):
+    return {"action": action, "transition": transition, "state": state, "atMilliseconds": at,
+            "candidates": candidates, "handled": handled, "evidence": evidence, "index": index}
+
+
+def owned_init_trace(name, steps, source=0, responses=None, wrong_kind=False):
+    context = signature_context_vectors[2] if wrong_kind else pin_tan_initialization_vectors[source]["context"]
+    selected = [pin_tan_initialization_vectors[source]] if responses is None else responses
+    pin_tan_initialization_attempt_vectors.append({"name": name, "context": context,
+        "responses": [{"wireBase64": v["responseBase64"], "wrapped": v["wrapped"]} for v in selected], "steps": steps})
+
+
+owned_start = owned_init_step("start", "RequestRecorded", "AwaitingResponse")
+owned_done = owned_init_step("response", "ExecutionReported", "ExecutionReported", handled=1, evidence=True)
+owned_init_trace("one-time-execution-handoff", [owned_start, owned_done,
+    owned_init_step("response", "Terminal", "ExecutionReported", handled=1), owned_init_step("start", "Terminal", "ExecutionReported", handled=1)])
+owned_init_trace("one-step-profile", [owned_start, owned_done], source=1)
+owned_init_trace("foreign-segment-keeps-candidate", [owned_start, owned_init_step("response", "ContextMismatch", "AwaitingResponse"),
+    owned_init_step("response", "ExecutionReported", "ExecutionReported", handled=1, evidence=True, index=1)], responses=[pin_tan_initialization_vectors[5], pin_tan_initialization_vectors[0]])
+owned_init_trace("foreign-message-keeps-candidate", [owned_start, owned_init_step("response", "ContextMismatch", "AwaitingResponse"),
+    owned_init_step("response", "ExecutionReported", "ExecutionReported", handled=1, evidence=True, index=1)], responses=[request_binding_vectors[12], pin_tan_initialization_vectors[0]])
+owned_init_trace("scoped-user-review-consumed-once", [owned_start, owned_init_step("response", "RejectedForReview", "NeedsReview", handled=1, evidence=True),
+    owned_init_step("response", "Terminal", "NeedsReview", handled=1)], source=7)
+owned_init_trace("missing-envelope-ends-for-review", [owned_start, owned_init_step("response", "RejectedForReview", "NeedsReview", handled=1, evidence=True)], source=29)
+owned_init_trace("explicit-cancellation", [owned_start, owned_init_step("cancel", "Cancelled", "Cancelled", at=50), owned_init_step("response", "Terminal", "Cancelled", at=50)])
+owned_init_trace("stop-before-start", [owned_init_step("stop", "Stopped", "Stopped", candidates=0), owned_init_step("start", "Terminal", "Stopped", candidates=0)])
+owned_init_trace("deadline-equality", [owned_start, owned_init_step("response", "Terminal", "TimedOut", at=10000)])
+owned_init_trace("mismatch-does-not-renew-time", [owned_start, owned_init_step("response", "ContextMismatch", "AwaitingResponse", at=9999),
+    owned_init_step("response", "Terminal", "TimedOut", at=10000, index=1)], responses=[request_binding_vectors[12], pin_tan_initialization_vectors[0]])
+owned_init_trace("clock-regression", [owned_start, owned_init_step("snapshot", "Snapshot", "ClockInvalid", at=-1)])
+owned_init_trace("wrong-candidate-kind", [owned_init_step("start", "RejectedForReview", "NeedsReview", candidates=0)], wrong_kind=True)
+owned_init_trace("dispose-pending-metadata", [owned_start, owned_init_step("dispose", "Stopped", "Stopped"), owned_init_step("response", "Terminal", "Stopped")])
+target.with_name("pin-tan-initialization-attempt-v1.json").write_text(
+    json.dumps({"schemaVersion": 1, "vectors": pin_tan_initialization_attempt_vectors}, indent=2) + "\n", encoding="utf-8")
+print(f"Generated {len(pin_tan_initialization_attempt_vectors)} public synthetic assembled PIN/TAN initialization-attempt traces.")
+
+pin_tan_synchronization_attempt_vectors = []
+
+
+def owned_sync_trace(name, steps, source=0, responses=None, wrong_kind=False):
+    selected = pin_tan_synchronization_vectors[source]
+    context = signature_context_vectors[0] if wrong_kind else selected["context"]
+    replies = [selected] if responses is None else responses
+    pin_tan_synchronization_attempt_vectors.append({"name": name, "context": context,
+        "previousDialogueId": selected["previousDialogueId"], "lastSubmittedMessageNumber": selected["lastSubmittedMessageNumber"],
+        "responses": [{"wireBase64": v["responseBase64"], "wrapped": v["wrapped"]} for v in replies], "steps": steps})
+
+
+sync_start = owned_init_step("start", "CandidateRecorded", "AwaitingResponse")
+sync_done = owned_init_step("response", "CloseAndReinitializeRequired", "CloseAndReinitializeRequired", handled=1, evidence=True)
+sync_review = owned_init_step("response", "RejectedForReview", "NeedsReview", handled=1, evidence=True)
+owned_sync_trace("one-time-mandatory-closing-handoff", [sync_start, sync_done,
+    owned_init_step("response", "Terminal", "CloseAndReinitializeRequired", handled=1),
+    owned_init_step("start", "Terminal", "CloseAndReinitializeRequired", handled=1)])
+owned_sync_trace("one-step-profile", [sync_start, sync_done], source=1)
+owned_sync_trace("foreign-segment-keeps-candidate", [sync_start, owned_init_step("response", "ContextMismatch", "AwaitingResponse"),
+    owned_init_step("response", "CloseAndReinitializeRequired", "CloseAndReinitializeRequired", handled=1, evidence=True, index=1)],
+    responses=[pin_tan_synchronization_vectors[24], pin_tan_synchronization_vectors[0]])
+owned_sync_trace("foreign-message-keeps-candidate", [sync_start, owned_init_step("response", "ContextMismatch", "AwaitingResponse"),
+    owned_init_step("response", "CloseAndReinitializeRequired", "CloseAndReinitializeRequired", handled=1, evidence=True, index=1)],
+    responses=[request_binding_vectors[12], pin_tan_synchronization_vectors[0]])
+owned_sync_trace("scoped-review-consumed-once", [sync_start, sync_review, owned_init_step("response", "Terminal", "NeedsReview", handled=1)], source=26)
+owned_sync_trace("missing-envelope-review", [sync_start, sync_review], source=31)
+owned_sync_trace("explicit-cancellation", [sync_start, owned_init_step("cancel", "Cancelled", "Cancelled", at=50), owned_init_step("response", "Terminal", "Cancelled", at=50)])
+owned_sync_trace("stop-before-start", [owned_init_step("stop", "Stopped", "Stopped", candidates=0), owned_init_step("start", "Terminal", "Stopped", candidates=0)])
+owned_sync_trace("deadline-equality", [sync_start, owned_init_step("response", "Terminal", "TimedOut", at=10000)])
+owned_sync_trace("mismatch-does-not-renew-time", [sync_start, owned_init_step("response", "ContextMismatch", "AwaitingResponse", at=9999),
+    owned_init_step("response", "Terminal", "TimedOut", at=10000, index=1)], responses=[request_binding_vectors[12], pin_tan_synchronization_vectors[0]])
+owned_sync_trace("clock-regression", [sync_start, owned_init_step("snapshot", "Snapshot", "ClockInvalid", at=-1)])
+owned_sync_trace("wrong-candidate-kind", [owned_init_step("start", "RejectedForReview", "NeedsReview", candidates=0)], wrong_kind=True)
+owned_sync_trace("dispose-pending-recovery", [sync_start, owned_init_step("dispose", "Stopped", "Stopped"), owned_init_step("response", "Terminal", "Stopped")], source=3)
+owned_sync_trace("bounded-message-recovery", [sync_start, sync_done], source=3)
+owned_sync_trace("maximum-message-recovery", [sync_start, sync_done], source=4)
+owned_sync_trace("missing-recovery-rejected-before-recording", [owned_init_step("start", "RejectedForReview", "NeedsReview", candidates=0)], source=5)
+owned_sync_trace("recovery-on-assignment-rejected-before-recording", [owned_init_step("start", "RejectedForReview", "NeedsReview", candidates=0)], source=8)
+owned_sync_trace("counter-exceeds-submission-review", [sync_start, sync_review], source=6)
+owned_sync_trace("prior-dialogue-reuse-review", [sync_start, sync_review], source=7)
+owned_sync_trace("bank-abort-withholds-positive-handoff", [sync_start, sync_review], source=21)
+owned_sync_trace("duplicate-reports-review", [sync_start, sync_review], source=10)
+target.with_name("pin-tan-synchronization-attempt-v1.json").write_text(
+    json.dumps({"schemaVersion": 1, "vectors": pin_tan_synchronization_attempt_vectors}, indent=2) + "\n", encoding="utf-8")
+print(f"Generated {len(pin_tan_synchronization_attempt_vectors)} public synthetic assembled PIN/TAN synchronization-attempt traces.")
+
+pin_tan_closing_vectors = []
+
+
+def pin_tan_closing_vector(name, source=0, issues=(), dialogue="SYNTHETIC", client=2, bank=2,
+                           system=None, country="280", institution="PUBLIC-BANK", user="PUBLIC-USER",
+                           profile=None, function=None, role=1, party=1, number=2,
+                           control="PUBLIC-CLOSE", pin=b"PUBLIC-PIN", escaped_dialogue=False):
+    sync = json.loads(json.dumps(pin_tan_synchronization_vectors[source]))
+    if escaped_dialogue:
+        reply = base64.b64decode(sync["responseBase64"]).replace(b"SYNTHETIC", text(dialogue.encode("latin-1")))
+        reply = reply[:10] + f"{len(reply):012d}".encode() + reply[22:]
+        sync["responseBase64"] = base64.b64encode(reply).decode()
+    profile = sync["context"]["profileVersion"] if profile is None else profile
+    function = sync["context"]["securityFunction"] if function is None else function
+    system = system if system is not None else "PUBLIC-SYSTEM" if source in (3, 4) else "PUBLIC+:'?@ü" if source == 2 else "PUBLIC-ASSIGNED"
+    header = segment("HNSHK", number, 4, [group([b"PIN", str(profile).encode()]), plain(str(function).encode()), plain(control.encode("latin-1")),
+        plain(b"1"), plain(str(role).encode()), group([str(party).encode(), b"", system.encode("latin-1")]), plain(b"1"),
+        group([b"1", b"20260909", b"123456"]), group([b"1", b"999", b"1"]), group([b"6", b"10", b"16"]),
+        group([country.encode(), institution.encode("latin-1"), user.encode("latin-1"), b"S", b"0", b"0"])])[0]
+    closing = end_frame(dialogue, client, [segment("HKEND", 2, 1, [plain(dialogue.encode("latin-1"))])])
+    wire = payload = None
+    if not issues:
+        payload = header + segment("HKEND", 3, 1, [plain(dialogue.encode("latin-1"))])[0] + segment("HNSHA", 4, 2, [plain(control.encode("latin-1")), plain(b""), plain(pin)])[0]
+        security = segment("HNVSK", 998, 3, [group([b"PIN", str(profile).encode()]), plain(b"998"), plain(b"1"),
+            group([b"1", b"", system.encode("latin-1")]), group([b"1", b"20260909", b"123456"]),
+            [scalar(b"2"), scalar(b"2"), scalar(b"13"), scalar(bytes(8), binary=True), scalar(b"5"), scalar(b"1")],
+            group([country.encode(), institution.encode("latin-1"), user.encode("latin-1"), b"V", b"0", b"0"]), plain(b"0")])
+        middle = [security, segment("HNVSD", 999, 1, [[scalar(payload, binary=True)]])]
+        ending = segment("HNHBS", 5, 1, [plain(str(client).encode())])[0]
+        fields = [plain(b"000000000000"), plain(b"300"), plain(dialogue.encode("latin-1")), plain(str(client).encode())]
+        size = len(segment("HNHBK", 1, 3, fields)[0]) + sum(len(p[0]) for p in middle) + len(ending)
+        fields[0] = plain(f"{size:012d}".encode())
+        wire = segment("HNHBK", 1, 3, fields)[0] + b"".join(p[0] for p in middle) + ending
+    pin_tan_closing_vectors.append({"name": name, "synchronization": sync, "requestBase64": base64.b64encode(closing).decode(),
+        "expectedBankMessageNumber": bank, "headerBase64": base64.b64encode(header).decode(), "issues": list(issues),
+        "pinBase64": base64.b64encode(pin).decode(), "wireBase64": None if wire is None else base64.b64encode(wire).decode(),
+        "payloadBase64": None if payload is None else base64.b64encode(payload).decode()})
+
+
+pin_tan_closing_vector("two-step-system-assignment")
+pin_tan_closing_vector("one-step-system-assignment", source=1)
+pin_tan_closing_vector("escaped-system-dialogue-control-pin", source=2, dialogue="D+:'?@ü", control="C+:'?@ü", pin="P+:'?@ü".encode("latin-1"), escaped_dialogue=True)
+pin_tan_closing_vector("message-recovery", source=3)
+pin_tan_closing_vector("maximum-recovery-is-not-close-counter", source=4)
+pin_tan_closing_vector("maximum-pin-escaping", pin=b"?" * 99)
+pin_tan_closing_vector("foreign-dialogue", issues=["DialogueMismatch"], dialogue="PUBLIC-OTHER")
+pin_tan_closing_vector("foreign-client-counter", issues=["CounterMismatch"], client=3)
+pin_tan_closing_vector("foreign-bank-counter", issues=["CounterMismatch"], bank=3)
+pin_tan_closing_vector("old-zero-system", issues=["SystemMismatch"], system="0")
+pin_tan_closing_vector("foreign-user", issues=["IdentityMismatch"], user="PUBLIC-OTHER")
+pin_tan_closing_vector("foreign-bank", issues=["IdentityMismatch"], institution="PUBLIC-OTHER")
+pin_tan_closing_vector("foreign-country", issues=["IdentityMismatch"], country="999")
+pin_tan_closing_vector("profile-switch", issues=["SelectionMismatch"], profile=1, function=999)
+pin_tan_closing_vector("procedure-switch", issues=["SelectionMismatch"], function=901)
+pin_tan_closing_vector("foreign-header-role", issues=["HeaderRoleNeedsReview"], role=3)
+pin_tan_closing_vector("foreign-header-party", issues=["HeaderRoleNeedsReview"], party=2)
+pin_tan_closing_vector("foreign-header-number", issues=["HeaderRoleNeedsReview"], number=3)
+pin_tan_closing_vector("bank-abort-cannot-close", source=21, issues=["SynchronizationNeedsReview", "SystemMismatch"])
+pin_tan_closing_vector("foreign-system-in-recovery", source=3, issues=["SystemMismatch"], system="PUBLIC-OTHER")
+target.with_name("pin-tan-dialogue-end-v1.json").write_text(
+    json.dumps({"schemaVersion": 1, "vectors": pin_tan_closing_vectors}, indent=2) + "\n", encoding="utf-8")
+print(f"Generated {len(pin_tan_closing_vectors)} public synthetic PIN/TAN dialogue-end vectors.")
+
+pin_tan_closing_response_vectors = []
+
+
+def closing_response_vector(name, issues=(), binding_issues=(), source=0, message_codes=("0100",), scoped_codes=("0020",), reference=3,
+                            dialogue=None, reference_dialogue=None, message=2, reference_message=2, omit_reference=False,
+                            wrapped=True, profile=None, system=None, country="280", bank="PUBLIC-BANK", user="PUBLIC-USER",
+                            element="", parameter=None, extra=None, extra_reply=None, outcome="NeedsReview"):
+    context = pin_tan_closing_vectors[source]
+    dialogue = dialogue if dialogue is not None else "D+:'?@ü" if source == 2 else "SYNTHETIC"
+    profile = profile if profile is not None else 1 if source == 1 else 2
+    system = system if system is not None else "PUBLIC-SYSTEM" if source in (3, 4) else "PUBLIC+:'?@ü" if source == 2 else "PUBLIC-ASSIGNED"
+    def replies(codes, scoped=False):
+        return [group([code.encode(), element.encode() if scoped else b"", b"PUBLIC-CLOSE-REPLY"] + ([] if parameter is None else [parameter.encode()])) for code in codes]
+    body = [segment("HIRMG", 2, 2, replies(message_codes))]
+    if scoped_codes:
+        body.append(segment("HIRMS", len(body) + 2, 2, replies(scoped_codes, True), reference=reference))
+    if extra_reply is not None:
+        ref, code = extra_reply
+        body.append(segment("HIRMS", len(body) + 2, 2, replies([code], True), reference=ref))
+    if extra is not None:
+        code, version, ref = extra
+        body.append(segment(code, len(body) + 2, version, [plain(b"PUBLIC-OPAQUE")], reference=ref))
+    fields = [plain(b"000000000000"), plain(b"300"), plain(dialogue.encode("latin-1")), plain(str(message).encode())]
+    if not omit_reference:
+        fields.append(group([(reference_dialogue if reference_dialogue is not None else dialogue).encode("latin-1"), str(reference_message).encode()]))
+    ending = segment("HNHBS", len(body) + 2, 1, [plain(str(message).encode())])[0]
+    payload = b"".join(p[0] for p in body)
+    if wrapped:
+        security = segment("HNVSK", 998, 3, [group([b"PIN", str(profile).encode()]), plain(b"998"), plain(b"1"),
+            group([b"1", b"", system.encode("latin-1")]), group([b"1"]),
+            [scalar(b"2"), scalar(b"2"), scalar(b"13"), scalar(bytes(8), binary=True), scalar(b"5"), scalar(b"1")],
+            group([country.encode(), bank.encode("latin-1"), user.encode("latin-1"), b"V", b"0", b"0"]), plain(b"0")])[0]
+        middle = security + segment("HNVSD", 999, 1, [[scalar(payload, binary=True)]])[0]
+    else:
+        middle = payload
+    size = len(segment("HNHBK", 1, 3, fields)[0]) + len(middle) + len(ending)
+    fields[0] = plain(f"{size:012d}".encode())
+    wire = segment("HNHBK", 1, 3, fields)[0] + middle + ending
+    roles = {1: "MessageHeader", 998: "EnvelopeHeader", 999: "EnvelopeData", 2: "SignatureHeader", 3: "DialogueEnd", 4: "SignatureTrailer", 5: "MessageTrailer"}
+    codes = list(message_codes) + list(scoped_codes) + ([] if extra_reply is None else [extra_reply[1]])
+    pin_tan_closing_response_vectors.append({"name": name, "context": context, "responseBase64": base64.b64encode(wire).decode(),
+        "wrapped": wrapped, "issues": list(issues), "bindingIssues": list(binding_issues), "outcome": outcome,
+        "closeReported": "0100" in codes, "abortReported": "9800" in codes,
+        "references": [{"code": p[1]["code"], "reference": p[1]["reference"], "role": roles.get(p[1]["reference"])} for p in body[1:]]})
+
+
+closing_response_vector("two-step-message-closure", outcome="ClosureReported")
+closing_response_vector("one-step-message-closure", source=1, outcome="ClosureReported")
+closing_response_vector("escaped-dialogue-and-system", source=2, outcome="ClosureReported")
+closing_response_vector("message-recovery-closing", source=3, outcome="ClosureReported")
+closing_response_vector("maximum-recovery-closing", source=4, outcome="ClosureReported")
+closing_response_vector("scoped-hkend-closure", message_codes=["0010"], scoped_codes=["0100"], outcome="ClosureReported")
+closing_response_vector("message-only-closure", scoped_codes=[], outcome="ClosureReported")
+closing_response_vector("empty-optional-reply-parameter", parameter="", outcome="ClosureReported")
+closing_response_vector("message-abort", message_codes=["9800"], scoped_codes=[], outcome="AbortReported")
+closing_response_vector("execution-is-not-termination", ["MissingTermination"], message_codes=["0020"])
+closing_response_vector("receipt-is-not-termination", ["MissingTermination"], message_codes=["0010"], scoped_codes=[])
+closing_response_vector("pending-is-not-termination", ["StatusNeedsReview", "MissingTermination"], message_codes=["0030"], scoped_codes=[])
+closing_response_vector("indeterminate-processing", ["StatusNeedsReview", "MissingTermination", "ResponseNeedsReview"], message_codes=["9000"], scoped_codes=[])
+closing_response_vector("duplicate-close-in-message", ["StatusNeedsReview", "ResponseNeedsReview"], message_codes=["0100", "0100"])
+closing_response_vector("duplicate-close-across-levels", ["StatusNeedsReview"], scoped_codes=["0100"])
+closing_response_vector("close-and-abort", ["ConflictingTermination"], message_codes=["9800"], scoped_codes=["0100"])
+closing_response_vector("scoped-abort-needs-review", ["StatusNeedsReview", "ResponseNeedsReview"], message_codes=["0010"], scoped_codes=["9800"])
+closing_response_vector("unrelated-bank-error", ["StatusNeedsReview", "ResponseNeedsReview"], scoped_codes=["9050"])
+closing_response_vector("scoped-element-reference", ["StatusNeedsReview"], element="1")
+closing_response_vector("nonempty-reply-parameter", ["StatusNeedsReview"], parameter="PUBLIC-PARAM")
+closing_response_vector("unknown-status", ["StatusNeedsReview"], scoped_codes=["0999"])
+for ref in (1, 2, 4, 5, 998, 999):
+    closing_response_vector(f"mapped-nonclosing-role-{ref}", ["StatusNeedsReview"], reference=ref)
+closing_response_vector("signature-close-is-not-hkend-close", ["StatusNeedsReview"], message_codes=["0010"], scoped_codes=["0100"], reference=2)
+closing_response_vector("unknown-reference", ["BindingNeedsReview", "StatusNeedsReview"], ["UnknownSegmentReference"], reference=997)
+closing_response_vector("foreign-dialogue", ["BindingNeedsReview"], ["MessageMismatch"], dialogue="PUBLIC-OTHER")
+closing_response_vector("foreign-reference-dialogue", ["BindingNeedsReview"], ["MessageMismatch"], reference_dialogue="PUBLIC-OTHER")
+closing_response_vector("foreign-bank-counter", ["BindingNeedsReview"], ["MessageMismatch"], message=3)
+closing_response_vector("old-client-counter", ["BindingNeedsReview"], ["MessageMismatch"], reference_message=1)
+closing_response_vector("missing-outer-reference", ["BindingNeedsReview"], ["MessageMismatch"], omit_reference=True)
+closing_response_vector("plain-response", ["BindingNeedsReview"], ["MissingEnvelope"], wrapped=False)
+closing_response_vector("foreign-profile", ["BindingNeedsReview"], ["ProfileMismatch"], profile=1)
+closing_response_vector("foreign-system", ["EnvelopeIdentityMismatch"], system="PUBLIC-OTHER")
+closing_response_vector("foreign-country", ["EnvelopeIdentityMismatch"], country="999")
+closing_response_vector("foreign-bank", ["EnvelopeIdentityMismatch"], bank="PUBLIC-OTHER")
+closing_response_vector("foreign-user", ["EnvelopeIdentityMismatch"], user="PUBLIC-OTHER")
+closing_response_vector("unexpected-hiend", ["BindingNeedsReview", "UnexpectedData"], ["UninterpretedData"], extra=("HIEND", 1, 3))
+closing_response_vector("unexpected-synchronization-report", ["BindingNeedsReview", "UnexpectedData"], ["UninterpretedData"], extra=("HISYN", 4, 3))
+closing_response_vector("data-without-reference", ["BindingNeedsReview", "UnexpectedData"], ["MissingSegmentReference", "UninterpretedData"], extra=("HIXYZ", 1, None))
+closing_response_vector("data-with-unknown-reference", ["BindingNeedsReview", "UnexpectedData"], ["UnknownSegmentReference", "UninterpretedData"], extra=("HIXYZ", 1, 997))
+closing_response_vector("duplicate-abort", ["StatusNeedsReview"], message_codes=["9800", "9800"], scoped_codes=[])
+closing_response_vector("security-error-after-close", ["StatusNeedsReview", "ResponseNeedsReview"], extra_reply=(2, "9050"))
+target.with_name("pin-tan-dialogue-end-response-v1.json").write_text(
+    json.dumps({"schemaVersion": 1, "vectors": pin_tan_closing_response_vectors}, indent=2) + "\n", encoding="utf-8")
+print(f"Generated {len(pin_tan_closing_response_vectors)} public synthetic PIN/TAN dialogue-end response vectors.")
+
+pin_tan_closing_attempt_vectors = []
+closing_replies = {v["name"]: v for v in pin_tan_closing_response_vectors}
+
+
+def owned_closing_trace(name, steps, source="two-step-message-closure", responses=None):
+    selected = closing_replies[source]
+    replies = [selected] if responses is None else [closing_replies[n] for n in responses]
+    pin_tan_closing_attempt_vectors.append({"name": name, "context": selected["context"],
+        "responses": [{"wireBase64": v["responseBase64"], "wrapped": v["wrapped"]} for v in replies], "steps": steps})
+
+
+closing_start = owned_init_step("start", "CandidateRecorded", "AwaitingResponse")
+closing_done = owned_init_step("response", "ReinitializationRequired", "ReinitializationRequired", handled=1, evidence=True)
+closing_review = owned_init_step("response", "RejectedForReview", "NeedsReview", handled=1, evidence=True)
+owned_closing_trace("one-time-reinitialization-handoff", [closing_start, closing_done,
+    owned_init_step("response", "Terminal", "ReinitializationRequired", handled=1), owned_init_step("start", "Terminal", "ReinitializationRequired", handled=1)])
+owned_closing_trace("one-step-profile", [closing_start, closing_done], source="one-step-message-closure")
+owned_closing_trace("foreign-reference-keeps-candidate", [closing_start, owned_init_step("response", "ContextMismatch", "AwaitingResponse"),
+    owned_init_step("response", "ReinitializationRequired", "ReinitializationRequired", handled=1, evidence=True, index=1)], responses=["unknown-reference", "two-step-message-closure"])
+owned_closing_trace("foreign-dialogue-keeps-candidate", [closing_start, owned_init_step("response", "ContextMismatch", "AwaitingResponse"),
+    owned_init_step("response", "ReinitializationRequired", "ReinitializationRequired", handled=1, evidence=True, index=1)], responses=["foreign-dialogue", "two-step-message-closure"])
+owned_closing_trace("scoped-review-consumed-once", [closing_start, closing_review, owned_init_step("response", "Terminal", "NeedsReview", handled=1)], source="foreign-user")
+owned_closing_trace("missing-envelope-review", [closing_start, closing_review], source="plain-response")
+owned_closing_trace("explicit-cancellation", [closing_start, owned_init_step("cancel", "Cancelled", "Cancelled", at=50), owned_init_step("response", "Terminal", "Cancelled", at=50)])
+owned_closing_trace("stop-before-start", [owned_init_step("stop", "Stopped", "Stopped", candidates=0), owned_init_step("start", "Terminal", "Stopped", candidates=0)])
+owned_closing_trace("deadline-equality", [closing_start, owned_init_step("response", "Terminal", "TimedOut", at=10000)])
+owned_closing_trace("mismatch-does-not-renew-time", [closing_start, owned_init_step("response", "ContextMismatch", "AwaitingResponse", at=9999),
+    owned_init_step("response", "Terminal", "TimedOut", at=10000, index=1)], responses=["foreign-dialogue", "two-step-message-closure"])
+owned_closing_trace("clock-regression", [closing_start, owned_init_step("snapshot", "Snapshot", "ClockInvalid", at=-1)])
+owned_closing_trace("bank-abort-consumed-once", [closing_start, owned_init_step("response", "AbortReported", "Aborted", handled=1, evidence=True),
+    owned_init_step("response", "Terminal", "Aborted", handled=1), owned_init_step("start", "Terminal", "Aborted", handled=1)], source="message-abort")
+owned_closing_trace("dispose-pending-candidate", [closing_start, owned_init_step("dispose", "Stopped", "Stopped"), owned_init_step("response", "Terminal", "Stopped")])
+owned_closing_trace("signature-close-is-review", [closing_start, closing_review], source="signature-close-is-not-hkend-close")
+owned_closing_trace("recovery-maximum-still-reinitializes", [closing_start, closing_done], source="maximum-recovery-closing")
+owned_closing_trace("conflicting-termination-review", [closing_start, closing_review], source="close-and-abort")
+owned_closing_trace("unexpected-data-review", [closing_start, closing_review], source="unexpected-hiend")
+owned_closing_trace("execution-does-not-close", [closing_start, closing_review], source="execution-is-not-termination")
+owned_closing_trace("missing-data-reference-keeps-candidate", [closing_start, owned_init_step("response", "ContextMismatch", "AwaitingResponse"),
+    owned_init_step("response", "ReinitializationRequired", "ReinitializationRequired", handled=1, evidence=True, index=1)], responses=["data-without-reference", "two-step-message-closure"])
+owned_closing_trace("escaped-closing-context", [closing_start, closing_done], source="escaped-dialogue-and-system")
+target.with_name("pin-tan-dialogue-end-attempt-v1.json").write_text(
+    json.dumps({"schemaVersion": 1, "vectors": pin_tan_closing_attempt_vectors}, indent=2) + "\n", encoding="utf-8")
+print(f"Generated {len(pin_tan_closing_attempt_vectors)} public synthetic PIN/TAN dialogue-end attempt traces.")
+
+initialization_procedure_vectors = []
+
+
+def initialization_procedure_vector(name, issues=(), source=0, one_step=False, remove_ad=False, edits=(), extra=None, wrapped=True,
+                                    profile=None, system="PUBLIC-SYSTEM", dual_versions=False, version_six=False):
+    context = json.loads(json.dumps(signature_context_vectors[1 if one_step else 0]))
+    original = public_text_segments(base64.b64decode(signature_context_vectors[source]["procedureResponseBase64"]))[1:-1]
+    body = []
+    for wire in original:
+        parts, fields = wire.split(b"+", 1)
+        header = parts.split(b":")
+        if remove_ad and header[0] == b"HITANS":
+            continue
+        header[1] = str(len(body) + 2).encode()
+        if len(header) == 4:
+            header[3] = str(int(header[3]) + 1).encode()
+        wire = b":".join(header) + b"+" + fields
+        for before, after in edits:
+            wire = wire.replace(before, after)
+        body.append(wire)
+    if version_six or dual_versions:
+        index = next(i for i, b in enumerate(body) if b.startswith(b"HITANS:"))
+        sixth = body[index].replace(b":7:4+", b":6:4+")[:-6] + b"'"
+        if dual_versions:
+            parts, fields = sixth.split(b"+", 1)
+            header = parts.split(b":"); header[1] = str(len(body) + 2).encode()
+            body.append(b":".join(header) + b"+" + fields)
+        else:
+            body[index] = sixth
+            context["tanSegmentVersion"] = 6
+            origin = public_text_segments(base64.b64decode(context["procedureResponseBase64"]))[1:-1]
+            origin = [b.replace(b":7:3+", b":6:3+")[:-6] + b"'" if b.startswith(b"HITANS:") else b for b in origin]
+            context["procedureResponseBase64"] = base64.b64encode(end_frame("SYNTHETIC", 1, [(b, None) for b in origin], 1)).decode()
+    if extra is not None:
+        code, version, reference = extra
+        body.append(segment(code, len(body) + 2, version, [plain(b"PUBLIC-OPAQUE")], reference=reference)[0])
+    payload = b"".join(body)
+    if wrapped:
+        security = segment("HNVSK", 998, 3, [group([b"PIN", str(profile if profile is not None else context["profileVersion"]).encode()]), plain(b"998"), plain(b"1"),
+            group([b"1", b"", system.encode()]), group([b"1"]),
+            [scalar(b"2"), scalar(b"2"), scalar(b"13"), scalar(bytes(8), binary=True), scalar(b"5"), scalar(b"1")],
+            group([b"280", b"PUBLIC-BANK", b"PUBLIC-USER", b"V", b"0", b"0"]), plain(b"0")])[0]
+        middle = security + segment("HNVSD", 999, 1, [[scalar(payload, binary=True)]])[0]
+    else:
+        middle = payload
+    fields = [plain(b"000000000000"), plain(b"300"), plain(b"SYNTHETIC"), plain(b"1"), group([b"OTHER" if source == 14 else b"SYNTHETIC", b"1"])]
+    ending = segment("HNHBS", len(body) + 2, 1, [plain(b"1")])[0]
+    size = len(segment("HNHBK", 1, 3, fields)[0]) + len(middle) + len(ending)
+    fields[0] = plain(f"{size:012d}".encode())
+    wire = segment("HNHBK", 1, 3, fields)[0] + middle + ending
+    initialization_procedure_vectors.append({"name": name, "context": context, "responseBase64": base64.b64encode(wire).decode(), "wrapped": wrapped, "issues": list(issues)})
+
+
+initialization_procedure_vector("two-step-returned-selection")
+initialization_procedure_vector("one-step-returned-selection", one_step=True)
+initialization_procedure_vector("version-six-returned-selection", version_six=True)
+initialization_procedure_vector("dual-versions-select-exact-seven", dual_versions=True)
+initialization_procedure_vector("missing-permission", ["MissingPermissionReport", "SelectionNotReported"], source=8)
+initialization_procedure_vector("selected-function-not-permitted", ["SelectionNotReported"], source=9)
+initialization_procedure_vector("one-step-not-allowed", ["OneStepNotReportedAllowed"], source=10, one_step=True)
+initialization_procedure_vector("duplicate-advertisement", ["AmbiguousAdvertisement"], source=11)
+initialization_procedure_vector("duplicate-procedure", ["AmbiguousProcedure"], source=12)
+initialization_procedure_vector("future-advertisement", ["InitializationNeedsReview"], source=13)
+initialization_procedure_vector("foreign-message-reference", ["InitializationNeedsReview"], source=14)
+initialization_procedure_vector("foreign-returned-user", ["InitializationNeedsReview"], source=15)
+initialization_procedure_vector("aborted-response", ["InitializationNeedsReview"], source=16)
+initialization_procedure_vector("duplicate-permission-function", ["AmbiguousPermissions"], source=17)
+initialization_procedure_vector("missing-advertisement", ["MissingAdvertisement"], remove_ad=True)
+initialization_procedure_vector("foreign-permission-role", ["InitializationNeedsReview", "PermissionScopeMismatch"], edits=[(b"HIRMS:4:2:4+", b"HIRMS:4:2:2+")])
+initialization_procedure_vector("old-hitans-reference", ["InitializationNeedsReview"], edits=[(b"HITANS:7:7:4+", b"HITANS:7:7:3+")])
+initialization_procedure_vector("unknown-data-remains-review", ["InitializationNeedsReview"], extra=("HIXYZ", 1, 4))
+initialization_procedure_vector("plain-response-remains-review", ["InitializationNeedsReview"], wrapped=False)
+initialization_procedure_vector("foreign-envelope-profile", ["InitializationNeedsReview"], profile=1)
+initialization_procedure_vector("foreign-envelope-system", ["InitializationNeedsReview"], system="OTHER")
+initialization_procedure_vector("advertisement-zero-orders", ["AdvertisementRequirementsNeedReview"], edits=[(b"HITANS:7:7:4+1+1+", b"HITANS:7:7:4+0+1+")])
+initialization_procedure_vector("advertisement-two-signatures", ["AdvertisementRequirementsNeedReview"], edits=[(b"HITANS:7:7:4+1+1+", b"HITANS:7:7:4+1+2+")])
+initialization_procedure_vector("changed-procedure-not-selected", ["SelectionNotReported"], edits=[(b"J:N:0:900:2:", b"J:N:0:901:2:")])
+initialization_procedure_vector("permission-does-not-prove-execution", ["InitializationNeedsReview"], edits=[(b"0020::PUBLIC-PREP-REPLY", b"0010::PUBLIC-PREP-REPLY")])
+initialization_procedure_vector("unrelated-status-remains-review", ["InitializationNeedsReview"], edits=[(b"0020::PUBLIC-ID-REPLY", b"0030::PUBLIC-ID-REPLY")])
+initialization_procedure_vector("duplicate-permission-reports", ["InitializationNeedsReview", "AmbiguousPermissions"], edits=[(b"3920::PUBLIC-PERMISSIONS:900:999", b"3920::PUBLIC-PERMISSIONS:900:999+3920::PUBLIC-SECOND:900")])
+initialization_procedure_vector("nonpermission-parameter-remains-review", ["InitializationNeedsReview"], edits=[(b"0020::PUBLIC-ID-REPLY", b"0020::PUBLIC-ID-REPLY:PUBLIC-PARAM")])
+target.with_name("pin-tan-initialization-procedures-v1.json").write_text(
+    json.dumps({"schemaVersion": 1, "vectors": initialization_procedure_vectors}, indent=2) + "\n", encoding="utf-8")
+print(f"Generated {len(initialization_procedure_vectors)} public synthetic assembled initialization procedure vectors.")
+
+initialization_requirements_vectors = []
+
+
+def initialization_requirements_vector(name, issues=(), source=0, minimum=5, maximum=12, tan_maximum=6,
+                                       operations=(("HKSAL", "J"), ("HKSPA", "N")), copies=1, version=1, future=False,
+                                       reference=4, orders=1, signatures=1, labels=("PUBLIC-USER-LABEL", "PUBLIC-CUSTOMER-LABEL"),
+                                       operation_evidence="TanReportedRequired"):
+    original = initialization_procedure_vectors[source]
+    wire = base64.b64decode(original["responseBase64"])
+    if original["wrapped"]:
+        prefix, binary = wire.split(b"HNVSD:999:1+@", 1)
+        length, rest = binary.split(b"@", 1)
+        body = public_text_segments(rest[:int(length)])
+    else:
+        parts = public_text_segments(wire); prefix = parts[0]; body = parts[1:-1]
+    options = [(b"" if value is None else str(value).encode()) for value in (minimum, maximum, tan_maximum)]
+    options += [value.encode("latin-1") for value in labels]
+    options += [value.encode() for pair in operations for value in pair]
+    for _ in range(copies):
+        body.append(segment("HIPINS", len(body) + 2, version, [plain(str(orders).encode()), plain(str(signatures).encode()), plain(b"0"), group(options)], reference=reference)[0])
+    if future:
+        body.append(segment("HIPINS", len(body) + 2, 99, [plain(b"PUBLIC-OPAQUE")], reference=4)[0])
+    payload = b"".join(body)
+    middle = segment("HNVSD", 999, 1, [[scalar(payload, binary=True)]])[0] if original["wrapped"] else payload
+    closing = segment("HNHBS", len(body) + 2, 1, [plain(b"1")])[0]
+    wire = prefix + middle + closing
+    wire = wire[:10] + f"{len(wire):012d}".encode() + wire[22:]
+    initialization_requirements_vectors.append({"name": name, "context": original["context"], "responseBase64": base64.b64encode(wire).decode(),
+        "wrapped": original["wrapped"], "issues": list(issues), "minimumPinLength": minimum, "maximumPinLength": maximum, "maximumTanLength": tan_maximum,
+        "operationEvidence": "Unknown" if issues else operation_evidence})
+
+
+initialization_requirements_vector("two-step-hipins")
+initialization_requirements_vector("one-step-hipins", source=1)
+initialization_requirements_vector("version-six-procedure-with-hipins", source=2)
+initialization_requirements_vector("both-procedure-versions-with-hipins", source=3)
+initialization_requirements_vector("missing-lengths-stay-null", minimum=None, maximum=None, tan_maximum=None)
+initialization_requirements_vector("partial-lengths-stay-null", maximum=None, tan_maximum=None)
+initialization_requirements_vector("upper-length-bound", minimum=1, maximum=99, tan_maximum=99)
+initialization_requirements_vector("zero-minimum-needs-review", ["UnsupportedRequirements"], minimum=0)
+initialization_requirements_vector("zero-maximum-needs-review", ["ConflictingPinBounds", "UnsupportedRequirements"], maximum=0)
+initialization_requirements_vector("zero-tan-length-needs-review", ["UnsupportedRequirements"], tan_maximum=0)
+initialization_requirements_vector("reversed-pin-bounds", ["ConflictingPinBounds"], minimum=13)
+initialization_requirements_vector("duplicate-hipins", ["AmbiguousAdvertisement"], copies=2)
+initialization_requirements_vector("future-only-hipins", ["ProceduresNeedReview", "MissingAdvertisement", "UnsupportedVersion"], version=99)
+initialization_requirements_vector("future-and-known-hipins", ["ProceduresNeedReview", "UnsupportedVersion"], future=True)
+initialization_requirements_vector("missing-hipins", ["MissingAdvertisement"], copies=0)
+initialization_requirements_vector("duplicate-operation", ["AmbiguousOperations"], operations=(("HKSAL", "J"), ("HKSAL", "J")))
+initialization_requirements_vector("conflicting-operation-flags", ["AmbiguousOperations"], operations=(("HKSAL", "J"), ("HKSAL", "N")))
+initialization_requirements_vector("no-operation-list", operations=(), operation_evidence="Unlisted")
+initialization_requirements_vector("not-required-is-only-report", operations=(("HKSAL", "N"),), operation_evidence="TanReportedNotRequired")
+initialization_requirements_vector("old-hipins-reference", ["ProceduresNeedReview"], reference=3)
+initialization_requirements_vector("missing-hipins-reference", ["ProceduresNeedReview"], reference=None)
+initialization_requirements_vector("foreign-profile", ["ProceduresNeedReview"], source=19)
+initialization_requirements_vector("foreign-envelope-system", ["ProceduresNeedReview"], source=20)
+initialization_requirements_vector("foreign-permission-role", ["ProceduresNeedReview"], source=15)
+initialization_requirements_vector("missing-permission-remains-review", ["ProceduresNeedReview"], source=4)
+initialization_requirements_vector("unrelated-data-remains-review", ["ProceduresNeedReview"], source=17)
+initialization_requirements_vector("zero-orders-needs-review", ["UnsupportedRequirements"], orders=0)
+initialization_requirements_vector("two-signatures-needs-review", ["UnsupportedRequirements"], signatures=2)
+initialization_requirements_vector("escaped-labels", labels=("U+:'?@ü", "C+:'?@ü"))
+initialization_requirements_vector("plain-response-remains-review", ["ProceduresNeedReview"], source=18)
+target.with_name("pin-tan-initialization-requirements-v1.json").write_text(
+    json.dumps({"schemaVersion": 1, "vectors": initialization_requirements_vectors}, indent=2) + "\n", encoding="utf-8")
+print(f"Generated {len(initialization_requirements_vectors)} public synthetic assembled initialization requirements vectors.")
+
+# First post-initialization read signature expectations, generated without .NET output.
+read_signature_vectors = []
+
+
+def read_signature_vector(name, issues=(), source=0, read=4, dialogue="SYNTHETIC", client=2, bank=2,
+                          replacements=(), selection_version=None, selection_function=None, selection_profile=None):
+    origin = initialization_requirements_vectors[source]
+    context = origin["context"]
+    header = base64.b64decode(context["headerBase64"]).replace(b"PUBLIC-REF", b"NEXT-REF")
+    for before, after in replacements:
+        assert before in header
+        header = header.replace(before, after)
+    body = public_text_segments(base64.b64decode(write_vectors[read]["wireBase64"]))[1]
+    wire = end_frame(dialogue, client, [(body, None)])
+    operation = "TanReportedNotRequired" if read in (0, 1, 2) or source == 18 else "TanReportedRequired"
+    read_signature_vectors.append({"name": name, "issues": list(issues), "initialization": origin,
+        "requestBase64": base64.b64encode(wire).decode(), "headerBase64": base64.b64encode(header).decode(),
+        "expectedBankMessageNumber": bank, "controlReference": "NEXT-REF",
+        "profileVersion": selection_profile or context["profileVersion"],
+        "securityFunction": selection_function or context["securityFunction"],
+        "tanSegmentVersion": selection_version or context["tanSegmentVersion"],
+        "operationEvidence": "Unknown" if issues else operation})
+
+
+read_signature_vector("all-account-discovery", read=0)
+read_signature_vector("selected-account-discovery", read=1)
+read_signature_vector("balance-six", read=3)
+read_signature_vector("balance-seven")
+read_signature_vector("balance-eight-all", read=5)
+read_signature_vector("one-step", source=1)
+read_signature_vector("tan-version-six", source=2)
+read_signature_vector("distinct-tan-versions", source=3)
+read_signature_vector("foreign-dialogue", ["DialogueMismatch"], dialogue="OTHER")
+read_signature_vector("old-client-counter", ["CounterMismatch"], client=1)
+read_signature_vector("skipped-client-counter", ["CounterMismatch"], client=3)
+read_signature_vector("old-bank-counter", ["CounterMismatch"], bank=1)
+read_signature_vector("skipped-bank-counter", ["CounterMismatch"], bank=3)
+read_signature_vector("foreign-user", ["IdentityMismatch"], replacements=[(b"PUBLIC-USER", b"PUBLIC-CUSTOMER")])
+read_signature_vector("foreign-bank", ["IdentityMismatch"], replacements=[(b"PUBLIC-BANK", b"OTHER-BANK")])
+read_signature_vector("foreign-country", ["IdentityMismatch"], replacements=[(b"280:", b"276:")])
+read_signature_vector("foreign-system", ["SystemMismatch"], replacements=[(b"PUBLIC-SYSTEM", b"OTHER")])
+read_signature_vector("zero-system", ["SystemMismatch"], replacements=[(b"PUBLIC-SYSTEM", b"0")])
+read_signature_vector("unknown-system", ["SystemMismatch"], replacements=[(b"PUBLIC-SYSTEM", b"unbekannt")])
+read_signature_vector("changed-header-function", ["SelectionMismatch"], replacements=[(b"+900+", b"+920+")])
+read_signature_vector("changed-selected-version", ["SelectionMismatch"], source=3, selection_version=6)
+read_signature_vector("changed-selected-profile", ["SelectionMismatch"], selection_profile=1, selection_function=999,
+                      replacements=[(b"PIN:2+900+", b"PIN:1+999+")])
+read_signature_vector("foreign-control", ["ControlMismatch"], replacements=[(b"NEXT-REF", b"OTHER-REF")])
+read_signature_vector("foreign-header-position", ["HeaderRoleNeedsReview"], replacements=[(b"HNSHK:2:", b"HNSHK:3:")])
+read_signature_vector("foreign-supplier-role", ["HeaderRoleNeedsReview"], replacements=[(b"NEXT-REF+1+1+", b"NEXT-REF+1+3+")])
+read_signature_vector("foreign-security-party", ["HeaderRoleNeedsReview"], replacements=[(b"1::PUBLIC-SYSTEM", b"2::PUBLIC-SYSTEM")])
+read_signature_vector("continuation-is-not-first-read", ["ContinuationNeedsReview"], read=6)
+read_signature_vector("conflicting-returned-bounds", ["InitializationNeedsReview"], source=10)
+read_signature_vector("duplicate-returned-hipins", ["InitializationNeedsReview"], source=11)
+read_signature_vector("foreign-initialization-profile", ["InitializationNeedsReview"], source=21)
+read_signature_vector("missing-returned-hipins", ["InitializationNeedsReview"], source=14)
+read_signature_vector("unlisted-operation", ["OperationRequirementsNeedReview"], source=17)
+read_signature_vector("reported-n-is-not-exemption", source=18)
+read_signature_vector("unknown-bounds-stay-unknown", source=4)
+read_signature_vector("missing-returned-permission", ["InitializationNeedsReview"], source=24)
+read_signature_vector("changed-function-in-both-selection-and-header", ["SelectionMismatch"], selection_function=920,
+                      replacements=[(b"+900+", b"+920+")])
+read_signature_vector("combined-scope-failures", ["DialogueMismatch", "CounterMismatch", "IdentityMismatch"],
+                      dialogue="OTHER", client=3, replacements=[(b"PUBLIC-USER", b"OTHER-USER")])
+target.with_name("pin-tan-read-signature-context-v1.json").write_text(
+    json.dumps({"schemaVersion": 1, "vectors": read_signature_vectors}, indent=2) + "\n", encoding="utf-8")
+print(f"Generated {len(read_signature_vectors)} public synthetic first-read signature-context vectors.")
+
+read_capability_context_vectors = []
+
+
+def read_capability_context_vector(name, issues=(), source=0, operation="HKSAL", version=7, ad_version=None,
+                                  copies=1, spa_version=1, single="J", national="J", entries="J", orders=1, signatures=1,
+                                  permissions=(("HKSAL", 1), ("HKSPA", 1)), usage=0, account_copies=1,
+                                  iban="PUBLIC-IBAN", customer="PUBLIC-CUSTOMER", institution="PUBLIC-BANK", reference=4,
+                                  future=False, unrelated=False, all_accounts=False, maximum=None, with_national=False,
+                                  national_selection=True, request_iban="PUBLIC-IBAN", request_number="PUBLIC-001",
+                                  account_limit=False, permission_limit=False, initialization_matches=True, capability_issues=(), request_issues=()):
+    origin = json.loads(json.dumps(initialization_requirements_vectors[source]))
+    wire = base64.b64decode(origin["responseBase64"])
+    prefix, binary = wire.split(b"HNVSD:999:1+@", 1)
+    length, rest = binary.split(b"@", 1)
+    body = public_text_segments(rest[:int(length)])
+    if usage == 1:
+        body = [part.replace(b"HIUPA:6:4:4+PUBLIC-USER+2+0", b"HIUPA:6:4:4+PUBLIC-USER+2+1") for part in body]
+    account_fields = [group([b"PUBLIC-001", b"", b"280", institution.encode()]), plain(iban.encode()), plain(customer.encode()),
+                      plain(b"1"), plain(b"EUR"), plain(b"Public owner"), plain(b""), plain(b""),
+                      group([b"E", b"10,", b"EUR"]) if account_limit else plain(b"")]
+    for code, count in permissions:
+        elements = [code.encode(), str(count).encode()]
+        if permission_limit and code == operation:
+            elements += [b"E", b"10,", b"EUR"]
+        account_fields.append(group(elements))
+    for _ in range(account_copies):
+        body.append(segment("HIUPD", len(body) + 2, 6, account_fields, reference=4)[0])
+    for _ in range(copies):
+        av = ad_version or version
+        fields = [plain(str(orders).encode()), plain(str(signatures).encode()), plain(b"0")]
+        if av == 8:
+            fields.append(plain(entries.encode()))
+        body.append(segment("HISALS", len(body) + 2, av, fields, reference=reference)[0])
+    spa_options = [single.encode(), national.encode(), b"N"]
+    if spa_version >= 2: spa_options.append(b"N")
+    if spa_version == 3: spa_options.append(b"0")
+    body.append(segment("HISPAS", len(body) + 2, spa_version, [plain(b"1"), plain(b"1"), plain(b"0"), group(spa_options)], reference=reference)[0])
+    if future: body.append(segment("HISALS", len(body) + 2, 99, [plain(b"PUBLIC-OPAQUE")], reference=4)[0])
+    if unrelated: body.append(segment("HIXYZ", len(body) + 2, 1, [plain(b"PUBLIC-OPAQUE")], reference=4)[0])
+    payload = b"".join(body)
+    wire = prefix + segment("HNVSD", 999, 1, [[scalar(payload, binary=True)]])[0] + segment("HNHBS", len(body) + 2, 1, [plain(b"1")])[0]
+    wire = wire[:10] + f"{len(wire):012d}".encode() + wire[22:]
+    origin["responseBase64"] = base64.b64encode(wire).decode()
+    connection = [request_number.encode(), b"", b"280", b"PUBLIC-BANK"]
+    if operation == "HKSPA":
+        fields = [] if all_accounts else [group(connection)]
+        request_version = 1
+    else:
+        request_version = version
+        account = connection if version == 6 else [request_iban.encode(), b"PUBLIC-BIC"] + (connection if with_national else [])
+        fields = [group(account), plain(b"J" if all_accounts else b"N")]
+        if maximum is not None: fields.append(plain(str(maximum).encode()))
+    request_wire = end_frame("SYNTHETIC", 2, [segment(operation, 2, request_version, fields)])
+    context = origin["context"]
+    header = base64.b64decode(context["headerBase64"]).replace(b"PUBLIC-REF", b"NEXT-REF")
+    read_capability_context_vectors.append({"name": name, "initialization": origin, "initializationMatches": initialization_matches,
+        "requestBase64": base64.b64encode(request_wire).decode(), "headerBase64": base64.b64encode(header).decode(),
+        "nationalSelection": national_selection, "issues": list(issues), "capabilityIssues": list(capability_issues), "requestIssues": list(request_issues)})
+
+
+cap_review = ["CapabilityNeedsReview", "RequestNeedsReview"]
+cap_unknown = cap_review + ["SignatureRequirementsNeedReview"]
+init_review = ["SignatureNeedsReview"] + cap_review
+read_capability_context_vector("balance-seven-listed")
+read_capability_context_vector("balance-six-listed", version=6)
+read_capability_context_vector("balance-eight-listed", version=8)
+read_capability_context_vector("selected-discovery-listed", operation="HKSPA", ad_version=7)
+read_capability_context_vector("one-step-listed", source=1)
+read_capability_context_vector("tan-version-six-listed", source=2)
+read_capability_context_vector("national-balance-eight-with-explicit-spa", version=8, with_national=True)
+read_capability_context_vector("entry-count-advertised", version=8, maximum=10)
+read_capability_context_vector("blocked-unlisted-operation", cap_unknown, permissions=(("HKSPA", 1),), capability_issues=["PermissionBlocked"])
+read_capability_context_vector("unknown-unlisted-operation", cap_unknown, permissions=(("HKSPA", 1),), usage=1, capability_issues=["PermissionUnknown"])
+read_capability_context_vector("duplicate-operation-permission", cap_unknown, permissions=(("HKSAL", 1), ("HKSAL", 1)), capability_issues=["PermissionAmbiguous"])
+read_capability_context_vector("two-customer-signatures", ["SignatureRequirementsNeedReview"], permissions=(("HKSAL", 2),))
+read_capability_context_vector("below-bank-signature-minimum", cap_unknown, signatures=2, capability_issues=["SignatureConflict"])
+read_capability_context_vector("zero-orders", cap_review, orders=0, capability_issues=["ZeroOrderCapacity"])
+read_capability_context_vector("duplicate-advertisement", cap_unknown, copies=2, capability_issues=["DuplicateAdvertisement"])
+read_capability_context_vector("missing-advertisement", cap_unknown, copies=0, capability_issues=["MissingAdvertisement"])
+read_capability_context_vector("different-advertised-version", cap_unknown, ad_version=6, capability_issues=["MissingAdvertisement"])
+read_capability_context_vector("missing-international-account", cap_review, iban="", capability_issues=["MissingInternationalIdentity"], request_issues=["RequestAccountMismatch"])
+read_capability_context_vector("duplicate-account-identity", cap_review, account_copies=2, capability_issues=["DuplicateAccountIdentity"])
+read_capability_context_vector("request-iban-mismatch", ["RequestNeedsReview"], request_iban="OTHER-IBAN", request_issues=["RequestAccountMismatch"])
+read_capability_context_vector("request-national-mismatch", ["RequestNeedsReview"], version=6, request_number="OTHER-ACCOUNT", request_issues=["RequestAccountMismatch"])
+read_capability_context_vector("all-discovery-outside-single-account-path", ["RequestNeedsReview"], operation="HKSPA", ad_version=7, all_accounts=True, request_issues=["UnsupportedAccountScope"])
+read_capability_context_vector("all-balances-outside-single-account-path", ["RequestNeedsReview"], all_accounts=True, request_issues=["UnsupportedAccountScope"])
+read_capability_context_vector("single-discovery-not-advertised", cap_review, operation="HKSPA", ad_version=7, single="N", capability_issues=["SingleAccountRequestNotAdvertised"])
+read_capability_context_vector("entry-count-not-advertised", ["RequestNeedsReview"], version=8, maximum=10, entries="N", request_issues=["EntryCountNotAdvertised"])
+read_capability_context_vector("entry-count-unknown-in-seven", ["RequestNeedsReview"], maximum=10, request_issues=["EntryCountNotAdvertised"])
+read_capability_context_vector("national-option-not-advertised", ["RequestNeedsReview"], with_national=True, national="N", request_issues=["NationalAccountNotAdvertised"])
+read_capability_context_vector("national-option-not-selected", ["RequestNeedsReview"], with_national=True, national_selection=False, request_issues=["NationalAccountNotAdvertised"])
+read_capability_context_vector("national-option-version-two", with_national=True, spa_version=2)
+read_capability_context_vector("national-option-version-three", with_national=True, spa_version=3)
+read_capability_context_vector("future-read-version-remains-review", init_review, future=True, initialization_matches=False, capability_issues=["ResponseNeedsReview"])
+read_capability_context_vector("unrelated-data-remains-review", init_review, unrelated=True, initialization_matches=False, capability_issues=["ResponseNeedsReview"])
+read_capability_context_vector("old-read-advertisement-reference", init_review, reference=3, initialization_matches=False, capability_issues=["ResponseNeedsReview"])
+read_capability_context_vector("missing-read-advertisement-reference", init_review, reference=None, initialization_matches=False, capability_issues=["ResponseNeedsReview"])
+read_capability_context_vector("foreign-returned-customer", init_review, customer="OTHER-CUSTOMER", initialization_matches=False, capability_issues=["ResponseNeedsReview"])
+read_capability_context_vector("foreign-returned-bank", init_review, institution="OTHER-BANK", initialization_matches=False, capability_issues=["ResponseNeedsReview", "InstitutionContextMismatch"])
+read_capability_context_vector("unresolved-hipins-remains-review", init_review, source=10, initialization_matches=False, capability_issues=["ResponseNeedsReview"])
+read_capability_context_vector("account-limit-requires-review", ["LimitsNeedReview"], account_limit=True)
+read_capability_context_vector("operation-limit-requires-review", ["LimitsNeedReview"], permission_limit=True)
+read_capability_context_vector("zero-upd-signatures-with-one-bank-signature", cap_unknown, permissions=(("HKSAL", 0),), capability_issues=["SignatureConflict"])
+read_capability_context_vector("zero-upd-and-bank-signatures-still-one-local-header", permissions=(("HKSAL", 0),), signatures=0)
+read_capability_context_vector("tan-not-required-remains-report", source=18)
+read_capability_context_vector("nullable-credential-bounds", source=4)
+target.with_name("pin-tan-read-capability-context-v1.json").write_text(
+    json.dumps({"schemaVersion": 1, "vectors": read_capability_context_vectors}, indent=2) + "\n", encoding="utf-8")
+print(f"Generated {len(read_capability_context_vectors)} public synthetic integrated read-capability vectors.")
+
+read_credential_vectors = []
+
+
+def read_credential_vector(name, kind, value, issues=(), source=0, bounds=(5, 12, 6), procedure_maximum=6,
+                           input_format="1", decoupled=False):
+    context = json.loads(json.dumps(read_capability_context_vectors[source]))
+    origin = context["initialization"]
+    wire = base64.b64decode(origin["responseBase64"])
+    prefix, binary = wire.split(b"HNVSD:999:1+@", 1)
+    length, rest = binary.split(b"@", 1)
+    body = public_text_segments(rest[:int(length)])
+    for i, part in enumerate(body):
+        if part.startswith(b"HIPINS:"):
+            fields = part.split(b"+", 4)
+            old_options = fields[4].split(b":", 3)
+            fields[4] = b":".join([b"" if n is None else str(n).encode() for n in bounds] + [old_options[3]])
+            body[i] = b"+".join(fields)
+        elif part.startswith(b"HITANS:"):
+            before = b"App:1.0:Public method:6:1:Approval"
+            after = (b"DecoupledPush:1.0:Public method:::Approval" if decoupled else
+                     b"App:1.0:Public method:" + str(procedure_maximum).encode() + b":" + input_format.encode() + b":Approval")
+            assert before in part
+            body[i] = part.replace(before, after)
+    payload = b"".join(body)
+    wire = prefix + segment("HNVSD", 999, 1, [[scalar(payload, binary=True)]])[0] + segment("HNHBS", len(body) + 2, 1, [plain(b"1")])[0]
+    wire = wire[:10] + f"{len(wire):012d}".encode() + wire[22:]
+    origin["responseBase64"] = base64.b64encode(wire).decode()
+    read_credential_vectors.append({"name": name, "context": context, "kind": kind,
+                                    "valueBase64": base64.b64encode(value).decode(), "issues": list(issues)})
+
+
+read_credential_vector("pin-at-minimum", "Pin", b"12345")
+read_credential_vector("pin-at-maximum", "Pin", b"123456789012")
+read_credential_vector("pin-too-short", "Pin", b"1234", ["PinTooShort"])
+read_credential_vector("pin-too-long", "Pin", b"1234567890123", ["PinTooLong"])
+read_credential_vector("pin-empty", "Pin", b"", ["EmptyValue"])
+read_credential_vector("pin-local-limit", "Pin", b"P" * 99, bounds=(1, 99, 99))
+read_credential_vector("pin-over-local-limit", "Pin", b"P" * 100, ["LocalLengthExceeded"], bounds=(1, 99, 99))
+read_credential_vector("pin-missing-minimum", "Pin", b"12345", ["MissingPinBounds"], bounds=(None, 12, 6))
+read_credential_vector("pin-missing-maximum", "Pin", b"12345", ["MissingPinBounds"], bounds=(5, None, 6))
+read_credential_vector("pin-all-bounds-unknown", "Pin", b"12345", ["MissingPinBounds"], bounds=(None, None, None))
+read_credential_vector("pin-known-minimum-still-applies", "Pin", b"1234", ["MissingPinBounds", "PinTooShort"], bounds=(5, None, 6))
+read_credential_vector("pin-known-maximum-still-applies", "Pin", b"1234567890123", ["MissingPinBounds", "PinTooLong"], bounds=(None, 12, 6))
+read_credential_vector("pin-spaces-and-delimiters-preserved", "Pin", b" +:'?@ ")
+read_credential_vector("pin-latin-one-preserved", "Pin", bytes([161, 196, 223, 252, 255]))
+read_credential_vector("pin-control-rejected", "Pin", b"12\x0034", ["InvalidText"])
+read_credential_vector("pin-nbsp-rejected", "Pin", b"12\xa034", ["InvalidText"])
+read_credential_vector("tan-numeric-leading-zeros", "Tan", b"000123")
+read_credential_vector("tan-single-digit-not-fixed-length", "Tan", b"0")
+read_credential_vector("tan-empty", "Tan", b"", ["EmptyValue"])
+read_credential_vector("tan-both-maxima-exceeded", "Tan", b"1234567", ["HipinsTanTooLong", "ProcedureTanTooLong"])
+read_credential_vector("tan-procedure-maximum-exceeded", "Tan", b"1234567", ["ProcedureTanTooLong"], bounds=(5, 12, 8))
+read_credential_vector("tan-hipins-maximum-exceeded", "Tan", b"1234567", ["HipinsTanTooLong"], procedure_maximum=8)
+read_credential_vector("tan-distinct-maxima-both-respected", "Tan", b"123456", bounds=(5, 12, 8))
+read_credential_vector("tan-missing-hipins-no-fallback", "Tan", b"123456", ["MissingTanBound"], bounds=(5, 12, None))
+read_credential_vector("tan-missing-hipins-known-procedure-still-applies", "Tan", b"1234567", ["MissingTanBound", "ProcedureTanTooLong"], bounds=(5, 12, None))
+read_credential_vector("tan-zero-procedure-maximum", "Tan", b"123456", ["ProcedureRequirementsNeedReview"], procedure_maximum=0)
+read_credential_vector("tan-numeric-rejects-letters", "Tan", b"12A456", ["TanFormatMismatch"])
+read_credential_vector("tan-numeric-rejects-whitespace", "Tan", b"12345 ", ["TanFormatMismatch"])
+read_credential_vector("tan-numeric-rejects-non-ascii-digits", "Tan", bytes([178]) * 6, ["TanFormatMismatch"])
+read_credential_vector("tan-control-and-format-issues", "Tan", b"12\n456", ["InvalidText", "TanFormatMismatch"])
+read_credential_vector("tan-alphanumeric", "Tan", b"Ab01z9", input_format="2")
+read_credential_vector("tan-alphanumeric-delimiters", "Tan", b"+:'?@ ", input_format="2")
+read_credential_vector("tan-alphanumeric-latin-one", "Tan", bytes([161, 196, 223, 252, 255]), input_format="2")
+read_credential_vector("tan-one-step-only-hipins-bound", "Tan", b"Ab01z9", source=4, procedure_maximum=1)
+read_credential_vector("tan-one-step-missing-bound", "Tan", b"123456", ["MissingTanBound"], source=4, bounds=(5, 12, None))
+read_credential_vector("tan-version-six", "Tan", b"123456", source=5)
+read_credential_vector("tan-decoupled-input-not-supported", "Tan", b"123456", ["TanInputNotSupported"], decoupled=True)
+read_credential_vector("pin-for-decoupled-remains-comparable", "Pin", b"12345", decoupled=True)
+read_credential_vector("tan-n-flag-does-not-waive-format", "Tan", b"ABC123", ["TanFormatMismatch"], source=41)
+read_credential_vector("tan-n-flag-still-compares-supplied-value", "Tan", b"123456", source=41)
+read_credential_vector("unqualified-context-withholds-input-diagnostics", "Pin", b"", ["ContextNeedsReview"], source=8)
+read_credential_vector("tan-local-limit", "Tan", b"1" * 99, bounds=(1, 99, 99), procedure_maximum=99)
+read_credential_vector("tan-over-local-limit", "Tan", b"1" * 100, ["LocalLengthExceeded"], bounds=(1, 99, 99), procedure_maximum=99)
+read_credential_vector("conflicting-pin-bounds-stay-context-review", "Pin", b"12345", ["ContextNeedsReview"], bounds=(13, 12, 6))
+read_credential_vector("zero-hipins-bound-stays-context-review", "Tan", b"123456", ["ContextNeedsReview"], bounds=(5, 12, 0))
+target.with_name("pin-tan-read-credential-comparison-v1.json").write_text(
+    json.dumps({"schemaVersion": 1, "vectors": read_credential_vectors}, indent=2) + "\n", encoding="utf-8")
+print(f"Generated {len(read_credential_vectors)} public synthetic first-read credential-comparison vectors.")
+
+read_pin_trailer_vectors = []
+
+
+def read_pin_trailer_vector(name, source=0, result="Written", copies=1, pin=None, control="NEXT-REF"):
+    original = read_credential_vectors[source]
+    context = json.loads(json.dumps(original["context"]))
+    value = base64.b64decode(original["valueBase64"]) if pin is None else pin
+    header = base64.b64decode(context["headerBase64"])
+    context["headerBase64"] = base64.b64encode(header.replace(b"NEXT-REF", text(control.encode("latin-1")))).decode()
+    wire = segment("HNSHA", 4, 2, [plain(control.encode("latin-1")), plain(b""), group([value])])[0]
+    read_pin_trailer_vectors.append({"name": name, "context": context, "controlReference": control,
+        "pinBase64": base64.b64encode(value).decode(), "result": result, "pinCopies": copies,
+        "wireBase64": base64.b64encode(wire).decode() if result == "Written" else None})
+
+
+read_pin_trailer_vector("pin-minimum")
+read_pin_trailer_vector("pin-maximum", source=1)
+read_pin_trailer_vector("pin-too-short", source=2, result="CredentialRequirementsNeedReview")
+read_pin_trailer_vector("pin-too-long", source=3, result="CredentialRequirementsNeedReview")
+read_pin_trailer_vector("pin-local-maximum", source=5)
+read_pin_trailer_vector("unknown-minimum-before-owner-access", source=7, result="CredentialRequirementsNeedReview", copies=0)
+read_pin_trailer_vector("unknown-maximum-before-owner-access", source=8, result="CredentialRequirementsNeedReview", copies=0)
+read_pin_trailer_vector("unknown-bounds-before-owner-access", source=9, result="CredentialRequirementsNeedReview", copies=0)
+read_pin_trailer_vector("pin-delimiters-and-spaces", source=12)
+read_pin_trailer_vector("pin-latin-one", source=13)
+read_pin_trailer_vector("pin-control-rejected", source=14, result="InvalidCredentialText")
+read_pin_trailer_vector("pin-nbsp-rejected", source=15, result="InvalidCredentialText")
+read_pin_trailer_vector("decoupled-pin-component", source=37)
+read_pin_trailer_vector("unqualified-account-before-owner-access", source=40, pin=b"PUBLIC-PIN", result="ContextNeedsReview", copies=0)
+read_pin_trailer_vector("conflicting-bounds-before-owner-access", source=43, result="ContextNeedsReview", copies=0)
+read_pin_trailer_vector("zero-hipins-bound-before-owner-access", source=44, pin=b"PUBLIC-PIN", result="ContextNeedsReview", copies=0)
+read_pin_trailer_vector("one-step-pin-component", source=33, pin=b"PUBLIC-PIN")
+read_pin_trailer_vector("tan-version-six-pin-component", source=35, pin=b"PUBLIC-PIN")
+read_pin_trailer_vector("n-flag-does-not-prove-completeness", source=39, pin=b"PUBLIC-PIN")
+read_pin_trailer_vector("maximum-escaped-pin", source=5, pin=b"?" * 99)
+read_pin_trailer_vector("escaped-control-and-pin", source=12, control="R+:'?@ü")
+read_pin_trailer_vector("maximum-control", control="?" * 14)
+target.with_name("pin-tan-read-pin-trailer-v1.json").write_text(
+    json.dumps({"schemaVersion": 1, "vectors": read_pin_trailer_vectors}, indent=2) + "\n", encoding="utf-8")
+print(f"Generated {len(read_pin_trailer_vectors)} public synthetic first-read PIN trailer vectors.")
+
+read_request_assembly_vectors = []
+
+
+def read_request_assembly_vector(name, trailer_source=0, read_source=None, result=None, copies=None, dialogue="SYNTHETIC", escaped_account=False):
+    original = read_pin_trailer_vectors[trailer_source]
+    context = json.loads(json.dumps(original["context"] if read_source is None else read_capability_context_vectors[read_source]))
+    control = original["controlReference"] if read_source is None else "NEXT-REF"
+    value = base64.b64decode(original["pinBase64"])
+    result = result or original["result"]
+    copies = original["pinCopies"] if copies is None else copies
+    request = public_text_segments(base64.b64decode(context["requestBase64"]))[1]
+    origin = context["initialization"]
+    wire = base64.b64decode(origin["responseBase64"])
+    prefix, binary = wire.split(b"HNVSD:999:1+@", 1)
+    length, rest = binary.split(b"@", 1)
+    payload = rest[:int(length)]
+    if escaped_account:
+        escaped = text("A+:'?@ü".encode("latin-1"))
+        request = request.replace(b"PUBLIC-001", escaped)
+        payload = payload.replace(b"PUBLIC-001", escaped)
+    if dialogue != "SYNTHETIC":
+        prefix = prefix.replace(b"+SYNTHETIC+1+SYNTHETIC:1'", b"+" + text(dialogue.encode("latin-1")) + b"+1+" + text(dialogue.encode("latin-1")) + b":1'")
+    tail = rest[int(length) + 1:]
+    wire = prefix + segment("HNVSD", 999, 1, [[scalar(payload, binary=True)]])[0] + tail
+    wire = wire[:10] + f"{len(wire):012d}".encode() + wire[22:]
+    origin["responseBase64"] = base64.b64encode(wire).decode()
+    context["requestBase64"] = base64.b64encode(end_frame(dialogue, 2, [(request, None)])).decode()
+    header = base64.b64decode(context["headerBase64"])
+    parts, fields = request.split(b"+", 1)
+    elements = parts.split(b":"); elements[1] = b"3"
+    request = b":".join(elements) + b"+" + fields
+    trailer = segment("HNSHA", 4, 2, [plain(control.encode("latin-1")), plain(b""), group([value])])[0]
+    assembled = end_frame(dialogue, 2, [(header, None), (request, None), (trailer, None)])
+    read_request_assembly_vectors.append({"name": name, "context": context, "controlReference": control,
+        "pinBase64": base64.b64encode(value).decode(), "result": result, "pinCopies": copies,
+        "wireBase64": base64.b64encode(assembled).decode() if result == "Written" else None})
+
+
+for index, original in enumerate(read_pin_trailer_vectors):
+    read_request_assembly_vector(original["name"], trailer_source=index)
+read_request_assembly_vector("balance-six", read_source=1)
+read_request_assembly_vector("balance-eight", read_source=2)
+read_request_assembly_vector("single-account-discovery", read_source=3)
+read_request_assembly_vector("national-balance-eight", read_source=6)
+read_request_assembly_vector("entry-count-preserved", read_source=7)
+read_request_assembly_vector("escaped-assigned-dialogue", dialogue="D+:'?@ü")
+read_request_assembly_vector("escaped-account-identity", read_source=3, escaped_account=True)
+read_request_assembly_vector("all-balances-rejected-before-owner", read_source=22, result="ContextNeedsReview", copies=0)
+read_request_assembly_vector("unhandled-limit-rejected-before-owner", read_source=37, result="ContextNeedsReview", copies=0)
+target.with_name("pin-tan-read-request-assembly-v1.json").write_text(
+    json.dumps({"schemaVersion": 1, "vectors": read_request_assembly_vectors}, indent=2) + "\n", encoding="utf-8")
+print(f"Generated {len(read_request_assembly_vectors)} public synthetic first-read request-assembly vectors.")

@@ -59,3 +59,15 @@ history or weaken a boundary in implementation.
 | [0039](0039-pin-tan-assembled-request-reference-binding.md) | Accepted | Credential-free candidate segment maps and source-preserving response-reference comparison for assembled PIN/TAN requests |
 | [0040](0040-pin-tan-initialization-response-semantics.md) | Accepted | Assembled initialization status and parameter/envelope identity comparison with exact response provenance and untrusted version observations |
 | [0041](0041-pin-tan-synchronization-response-semantics.md) | Accepted | Assembled synchronization report/status/envelope checks with exact provenance, recovery bounds and mandatory close/reinitialize next step |
+| [0042](0042-pin-tan-initialization-attempt-lifecycle.md) | Accepted | One assembled initialization candidate, absolute deadline, one-time evidence handoff and terminal metadata cleanup |
+| [0043](0043-pin-tan-synchronization-attempt-lifecycle.md) | Accepted | One assembled synchronization candidate and recovery context, bounded one-time closing/reinitialization handoff and terminal cleanup |
+| [0044](0044-pin-tan-dialogue-end-context-encoding.md) | Accepted | Synchronization-bound PIN/TAN closing context and PIN-only envelope encoding with bounded secret staging and failed-output cleanup |
+| [0045](0045-pin-tan-closing-response-binding.md) | Accepted | Assembled closing candidate/reference maps, exact envelope identity checks and distinct closure/abort/review observations |
+| [0046](0046-pin-tan-closing-attempt-lifecycle.md) | Accepted | One bounded closing candidate with one-time closure/abort/review handoff, reinitialization requirement and terminal cleanup |
+| [0047](0047-assembled-initialization-procedure-integration.md) | Accepted | Exact-source assembled initialization HITANS/3920 integration and explicit one-time combined procedure handoff without activation |
+| [0048](0048-assembled-initialization-hipins-requirements.md) | Accepted | Exact-source HIPINS requirements with nullable bounds, qualified TAN flags and one-time combined initialization handoff |
+| [0049](0049-first-read-pin-tan-signature-context.md) | Accepted | First-read detached signature context reusing complete returned initialization evidence with exact dialogue, counter, identity and procedure scope |
+| [0050](0050-initialization-read-capability-integration.md) | Accepted | Explicit initialization read-schema integration and first-read single-account permission, capability and request-option checks |
+| [0051](0051-first-read-credential-requirement-comparison.md) | Accepted | Scalar first-read PIN/TAN byte comparison against reported bounds and formats, preserving caller ownership and unresolved requirements |
+| [0052](0052-first-read-pin-only-trailer-encoding.md) | Accepted | First-read PIN-only HNSHA encoding with actual owned-byte validation, bounded staging and expiry/cancellation/output cleanup |
+| [0053](0053-first-read-pin-only-request-assembly.md) | Accepted | Plain first-read PIN-only request assembly with bound segment roles, exact framing and whole-message secret cleanup |

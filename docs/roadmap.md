@@ -897,8 +897,34 @@ actual segment roles without capturing credential output. Assembled initializati
 now compares bound status and parameter/envelope identities with exact response
 provenance. Assembled synchronization now checks unique report shape, bound status,
 envelope identity and explicit recovery limits, retaining close/reinitialization as
-the required next step. Assembled attempt lifecycles and broader session integration
-remain pending.
+the required next step. An assembled initialization attempt now pins one candidate,
+enforces an absolute deadline, hands evidence out once and releases terminal
+metadata. An assembled synchronization attempt now pins candidate/recovery context,
+enforces a fixed deadline and returns scoped evidence once, always requiring
+closing/reinitialization after a match. PIN/TAN closing context/encoding now binds
+synchronization dialogue/counter and identity scope and emits PIN-only envelopes
+with bounded staging and failed-output cleanup. Assembled closing response checks
+now map actual segment roles and compare dialogue/counters/envelope identity,
+distinguishing reported closure and abort from unresolved evidence. A bounded
+closing attempt now owns one candidate and deadline, returns evidence once and
+releases metadata on terminal outcomes. The synchronization handoff preserves exact
+provenance and closure still requires fresh initialization. An explicit assembled
+initialization path now integrates returned HITANS/3920 evidence for the pinned
+selection with exact-source checks and one-time combined handoff. Combined HIPINS
+integration now preserves nullable length bounds and checks reported TAN flags,
+withholding qualification for ambiguous or unsupported requirements. First-read
+signature context now reuses the complete returned initialization result with
+dialogue/counter, identity and unchanged selection checks. An explicit initialization
+path now integrates read advertisements; first-read single-account comparison
+checks returned permissions, identity, signature requirements and request options.
+First-read credential comparison now checks supplied byte spans against reported
+bounds and TAN formats while preserving missing requirements and caller ownership.
+PIN-only read trailer encoding now applies the checks to owned staging bytes with
+bounded expiry/cancellation and failed-output cleanup. Plain first-read assembly
+now binds segment numbering, preserves explicit request fields and computes exact
+framing with whole-message secret cleanup. Read-envelope assembly, TAN/challenge
+integration, all-account capabilities, procedure activation and broader session
+coordination remain pending.
 Broader request/session context,
 security conformance and actual SCA qualification remain pending. Full storage
 schemas, durable integration, calibration, format approval, Windows setup and

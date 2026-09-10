@@ -150,6 +150,10 @@ public sealed class FinTsReadCapabilityEvidence
 
     public static FinTsReadCapabilityEvidence Evaluate(FinTsReadParameterSet source, FinTsAccountParameters account,
         FinTsReadOperation operation, int version, CancellationToken cancellationToken = default)
+        => EvaluateCore(source, account, operation, version, null, cancellationToken);
+
+    internal static FinTsReadCapabilityEvidence EvaluateCore(FinTsReadParameterSet source, FinTsAccountParameters account,
+        FinTsReadOperation operation, int version, FinTsPinTanInitializationRequirementsEvidence? initialization, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(source);
         ArgumentNullException.ThrowIfNull(account);
@@ -183,7 +187,10 @@ public sealed class FinTsReadCapabilityEvidence
         var candidates = source.Advertisements.Where(a => a.Operation == operation && a.Version == version).ToList();
         if (candidates.Count == 0) { issues |= FinTsReadEvidenceIssue.MissingAdvertisement; }
         if (candidates.Count > 1) { issues |= FinTsReadEvidenceIssue.DuplicateAdvertisement; }
-        if (parameters.Source.HasErrors || parameters.Source.HasConflictingClasses ||
+        // Only a fully qualified exact-source initialization can supply the broader scoped status vocabulary.
+        bool scopedInitialization = initialization is { HasMatchingEvidence: true } && ReferenceEquals(initialization.ReadParameters, source) &&
+            ReferenceEquals(initialization.PinTan.Source, parameters);
+        if (parameters.Source.HasErrors || parameters.Source.HasConflictingClasses || !scopedInitialization &&
             parameters.Source.ReplySegments.SelectMany(s => s.Replies).Any(r => r.Meaning is not (FinTsReplyMeaning.ReceiptReported or FinTsReplyMeaning.ExecutionReported)))
         {
             issues |= FinTsReadEvidenceIssue.ResponseNeedsReview;

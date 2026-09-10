@@ -6,7 +6,7 @@ namespace Broiler.Fond.Kernel.FinTs;
 
 public enum FinTsPinTanRequestWriteResult
 {
-    Written, DestinationTooSmall, ContextNeedsReview, TanNotPermitted, CredentialUnavailable, InvalidCredentialText,
+    Written, DestinationTooSmall, ContextNeedsReview, TanNotPermitted, CredentialUnavailable, InvalidCredentialText, CredentialRequirementsNeedReview,
 }
 
 /// <summary>Assembles one bounded plain initialization/synchronization candidate, before the security envelope.
@@ -79,7 +79,7 @@ public static class FinTsPinTanRequestWriter
         }
     }
 
-    private static void AppendPublicSegment(StringBuilder output, FinTsSegment source, int number)
+    internal static void AppendPublicSegment(StringBuilder output, FinTsSegment source, int number)
     {
         output.Append(source.Code).Append(':').Append(number.ToString(CultureInfo.InvariantCulture)).Append(':')
             .Append(source.Version.ToString(CultureInfo.InvariantCulture));
