@@ -1,0 +1,24 @@
+{
+  "$comment": "Per-declaration assurance for Broiler.Fond. Product projects only: the platform-neutral kernel library and the Windows host executable. tests/Broiler.Fond.Kernel.Tests (the BCL-only verification runner and its reference codecs) and eng/ (CI scripts and the Python fixture generators) are not listed, so they are not covered. No source here is third-party-derived, so there are no spdxOverrides. HUMAN_REVIEW.md is the hand-written two-person release approval record and is left untouched; the per-unit record is written to HUMAN_REVIEW.units.md.",
+  "schema": 1,
+  "component": "Broiler.Fond",
+  "projects": [
+    "src/Broiler.Fond.Host.Windows/Broiler.Fond.Host.Windows.csproj",
+    "src/Broiler.Fond.Kernel/Broiler.Fond.Kernel.csproj"
+  ],
+  "exclude": [],
+  "exemptionPredicate": "owning-component",
+  "spdx": {
+    "copyright": [ "2026 Broiler Platform contributors" ],
+    "license": "Apache-2.0"
+  },
+  "spdxOverrides": [],
+  "artefacts": {
+    "report": "CODE-ASSURANCE.md",
+    "humanReview": "HUMAN_REVIEW.units.md",
+    "manifest": "assurance.manifest.json"
+  },
+  "forbidDirectives": false,
+  "forgeryVocabulary": "narrow",
+  "regenerateCommand": "dotnet run --project Broiler.Code/src/Broiler.Code.Review.Cli -c Release -- assurance generate --root Broiler.Fond"
+}
