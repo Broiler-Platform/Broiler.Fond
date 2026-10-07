@@ -156,7 +156,9 @@ The M0 foundation remains enforced as M1 development begins:
   in the kernel.
 - GitHub Actions verifies the full solution and smoke-runs the inert host on
   Windows, then independently builds the kernel and its checks on Linux. CI
-  does not publish artifacts.
+  does not publish artifacts; the dispatch-only Publish workflow builds the
+  host self-contained and framework-dependent for win-x64 and drafts an
+  unpublished pre-release (tag `fond-v<version>`, from `BroilerFondVersion`).
 
 The [M1 progress and acceptance backlog](docs/milestone-1.md) records completed
 work, remaining implementation, and release dependencies. Endpoint confirmation
