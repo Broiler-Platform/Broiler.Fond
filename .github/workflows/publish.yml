@@ -1,0 +1,177 @@
+name: Publish
+
+# Dispatch-only. Every run publishes the Windows host for win-x64 in two variants, stamps both
+# with the next preview version, attaches them to the run as artifacts, then drafts a GitHub
+# pre-release carrying them:
+#
+#   Broiler.Fond-<version>-win-x64-self-contained.zip       host + the .NET runtime
+#   Broiler.Fond-<version>-win-x64-framework-dependent.zip  host, runs on an installed .NET 10
+#
+# The Milestone 0 host is an inert console shell; the release notes say so, and the draft stays
+# private until someone publishes it (docs/release/prerelease-checklist.md governs that).
+#
+# NuGet.config lists no package source: the solution needs none to build. Publishing for a
+# runtime identifier does need Microsoft's runtime and apphost packs, so the publish step names
+# nuget.org - and only nuget.org - on the command line. Nothing is pushed to a feed.
+#
+# The version is BroilerFondVersion (Directory.Build.props) raised past every earlier run's
+# fond-v* tag, and a successful run tags its commit, so preview numbers only ever increase and
+# never name two builds. See eng/resolve-preview-version.mjs.
+on:
+  workflow_dispatch:
+    inputs:
+      version-suffix:
+        description: >-
+          Optional preview.N override (unused, and at least the next preview). Empty picks
+          the next preview automatically.
+        type: string
+        default: ''
+
+permissions:
+  contents: read
+
+# One run at a time, so two runs cannot pick the same preview number.
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+env:
+  DOTNET_CLI_TELEMETRY_OPTOUT: "1"
+  DOTNET_NOLOGO: "true"
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: "1"
+
+jobs:
+  version:
+    name: Resolve preview version
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      tag: ${{ steps.version.outputs.tag }}
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up .NET 10
+        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+
+      - name: Test the version resolver
+        run: node --test eng/resolve-preview-version.test.mjs
+
+      - name: Resolve version
+        id: version
+        env:
+          VERSION_SUFFIX: ${{ inputs.version-suffix }}
+        run: node eng/resolve-preview-version.mjs
+
+  build:
+    name: win-x64 (${{ matrix.variant }})
+    needs: version
+    runs-on: windows-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: true
+      matrix:
+        variant: [self-contained, framework-dependent]
+    defaults:
+      run:
+        shell: pwsh
+    env:
+      VERSION: ${{ needs.version.outputs.version }}
+      OUT: artifacts/publish/win-x64-${{ matrix.variant }}
+      EXECUTABLE: Broiler.Fond.Host.Windows.exe
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up .NET 10
+        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        with:
+          dotnet-version: 10.0.x
+
+      # No single-file or trimming: either is a global property that reaches the kernel and
+      # trips its no-PackageReference guard (Directory.Build.targets).
+      - name: Publish
+        run: |
+          $selfContained = if ('${{ matrix.variant }}' -eq 'self-contained') { 'true' } else { 'false' }
+          dotnet publish src/Broiler.Fond.Host.Windows/Broiler.Fond.Host.Windows.csproj `
+            -c Release -r win-x64 --self-contained $selfContained `
+            --source https://api.nuget.org/v3/index.json `
+            "-p:BroilerFondVersion=$env:VERSION" `
+            -o $env:OUT
+          if ($LASTEXITCODE -ne 0) { throw "Publishing failed (exit $LASTEXITCODE)." }
+          Get-ChildItem $env:OUT -Recurse -Filter *.pdb | Remove-Item
+
+      # A self-contained build carries the runtime; a framework-dependent one must not, or it
+      # would be a self-contained build under the wrong name.
+      - name: Check the variant
+        run: |
+          $runtime = Test-Path (Join-Path $env:OUT 'coreclr.dll')
+          if (-not (Test-Path (Join-Path $env:OUT $env:EXECUTABLE))) { throw "$env:EXECUTABLE is missing." }
+          if ('${{ matrix.variant }}' -eq 'self-contained' -and -not $runtime) { throw 'The self-contained build carries no runtime.' }
+          if ('${{ matrix.variant }}' -eq 'framework-dependent' -and $runtime) { throw 'The framework-dependent build carries a runtime.' }
+
+      - name: Smoke-test the executable
+        run: |
+          & (Join-Path $env:OUT $env:EXECUTABLE)
+          if ($LASTEXITCODE -ne 0) { throw "The host exited with code $LASTEXITCODE." }
+
+      - name: Upload
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: broiler-fond-win-x64-${{ matrix.variant }}-${{ env.VERSION }}
+          path: ${{ env.OUT }}/
+          if-no-files-found: error
+
+  release:
+    name: Tag and draft release ${{ needs.version.outputs.tag }}
+    needs: [version, build]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      VERSION: ${{ needs.version.outputs.version }}
+      TAG: ${{ needs.version.outputs.tag }}
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      # Only after both builds succeeded: a failed run leaves its number free. The tag is
+      # pushed here because a draft release does not create its tag until it is published -
+      # and the next run counts tags.
+      - name: Tag the commit
+        run: |
+          git tag "$TAG" "$GITHUB_SHA"
+          git push origin "refs/tags/$TAG"
+
+      - name: Download the builds
+        uses: actions/download-artifact@v8
+        with:
+          pattern: broiler-fond-win-x64-*-${{ env.VERSION }}
+          path: artifacts
+
+      - name: Draft the release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bash eng/release-draft.sh "$VERSION" artifacts
+
+      - name: Summary
+        run: |
+          {
+            echo "### Broiler.Fond $VERSION"
+            echo
+            echo "Commit tagged \`$TAG\`. A draft pre-release **Broiler Fond $VERSION** was created with"
+            echo "\`Broiler.Fond-$VERSION-win-x64-self-contained.zip\` and"
+            echo "\`Broiler.Fond-$VERSION-win-x64-framework-dependent.zip\`."
+            echo "Review it under Releases and publish it there."
+          } >> "$GITHUB_STEP_SUMMARY"
