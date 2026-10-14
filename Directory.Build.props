@@ -12,5 +12,9 @@
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <DebugType>portable</DebugType>
+    <!-- The preview line the Publish workflow raises past every fond-v* tag; see
+         eng/resolve-preview-version.mjs. It also stamps local builds. -->
+    <BroilerFondVersion Condition="'$(BroilerFondVersion)' == ''">0.1.0-preview.1</BroilerFondVersion>
+    <Version>$(BroilerFondVersion)</Version>
   </PropertyGroup>
 </Project>
