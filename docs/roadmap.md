@@ -922,9 +922,34 @@ bounds and TAN formats while preserving missing requirements and caller ownershi
 PIN-only read trailer encoding now applies the checks to owned staging bytes with
 bounded expiry/cancellation and failed-output cleanup. Plain first-read assembly
 now binds segment numbering, preserves explicit request fields and computes exact
-framing with whole-message secret cleanup. Read-envelope assembly, TAN/challenge
-integration, all-account capabilities, procedure activation and broader session
-coordination remain pending.
+framing with whole-message secret cleanup. First-read envelopes now add exact
+binary payloads, credential-free candidate metadata and final-output cleanup.
+Assembled read-response binding now compares exact dialogue/counter/profile scope
+and maps replies to actual request roles while preserving untrusted source evidence.
+Assembled read semantics now require exact-source typed data and compare account,
+version, currency, envelope identity and read-scoped status evidence, retaining
+unavailable and partial outcomes. A bounded assembled first-read attempt now owns
+one candidate/deadline, hands scoped evidence out once and releases pending metadata
+on terminal outcomes. Balance-continuation context now binds qualified partial
+evidence to exact tokens, unchanged account/options and sequential counters.
+Continuation signature context now binds exact header identity, unchanged procedure
+selection and explicit control scope, preserving requirements only on a complete match.
+Continuation PIN-only trailers now validate actual owned PIN bytes against inherited
+bounds with bounded staging and failed-output cleanup. Continuation plain requests
+now preserve exact message-3 framing, tokens and segment roles with whole-message
+failure cleanup. Continuation envelopes now preserve exact binary payloads and bound
+candidate metadata with final-output cleanup. Continuation response binding now
+compares exact message-3 scope and actual segment roles while retaining unresolved
+payload/status observations. Continuation semantics now compare exact-source
+read data, inherited account/version/currency and envelope identity, preserving
+separate second-page outcomes and raw tokens. A bounded assembled continuation
+attempt now owns one candidate/deadline, hands scoped evidence out once and
+releases pending metadata on terminal outcomes. Later-page balance continuation
+context now enables continuation beyond page two with 128-page limit and
+sequential counter checks. A multi-page PIN/TAN balance refresh attempt now coordinates
+page one and sequential continuation pages under a single deadline and page budget,
+aggregating balances without loss. Session coordination, TAN/challenge integration,
+all-account capabilities, procedure activation and live transport remain pending.
 Broader request/session context,
 security conformance and actual SCA qualification remain pending. Full storage
 schemas, durable integration, calibration, format approval, Windows setup and

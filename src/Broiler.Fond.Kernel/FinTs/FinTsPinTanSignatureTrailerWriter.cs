@@ -36,12 +36,30 @@ public static class FinTsPinTanSignatureTrailerWriter
         Span<byte> destination, out int bytesWritten, CancellationToken cancellationToken = default)
     {
         bytesWritten = 0; ArgumentNullException.ThrowIfNull(context);
-        return TryEncodeCore(context.Signature.Header, context.HasMatchingEvidence, false, pin, null, 4, destination, out bytesWritten, cancellationToken, context);
+        return TryEncodeCore(context.Signature.Header, context.HasMatchingEvidence, false, pin, null, 4, destination, out bytesWritten, cancellationToken, context.Signature);
+    }
+
+    /// <summary>Writes only the PIN component for a qualified second-page signature context, at HNSHA segment 4.
+    /// Checks actual owned PIN bytes against the inherited requirements. This does not decide TAN omission or SCA readiness.</summary>
+    public static FinTsSignatureTrailerWriteResult TryEncodeReadContinuationPinOnly(FinTsPinTanReadContinuationSignatureContext context, FinTsSessionCredential pin,
+        Span<byte> destination, out int bytesWritten, CancellationToken cancellationToken = default)
+    {
+        bytesWritten = 0; ArgumentNullException.ThrowIfNull(context);
+        return TryEncodeCore(context.Header, context.HasMatchingEvidence, false, pin, null, 4, destination, out bytesWritten, cancellationToken, context.Continuation.Origin.Signature);
+    }
+
+    /// <summary>Writes only the PIN component for the all-account discovery context, at HNSHA segment 4.
+    /// Applies reported PIN bounds to the actual copied bytes. This partial security component does not decide TAN omission or SCA readiness.</summary>
+    public static FinTsSignatureTrailerWriteResult TryEncodeAllAccountPinOnly(FinTsPinTanAllAccountCapabilityContext context, FinTsSessionCredential pin,
+        Span<byte> destination, out int bytesWritten, CancellationToken cancellationToken = default)
+    {
+        bytesWritten = 0; ArgumentNullException.ThrowIfNull(context);
+        return TryEncodeCore(context.Signature.Header, context.HasMatchingEvidence, false, pin, null, 4, destination, out bytesWritten, cancellationToken, context.Signature);
     }
 
     private static FinTsSignatureTrailerWriteResult TryEncodeCore(FinTsPinTanSignatureHeader header, bool matching, bool tanPermitted,
         FinTsSessionCredential pin, FinTsSessionCredential? tan, int segmentNumber, Span<byte> destination, out int bytesWritten, CancellationToken cancellationToken,
-        FinTsPinTanReadCapabilityContext? readContext = null)
+        FinTsPinTanReadSignatureContext? signatureContext = null)
     {
         bytesWritten = 0;
         ArgumentNullException.ThrowIfNull(pin);
@@ -55,7 +73,7 @@ public static class FinTsPinTanSignatureTrailerWriter
             cancellationToken.ThrowIfCancellationRequested();
             if (!matching)
             { return FinTsSignatureTrailerWriteResult.ContextNeedsReview; }
-            if (readContext is not null && (readContext.Signature.MatchingRequirements!.MinimumPinLength is null || readContext.Signature.MatchingRequirements.MaximumPinLength is null))
+            if (signatureContext is not null && (signatureContext.MatchingRequirements!.MinimumPinLength is null || signatureContext.MatchingRequirements.MaximumPinLength is null))
             { return FinTsSignatureTrailerWriteResult.CredentialRequirementsNeedReview; }
             if (tan is not null && !tanPermitted)
             { return FinTsSignatureTrailerWriteResult.TanNotPermitted; }
@@ -65,7 +83,7 @@ public static class FinTsPinTanSignatureTrailerWriter
             if (pin.TryCopyTo(pinBytes, out int pinLength, cancellationToken) != FinTsCredentialCopyResult.Copied)
             { return FinTsSignatureTrailerWriteResult.CredentialUnavailable; }
             if (!Printable(pinBytes[..pinLength])) { return FinTsSignatureTrailerWriteResult.InvalidCredentialText; }
-            if (readContext is not null && FinTsPinTanReadCredentialComparison.Compare(readContext, FinTsCredentialKind.Pin, pinBytes[..pinLength], cancellationToken) != FinTsPinTanReadCredentialIssue.None)
+            if (signatureContext is not null && FinTsPinTanReadCredentialComparison.CompareCore(signatureContext, matching, FinTsCredentialKind.Pin, pinBytes[..pinLength], cancellationToken) != FinTsPinTanReadCredentialIssue.None)
             { return FinTsSignatureTrailerWriteResult.CredentialRequirementsNeedReview; }
             int tanLength = 0;
             if (tan is not null)

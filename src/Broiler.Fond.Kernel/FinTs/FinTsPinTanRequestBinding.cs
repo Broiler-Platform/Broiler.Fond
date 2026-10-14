@@ -4,7 +4,7 @@ namespace Broiler.Fond.Kernel.FinTs;
 
 public enum FinTsPinTanRequestSegmentRole
 {
-    MessageHeader, EnvelopeHeader, EnvelopeData, SignatureHeader, Identification, Preparation, Synchronization, SignatureTrailer, MessageTrailer, DialogueEnd,
+    MessageHeader, EnvelopeHeader, EnvelopeData, SignatureHeader, Identification, Preparation, Synchronization, SignatureTrailer, MessageTrailer, DialogueEnd, ReadOperation,
 }
 
 /// <summary>Credential-free description of one actual outgoing segment position, including reserved wrapper numbers.</summary>

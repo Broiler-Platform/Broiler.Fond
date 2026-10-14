@@ -55,5 +55,25 @@
     <EmbeddedResource Include="Fixtures/FinTs/pin-tan-read-credential-comparison-v1.json" LogicalName="FinTs.pin-tan-read-credential-comparison-v1.json" />
     <EmbeddedResource Include="Fixtures/FinTs/pin-tan-read-pin-trailer-v1.json" LogicalName="FinTs.pin-tan-read-pin-trailer-v1.json" />
     <EmbeddedResource Include="Fixtures/FinTs/pin-tan-read-request-assembly-v1.json" LogicalName="FinTs.pin-tan-read-request-assembly-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-read-request-envelope-v1.json" LogicalName="FinTs.pin-tan-read-request-envelope-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-read-response-binding-v1.json" LogicalName="FinTs.pin-tan-read-response-binding-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-read-semantics-v1.json" LogicalName="FinTs.pin-tan-read-semantics-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-read-attempt-v1.json" LogicalName="FinTs.pin-tan-read-attempt-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-read-continuation-context-v1.json" LogicalName="FinTs.pin-tan-read-continuation-context-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-read-continuation-signature-v1.json" LogicalName="FinTs.pin-tan-read-continuation-signature-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-read-continuation-pin-trailer-v1.json" LogicalName="FinTs.pin-tan-read-continuation-pin-trailer-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-read-continuation-request-assembly-v1.json" LogicalName="FinTs.pin-tan-read-continuation-request-assembly-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-read-continuation-request-envelope-v1.json" LogicalName="FinTs.pin-tan-read-continuation-request-envelope-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-read-continuation-response-binding-v1.json" LogicalName="FinTs.pin-tan-read-continuation-response-binding-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-read-continuation-semantics-v1.json" LogicalName="FinTs.pin-tan-read-continuation-semantics-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-read-continuation-attempt-v1.json" LogicalName="FinTs.pin-tan-read-continuation-attempt-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-read-later-continuation-context-v1.json" LogicalName="FinTs.pin-tan-read-later-continuation-context-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-read-refresh-attempt-v1.json" LogicalName="FinTs.pin-tan-read-refresh-attempt-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-all-account-capability-context-v1.json" LogicalName="FinTs.pin-tan-all-account-capability-context-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-all-account-request-envelope-v1.json" LogicalName="FinTs.pin-tan-all-account-request-envelope-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-all-account-response-v1.json" LogicalName="FinTs.pin-tan-all-account-response-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-all-account-attempt-v1.json" LogicalName="FinTs.pin-tan-all-account-attempt-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-read-session-attempt-v1.json" LogicalName="FinTs.pin-tan-read-session-attempt-v1.json" />
+    <EmbeddedResource Include="Fixtures/FinTs/pin-tan-synchronization-session-attempt-v1.json" LogicalName="FinTs.pin-tan-synchronization-session-attempt-v1.json" />
   </ItemGroup>
 </Project>

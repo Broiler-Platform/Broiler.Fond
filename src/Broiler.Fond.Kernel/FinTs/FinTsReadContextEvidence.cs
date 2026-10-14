@@ -67,10 +67,18 @@ public sealed class FinTsReadContextEvidence
         ArgumentNullException.ThrowIfNull(request); ArgumentNullException.ThrowIfNull(response); ArgumentNullException.ThrowIfNull(capability);
         cancellationToken.ThrowIfCancellationRequested();
         var issues = RequestIssues(request, capability, nationalAdvertisement);
-        var read = request.Request;
+        issues |= ResponseIssues(request, response, out bool unavailableReported, out string? continuation, out var outcome, cancellationToken);
+        issues |= DataIssues(request.Request, response, capability, unavailableReported, cancellationToken);
+        issues |= ContinuationIssues(request, capability, nationalAdvertisement, previousPage, out int pageNumber);
+        return new(request, response, capability, nationalAdvertisement, issues, outcome, continuation, pageNumber);
+    }
+
+    internal static FinTsReadContextIssue DataIssues(FinTsReadRequest read, FinTsReadDataSet response,
+        FinTsReadCapabilityEvidence capability, bool unavailableReported, CancellationToken cancellationToken)
+    {
+        var issues = FinTsReadContextIssue.None;
         bool discovery = read.Source.Code == "HKSPA";
         var selected = read.Accounts.Count == 1 ? read.Accounts[0] : null;
-        issues |= ResponseIssues(request, response, out bool unavailableReported, out string? continuation, out var outcome, cancellationToken);
         if (response.UninterpretedSegments.Count != 0 || discovery && response.Balances.Count != 0 || !discovery && response.Discovery.Count != 0)
         { issues |= FinTsReadContextIssue.UnexpectedReport; }
         int reports = discovery ? response.Discovery.Count : response.Balances.Count;
@@ -99,8 +107,7 @@ public sealed class FinTsReadContextEvidence
             if (report.HasCurrencyConflict || currency.Length != 0 && currency != report.AccountCurrency) { issues |= FinTsReadContextIssue.CurrencyMismatch; }
             if (report.DueDate is not null) { issues |= FinTsReadContextIssue.DueDateNeedsReview; }
         }
-        issues |= ContinuationIssues(request, capability, nationalAdvertisement, previousPage, out int pageNumber);
-        return new(request, response, capability, nationalAdvertisement, issues, outcome, continuation, pageNumber);
+        return issues;
     }
 
     internal static FinTsReadContextIssue ResponseIssues(FinTsReadRequestContext request, FinTsReadDataSet response,
@@ -108,11 +115,7 @@ public sealed class FinTsReadContextEvidence
     {
         var issues = FinTsReadContextIssue.None;
         var read = request.Request;
-        bool discovery = read.Source.Code == "HKSPA";
         var source = response.Source;
-        var related = source.ReplySegments.Where(s => s.RequestSegmentNumber == read.Source.Number).SelectMany(s => s.Replies).ToArray();
-        var unavailable = related.Where(r => r.Code == "3010").ToArray();
-        unavailableReported = unavailable.Length == 1 && unavailable[0].ElementReference.IsEmpty && unavailable[0].Parameters.All(p => p.IsEmpty);
         var header = source.Frame.Syntax.Segments[0].Fields;
         if (source.Frame.MessageNumber != request.ExpectedBankMessageNumber || Dialog(source.Frame) != Dialog(request.Frame) ||
             header.Count != 5 || header[4].Elements.Count != 2 || header[4].Elements[0].HeaderText() != Dialog(request.Frame) ||
@@ -124,9 +127,22 @@ public sealed class FinTsReadContextEvidence
             cancellationToken.ThrowIfCancellationRequested();
             if (segment.Reference is int reference && reference != read.Source.Number) { issues |= FinTsReadContextIssue.ReferenceMismatch; }
         }
+        return issues | StatusIssues(read, response, read.Source.Number, out unavailableReported, out continuation, out outcome, cancellationToken);
+    }
+
+    internal static FinTsReadContextIssue StatusIssues(FinTsReadRequest read, FinTsReadDataSet response, int readNumber,
+        out bool unavailableReported, out string? continuation, out FinTsReadOutcomeObservation outcome, CancellationToken cancellationToken)
+    {
+        cancellationToken.ThrowIfCancellationRequested();
+        var issues = FinTsReadContextIssue.None;
+        bool discovery = read.Source.Code == "HKSPA";
+        var source = response.Source;
+        var related = source.ReplySegments.Where(s => s.RequestSegmentNumber == readNumber).SelectMany(s => s.Replies).ToArray();
+        var unavailable = related.Where(r => r.Code == "3010").ToArray();
+        unavailableReported = unavailable.Length == 1 && unavailable[0].ElementReference.IsEmpty && unavailable[0].Parameters.All(p => p.IsEmpty);
         // 3010 is interpreted only within this read request. Other consumers retain the raw unknown meaning.
         bool unknownStatus = source.ReplySegments.Any(s => s.Replies.Any(r => r.Meaning == FinTsReplyMeaning.Uninterpreted &&
-            !(s.RequestSegmentNumber == read.Source.Number && r.Code == "3010")));
+            !(s.RequestSegmentNumber == readNumber && r.Code == "3010")));
         if (source.HasErrors || source.HasConflictingClasses || source.HasIndeterminateProcessing || unknownStatus)
         { issues |= FinTsReadContextIssue.ResponseNeedsReview; }
         var partial = related.Where(r => r.Code == "3040").ToArray();
@@ -214,7 +230,7 @@ public sealed class FinTsReadContextEvidence
     internal static string Dialog(FinTsMessageFrame frame) => frame.Syntax.Segments[0].Fields[2].Elements[0].HeaderText();
     private static bool SameNational(FinTsReadAccount a, FinTsReadAccount b) =>
         a.Number == b.Number && a.Subaccount == b.Subaccount && a.Country == b.Country && a.Institution == b.Institution;
-    private static bool SameAccount(FinTsReadAccount a, FinTsReadAccount b) => SameNational(a, b) && a.Iban == b.Iban && a.Bic == b.Bic;
+    internal static bool SameAccount(FinTsReadAccount a, FinTsReadAccount b) => SameNational(a, b) && a.Iban == b.Iban && a.Bic == b.Bic;
     private static bool MatchesUserAccount(FinTsReadAccount account, FinTsAccountParameters user)
     {
         if (!user.HasAccountConnection) { return false; }

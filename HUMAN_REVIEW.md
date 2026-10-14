@@ -95,11 +95,44 @@ TAN formats, returning only fixed issues and preserving caller ownership.
 PIN-only first-read trailer encoding now applies those checks to owned staging
 bytes and preserves expiry, cancellation and failed-output cleanup. Plain first-read
 assembly now adds bound segment numbering, exact framing and whole-message secret
-cleanup. Read-envelope assembly, TAN/challenge integration and all-account
-capabilities remain pending.
-Full request/session
-context validation, live SCA continuation, authenticated protocol security,
-remaining business codecs, domain ingestion and capability activation remain pending. It is not a
+cleanup. First-read envelope assembly now preserves exact binary payloads and
+credential-free candidate metadata, with cleanup through final output handoff.
+Assembled read-response binding now maps exact source references to the actual
+request roles and compares dialogue, counters and profile. Assembled read semantics
+now check exact-source data, account/version/currency scope, envelope identity and
+read-scoped statuses, preserving unavailable and partial observations. A bounded
+assembled read attempt now adds a fixed deadline, one-time response handoff and
+terminal pending-metadata cleanup. Balance-continuation context now compares
+qualified partial evidence with exact tokens, unchanged account/options and next
+counters. Continuation signature context now binds header identity, unchanged
+procedure selection and explicit control scope, withholding qualified requirements
+on review. Continuation PIN-only trailers now apply inherited bounds to actual
+owned PIN bytes with bounded staging and failure cleanup. Continuation plain requests
+now preserve exact message-3 framing, tokens and segment roles with whole-message
+failure cleanup. Continuation envelopes now preserve exact binary payloads and bound
+candidate metadata with final-output cleanup. Continuation response binding now
+compares exact message-3 scope and actual segment roles while retaining unresolved
+payload/status observations. Continuation semantics now compare exact-source
+read data, inherited account/version/currency and envelope identity, preserving
+separate second-page outcomes and raw tokens. A bounded assembled continuation
+attempt now adds a fixed deadline, one-time response handoff and terminal
+metadata cleanup. Later-page balance continuation context now enables continuation
+beyond page two with 128-page limit and sequential counter checks. A multi-page
+PIN/TAN balance refresh attempt now coordinates page one and sequential continuation
+pages with a page budget, monotonic counter tracking, replay defenses and balance
+aggregation. All-account capability context under PIN/TAN now evaluates SEPA account
+discovery permissions, signature requirements, unlisted blocked operation policies, limits
+and HIPINS credential rules without authorization or credential leakage. All-account request assembly, envelopes and candidate metadata now preserve exact framing, segment roles
+and whole-message secret cleanup. All-account response reference binding and semantics now correlate
+candidate segment roles, verify envelope identity, scope status strictly to read segment 3, and match
+returned accounts against parameter evidence with exact-source provenance. A bounded assembled all-account discovery
+attempt now coordinates candidate metadata, absolute deadlines and one-time evidence handoff with terminal cleanup.
+An assembled PIN/TAN read session attempt coordinator now manages the full FinTS 3.0 PIN/TAN dialogue
+lifecycle across initialization, operational read (all-account discovery or multi-page balance refresh), and
+dialogue closing under a single monotonic deadline, strict dialogue ID pinning, sequential message counters,
+replay defenses, transient foreign-scope segregation, caller-owned evidence handoff, and immediate terminal cleanup.
+TAN/challenge integration, full request/session context validation, live SCA continuation, authenticated protocol
+security, remaining business codecs, domain ingestion and capability activation remain pending. It is not a
 banking-capable prerelease and has no format or release approval.
 
 ## Required people

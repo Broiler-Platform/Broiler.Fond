@@ -105,6 +105,58 @@ or payment instructions.
 > and clear temporary or failed output bytes through expiry and cancellation.
 > Plain first-read assembly now preserves bound fields and segment roles,
 > computes exact framing and clears staged or failed whole-message output.
+> First-read envelopes now preserve exact binary payloads and bound candidate
+> metadata, with credential checks and cleanup through final output handoff.
+> Assembled first-read replies now map to actual request roles and compare
+> dialogue, counters and profile while preserving unresolved response evidence.
+> Assembled read semantics now check exact-source accounts, versions, currencies
+> and envelope identity, preserving execution, partial and unavailable observations.
+> A bounded assembled read attempt now pins one candidate and deadline, hands
+> evidence out once and releases pending metadata on every terminal outcome.
+> Balance-continuation context now checks exact tokens, unchanged account/options
+> and sequential counters against qualified partial-read evidence.
+> Continuation signature context now binds header identity, unchanged procedure
+> selection and an explicit control reference to that qualified second page.
+> Continuation PIN-only trailers now validate actual owned PIN bytes against
+> inherited bounds and clear staged or failed output through final handoff.
+> Continuation plain requests now preserve message-3 framing, exact tokens and
+> bound segment roles, with PIN checks and whole-message failure cleanup.
+> Continuation envelopes now preserve exact binary payloads and credential-free
+> candidate metadata, with PIN checks and cleanup through final output handoff.
+> Continuation response references now bind to exact message-3 metadata and actual
+> segment roles, preserving unresolved payload and status observations for review.
+> Continuation semantics now check exact-source data, account/version/currency
+> and envelope identity, preserving separate second-page outcomes and raw tokens.
+> A bounded assembled continuation attempt now pins one candidate and deadline,
+> hands evidence out once and releases pending metadata on every terminal outcome.
+> Later-page balance continuation context now enables continuation beyond page two
+> with 128-page limit and sequential counter checks against continuation evidence.
+> A multi-page PIN/TAN balance refresh attempt now coordinates page one and later pages
+> under a single deadline and page budget, aggregating balances without loss.
+> All-account capability context under PIN/TAN now evaluates SEPA account discovery
+> permissions, signature requirements, unlisted blocked operation policies and credential
+> bounds without authorizing requests.
+> All-account discovery request envelopes now bind candidate metadata and wrap plain
+> discovery requests into plaintext PIN/TAN envelopes with bounded secret cleanup.
+> All-account response reference binding and semantics now correlate candidate
+> segment roles, verify envelope identity, scope status strictly to read segment 3,
+> and match returned accounts against parameter evidence with exact-source provenance.
+> A bounded assembled all-account discovery attempt now pins one candidate and deadline,
+> hands evidence out once, and releases pending metadata on every terminal outcome.
+> An assembled PIN/TAN read session attempt coordinator now manages the full FinTS 3.0 PIN/TAN dialogue
+> lifecycle across initialization, operational read (all-account discovery or multi-page balance refresh),
+> and dialogue closing under a single monotonic deadline, strict dialogue ID pinning, monotonic counters,
+> replay defenses, transient foreign-scope segregation, caller-owned evidence handoff, and immediate terminal cleanup.
+> An assembled PIN/TAN synchronization session attempt coordinator now manages the full FinTS 3.0 PIN/TAN dialogue
+> lifecycle across synchronization and dialogue closing under a single monotonic deadline, strict dialogue ID pinning,
+> monotonic message counters, replay defenses, transient foreign-scope segregation, caller-owned terminal evidence handoff,
+> clean closure transitioning to ReinitializationRequired, and immediate terminal metadata cleanup.
+> Synchronization sessions now preserve absolute deadlines across fractional clock
+> intervals and fail closed on conversion errors without replacing terminal outcomes.
+> Both session coordinators now release retained evidence and dialogue data on every
+> terminal outcome, preserving caller-owned results, collection snapshots and scalar counts.
+> Read-session candidates now require the exact accepted initialization and predecessor
+> evidence; matching dialogue IDs, counters or tokens cannot substitute another session's evidence.
 > The host remains an inert development shell.
 > It has no bank connection, credential handling,
 > persistence, payment, transaction-sync, or graphical UI implementation. It is

@@ -10,10 +10,13 @@ public enum FinTsPinTanDialogueEndContextIssue
 /// <summary>Local closing candidate after one assembled synchronization response. No session activation or recovery application.</summary>
 public sealed class FinTsPinTanDialogueEndContext
 {
-    private FinTsPinTanDialogueEndContext(FinTsPinTanSynchronizationEvidence synchronization, FinTsUnsignedDialogueEndRequest request,
-        FinTsPinTanSignatureHeader header, FinTsPinTanDialogueEndContextIssue issues)
-    { Synchronization = synchronization; Request = request; Header = header; Issues = issues; }
-    public FinTsPinTanSynchronizationEvidence Synchronization { get; }
+    private readonly FinTsPinTanSynchronizationEvidence? _synchronization;
+    private FinTsPinTanDialogueEndContext(FinTsPinTanSynchronizationEvidence? synchronization, FinTsUnsignedDialogueEndRequest request,
+        FinTsPinTanSignatureHeader header, FinTsPinTanDialogueEndContextIssue issues, FinTsPinTanInitializationEvidence? initialization = null)
+    { _synchronization = synchronization; Initialization = initialization; Request = request; Header = header; Issues = issues; }
+    public FinTsPinTanSynchronizationEvidence Synchronization => _synchronization ?? throw new InvalidOperationException("Context was evaluated for initialization.");
+    public FinTsPinTanSynchronizationEvidence? SynchronizationEvidence => _synchronization;
+    public FinTsPinTanInitializationEvidence? Initialization { get; }
     public FinTsUnsignedDialogueEndRequest Request { get; }
     public FinTsPinTanSignatureHeader Header { get; }
     public FinTsPinTanDialogueEndContextIssue Issues { get; }
@@ -42,5 +45,30 @@ public sealed class FinTsPinTanDialogueEndContext
         { issues |= FinTsPinTanDialogueEndContextIssue.HeaderRoleNeedsReview; }
         cancellationToken.ThrowIfCancellationRequested();
         return new(synchronization, request, header, issues);
+    }
+
+    public static FinTsPinTanDialogueEndContext EvaluateForInitialization(FinTsPinTanInitializationEvidence initialization,
+        FinTsUnsignedDialogueEndRequest request, FinTsPinTanSignatureHeader header,
+        int expectedMessageNumber = 2, int expectedBankMessageNumber = 2, CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(initialization); ArgumentNullException.ThrowIfNull(request); ArgumentNullException.ThrowIfNull(header);
+        cancellationToken.ThrowIfCancellationRequested();
+        var issues = FinTsPinTanDialogueEndContextIssue.None;
+        if (!initialization.HasMatchingEvidence) { issues |= FinTsPinTanDialogueEndContextIssue.SynchronizationNeedsReview; }
+        if (request.Request.DialogueId != initialization.ReportedDialogueId) { issues |= FinTsPinTanDialogueEndContextIssue.DialogueMismatch; }
+        if (request.Frame.MessageNumber != expectedMessageNumber || request.ExpectedBankMessageNumber != expectedBankMessageNumber)
+        { issues |= FinTsPinTanDialogueEndContextIssue.CounterMismatch; }
+        var previous = initialization.Request.SignatureEvidence.Header;
+        if (header.CountryCode != previous.CountryCode || header.InstitutionId != previous.InstitutionId || header.UserId != previous.UserId)
+        { issues |= FinTsPinTanDialogueEndContextIssue.IdentityMismatch; }
+        string? system = previous.SystemId;
+        if (system is null || header.SystemId != system || header.SystemId is "0" or "unbekannt")
+        { issues |= FinTsPinTanDialogueEndContextIssue.SystemMismatch; }
+        if (header.ProfileVersion != previous.ProfileVersion || header.SecurityFunction != previous.SecurityFunction)
+        { issues |= FinTsPinTanDialogueEndContextIssue.SelectionMismatch; }
+        if (header.Source.Number != 2 || header.SecuritySupplierRole != 1 || header.SecurityParty != 1)
+        { issues |= FinTsPinTanDialogueEndContextIssue.HeaderRoleNeedsReview; }
+        cancellationToken.ThrowIfCancellationRequested();
+        return new(null, request, header, issues, initialization);
     }
 }

@@ -2,7 +2,7 @@
 
 **Status:** In progress, internal development only. No live bank support.
 
-**Updated:** 2026-09-06
+**Updated:** 2026-09-11
 
 The [roadmap](roadmap.md#m1--create-access-to-accounts-and-list-values) remains
 the product specification. This backlog breaks M1 into reviewable increments;
@@ -861,7 +861,8 @@ individual-value comparison. A matching result does not authorize submission.
       preflight, all ownership failure boundaries, cultures and concurrent encoding.
 - [x] Assemble the plain PIN-only first-read message with segment/context scope
       and whole-message cleanup (ADR 0053).
-- [ ] Integrate read envelopes, TAN/challenge and response handling.
+- [x] Add read envelopes and candidate metadata (ADR 0054).
+- [ ] Integrate TAN/challenge and assembled response handling.
 
 [ADR 0052](adr/0052-first-read-pin-only-trailer-encoding.md) defines the component.
 Encoding does not decide TAN omission, establish SCA readiness or authorize sending.
@@ -878,11 +879,411 @@ Encoding does not decide TAN omission, establish SCA readiness or authorize send
       expiry/cancellation checks through final output handoff.
 - [x] Add thirty-one independent fixtures and 334 checks for exact frames,
       source preservation, seven ownership boundaries, cultures and concurrency.
-- [ ] Add the read security envelope and credential-free candidate metadata,
-      then integrate response binding, TAN/challenge and session coordination.
+- [x] Add the read security envelope and credential-free candidate metadata
+      (ADR 0054).
+- [ ] Integrate response binding, TAN/challenge and session coordination.
 
 [ADR 0053](adr/0053-first-read-pin-only-request-assembly.md) defines the plain
 candidate. Assembly does not authorize sending or establish TAN/SCA completeness.
+
+## First-read PIN-only request envelope
+
+- [x] Bind immutable credential-free candidate metadata to one qualified context
+      and the actual wrapper/signature/read segment roles and versions.
+- [x] Wrap only the local assembler's output with exact HNVSD binary payload
+      length, assigned dialogue, message counters and final framing size.
+- [x] Preserve profile, identity and optional timestamp fields using the existing
+      plaintext wrapper rules, without parsing secret-bearing wire in production.
+- [x] Require bounded output before PIN access and clear staging on every exit;
+      retain cancellation/availability checks and full failed-prefix cleanup.
+- [x] Add thirty-three independent fixtures and 456 checks, covering exact bytes,
+      metadata, all nine ownership observations, cultures and concurrent writes.
+- [x] Bind assembled first-read response references to candidate metadata
+      (ADR 0055).
+- [ ] Integrate response semantics, TAN/challenge and session coordination.
+
+[ADR 0054](adr/0054-first-read-pin-only-request-envelope.md) defines the envelope
+candidate. Its metadata contains private account evidence; encoding proves no
+TAN omission permission, SCA readiness, sending or response authentication.
+
+## Assembled first-read response reference binding
+
+- [x] Compare the response envelope profile, exact assigned dialogue, bank counter
+      and referenced client counter with the qualified first-read candidate.
+- [x] Map every non-message body segment to its actual immutable request target,
+      preserving missing/unknown references and original response segment objects.
+- [x] Keep signature/framing replies distinct from read segment 3; constrain the
+      known data vocabulary to the matching read operation without version fallback.
+- [x] Preserve status, payload, account and envelope identity observations for
+      semantic comparison; matching references establish no read success.
+- [x] Add forty-six independent fixtures and 481 checks, including actual-envelope
+      integration, source preservation, cancellation, cultures and concurrency.
+- [x] Compare assembled read-response semantics using exact-source schemas,
+      account/version/currency evidence, envelope identity and scoped statuses
+      (ADR 0056).
+
+[ADR 0055](adr/0055-first-read-response-reference-binding.md) defines the pure
+comparison. It consumes no response and provides no authentication or replay guard.
+
+## Assembled first-read response semantics
+
+- [x] Require read schemas from the exact bound response and retain raw inputs
+      while withholding qualified data on source, binding or semantic review.
+- [x] Compare envelope system/key identity with the bound signature header and
+      reuse existing exact account, report-version and currency checks.
+- [x] Scope status interpretation to assembled read segment 3; keep security
+      replies, missing/duplicate data and unsupported status shapes under review.
+- [x] Preserve real zero values, optional amounts, unavailable source shapes and
+      partial observations with raw opaque tokens, without domain ingestion.
+- [x] Add fifty-nine independent fixtures and 495 checks, including exact-source
+      provenance, separate identities, cultures, cancellation and concurrency.
+- [x] Add a bounded assembled first-read attempt with one candidate/deadline,
+      one-time response handoff and terminal metadata cleanup (ADR 0057).
+
+[ADR 0056](adr/0056-assembled-first-read-response-semantics.md) defines the pure
+observations. Matching evidence grants no authentication, TAN/SCA completion,
+replay protection or permission to continue a partial request.
+
+## Bounded assembled first-read attempt
+
+- [x] Pin one immutable candidate and absolute deadline without credentials,
+      encoding or transport; reject second starts without renewing time.
+- [x] Recompute binding and semantics from incoming exact-source read data;
+      retain foreign-scope candidates and consume scoped responses once.
+- [x] Hand out execution, partial, unavailable or review evidence once, releasing
+      pending metadata on all terminal outcomes without starting continuation.
+- [x] Check lifetime/cancellation through final handoff, handle clock failures
+      and reentrant abandonment, and expose only scalar snapshot diagnostics.
+- [x] Add twenty-seven independent traces and 544 checks, including all existing
+      semantic fixtures, late failures, terminal cleanup and concurrent submissions.
+- [x] Bind assembled balance-continuation context to qualified partial evidence,
+      unchanged request/account/options and sequential message counters (ADR 0058).
+
+[ADR 0057](adr/0057-assembled-first-read-attempt.md) defines the local owner.
+Handoff establishes no authentication, TAN/SCA completion, durable replay guard
+or account update; a partial outcome ends this first-read attempt.
+
+## Assembled balance-continuation context
+
+- [x] Require qualified first-read partial evidence and an exact nonempty token
+      for the proposed second-page balance request.
+- [x] Preserve operation/version, every logical account component, request
+      options and dialogue; require client and expected-bank counters 3.
+- [x] Inherit the exact original capability/account/national-permission context
+      and recheck request requirements without replacing source provenance.
+- [x] Withhold qualified origin/request on every mismatch and retain raw inputs
+      without encoding, consuming a token or reopening the first-read attempt.
+- [x] Add forty-one independent fixtures and 348 checks, including actual partial
+      handoff integration, significant token bytes, cultures and concurrency.
+- [x] Bind a continuation PIN/TAN signature header to unchanged identity and
+      procedure selection with an explicit control reference (ADR 0059).
+
+[ADR 0058](adr/0058-assembled-balance-continuation-context.md) defines this
+second-page comparison. Signing, credential validation, encoding and later-page
+response/lifecycle integration remain separate work.
+
+## Balance-continuation PIN/TAN signature context
+
+- [x] Require complete continuation qualification before exposing inherited
+      account/capability, procedure and HIPINS requirement objects.
+- [x] Compare original country/institution/user/system identity, explicit
+      profile/function/TAN version, header roles and validated control reference.
+- [x] Preserve caller header/reference/timestamp/filler observations without
+      freshness, replay, credential-completeness or SCA claims.
+- [x] Retain exact context and sources; withhold all qualified outputs on review
+      without encoding or reopening the completed first-read owner.
+- [x] Add sixty-nine independent fixtures and 531 checks, including all existing
+      continuation variants, partial handoff, malformed controls and concurrency.
+- [x] Encode the continuation PIN-only trailer with owned-PIN requirement
+      validation and bounded secret cleanup (ADR 0060).
+
+[ADR 0059](adr/0059-balance-continuation-pin-tan-signature-context.md) defines
+this detached context. Matching fields grant no TAN/SCA waiver or sending authority.
+
+## Continuation PIN-only signature-trailer encoding
+
+- [x] Emit HNSHA-2 at segment 4 with the bound continuation control reference,
+      empty validation result and one PIN component, without accepting a TAN.
+- [x] Require complete continuation/signature scope and known inherited PIN
+      bounds before owner access, then validate actual copied PIN staging bytes.
+- [x] Preserve the bounded reserve, lifetime/cancellation checks, temporary-byte
+      erasure and final failed-prefix cleanup without renewing PIN lifetime.
+- [x] Retain distinct context/requirements/text/availability outcomes, exact
+      escaping, unchanged request/response sources and reusable-PIN accounting.
+- [x] Add eighty-two independent fixtures and 741 checks, including every context
+      preflight, all ownership failure boundaries, cultures and concurrency.
+- [x] Assemble the continuation PIN-only plain request with exact message-3
+      framing, bound segment roles and whole-message cleanup.
+
+[ADR 0060](adr/0060-continuation-pin-only-trailer-encoding.md) defines the
+component. Successful output contains a PIN for the caller to clear and proves
+neither TAN omission permission nor complete request/SCA readiness.
+
+## Continuation PIN-only plain request assembly
+
+- [x] Assemble HNHBK/HNSHK/HKSAL/HNSHA/HNHBS with bound dialogue/message-3
+      framing, explicit read versions, exact tokens and unchanged account/options.
+- [x] Require complete continuation/signature context and a bounded output reserve
+      before PIN access; apply inherited requirements through the owned-PIN trailer.
+- [x] Preserve source evidence and clear staging and failed whole-message output
+      through expiry, cancellation, disposal and clock failures.
+- [x] Verify eighty-two independent fixtures and 691 checks, including every
+      ownership boundary, cultures, concurrency and untouched destination tails.
+- [x] Add continuation envelope assembly with credential-free candidate metadata,
+      exact binary payload and final-output cleanup.
+
+[ADR 0061](adr/0061-continuation-pin-only-request-assembly.md) defines this
+synthetic codec. It grants no TAN omission, SCA readiness or permission to send.
+
+## Continuation PIN-only request envelope
+
+- [x] Retain a qualified second-page signature context in credential-free candidate
+      metadata with exact dialogue/message-3 scope and actual assembled segment roles.
+- [x] Wrap the continuation assembler's exact payload in a bounded PIN/TAN envelope,
+      preserving header identity/timestamp and binary framing without parsing secrets.
+- [x] Preserve inherited PIN checks and one-copy accounting, clear temporary buffers
+      and erase failed final output through all nine nested ownership observations.
+- [x] Verify eighty-two independent fixtures and 627 checks for exact bytes, metadata,
+      context rejection, preflight, failure cleanup, cultures and concurrency.
+- [x] Bind continuation response references to actual candidate segment roles,
+      dialogue, message counters and profile.
+
+[ADR 0062](adr/0062-continuation-pin-only-request-envelope.md) defines the
+synthetic envelope and metadata. Encoding grants no TAN omission or SCA readiness.
+
+## Assembled continuation-response reference binding
+
+- [x] Compare explicit envelope profile, dialogue and message-3 counters against
+      the exact continuation candidate, rejecting the retained first-page response.
+- [x] Map every non-message body segment to its actual assembled target role,
+      preserving missing/unknown references and security/framing reply scope.
+- [x] Require balance data to reference HKSAL 3 while retaining unknown/future
+      payloads, errors, duplicate data and partial tokens for semantic review.
+- [x] Verify fifty-five independent fixtures and 576 checks, including actual
+      envelope integration, source identity/byte preservation and concurrency.
+- [x] Add continuation-response semantics with exact-source read schemas,
+      account/version/currency and envelope identity checks and scoped outcomes.
+
+[ADR 0063](adr/0063-continuation-response-reference-binding.md) defines the pure
+comparison. Matching references establish neither execution nor authentication.
+
+## Assembled continuation-response semantics
+
+- [x] Require typed read data from the exact bound response and retain the
+      qualified second-page context without accepting predecessor data.
+- [x] Check envelope identity and inherited account/version/currency scope using
+      the actual assembled read role and unchanged shared semantic rules.
+- [x] Preserve separate values, unavailable and partial observations, withholding
+      qualified data on review and retaining only same-source raw tokens.
+- [x] Verify seventy-four independent fixtures and 676 checks, including source
+      mixing, page separation, token/parser bounds, cultures and concurrency.
+- [x] Add a bounded assembled continuation attempt with a fixed deadline,
+      one-time response handoff and terminal metadata cleanup (ADR 0065).
+
+[ADR 0064](adr/0064-continuation-response-semantics.md) defines the pure
+comparison. Matching evidence neither proves pagination progress nor starts a read.
+
+## Bounded assembled continuation attempt
+
+- [x] Pin one immutable second-page candidate and absolute deadline without credentials,
+      encoding or transport; reject second starts without renewing time.
+- [x] Recompute continuation binding and semantics from incoming exact-source read data;
+      retain foreign-scope candidates and consume scoped responses once.
+- [x] Hand out execution, partial, unavailable or review evidence once, releasing
+      pending metadata on all terminal outcomes without starting further continuation.
+- [x] Check lifetime/cancellation through final handoff, handle clock failures
+      and reentrant abandonment, and expose only scalar snapshot diagnostics.
+- [x] Add twenty-seven independent traces and 551 checks, including all existing
+      continuation semantic fixtures, late failures, terminal cleanup and concurrent submissions.
+- [x] Extend continuation context to later pages from previous continuation evidence,
+      advancing client and expected bank message numbers with opaque token preservation (ADR 0066).
+- [ ] Add session coordination, multi-page response aggregation and live transport.
+
+[ADR 0065](adr/0065-assembled-continuation-attempt.md) defines the local owner.
+Handoff establishes no authentication, TAN/SCA completion, durable replay guard
+or account update; a partial outcome ends this continuation attempt.
+
+## Later-page balance continuation context
+
+- [x] Extend continuation context to later pages from previous continuation evidence,
+      advancing client and expected bank message numbers with opaque token preservation.
+- [x] Check 128-page limit boundary, sequential message counters, unchanged HKSAL operation
+      and version, account components, and retrieval options.
+- [x] Preserve original capability provenance recursively through the predecessor chain without
+      reselection or replacement.
+- [x] Verify forty-one independent Python fixtures and 857 checks, including multi-page execution
+      chaining, 128-page progression loop, page limit overflow, culture independence and concurrency.
+- [ ] Add session coordination, multi-page response aggregation and live transport.
+
+[ADR 0066](adr/0066-later-page-balance-continuation-context.md) defines the pure
+comparison. Matching evidence does not authenticate the bank or schedule requests.
+
+## Assembled balance refresh attempt
+
+- [x] Coordinate multi-page PIN/TAN balance refresh lifecycle across page one and
+      continuation pages under a single deadline and configurable page budget (1..128).
+- [x] Enforce sequential message counter increments, response replay defenses, predecessor
+      and origin context provenance to prevent candidate hijacking.
+- [x] Aggregate balances across all accepted pages without loss or double counting,
+      projecting losslessly into domain `BalanceSnapshot` models.
+- [x] Verify twenty-three independent traces and 459 checks, including single and multi-page
+      progressions, immediate unavailable reports, page limit boundaries, counter exhaustion,
+      foreign dialogues, timeouts, cancellation, clock regression, and scalar-only diagnostics.
+- [ ] Add session coordination, multi-bank scheduling, and live transport.
+
+[ADR 0067](adr/0067-assembled-balance-refresh-attempt.md) defines the multi-page coordinator.
+Aggregation and terminal states establish no live authentication or transport.
+
+## Assembled all-account capability context
+
+- [x] Compare one `FinTsPinTanReadSignatureContext`, bound `FinTsReadParameterSet`, and user/bank
+      parameter evidence for all-account discovery requests (`HKSPA:3:1++J'`).
+- [x] Validate signature context, integrated read parameters, HISPAS-1 advertisements, customer signature
+      requirements, unlisted blocked operation policies, limits, and bank/dialogue consistency.
+- [x] Expose structured diagnostics (`FinTsPinTanAllAccountCapabilityIssue`) and integrate credential
+      comparison without retaining, copying, or logging credential bytes.
+- [x] Verify twenty-seven independent Python fixtures and 195 checks in `pin-tan-all-account-capability-context-v1.json`,
+      including valid one/two-step profiles, unlisted blocked operations, missing/duplicate ads, limits,
+      credential comparison, reflection assertions, argument validation, and cancellation.
+- [ ] Add all-account request binding, envelopes, response semantics, and discovery attempt coordination.
+
+[ADR 0068](adr/0068-assembled-all-account-capability-context.md) defines the pure comparison.
+Matching evidence does not authorize requests or update stored account inventories.
+
+## All-account discovery PIN-only request binding and envelopes
+
+- [x] Pin one candidate `FinTsPinTanAllAccountCapabilityContext` with matching evidence,
+      and assemble candidate metadata (`HNHBK:1:3`, `HNVSK:998:3`, `HNVSD:999:1`, `HNSHK:2:4`, `HKSPA:3:1`, `HNSHA:4:2`, `HNHBS:5:1`).
+- [x] Assemble plain candidate messages with exact segment ordering, 12-digit wire length calculation,
+      and stack buffer zeroization using `FinTsPinTanSignatureTrailerWriter.TryEncodeAllAccountPinOnly`.
+- [x] Wrap candidate requests into `HNVSK:998:3` + binary `HNVSD:999:1` encryption envelopes, stripping
+      canonical framing, enforcing timestamp alignment, and zeroizing staged buffers upon exit.
+- [x] Verify thirty-seven independent Python fixtures and 408 checks in `pin-tan-all-account-request-envelope-v1.json`,
+      including buffer reserve bounds, boundary ownership failure injections, TAN-as-PIN rejection,
+      multithreaded parallel execution, culture invariance (`de-DE`, `tr-TR`, `en-US`, `ar-SA`), cancellation, and reflection assertions.
+- [x] Add all-account response reference binding and semantics (ADR 0070).
+- [x] Add all-account discovery attempt coordination (ADR 0071).
+
+[ADR 0069](adr/0069-all-account-request-envelope.md) defines candidate metadata and envelope formatting.
+Assembling a candidate envelope neither authorizes transmission nor mutates stored account profiles.
+
+## All-account response reference binding and semantics
+
+- [x] Correlate parsed response envelopes against assembled all-account candidate segment roles,
+      dialogue identities, message counter bounds, and profile versions (`FinTsPinTanAllAccountResponseBinding`).
+- [x] Enforce read-source provenance requiring exact object reference equality, rejecting byte-identical
+      reparsed responses (`ReadSourceMismatch`).
+- [x] Verify envelope security header identity against signature header expectations (`EnvelopeIdentityMismatch`).
+- [x] Scope status evaluation strictly to read segment 3, matching returned accounts against bound
+      parameters and advertisements via `FinTsAllAccountDiscoveryEvidence.MatchAccounts`.
+- [x] Isolate account semantics, flagging duplicate returned identities, institution mismatches, identity
+      conflicts, and unmatched user accounts while withholding qualified data on review.
+- [x] Verify fifty-two independent Python fixtures and 843 checks in `pin-tan-all-account-response-v1.json`,
+      including clean discoveries (single, multiple, unavailable), empty UPD accounts, dialogue/profile mismatches,
+      role mismatches, security execution segregation, multithreaded concurrency, and culture invariance.
+- [x] Add all-account discovery attempt coordination (ADR 0071).
+- [ ] Add authenticated security, activation, and transport under M1-05.
+
+[ADR 0070](adr/0070-all-account-response-semantics.md) defines reference binding and semantics.
+Matching evidence neither authorizes bank operations nor mutates stored account profiles.
+
+## Assembled all-account discovery attempt
+
+- [x] Coordinate one immutable candidate `FinTsPinTanAllAccountRequestBinding` under an absolute
+      monotonic deadline bounded to fifteen minutes (`FinTsPinTanAllAccountDiscoveryAttempt`).
+- [x] Recompute reference binding and semantics dynamically upon response acceptance, rejecting
+      unrelated precomputed evidence.
+- [x] Handle foreign scope discrepancies (`MessageMismatch`, `MissingSegmentReference`, `UnknownSegmentReference`,
+      `SegmentRoleMismatch`) with transient `ContextMismatch` without consuming the active candidate or deadline.
+- [x] Provide one-time evidence handoff for execution, unavailable, and review outcomes while releasing
+      pending candidate metadata immediately on all terminal transitions.
+- [x] Fail closed upon cancellation, late timeout, clock invalidation, or reentrant abandonment, leaving
+      handled counts at zero and releasing pending metadata.
+- [x] Verify twenty-eight independent Python traces and 553 checks in `pin-tan-all-account-attempt-v1.json`,
+      including clean discoveries (single, multiple, unavailable), scoped review outcomes, context mismatches,
+      deadline equality, cancellation, disposal, clock regression, multithreaded concurrency, and culture invariance.
+- [x] Add assembled PIN/TAN read session attempt coordination (ADR 0072).
+- [ ] Add authenticated security, activation, and transport under M1-05.
+
+[ADR 0071](adr/0071-assembled-all-account-discovery-attempt.md) defines the attempt lifecycle.
+Terminal handoff neither activates a session nor updates stored account inventories.
+
+## Assembled PIN/TAN read session attempt
+
+- [x] Coordinate multi-stage FinTS 3.0 PIN/TAN read dialogues across initialization, operational read
+      (all-account discovery or multi-page balance refresh), and dialogue closing under a single monotonic deadline (`FinTsPinTanReadSessionAttempt`).
+- [x] Pin bank-assigned dialogue ID and enforce sequential client and expected bank message numbers (`lastClientNumber + 1`, `lastBankNumber + 1`).
+- [x] Reject replayed message numbers and incoming responses with message numbers less than or equal to `_lastBankNumber` with `ReplayRejected`.
+- [x] Segregate foreign scope discrepancies (`MessageMismatch`, `MissingSegmentReference`, `UnknownSegmentReference`, `SegmentRoleMismatch`) with transient `ContextMismatch` without consuming the active candidate or deadline.
+- [x] Provide caller-owned immutable evidence handoff on terminal outcomes while releasing all pending candidate metadata immediately on all terminal transitions and disposal.
+- [x] Expose strictly scalar diagnostics via `FinTsPinTanReadSessionSnapshot` without sensitive credentials, PINs, TANs, IBANs, amounts, or raw payloads.
+- [x] Verify twenty-eight independent Python traces and 1,230 checks in `pin-tan-read-session-attempt-v1.json`,
+      including clean all-account discovery, clean balance refresh (single-page, multi-page, unavailable), bank abort on close (`9800`),
+      scoped review outcomes, foreign scope handling, page limits, single monotonic deadline expiration, cancellation across stages, stop, dispose, clock regression, multithreaded concurrency, and culture invariance.
+- [x] Add assembled PIN/TAN synchronization session attempt coordination (ADR 0073).
+- [ ] Add authenticated security, activation, and transport under M1-05.
+
+[ADR 0072](adr/0072-assembled-read-session-attempt.md) defines the session coordinator architecture.
+Successful session completion neither authorizes live payments nor activates background polling.
+
+## Assembled PIN/TAN synchronization session attempt
+
+- [x] Coordinate two-stage FinTS 3.0 PIN/TAN synchronization dialogues across dialogue synchronization (`StartSynchronization` with `HKSYN`, `AcceptSynchronizationResponse`) and dialogue termination (`RecordClosingCandidate`, `AcceptClosingResponse` with `HKEND`) under a single monotonic deadline (`FinTsPinTanSynchronizationSessionAttempt`).
+- [x] Pin bank-assigned dialogue ID from synchronization response and enforce sequential client and expected bank message numbers (client message 1 -> bank message 1 -> client message 2 -> bank message 2).
+- [x] Reject replayed message numbers and incoming responses with message numbers less than or equal to `_lastBankNumber` with `ReplayRejected`.
+- [x] Segregate foreign scope discrepancies (`MessageMismatch`, `MissingSegmentReference`, `UnknownSegmentReference`, `SegmentRoleMismatch`) with transient `ContextMismatch` without consuming the active candidate or deadline.
+- [x] Transition clean dialogue termination (`0100`) to `ReinitializationRequired` with caller-owned evidence handoff containing both `SynchronizationEvidence` and `ClosingEvidence`, enforcing FinTS 3.0 synchronization dialogue closure semantics.
+- [x] Transition bank abort (`9800`) to `Aborted`, and scoped review outcomes to `NeedsReview`.
+- [x] Expose strictly scalar diagnostics via `FinTsPinTanSynchronizationSessionSnapshot` without sensitive credentials, PINs, TANs, system IDs, or raw payloads.
+- [x] Verify twenty-four independent Python traces and 626 checks in `pin-tan-synchronization-session-attempt-v1.json`,
+      including clean system ID assignment, clean message recovery, one-step assigned system session, escaped system ID and dialogue session, maximum message recovery, bank abort on sync and closing (`9800`), scoped review outcomes, foreign scope handling, closing dialogue mismatch rejection, monotonic message counter replay rejections, single monotonic deadline expiration, in-flight cancellation, stop before start, dispose, clock regression, second start rejection, missing recovery context rejection, multithreaded concurrency, and culture invariance.
+- [ ] Add authenticated security, activation, and transport under M1-05.
+
+[ADR 0073](adr/0073-assembled-synchronization-session-attempt.md) defines the session coordinator architecture.
+Clean synchronization dialogue closure yields caller-owned evidence requiring session reinitialization without activating background polling.
+
+## Synchronization session clock boundaries
+
+- [x] Calculate elapsed time from the original start so repeated sub-tick
+      observations cannot extend the absolute deadline.
+- [x] Fail closed on elapsed-time conversion exceptions and negative elapsed time,
+      preserving existing terminal outcomes after reentrant clock callbacks.
+- [x] Verify 103 additional checks across synchronization and closing, including
+      all response publication boundaries and pending-metadata cleanup.
+- [x] Complete terminal evidence ownership and cleanup across session coordinators.
+
+[ADR 0074](adr/0074-synchronization-session-clock-boundaries.md) records the
+lifecycle correction. No transport, authentication or activation is introduced.
+
+## Session terminal evidence ownership
+
+- [x] Release candidates, recovery context, evidence, dialogue identifiers and
+      read-session collection contents on every terminal outcome.
+- [x] Preserve caller-owned results and stable collection snapshots across later
+      pages, clean closing, cancellation, timeout, clock failure and disposal.
+- [x] Keep scalar progress counts independent of retained account and balance data.
+- [x] Verify 108 stage/termination combinations and terminal ownership across the
+      existing 52 session traces, adding 2,846 executable checks.
+- [x] Harden read-session candidate provenance and cross-stage evidence binding.
+
+[ADR 0075](adr/0075-session-terminal-evidence-ownership.md) records the ownership
+contract. Read closing evidence belongs to the returned result after cleanup.
+Managed-reference release does not erase caller-owned data or activate banking.
+
+## Read-session evidence provenance
+
+- [x] Bind operation and closing candidates to the exact initialization evidence
+      accepted by the session; reject detached and foreign-session evidence.
+- [x] Bind continuation candidates to the exact accepted predecessor and original
+      capability context, including later pages.
+- [x] Preserve active state, progress and deadline on a source mismatch so a valid
+      candidate can be retried.
+- [x] Correct session fixtures to initialize with their operation's read parameters
+      and construct candidates from actual handoffs; verify 117 additional checks.
+- [ ] Enforce read-session operation scoping and per-operation page accounting.
+
+[ADR 0076](adr/0076-read-session-evidence-provenance.md) records the provenance
+contract. No authentication, activation or transport is introduced.
 
 ## Remaining acceptance backlog
 
@@ -892,7 +1293,7 @@ candidate. Assembly does not authorize sending or establish TAN/SCA completeness
 | M1-02 Profile lifecycle | Lock/unlock, one writer, encrypted generation round-trip, wrong passphrase, tamper/truncation, hostile XML/ZIP, interrupted save and prior-generation recovery, lost-key behavior; verified deletion of retained files | Pending |
 | M1-03 Identity | Store-wide allocator and atomic entity allocation, startup invariants, exhaustion, exact rediscovery, separate account/incarnation/binding identity, ambiguous and reused locators without overwrite | Allocation, startup checks, lossless locators and rediscovery planner implemented; durable/domain/connector integration and reviewed relinking pending |
 | M1-04 Simulator and diagnostics | Synthetic fixtures for success, invalid credentials, locked access, one SCA path, cancellation, timeout, maintenance, changed parameters, malformed and partial responses; sentinel-secret checks across errors and support export | Synthetic workflows, syntax/response vectors, correlation checks, structured diagnostics and preview sentinels implemented; business/security conformance, actual SCA and export integration pending |
-| M1-05 FinTS read-only slice | Registered product identity before user-facing live dialogue, initialization, BPD/UPD and capability negotiation, session-only PIN/TAN, one challenge continuation, discovery and balances | Protocol/parameter/TAN and discovery/balance schemas, unsigned read/initialization/synchronization encoding, synchronization schemas/context/closing attempt, PIN/TAN signature-header schemas/context/encoding, local credential ownership, signature-trailer encoding, plain PIN/TAN request/envelope assembly and assembled-request reference binding/initialization/synchronization semantics and initialization/synchronization attempts, assembled initialization procedure/permission/HIPINS requirements integration, first-read PIN/TAN signature context, single-account read-capability integration, credential requirement comparison and PIN-only read trailer/request assembly, PIN/TAN dialogue-end context/encoding/response binding/termination/attempt, dialogue-end schemas/encoding/reply evidence, initialization schemas/response scope/attempt, selected-account read context/attempt, unavailable and all-account discovery evidence/attempt, restricted challenge comparison and synthetic SCA state implemented; recovery application, full security codecs, authenticated security, activation, transport and live ingestion pending |
+| M1-05 FinTS read-only slice | Registered product identity before user-facing live dialogue, initialization, BPD/UPD and capability negotiation, session-only PIN/TAN, one challenge continuation, discovery and balances | Protocol/parameter/TAN and discovery/balance schemas, unsigned read/initialization/synchronization encoding, synchronization schemas/context/closing attempt, PIN/TAN signature-header schemas/context/encoding, local credential ownership, signature-trailer encoding, plain PIN/TAN request/envelope assembly and assembled-request reference binding/initialization/synchronization semantics and initialization/synchronization attempts, assembled initialization procedure/permission/HIPINS requirements integration, first-read PIN/TAN signature context, single-account read-capability integration, credential requirement comparison and PIN-only read trailer/request/envelope assembly with candidate metadata and assembled read-response reference binding/semantics, bounded first-read attempt and balance-continuation/signature context with PIN-only trailer/plain request/envelope encoding and continuation candidate metadata/response reference binding/semantics/attempt, later-page continuation context, multi-page PIN/TAN balance refresh attempt, assembled all-account capability context, all-account PIN-only request binding and envelopes, all-account response reference binding and semantics, assembled PIN/TAN all-account discovery attempt, assembled PIN/TAN read session attempt coordinator, assembled PIN/TAN synchronization session attempt coordinator, PIN/TAN dialogue-end context/encoding/response binding/termination/attempt, dialogue-end schemas/encoding/reply evidence, initialization schemas/response scope/attempt, selected-account read context/attempt, unavailable and all-account discovery evidence/attempt, restricted challenge comparison and synthetic SCA state implemented; recovery application, full security codecs, authenticated security, activation, transport and live ingestion pending |
 | M1-06 Windows setup | Manual setup UI and endpoint-review integration, session invalidation on endpoint edits, application lock, account selection/list/detail, progress, actionable errors, keyboard/screen-reader/high-contrast/text-scale operation | Domain endpoint model implemented; UI pending |
 | M1-07 Truthful cached values | Exact amounts/currency and bank/retrieval timestamps, booked/available distinction, missing as unavailable, stale/partial/offline states, no mixed-currency totals, durable replay evidence, unsupported account shells | Exact money and pure account-value/freshness/total projections implemented; connector, replay, durable storage and UI integration pending |
 | M1-08 Disconnect and support | Session-buffer cleanup, connection removal with separate cached-data deletion and purge, encrypted local diagnostics, previewed redacted export, no reporting channel | Test-only synthetic buffer cleanup and in-memory structured preview implemented; live session lifecycle, deletion/purge, encrypted logs and export UI pending |
@@ -952,6 +1353,26 @@ integrated first-read capability context adds forty-three independent vectors an
 first-read credential requirement comparison adds forty-five independent vectors and 659 checks;
 first-read PIN-only trailer encoding adds twenty-two independent vectors and 243 checks;
 first-read PIN-only request assembly adds thirty-one independent vectors and 334 checks;
+first-read PIN-only request envelopes add thirty-three independent vectors and 456 checks;
+assembled first-read response reference binding adds forty-six independent vectors and 481 checks;
+assembled first-read response semantics adds fifty-nine independent vectors and 495 checks;
+assembled first-read attempts add twenty-seven independent traces and 544 checks;
+assembled balance-continuation context adds forty-one independent vectors and 348 checks;
+balance-continuation PIN/TAN signature context adds sixty-nine independent vectors and 531 checks;
+continuation PIN-only trailer encoding adds eighty-two independent vectors and 741 checks;
+continuation PIN-only plain request assembly adds eighty-two independent vectors and 691 checks;
+continuation PIN-only request envelopes add eighty-two independent vectors and 627 checks;
+continuation-response reference binding adds fifty-five independent vectors and 576 checks;
+continuation-response semantics add seventy-four independent vectors and 676 checks;
+assembled continuation attempts add twenty-seven independent traces and 551 checks;
+later-page balance-continuation context adds forty-one independent vectors and 857 checks;
+assembled PIN/TAN read refresh attempts add twenty-three independent traces and 459 checks;
+assembled all-account capability context adds twenty-seven independent vectors and 195 checks;
+all-account discovery request envelopes add thirty-seven independent vectors and 408 checks;
+all-account response reference binding and semantics adds fifty-two independent vectors and 843 checks;
+assembled PIN/TAN all-account discovery attempts add twenty-eight independent traces and 553 checks;
+assembled PIN/TAN read session attempt coordinator adds twenty-eight independent traces and 1,230 checks;
+assembled PIN/TAN synchronization session attempt coordinator adds twenty-four independent traces and 626 checks;
 storage adds five independent vectors and 1,752 checks. The checks include a
 100,000-record revision chain and 10,000-account rediscovery/value projections.
 
@@ -1136,8 +1557,117 @@ assembly, thirty-one independent vectors and 334 new checks, with zero build
 warnings or errors. All FinTS fixtures reproduced byte-for-byte and documentation
 links passed.
 
-Next implementation increment: first-read PIN-only request-envelope assembly with
-credential-free candidate metadata under M1-05, without activation.
+The full Windows CI command passed on 2026-09-10 with first-read PIN-only request
+envelopes, thirty-three independent vectors and 456 new checks, with zero build
+warnings or errors. All FinTS fixtures reproduced byte-for-byte and documentation
+links passed.
+
+The full Windows CI command passed on 2026-09-10 with assembled first-read
+response reference binding, forty-six independent vectors and 481 new checks,
+with zero build warnings or errors. All FinTS fixtures reproduced byte-for-byte
+and documentation links passed.
+
+The full Windows CI command passed on 2026-09-10 with assembled first-read
+response semantics, fifty-nine independent vectors and 495 new checks, with zero
+build warnings or errors. All FinTS fixtures reproduced byte-for-byte and
+documentation links passed.
+
+The full Windows CI command passed on 2026-09-10 with the assembled first-read
+attempt, twenty-seven independent traces and 544 new checks, with zero build
+warnings or errors. All FinTS fixtures reproduced byte-for-byte and documentation
+links passed.
+
+The full Windows CI command passed on 2026-09-10 with assembled balance-continuation
+context, forty-one independent vectors and 348 new checks, with zero build warnings
+or errors. All FinTS fixtures reproduced byte-for-byte and documentation links passed.
+
+The full Windows CI command passed on 2026-09-10 with balance-continuation PIN/TAN
+signature context, sixty-nine independent vectors and 531 new checks, with zero
+build warnings or errors. All FinTS fixtures reproduced byte-for-byte and
+documentation links passed.
+
+The full Windows CI command passed on 2026-09-11 with continuation PIN-only
+trailer encoding, eighty-two independent vectors and 741 new checks, with zero
+build warnings or errors. All FinTS fixtures reproduced byte-for-byte and
+documentation links passed.
+
+The full Windows CI command passed on 2026-10-14 with continuation PIN-only
+plain request assembly, eighty-two independent vectors and 691 new checks, with
+zero build warnings or errors.
+
+The full Windows CI command passed on 2026-10-14 with continuation PIN-only
+request envelopes, eighty-two independent vectors and 627 new checks, with zero
+build warnings or errors. All 53 FinTS fixture files reproduced byte-for-byte.
+
+The full Windows CI command passed on 2026-10-14 with assembled continuation
+response reference binding, fifty-five independent vectors and 576 new checks,
+with zero build warnings or errors. All 54 FinTS fixture files reproduced
+byte-for-byte.
+
+The full Windows CI command passed on 2026-10-14 with assembled continuation
+response semantics, seventy-four independent vectors and 676 new checks, with
+zero build warnings or errors. All 55 FinTS fixture files reproduced byte-for-byte.
+
+The full Windows CI command passed on 2026-10-14 with the assembled continuation
+attempt, twenty-seven independent traces and 551 new checks, with zero build
+warnings or errors. All 56 FinTS fixture files reproduced byte-for-byte and
+documentation links passed.
+
+The full Windows CI command passed on 2026-10-14 with later-page balance-continuation
+context, forty-one independent vectors and 857 new checks, with zero build warnings
+or errors. All 57 FinTS fixture files reproduced byte-for-byte.
+
+The full Windows CI command passed on 2026-10-14 with the assembled PIN/TAN read
+refresh attempt, twenty-three independent traces and 459 new checks, with zero build
+warnings or errors. All 58 FinTS fixture files reproduced byte-for-byte and documentation
+links passed.
+
+The full Windows CI command passed on 2026-10-14 with assembled all-account
+capability context, twenty-seven independent vectors and 195 new checks, with zero
+build warnings or errors. All 59 FinTS fixture files reproduced byte-for-byte and
+documentation links passed.
+
+The full Windows CI command passed on 2026-10-14 with all-account PIN-only request
+binding and envelopes, thirty-seven independent vectors and 408 new checks, with
+zero build warnings or errors. All 60 FinTS fixture files reproduced byte-for-byte
+and documentation links passed.
+
+The full Windows CI command passed on 2026-10-14 with all-account response reference
+binding and semantics, fifty-two independent vectors and 843 new checks, with zero
+build warnings or errors. All 61 FinTS fixture files reproduced byte-for-byte and
+documentation links passed.
+
+The full Windows CI command passed on 2026-10-14 with the assembled PIN/TAN all-account
+discovery attempt, twenty-eight independent traces and 553 new checks, with zero
+build warnings or errors. All 62 FinTS fixture files reproduced byte-for-byte and
+documentation links passed.
+
+The full Windows CI command passed on 2026-10-14 with the assembled PIN/TAN read
+session attempt coordinator, twenty-eight independent traces and 1,230 new checks,
+with zero build warnings or errors. All 63 FinTS fixture files reproduced byte-for-byte
+and documentation links passed.
+
+The full Windows CI command passed on 2026-10-14 with the assembled PIN/TAN synchronization
+session attempt coordinator, twenty-four independent traces and 626 new checks,
+with zero build warnings or errors. All 64 FinTS fixture files reproduced byte-for-byte
+and documentation links passed.
+
+The full Windows CI command passed on 2026-10-14 with synchronization session
+clock hardening and 103 additional checks, with zero build warnings or errors.
+Existing wire fixtures and generation remain unchanged.
+
+The full Windows CI command passed on 2026-10-14 with session terminal evidence
+ownership and cleanup: 3,610 read-session checks, 1,092 synchronization-session
+checks and the existing 103 clock-boundary checks. Build completed with zero
+warnings or errors. Wire fixtures and their generator remain unchanged.
+
+The full Windows CI command passed on 2026-10-14 with read-session evidence
+provenance and 117 additional checks, alongside 3,610 existing read-session checks.
+Build completed with zero warnings or errors. All 64 fixtures reproduce byte-for-byte
+from the generator, including corrected session initialization parameter evidence.
+
+Next implementation increment: read-session operation scoping and per-operation
+page accounting under M1-05, without activation.
 M1-01 remains open for full storage schemas,
 calibration and review. Registration,
 legal review, controlled-account access, and release-owner assignment require

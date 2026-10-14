@@ -1,0 +1,2483 @@
+{
+  "schemaVersion": 1,
+  "vectors": [
+    {
+      "name": "one-time-execution",
+      "candidate": {
+        "name": "valid-all-discovery",
+        "context": {
+          "name": "valid-all-discovery",
+          "initialization": {
+            "name": "two-step-hipins",
+            "context": {
+              "name": "two-step-initialization",
+              "issues": [],
+              "requestKind": "initialization",
+              "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+              "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjpQVUJMSUMtU1lTVEVNKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+              "expectedUserId": "PUBLIC-USER",
+              "controlReference": "PUBLIC-REF",
+              "profileVersion": 2,
+              "securityFunction": 900,
+              "tanSegmentVersion": 7,
+              "missingProcedureContext": false
+            },
+            "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDczNCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDU1MEBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1JRC1SRVBMWSdISVJNUzo0OjI6NCswMDIwOjpQVUJMSUMtUFJFUC1SRVBMWSszOTIwOjpQVUJMSUMtUEVSTUlTU0lPTlM6OTAwOjk5OSdISUJQQTo1OjM6NCsxKzI4MDpQVUJMSUMtQkFOSytQVUJMSUMtQkFOSy1MQUJFTCsxKzE6MjozKzMwMCdISVVQQTo2OjQ6NCtQVUJMSUMtVVNFUisyKzAnSElUQU5TOjc6Nzo0KzErMSswK0o6TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjA6Ojo6OidISVBJTlM6ODoxOjQrMSsxKzArNToxMjo2OlBVQkxJQy1VU0VSLUxBQkVMOlBVQkxJQy1DVVNUT01FUi1MQUJFTDpIS1NBTDpKOkhLU1BBOk4nSElVUEQ6OTo2OjQrUFVCTElDLTAwMTo6MjgwOlBVQkxJQy1CQU5LK0RFODkzNzA0MDA0NDA1MzIwMTMwMDArUFVCTElDLUNVU1RPTUVSKzErRVVSK1B1YmxpYyBvd25lcisrKytIS1NQQToxJ0hJU1BBUzoxMDoxOjQrMSsxKzArSjpKOk4nJ0hOSEJTOjExOjErMSc=",
+            "wrapped": true,
+            "issues": [],
+            "minimumPinLength": 5,
+            "maximumPinLength": 12,
+            "maximumTanLength": 6,
+            "operationEvidence": "TanReportedRequired"
+          },
+          "initializationMatches": true,
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+          "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAn",
+          "expectedBankMessageNumber": 2,
+          "issues": [],
+          "operationEvidence": "TanReportedNotRequired"
+        },
+        "controlReference": "NEXT-REF",
+        "pinBase64": "MTIzNDU=",
+        "result": "Written",
+        "pinCopies": 1,
+        "candidateMatches": true,
+        "readCode": "HKSPA",
+        "readVersion": 1,
+        "profileVersion": 2,
+        "plainWireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDIwNyszMDArU1lOVEhFVElDKzInSE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnSE5IQlM6NToxKzIn",
+        "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM0MyszMDArU1lOVEhFVElDKzInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxOjIwMjYwOTA4OjEyMzQ1NisyOjI6MTM6QDhAAAAAAAAAAAA6NToxKzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpWOjA6MCswJ0hOVlNEOjk5OToxK0AxNTZASE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnJ0hOSEJTOjU6MSsyJw==",
+        "payloadBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUn"
+      },
+      "responses": [
+        {
+          "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMxOSszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDEzNkBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1SRVBMWSdISVNQQTo0OjE6MytKOkRFODkzNzA0MDA0NDA1MzIwMTMwMDA6UFVCTElDLUJJQzpQVUJMSUMtMDAxOjoyODA6UFVCTElDLUJBTksnJ0hOSEJTOjU6MSsyJw==",
+          "wrapped": true
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "transition": "CandidateRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "ExecutionReported",
+          "state": "ExecutionReported",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": true,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "Terminal",
+          "state": "ExecutionReported",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "start",
+          "transition": "Terminal",
+          "state": "ExecutionReported",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": false,
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "clean-multiple-upd-accounts",
+      "candidate": {
+        "name": "valid-multiple-upd-accounts",
+        "context": {
+          "name": "valid-multiple-upd-accounts",
+          "initialization": {
+            "name": "two-step-hipins",
+            "context": {
+              "name": "two-step-initialization",
+              "issues": [],
+              "requestKind": "initialization",
+              "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+              "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjpQVUJMSUMtU1lTVEVNKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+              "expectedUserId": "PUBLIC-USER",
+              "controlReference": "PUBLIC-REF",
+              "profileVersion": 2,
+              "securityFunction": 900,
+              "tanSegmentVersion": 7,
+              "missingProcedureContext": false
+            },
+            "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDk1NCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDc3MEBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1JRC1SRVBMWSdISVJNUzo0OjI6NCswMDIwOjpQVUJMSUMtUFJFUC1SRVBMWSszOTIwOjpQVUJMSUMtUEVSTUlTU0lPTlM6OTAwOjk5OSdISUJQQTo1OjM6NCsxKzI4MDpQVUJMSUMtQkFOSytQVUJMSUMtQkFOSy1MQUJFTCsxKzE6MjozKzMwMCdISVVQQTo2OjQ6NCtQVUJMSUMtVVNFUisyKzAnSElUQU5TOjc6Nzo0KzErMSswK0o6TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjA6Ojo6OidISVBJTlM6ODoxOjQrMSsxKzArNToxMjo2OlBVQkxJQy1VU0VSLUxBQkVMOlBVQkxJQy1DVVNUT01FUi1MQUJFTDpIS1NBTDpKOkhLU1BBOk4nSElVUEQ6OTo2OjQrUFVCTElDLTAwMTo6MjgwOlBVQkxJQy1CQU5LK0RFODkzNzA0MDA0NDA1MzIwMTMwMDArUFVCTElDLUNVU1RPTUVSKzErRVVSK1B1YmxpYyBvd25lcisrKytIS1NQQToxJ0hJVVBEOjEwOjY6NCtQVUJMSUMtMDAyOjoyODA6UFVCTElDLUJBTksrREU4OTM3MDQwMDQ0MDUzMjAxMzAwMStQVUJMSUMtQ1VTVE9NRVIrMStFVVIrUHVibGljIG93bmVyKysrK0hLU1BBOjEnSElVUEQ6MTE6Njo0K1BVQkxJQy0wMDM6OjI4MDpQVUJMSUMtQkFOSytERTg5MzcwNDAwNDQwNTMyMDEzMDAyK1BVQkxJQy1DVVNUT01FUisxK0VVUitQdWJsaWMgb3duZXIrKysrSEtTUEE6MSdISVNQQVM6MTI6MTo0KzErMSswK0o6SjpOJydITkhCUzoxMzoxKzEn",
+            "wrapped": true,
+            "issues": [],
+            "minimumPinLength": 5,
+            "maximumPinLength": 12,
+            "maximumTanLength": 6,
+            "operationEvidence": "TanReportedRequired"
+          },
+          "initializationMatches": true,
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+          "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAn",
+          "expectedBankMessageNumber": 2,
+          "issues": [],
+          "operationEvidence": "TanReportedNotRequired"
+        },
+        "controlReference": "NEXT-REF",
+        "pinBase64": "MTIzNDU=",
+        "result": "Written",
+        "pinCopies": 1,
+        "candidateMatches": true,
+        "readCode": "HKSPA",
+        "readVersion": 1,
+        "profileVersion": 2,
+        "plainWireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDIwNyszMDArU1lOVEhFVElDKzInSE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnSE5IQlM6NToxKzIn",
+        "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM0MyszMDArU1lOVEhFVElDKzInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxOjIwMjYwOTA4OjEyMzQ1NisyOjI6MTM6QDhAAAAAAAAAAAA6NToxKzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpWOjA6MCswJ0hOVlNEOjk5OToxK0AxNTZASE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnJ0hOSEJTOjU6MSsyJw==",
+        "payloadBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUn"
+      },
+      "responses": [
+        {
+          "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDQ0NyszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDI2NEBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1SRVBMWSdISVNQQTo0OjE6MytKOkRFODkzNzA0MDA0NDA1MzIwMTMwMDA6UFVCTElDLUJJQzpQVUJMSUMtMDAxOjoyODA6UFVCTElDLUJBTksrSjpERTg5MzcwNDAwNDQwNTMyMDEzMDAxOlBVQkxJQy1CSUM6UFVCTElDLTAwMjo6MjgwOlBVQkxJQy1CQU5LK0o6REU4OTM3MDQwMDQ0MDUzMjAxMzAwMjpQVUJMSUMtQklDOlBVQkxJQy0wMDM6OjI4MDpQVUJMSUMtQkFOSycnSE5IQlM6NToxKzIn",
+          "wrapped": true
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "transition": "CandidateRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "ExecutionReported",
+          "state": "ExecutionReported",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": true,
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "clean-one-step-profile",
+      "candidate": {
+        "name": "valid-one-step-initialization",
+        "context": {
+          "name": "valid-one-step-initialization",
+          "initialization": {
+            "name": "one-step-hipins",
+            "context": {
+              "name": "one-step-explicitly-reported",
+              "issues": [],
+              "requestKind": "initialization",
+              "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+              "headerBase64": "SE5TSEs6Mjo0K1BJTjoxKzk5OStQVUJMSUMtUkVGKzErMSsxOjpQVUJMSUMtU1lTVEVNKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+              "expectedUserId": "PUBLIC-USER",
+              "controlReference": "PUBLIC-REF",
+              "profileVersion": 1,
+              "securityFunction": 999,
+              "tanSegmentVersion": 7,
+              "missingProcedureContext": false
+            },
+            "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDczNCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjErOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDU1MEBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1JRC1SRVBMWSdISVJNUzo0OjI6NCswMDIwOjpQVUJMSUMtUFJFUC1SRVBMWSszOTIwOjpQVUJMSUMtUEVSTUlTU0lPTlM6OTAwOjk5OSdISUJQQTo1OjM6NCsxKzI4MDpQVUJMSUMtQkFOSytQVUJMSUMtQkFOSy1MQUJFTCsxKzE6MjozKzMwMCdISVVQQTo2OjQ6NCtQVUJMSUMtVVNFUisyKzAnSElUQU5TOjc6Nzo0KzErMSswK0o6TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjA6Ojo6OidISVBJTlM6ODoxOjQrMSsxKzArNToxMjo2OlBVQkxJQy1VU0VSLUxBQkVMOlBVQkxJQy1DVVNUT01FUi1MQUJFTDpIS1NBTDpKOkhLU1BBOk4nSElVUEQ6OTo2OjQrUFVCTElDLTAwMTo6MjgwOlBVQkxJQy1CQU5LK0RFODkzNzA0MDA0NDA1MzIwMTMwMDArUFVCTElDLUNVU1RPTUVSKzErRVVSK1B1YmxpYyBvd25lcisrKytIS1NQQToxJ0hJU1BBUzoxMDoxOjQrMSsxKzArSjpKOk4nJ0hOSEJTOjExOjErMSc=",
+            "wrapped": true,
+            "issues": [],
+            "minimumPinLength": 5,
+            "maximumPinLength": 12,
+            "maximumTanLength": 6,
+            "operationEvidence": "TanReportedRequired"
+          },
+          "initializationMatches": true,
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+          "headerBase64": "SE5TSEs6Mjo0K1BJTjoxKzk5OStORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAn",
+          "expectedBankMessageNumber": 2,
+          "issues": [],
+          "operationEvidence": "TanReportedNotRequired"
+        },
+        "controlReference": "NEXT-REF",
+        "pinBase64": "MTIzNDU=",
+        "result": "Written",
+        "pinCopies": 1,
+        "candidateMatches": true,
+        "readCode": "HKSPA",
+        "readVersion": 1,
+        "profileVersion": 1,
+        "plainWireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDIwNyszMDArU1lOVEhFVElDKzInSE5TSEs6Mjo0K1BJTjoxKzk5OStORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnSE5IQlM6NToxKzIn",
+        "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM0MyszMDArU1lOVEhFVElDKzInSE5WU0s6OTk4OjMrUElOOjErOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxOjIwMjYwOTA4OjEyMzQ1NisyOjI6MTM6QDhAAAAAAAAAAAA6NToxKzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpWOjA6MCswJ0hOVlNEOjk5OToxK0AxNTZASE5TSEs6Mjo0K1BJTjoxKzk5OStORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnJ0hOSEJTOjU6MSsyJw==",
+        "payloadBase64": "SE5TSEs6Mjo0K1BJTjoxKzk5OStORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUn"
+      },
+      "responses": [
+        {
+          "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMxOSszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSE5WU0s6OTk4OjMrUElOOjErOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDEzNkBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1SRVBMWSdISVNQQTo0OjE6MytKOkRFODkzNzA0MDA0NDA1MzIwMTMwMDA6UFVCTElDLUJJQzpQVUJMSUMtMDAxOjoyODA6UFVCTElDLUJBTksnJ0hOSEJTOjU6MSsyJw==",
+          "wrapped": true
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "transition": "CandidateRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "ExecutionReported",
+          "state": "ExecutionReported",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": true,
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "clean-tan-version-six",
+      "candidate": {
+        "name": "valid-tan-version-six",
+        "context": {
+          "name": "valid-tan-version-six",
+          "initialization": {
+            "name": "version-six-procedure-with-hipins",
+            "context": {
+              "name": "two-step-initialization",
+              "issues": [],
+              "requestKind": "initialization",
+              "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5MSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3OjY6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowJ0hOSEJTOjg6MSsxJw==",
+              "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjpQVUJMSUMtU1lTVEVNKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+              "expectedUserId": "PUBLIC-USER",
+              "controlReference": "PUBLIC-REF",
+              "profileVersion": 2,
+              "securityFunction": 900,
+              "tanSegmentVersion": 6,
+              "missingProcedureContext": false
+            },
+            "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDcyOSszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDU0NUBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1JRC1SRVBMWSdISVJNUzo0OjI6NCswMDIwOjpQVUJMSUMtUFJFUC1SRVBMWSszOTIwOjpQVUJMSUMtUEVSTUlTU0lPTlM6OTAwOjk5OSdISUJQQTo1OjM6NCsxKzI4MDpQVUJMSUMtQkFOSytQVUJMSUMtQkFOSy1MQUJFTCsxKzE6MjozKzMwMCdISVVQQTo2OjQ6NCtQVUJMSUMtVVNFUisyKzAnSElUQU5TOjc6Njo0KzErMSswK0o6TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjAnSElQSU5TOjg6MTo0KzErMSswKzU6MTI6NjpQVUJMSUMtVVNFUi1MQUJFTDpQVUJMSUMtQ1VTVE9NRVItTEFCRUw6SEtTQUw6SjpIS1NQQTpOJ0hJVVBEOjk6Njo0K1BVQkxJQy0wMDE6OjI4MDpQVUJMSUMtQkFOSytERTg5MzcwNDAwNDQwNTMyMDEzMDAwK1BVQkxJQy1DVVNUT01FUisxK0VVUitQdWJsaWMgb3duZXIrKysrSEtTUEE6MSdISVNQQVM6MTA6MTo0KzErMSswK0o6SjpOJydITkhCUzoxMToxKzEn",
+            "wrapped": true,
+            "issues": [],
+            "minimumPinLength": 5,
+            "maximumPinLength": 12,
+            "maximumTanLength": 6,
+            "operationEvidence": "TanReportedRequired"
+          },
+          "initializationMatches": true,
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+          "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAn",
+          "expectedBankMessageNumber": 2,
+          "issues": [],
+          "operationEvidence": "TanReportedNotRequired"
+        },
+        "controlReference": "NEXT-REF",
+        "pinBase64": "MTIzNDU=",
+        "result": "Written",
+        "pinCopies": 1,
+        "candidateMatches": true,
+        "readCode": "HKSPA",
+        "readVersion": 1,
+        "profileVersion": 2,
+        "plainWireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDIwNyszMDArU1lOVEhFVElDKzInSE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnSE5IQlM6NToxKzIn",
+        "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM0MyszMDArU1lOVEhFVElDKzInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxOjIwMjYwOTA4OjEyMzQ1NisyOjI6MTM6QDhAAAAAAAAAAAA6NToxKzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpWOjA6MCswJ0hOVlNEOjk5OToxK0AxNTZASE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnJ0hOSEJTOjU6MSsyJw==",
+        "payloadBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUn"
+      },
+      "responses": [
+        {
+          "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMxOSszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDEzNkBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1SRVBMWSdISVNQQTo0OjE6MytKOkRFODkzNzA0MDA0NDA1MzIwMTMwMDA6UFVCTElDLUJJQzpQVUJMSUMtMDAxOjoyODA6UFVCTElDLUJBTksnJ0hOSEJTOjU6MSsyJw==",
+          "wrapped": true
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "transition": "CandidateRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "ExecutionReported",
+          "state": "ExecutionReported",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": true,
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "clean-escaped-dialogue",
+      "candidate": {
+        "name": "escaped-assigned-dialogue",
+        "context": {
+          "name": "valid-all-discovery",
+          "initialization": {
+            "name": "two-step-hipins",
+            "context": {
+              "name": "two-step-initialization",
+              "issues": [],
+              "requestKind": "initialization",
+              "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+              "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjpQVUJMSUMtU1lTVEVNKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+              "expectedUserId": "PUBLIC-USER",
+              "controlReference": "PUBLIC-REF",
+              "profileVersion": 2,
+              "securityFunction": 900,
+              "tanSegmentVersion": 7,
+              "missingProcedureContext": false
+            },
+            "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDc0MCszMDArRD8rPzo/Jz8/P0D8KzErRD8rPzo/Jz8/P0D8OjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDU1MEBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1JRC1SRVBMWSdISVJNUzo0OjI6NCswMDIwOjpQVUJMSUMtUFJFUC1SRVBMWSszOTIwOjpQVUJMSUMtUEVSTUlTU0lPTlM6OTAwOjk5OSdISUJQQTo1OjM6NCsxKzI4MDpQVUJMSUMtQkFOSytQVUJMSUMtQkFOSy1MQUJFTCsxKzE6MjozKzMwMCdISVVQQTo2OjQ6NCtQVUJMSUMtVVNFUisyKzAnSElUQU5TOjc6Nzo0KzErMSswK0o6TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjA6Ojo6OidISVBJTlM6ODoxOjQrMSsxKzArNToxMjo2OlBVQkxJQy1VU0VSLUxBQkVMOlBVQkxJQy1DVVNUT01FUi1MQUJFTDpIS1NBTDpKOkhLU1BBOk4nSElVUEQ6OTo2OjQrUFVCTElDLTAwMTo6MjgwOlBVQkxJQy1CQU5LK0RFODkzNzA0MDA0NDA1MzIwMTMwMDArUFVCTElDLUNVU1RPTUVSKzErRVVSK1B1YmxpYyBvd25lcisrKytIS1NQQToxJ0hJU1BBUzoxMDoxOjQrMSsxKzArSjpKOk4nJ0hOSEJTOjExOjErMSc=",
+            "wrapped": true,
+            "issues": [],
+            "minimumPinLength": 5,
+            "maximumPinLength": 12,
+            "maximumTanLength": 6,
+            "operationEvidence": "TanReportedRequired"
+          },
+          "initializationMatches": true,
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2NCszMDArRD8rPzo/Jz8/P0D8KzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+          "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAn",
+          "expectedBankMessageNumber": 2,
+          "issues": [],
+          "operationEvidence": "TanReportedNotRequired"
+        },
+        "controlReference": "NEXT-REF",
+        "pinBase64": "MTIzNDU=",
+        "result": "Written",
+        "pinCopies": 1,
+        "candidateMatches": true,
+        "readCode": "HKSPA",
+        "readVersion": 1,
+        "profileVersion": 2,
+        "plainWireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDIxMCszMDArRD8rPzo/Jz8/P0D8KzInSE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnSE5IQlM6NToxKzIn",
+        "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM0NiszMDArRD8rPzo/Jz8/P0D8KzInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxOjIwMjYwOTA4OjEyMzQ1NisyOjI6MTM6QDhAAAAAAAAAAAA6NToxKzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpWOjA6MCswJ0hOVlNEOjk5OToxK0AxNTZASE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnJ0hOSEJTOjU6MSsyJw==",
+        "payloadBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUn"
+      },
+      "responses": [
+        {
+          "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMyNSszMDArRD8rPzo/Jz8/P0D8KzIrRD8rPzo/Jz8/P0D8OjInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDEzNkBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1SRVBMWSdISVNQQTo0OjE6MytKOkRFODkzNzA0MDA0NDA1MzIwMTMwMDA6UFVCTElDLUJJQzpQVUJMSUMtMDAxOjoyODA6UFVCTElDLUJBTksnJ0hOSEJTOjU6MSsyJw==",
+          "wrapped": true
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "transition": "CandidateRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "ExecutionReported",
+          "state": "ExecutionReported",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": true,
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "clean-unavailable-absent",
+      "candidate": {
+        "name": "valid-all-discovery",
+        "context": {
+          "name": "valid-all-discovery",
+          "initialization": {
+            "name": "two-step-hipins",
+            "context": {
+              "name": "two-step-initialization",
+              "issues": [],
+              "requestKind": "initialization",
+              "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+              "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjpQVUJMSUMtU1lTVEVNKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+              "expectedUserId": "PUBLIC-USER",
+              "controlReference": "PUBLIC-REF",
+              "profileVersion": 2,
+              "securityFunction": 900,
+              "tanSegmentVersion": 7,
+              "missingProcedureContext": false
+            },
+            "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDczNCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDU1MEBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1JRC1SRVBMWSdISVJNUzo0OjI6NCswMDIwOjpQVUJMSUMtUFJFUC1SRVBMWSszOTIwOjpQVUJMSUMtUEVSTUlTU0lPTlM6OTAwOjk5OSdISUJQQTo1OjM6NCsxKzI4MDpQVUJMSUMtQkFOSytQVUJMSUMtQkFOSy1MQUJFTCsxKzE6MjozKzMwMCdISVVQQTo2OjQ6NCtQVUJMSUMtVVNFUisyKzAnSElUQU5TOjc6Nzo0KzErMSswK0o6TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjA6Ojo6OidISVBJTlM6ODoxOjQrMSsxKzArNToxMjo2OlBVQkxJQy1VU0VSLUxBQkVMOlBVQkxJQy1DVVNUT01FUi1MQUJFTDpIS1NBTDpKOkhLU1BBOk4nSElVUEQ6OTo2OjQrUFVCTElDLTAwMTo6MjgwOlBVQkxJQy1CQU5LK0RFODkzNzA0MDA0NDA1MzIwMTMwMDArUFVCTElDLUNVU1RPTUVSKzErRVVSK1B1YmxpYyBvd25lcisrKytIS1NQQToxJ0hJU1BBUzoxMDoxOjQrMSsxKzArSjpKOk4nJ0hOSEJTOjExOjErMSc=",
+            "wrapped": true,
+            "issues": [],
+            "minimumPinLength": 5,
+            "maximumPinLength": 12,
+            "maximumTanLength": 6,
+            "operationEvidence": "TanReportedRequired"
+          },
+          "initializationMatches": true,
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+          "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAn",
+          "expectedBankMessageNumber": 2,
+          "issues": [],
+          "operationEvidence": "TanReportedNotRequired"
+        },
+        "controlReference": "NEXT-REF",
+        "pinBase64": "MTIzNDU=",
+        "result": "Written",
+        "pinCopies": 1,
+        "candidateMatches": true,
+        "readCode": "HKSPA",
+        "readVersion": 1,
+        "profileVersion": 2,
+        "plainWireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDIwNyszMDArU1lOVEhFVElDKzInSE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnSE5IQlM6NToxKzIn",
+        "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM0MyszMDArU1lOVEhFVElDKzInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxOjIwMjYwOTA4OjEyMzQ1NisyOjI6MTM6QDhAAAAAAAAAAAA6NToxKzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpWOjA6MCswJ0hOVlNEOjk5OToxK0AxNTZASE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnJ0hOSEJTOjU6MSsyJw==",
+        "payloadBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUn"
+      },
+      "responses": [
+        {
+          "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI0MiszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDYwQEhJUk1HOjI6MiswMDEwOjpQVUJMSUMtUkVQTFknSElSTVM6MzoyOjMrMzAxMDo6UFVCTElDLVJFUExZJydITkhCUzo0OjErMic=",
+          "wrapped": true
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "transition": "CandidateRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "UnavailableReported",
+          "state": "UnavailableReported",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": true,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "Terminal",
+          "state": "UnavailableReported",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "start",
+          "transition": "Terminal",
+          "state": "UnavailableReported",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": false,
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "clean-unavailable-empty",
+      "candidate": {
+        "name": "valid-all-discovery",
+        "context": {
+          "name": "valid-all-discovery",
+          "initialization": {
+            "name": "two-step-hipins",
+            "context": {
+              "name": "two-step-initialization",
+              "issues": [],
+              "requestKind": "initialization",
+              "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+              "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjpQVUJMSUMtU1lTVEVNKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+              "expectedUserId": "PUBLIC-USER",
+              "controlReference": "PUBLIC-REF",
+              "profileVersion": 2,
+              "securityFunction": 900,
+              "tanSegmentVersion": 7,
+              "missingProcedureContext": false
+            },
+            "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDczNCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDU1MEBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1JRC1SRVBMWSdISVJNUzo0OjI6NCswMDIwOjpQVUJMSUMtUFJFUC1SRVBMWSszOTIwOjpQVUJMSUMtUEVSTUlTU0lPTlM6OTAwOjk5OSdISUJQQTo1OjM6NCsxKzI4MDpQVUJMSUMtQkFOSytQVUJMSUMtQkFOSy1MQUJFTCsxKzE6MjozKzMwMCdISVVQQTo2OjQ6NCtQVUJMSUMtVVNFUisyKzAnSElUQU5TOjc6Nzo0KzErMSswK0o6TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjA6Ojo6OidISVBJTlM6ODoxOjQrMSsxKzArNToxMjo2OlBVQkxJQy1VU0VSLUxBQkVMOlBVQkxJQy1DVVNUT01FUi1MQUJFTDpIS1NBTDpKOkhLU1BBOk4nSElVUEQ6OTo2OjQrUFVCTElDLTAwMTo6MjgwOlBVQkxJQy1CQU5LK0RFODkzNzA0MDA0NDA1MzIwMTMwMDArUFVCTElDLUNVU1RPTUVSKzErRVVSK1B1YmxpYyBvd25lcisrKytIS1NQQToxJ0hJU1BBUzoxMDoxOjQrMSsxKzArSjpKOk4nJ0hOSEJTOjExOjErMSc=",
+            "wrapped": true,
+            "issues": [],
+            "minimumPinLength": 5,
+            "maximumPinLength": 12,
+            "maximumTanLength": 6,
+            "operationEvidence": "TanReportedRequired"
+          },
+          "initializationMatches": true,
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+          "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAn",
+          "expectedBankMessageNumber": 2,
+          "issues": [],
+          "operationEvidence": "TanReportedNotRequired"
+        },
+        "controlReference": "NEXT-REF",
+        "pinBase64": "MTIzNDU=",
+        "result": "Written",
+        "pinCopies": 1,
+        "candidateMatches": true,
+        "readCode": "HKSPA",
+        "readVersion": 1,
+        "profileVersion": 2,
+        "plainWireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDIwNyszMDArU1lOVEhFVElDKzInSE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnSE5IQlM6NToxKzIn",
+        "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM0MyszMDArU1lOVEhFVElDKzInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxOjIwMjYwOTA4OjEyMzQ1NisyOjI6MTM6QDhAAAAAAAAAAAA6NToxKzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpWOjA6MCswJ0hOVlNEOjk5OToxK0AxNTZASE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnJ0hOSEJTOjU6MSsyJw==",
+        "payloadBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUn"
+      },
+      "responses": [
+        {
+          "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI1NCszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDcyQEhJUk1HOjI6MiswMDEwOjpQVUJMSUMtUkVQTFknSElSTVM6MzoyOjMrMzAxMDo6UFVCTElDLVJFUExZJ0hJU1BBOjQ6MTozJydITkhCUzo1OjErMic=",
+          "wrapped": true
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "transition": "CandidateRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "UnavailableReported",
+          "state": "UnavailableReported",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": true,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "Terminal",
+          "state": "UnavailableReported",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "start",
+          "transition": "Terminal",
+          "state": "UnavailableReported",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": false,
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "clean-unavailable-with-execution",
+      "candidate": {
+        "name": "valid-all-discovery",
+        "context": {
+          "name": "valid-all-discovery",
+          "initialization": {
+            "name": "two-step-hipins",
+            "context": {
+              "name": "two-step-initialization",
+              "issues": [],
+              "requestKind": "initialization",
+              "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+              "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjpQVUJMSUMtU1lTVEVNKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+              "expectedUserId": "PUBLIC-USER",
+              "controlReference": "PUBLIC-REF",
+              "profileVersion": 2,
+              "securityFunction": 900,
+              "tanSegmentVersion": 7,
+              "missingProcedureContext": false
+            },
+            "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDczNCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDU1MEBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1JRC1SRVBMWSdISVJNUzo0OjI6NCswMDIwOjpQVUJMSUMtUFJFUC1SRVBMWSszOTIwOjpQVUJMSUMtUEVSTUlTU0lPTlM6OTAwOjk5OSdISUJQQTo1OjM6NCsxKzI4MDpQVUJMSUMtQkFOSytQVUJMSUMtQkFOSy1MQUJFTCsxKzE6MjozKzMwMCdISVVQQTo2OjQ6NCtQVUJMSUMtVVNFUisyKzAnSElUQU5TOjc6Nzo0KzErMSswK0o6TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjA6Ojo6OidISVBJTlM6ODoxOjQrMSsxKzArNToxMjo2OlBVQkxJQy1VU0VSLUxBQkVMOlBVQkxJQy1DVVNUT01FUi1MQUJFTDpIS1NBTDpKOkhLU1BBOk4nSElVUEQ6OTo2OjQrUFVCTElDLTAwMTo6MjgwOlBVQkxJQy1CQU5LK0RFODkzNzA0MDA0NDA1MzIwMTMwMDArUFVCTElDLUNVU1RPTUVSKzErRVVSK1B1YmxpYyBvd25lcisrKytIS1NQQToxJ0hJU1BBUzoxMDoxOjQrMSsxKzArSjpKOk4nJ0hOSEJTOjExOjErMSc=",
+            "wrapped": true,
+            "issues": [],
+            "minimumPinLength": 5,
+            "maximumPinLength": 12,
+            "maximumTanLength": 6,
+            "operationEvidence": "TanReportedRequired"
+          },
+          "initializationMatches": true,
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+          "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAn",
+          "expectedBankMessageNumber": 2,
+          "issues": [],
+          "operationEvidence": "TanReportedNotRequired"
+        },
+        "controlReference": "NEXT-REF",
+        "pinBase64": "MTIzNDU=",
+        "result": "Written",
+        "pinCopies": 1,
+        "candidateMatches": true,
+        "readCode": "HKSPA",
+        "readVersion": 1,
+        "profileVersion": 2,
+        "plainWireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDIwNyszMDArU1lOVEhFVElDKzInSE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnSE5IQlM6NToxKzIn",
+        "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM0MyszMDArU1lOVEhFVElDKzInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxOjIwMjYwOTA4OjEyMzQ1NisyOjI6MTM6QDhAAAAAAAAAAAA6NToxKzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpWOjA6MCswJ0hOVlNEOjk5OToxK0AxNTZASE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnJ0hOSEJTOjU6MSsyJw==",
+        "payloadBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUn"
+      },
+      "responses": [
+        {
+          "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI2MSszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDc5QEhJUk1HOjI6MiswMDEwOjpQVUJMSUMtUkVQTFknSElSTVM6MzoyOjMrMDAyMDo6UFVCTElDLVJFUExZKzMwMTA6OlBVQkxJQy1SRVBMWScnSE5IQlM6NDoxKzIn",
+          "wrapped": true
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "transition": "CandidateRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "UnavailableReported",
+          "state": "UnavailableReported",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": true,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "Terminal",
+          "state": "UnavailableReported",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "start",
+          "transition": "Terminal",
+          "state": "UnavailableReported",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": false,
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "missing-envelope",
+      "candidate": {
+        "name": "valid-all-discovery",
+        "context": {
+          "name": "valid-all-discovery",
+          "initialization": {
+            "name": "two-step-hipins",
+            "context": {
+              "name": "two-step-initialization",
+              "issues": [],
+              "requestKind": "initialization",
+              "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+              "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjpQVUJMSUMtU1lTVEVNKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+              "expectedUserId": "PUBLIC-USER",
+              "controlReference": "PUBLIC-REF",
+              "profileVersion": 2,
+              "securityFunction": 900,
+              "tanSegmentVersion": 7,
+              "missingProcedureContext": false
+            },
+            "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDczNCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDU1MEBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1JRC1SRVBMWSdISVJNUzo0OjI6NCswMDIwOjpQVUJMSUMtUFJFUC1SRVBMWSszOTIwOjpQVUJMSUMtUEVSTUlTU0lPTlM6OTAwOjk5OSdISUJQQTo1OjM6NCsxKzI4MDpQVUJMSUMtQkFOSytQVUJMSUMtQkFOSy1MQUJFTCsxKzE6MjozKzMwMCdISVVQQTo2OjQ6NCtQVUJMSUMtVVNFUisyKzAnSElUQU5TOjc6Nzo0KzErMSswK0o6TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjA6Ojo6OidISVBJTlM6ODoxOjQrMSsxKzArNToxMjo2OlBVQkxJQy1VU0VSLUxBQkVMOlBVQkxJQy1DVVNUT01FUi1MQUJFTDpIS1NBTDpKOkhLU1BBOk4nSElVUEQ6OTo2OjQrUFVCTElDLTAwMTo6MjgwOlBVQkxJQy1CQU5LK0RFODkzNzA0MDA0NDA1MzIwMTMwMDArUFVCTElDLUNVU1RPTUVSKzErRVVSK1B1YmxpYyBvd25lcisrKytIS1NQQToxJ0hJU1BBUzoxMDoxOjQrMSsxKzArSjpKOk4nJ0hOSEJTOjExOjErMSc=",
+            "wrapped": true,
+            "issues": [],
+            "minimumPinLength": 5,
+            "maximumPinLength": 12,
+            "maximumTanLength": 6,
+            "operationEvidence": "TanReportedRequired"
+          },
+          "initializationMatches": true,
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+          "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAn",
+          "expectedBankMessageNumber": 2,
+          "issues": [],
+          "operationEvidence": "TanReportedNotRequired"
+        },
+        "controlReference": "NEXT-REF",
+        "pinBase64": "MTIzNDU=",
+        "result": "Written",
+        "pinCopies": 1,
+        "candidateMatches": true,
+        "readCode": "HKSPA",
+        "readVersion": 1,
+        "profileVersion": 2,
+        "plainWireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDIwNyszMDArU1lOVEhFVElDKzInSE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnSE5IQlM6NToxKzIn",
+        "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM0MyszMDArU1lOVEhFVElDKzInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxOjIwMjYwOTA4OjEyMzQ1NisyOjI6MTM6QDhAAAAAAAAAAAA6NToxKzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpWOjA6MCswJ0hOVlNEOjk5OToxK0AxNTZASE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnJ0hOSEJTOjU6MSsyJw==",
+        "payloadBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUn"
+      },
+      "responses": [
+        {
+          "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDE5OSszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MyswMDIwOjpQVUJMSUMtUkVQTFknSElTUEE6NDoxOjMrSjpERTg5MzcwNDAwNDQwNTMyMDEzMDAwOlBVQkxJQy1CSUM6UFVCTElDLTAwMTo6MjgwOlBVQkxJQy1CQU5LJ0hOSEJTOjU6MSsyJw==",
+          "wrapped": false
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "transition": "CandidateRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "RejectedForReview",
+          "state": "NeedsReview",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": true,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "Terminal",
+          "state": "NeedsReview",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": false,
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "wrong-profile",
+      "candidate": {
+        "name": "valid-all-discovery",
+        "context": {
+          "name": "valid-all-discovery",
+          "initialization": {
+            "name": "two-step-hipins",
+            "context": {
+              "name": "two-step-initialization",
+              "issues": [],
+              "requestKind": "initialization",
+              "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+              "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjpQVUJMSUMtU1lTVEVNKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+              "expectedUserId": "PUBLIC-USER",
+              "controlReference": "PUBLIC-REF",
+              "profileVersion": 2,
+              "securityFunction": 900,
+              "tanSegmentVersion": 7,
+              "missingProcedureContext": false
+            },
+            "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDczNCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDU1MEBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1JRC1SRVBMWSdISVJNUzo0OjI6NCswMDIwOjpQVUJMSUMtUFJFUC1SRVBMWSszOTIwOjpQVUJMSUMtUEVSTUlTU0lPTlM6OTAwOjk5OSdISUJQQTo1OjM6NCsxKzI4MDpQVUJMSUMtQkFOSytQVUJMSUMtQkFOSy1MQUJFTCsxKzE6MjozKzMwMCdISVVQQTo2OjQ6NCtQVUJMSUMtVVNFUisyKzAnSElUQU5TOjc6Nzo0KzErMSswK0o6TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjA6Ojo6OidISVBJTlM6ODoxOjQrMSsxKzArNToxMjo2OlBVQkxJQy1VU0VSLUxBQkVMOlBVQkxJQy1DVVNUT01FUi1MQUJFTDpIS1NBTDpKOkhLU1BBOk4nSElVUEQ6OTo2OjQrUFVCTElDLTAwMTo6MjgwOlBVQkxJQy1CQU5LK0RFODkzNzA0MDA0NDA1MzIwMTMwMDArUFVCTElDLUNVU1RPTUVSKzErRVVSK1B1YmxpYyBvd25lcisrKytIS1NQQToxJ0hJU1BBUzoxMDoxOjQrMSsxKzArSjpKOk4nJ0hOSEJTOjExOjErMSc=",
+            "wrapped": true,
+            "issues": [],
+            "minimumPinLength": 5,
+            "maximumPinLength": 12,
+            "maximumTanLength": 6,
+            "operationEvidence": "TanReportedRequired"
+          },
+          "initializationMatches": true,
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+          "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAn",
+          "expectedBankMessageNumber": 2,
+          "issues": [],
+          "operationEvidence": "TanReportedNotRequired"
+        },
+        "controlReference": "NEXT-REF",
+        "pinBase64": "MTIzNDU=",
+        "result": "Written",
+        "pinCopies": 1,
+        "candidateMatches": true,
+        "readCode": "HKSPA",
+        "readVersion": 1,
+        "profileVersion": 2,
+        "plainWireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDIwNyszMDArU1lOVEhFVElDKzInSE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnSE5IQlM6NToxKzIn",
+        "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM0MyszMDArU1lOVEhFVElDKzInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxOjIwMjYwOTA4OjEyMzQ1NisyOjI6MTM6QDhAAAAAAAAAAAA6NToxKzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpWOjA6MCswJ0hOVlNEOjk5OToxK0AxNTZASE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnJ0hOSEJTOjU6MSsyJw==",
+        "payloadBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUn"
+      },
+      "responses": [
+        {
+          "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMxOSszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSE5WU0s6OTk4OjMrUElOOjErOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDEzNkBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1SRVBMWSdISVNQQTo0OjE6MytKOkRFODkzNzA0MDA0NDA1MzIwMTMwMDA6UFVCTElDLUJJQzpQVUJMSUMtMDAxOjoyODA6UFVCTElDLUJBTksnJ0hOSEJTOjU6MSsyJw==",
+          "wrapped": true
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "transition": "CandidateRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "RejectedForReview",
+          "state": "NeedsReview",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": true,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "Terminal",
+          "state": "NeedsReview",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": false,
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "foreign-envelope-user",
+      "candidate": {
+        "name": "valid-all-discovery",
+        "context": {
+          "name": "valid-all-discovery",
+          "initialization": {
+            "name": "two-step-hipins",
+            "context": {
+              "name": "two-step-initialization",
+              "issues": [],
+              "requestKind": "initialization",
+              "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+              "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjpQVUJMSUMtU1lTVEVNKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+              "expectedUserId": "PUBLIC-USER",
+              "controlReference": "PUBLIC-REF",
+              "profileVersion": 2,
+              "securityFunction": 900,
+              "tanSegmentVersion": 7,
+              "missingProcedureContext": false
+            },
+            "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDczNCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDU1MEBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1JRC1SRVBMWSdISVJNUzo0OjI6NCswMDIwOjpQVUJMSUMtUFJFUC1SRVBMWSszOTIwOjpQVUJMSUMtUEVSTUlTU0lPTlM6OTAwOjk5OSdISUJQQTo1OjM6NCsxKzI4MDpQVUJMSUMtQkFOSytQVUJMSUMtQkFOSy1MQUJFTCsxKzE6MjozKzMwMCdISVVQQTo2OjQ6NCtQVUJMSUMtVVNFUisyKzAnSElUQU5TOjc6Nzo0KzErMSswK0o6TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjA6Ojo6OidISVBJTlM6ODoxOjQrMSsxKzArNToxMjo2OlBVQkxJQy1VU0VSLUxBQkVMOlBVQkxJQy1DVVNUT01FUi1MQUJFTDpIS1NBTDpKOkhLU1BBOk4nSElVUEQ6OTo2OjQrUFVCTElDLTAwMTo6MjgwOlBVQkxJQy1CQU5LK0RFODkzNzA0MDA0NDA1MzIwMTMwMDArUFVCTElDLUNVU1RPTUVSKzErRVVSK1B1YmxpYyBvd25lcisrKytIS1NQQToxJ0hJU1BBUzoxMDoxOjQrMSsxKzArSjpKOk4nJ0hOSEJTOjExOjErMSc=",
+            "wrapped": true,
+            "issues": [],
+            "minimumPinLength": 5,
+            "maximumPinLength": 12,
+            "maximumTanLength": 6,
+            "operationEvidence": "TanReportedRequired"
+          },
+          "initializationMatches": true,
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+          "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAn",
+          "expectedBankMessageNumber": 2,
+          "issues": [],
+          "operationEvidence": "TanReportedNotRequired"
+        },
+        "controlReference": "NEXT-REF",
+        "pinBase64": "MTIzNDU=",
+        "result": "Written",
+        "pinCopies": 1,
+        "candidateMatches": true,
+        "readCode": "HKSPA",
+        "readVersion": 1,
+        "profileVersion": 2,
+        "plainWireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDIwNyszMDArU1lOVEhFVElDKzInSE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnSE5IQlM6NToxKzIn",
+        "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM0MyszMDArU1lOVEhFVElDKzInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxOjIwMjYwOTA4OjEyMzQ1NisyOjI6MTM6QDhAAAAAAAAAAAA6NToxKzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpWOjA6MCswJ0hOVlNEOjk5OToxK0AxNTZASE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnJ0hOSEJTOjU6MSsyJw==",
+        "payloadBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUn"
+      },
+      "responses": [
+        {
+          "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMyMCszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOkZPUkVJR04tVVNFUjpWOjA6MCswJ0hOVlNEOjk5OToxK0AxMzZASElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MyswMDIwOjpQVUJMSUMtUkVQTFknSElTUEE6NDoxOjMrSjpERTg5MzcwNDAwNDQwNTMyMDEzMDAwOlBVQkxJQy1CSUM6UFVCTElDLTAwMTo6MjgwOlBVQkxJQy1CQU5LJydITkhCUzo1OjErMic=",
+          "wrapped": true
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "transition": "CandidateRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "RejectedForReview",
+          "state": "NeedsReview",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": true,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "Terminal",
+          "state": "NeedsReview",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": false,
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "read-error",
+      "candidate": {
+        "name": "valid-all-discovery",
+        "context": {
+          "name": "valid-all-discovery",
+          "initialization": {
+            "name": "two-step-hipins",
+            "context": {
+              "name": "two-step-initialization",
+              "issues": [],
+              "requestKind": "initialization",
+              "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+              "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjpQVUJMSUMtU1lTVEVNKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+              "expectedUserId": "PUBLIC-USER",
+              "controlReference": "PUBLIC-REF",
+              "profileVersion": 2,
+              "securityFunction": 900,
+              "tanSegmentVersion": 7,
+              "missingProcedureContext": false
+            },
+            "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDczNCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDU1MEBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1JRC1SRVBMWSdISVJNUzo0OjI6NCswMDIwOjpQVUJMSUMtUFJFUC1SRVBMWSszOTIwOjpQVUJMSUMtUEVSTUlTU0lPTlM6OTAwOjk5OSdISUJQQTo1OjM6NCsxKzI4MDpQVUJMSUMtQkFOSytQVUJMSUMtQkFOSy1MQUJFTCsxKzE6MjozKzMwMCdISVVQQTo2OjQ6NCtQVUJMSUMtVVNFUisyKzAnSElUQU5TOjc6Nzo0KzErMSswK0o6TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjA6Ojo6OidISVBJTlM6ODoxOjQrMSsxKzArNToxMjo2OlBVQkxJQy1VU0VSLUxBQkVMOlBVQkxJQy1DVVNUT01FUi1MQUJFTDpIS1NBTDpKOkhLU1BBOk4nSElVUEQ6OTo2OjQrUFVCTElDLTAwMTo6MjgwOlBVQkxJQy1CQU5LK0RFODkzNzA0MDA0NDA1MzIwMTMwMDArUFVCTElDLUNVU1RPTUVSKzErRVVSK1B1YmxpYyBvd25lcisrKytIS1NQQToxJ0hJU1BBUzoxMDoxOjQrMSsxKzArSjpKOk4nJ0hOSEJTOjExOjErMSc=",
+            "wrapped": true,
+            "issues": [],
+            "minimumPinLength": 5,
+            "maximumPinLength": 12,
+            "maximumTanLength": 6,
+            "operationEvidence": "TanReportedRequired"
+          },
+          "initializationMatches": true,
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+          "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAn",
+          "expectedBankMessageNumber": 2,
+          "issues": [],
+          "operationEvidence": "TanReportedNotRequired"
+        },
+        "controlReference": "NEXT-REF",
+        "pinBase64": "MTIzNDU=",
+        "result": "Written",
+        "pinCopies": 1,
+        "candidateMatches": true,
+        "readCode": "HKSPA",
+        "readVersion": 1,
+        "profileVersion": 2,
+        "plainWireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDIwNyszMDArU1lOVEhFVElDKzInSE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnSE5IQlM6NToxKzIn",
+        "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM0MyszMDArU1lOVEhFVElDKzInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxOjIwMjYwOTA4OjEyMzQ1NisyOjI6MTM6QDhAAAAAAAAAAAA6NToxKzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpWOjA6MCswJ0hOVlNEOjk5OToxK0AxNTZASE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnJ0hOSEJTOjU6MSsyJw==",
+        "payloadBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUn"
+      },
+      "responses": [
+        {
+          "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDI0MiszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDYwQEhJUk1HOjI6MiswMDEwOjpQVUJMSUMtUkVQTFknSElSTVM6MzoyOjMrOTIxMDo6UFVCTElDLVJFUExZJydITkhCUzo0OjErMic=",
+          "wrapped": true
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "transition": "CandidateRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "RejectedForReview",
+          "state": "NeedsReview",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": true,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "Terminal",
+          "state": "NeedsReview",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": false,
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "unmatched-user-accounts",
+      "candidate": {
+        "name": "valid-multiple-upd-accounts",
+        "context": {
+          "name": "valid-multiple-upd-accounts",
+          "initialization": {
+            "name": "two-step-hipins",
+            "context": {
+              "name": "two-step-initialization",
+              "issues": [],
+              "requestKind": "initialization",
+              "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+              "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjpQVUJMSUMtU1lTVEVNKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+              "expectedUserId": "PUBLIC-USER",
+              "controlReference": "PUBLIC-REF",
+              "profileVersion": 2,
+              "securityFunction": 900,
+              "tanSegmentVersion": 7,
+              "missingProcedureContext": false
+            },
+            "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDk1NCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDc3MEBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1JRC1SRVBMWSdISVJNUzo0OjI6NCswMDIwOjpQVUJMSUMtUFJFUC1SRVBMWSszOTIwOjpQVUJMSUMtUEVSTUlTU0lPTlM6OTAwOjk5OSdISUJQQTo1OjM6NCsxKzI4MDpQVUJMSUMtQkFOSytQVUJMSUMtQkFOSy1MQUJFTCsxKzE6MjozKzMwMCdISVVQQTo2OjQ6NCtQVUJMSUMtVVNFUisyKzAnSElUQU5TOjc6Nzo0KzErMSswK0o6TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjA6Ojo6OidISVBJTlM6ODoxOjQrMSsxKzArNToxMjo2OlBVQkxJQy1VU0VSLUxBQkVMOlBVQkxJQy1DVVNUT01FUi1MQUJFTDpIS1NBTDpKOkhLU1BBOk4nSElVUEQ6OTo2OjQrUFVCTElDLTAwMTo6MjgwOlBVQkxJQy1CQU5LK0RFODkzNzA0MDA0NDA1MzIwMTMwMDArUFVCTElDLUNVU1RPTUVSKzErRVVSK1B1YmxpYyBvd25lcisrKytIS1NQQToxJ0hJVVBEOjEwOjY6NCtQVUJMSUMtMDAyOjoyODA6UFVCTElDLUJBTksrREU4OTM3MDQwMDQ0MDUzMjAxMzAwMStQVUJMSUMtQ1VTVE9NRVIrMStFVVIrUHVibGljIG93bmVyKysrK0hLU1BBOjEnSElVUEQ6MTE6Njo0K1BVQkxJQy0wMDM6OjI4MDpQVUJMSUMtQkFOSytERTg5MzcwNDAwNDQwNTMyMDEzMDAyK1BVQkxJQy1DVVNUT01FUisxK0VVUitQdWJsaWMgb3duZXIrKysrSEtTUEE6MSdISVNQQVM6MTI6MTo0KzErMSswK0o6SjpOJydITkhCUzoxMzoxKzEn",
+            "wrapped": true,
+            "issues": [],
+            "minimumPinLength": 5,
+            "maximumPinLength": 12,
+            "maximumTanLength": 6,
+            "operationEvidence": "TanReportedRequired"
+          },
+          "initializationMatches": true,
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+          "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAn",
+          "expectedBankMessageNumber": 2,
+          "issues": [],
+          "operationEvidence": "TanReportedNotRequired"
+        },
+        "controlReference": "NEXT-REF",
+        "pinBase64": "MTIzNDU=",
+        "result": "Written",
+        "pinCopies": 1,
+        "candidateMatches": true,
+        "readCode": "HKSPA",
+        "readVersion": 1,
+        "profileVersion": 2,
+        "plainWireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDIwNyszMDArU1lOVEhFVElDKzInSE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnSE5IQlM6NToxKzIn",
+        "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM0MyszMDArU1lOVEhFVElDKzInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxOjIwMjYwOTA4OjEyMzQ1NisyOjI6MTM6QDhAAAAAAAAAAAA6NToxKzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpWOjA6MCswJ0hOVlNEOjk5OToxK0AxNTZASE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnJ0hOSEJTOjU6MSsyJw==",
+        "payloadBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUn"
+      },
+      "responses": [
+        {
+          "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMxOSszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDEzNkBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1SRVBMWSdISVNQQTo0OjE6MytKOkRFODkzNzA0MDA0NDA1MzIwMTMwMDA6UFVCTElDLUJJQzpQVUJMSUMtMDAxOjoyODA6UFVCTElDLUJBTksnJ0hOSEJTOjU6MSsyJw==",
+          "wrapped": true
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "transition": "CandidateRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "RejectedForReview",
+          "state": "NeedsReview",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": true,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "Terminal",
+          "state": "NeedsReview",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": false,
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "unknown-returned-account",
+      "candidate": {
+        "name": "valid-all-discovery",
+        "context": {
+          "name": "valid-all-discovery",
+          "initialization": {
+            "name": "two-step-hipins",
+            "context": {
+              "name": "two-step-initialization",
+              "issues": [],
+              "requestKind": "initialization",
+              "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+              "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjpQVUJMSUMtU1lTVEVNKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+              "expectedUserId": "PUBLIC-USER",
+              "controlReference": "PUBLIC-REF",
+              "profileVersion": 2,
+              "securityFunction": 900,
+              "tanSegmentVersion": 7,
+              "missingProcedureContext": false
+            },
+            "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDczNCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDU1MEBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1JRC1SRVBMWSdISVJNUzo0OjI6NCswMDIwOjpQVUJMSUMtUFJFUC1SRVBMWSszOTIwOjpQVUJMSUMtUEVSTUlTU0lPTlM6OTAwOjk5OSdISUJQQTo1OjM6NCsxKzI4MDpQVUJMSUMtQkFOSytQVUJMSUMtQkFOSy1MQUJFTCsxKzE6MjozKzMwMCdISVVQQTo2OjQ6NCtQVUJMSUMtVVNFUisyKzAnSElUQU5TOjc6Nzo0KzErMSswK0o6TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjA6Ojo6OidISVBJTlM6ODoxOjQrMSsxKzArNToxMjo2OlBVQkxJQy1VU0VSLUxBQkVMOlBVQkxJQy1DVVNUT01FUi1MQUJFTDpIS1NBTDpKOkhLU1BBOk4nSElVUEQ6OTo2OjQrUFVCTElDLTAwMTo6MjgwOlBVQkxJQy1CQU5LK0RFODkzNzA0MDA0NDA1MzIwMTMwMDArUFVCTElDLUNVU1RPTUVSKzErRVVSK1B1YmxpYyBvd25lcisrKytIS1NQQToxJ0hJU1BBUzoxMDoxOjQrMSsxKzArSjpKOk4nJ0hOSEJTOjExOjErMSc=",
+            "wrapped": true,
+            "issues": [],
+            "minimumPinLength": 5,
+            "maximumPinLength": 12,
+            "maximumTanLength": 6,
+            "operationEvidence": "TanReportedRequired"
+          },
+          "initializationMatches": true,
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+          "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAn",
+          "expectedBankMessageNumber": 2,
+          "issues": [],
+          "operationEvidence": "TanReportedNotRequired"
+        },
+        "controlReference": "NEXT-REF",
+        "pinBase64": "MTIzNDU=",
+        "result": "Written",
+        "pinCopies": 1,
+        "candidateMatches": true,
+        "readCode": "HKSPA",
+        "readVersion": 1,
+        "profileVersion": 2,
+        "plainWireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDIwNyszMDArU1lOVEhFVElDKzInSE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnSE5IQlM6NToxKzIn",
+        "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM0MyszMDArU1lOVEhFVElDKzInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxOjIwMjYwOTA4OjEyMzQ1NisyOjI6MTM6QDhAAAAAAAAAAAA6NToxKzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpWOjA6MCswJ0hOVlNEOjk5OToxK0AxNTZASE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnJ0hOSEJTOjU6MSsyJw==",
+        "payloadBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUn"
+      },
+      "responses": [
+        {
+          "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMyMCszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDEzN0BISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1SRVBMWSdISVNQQTo0OjE6MytKOkRFODkzNzA0MDA0NDA1MzIwOTk5OTk6UFVCTElDLUJJQzpGT1JFSUdOLTAwMTo6MjgwOlBVQkxJQy1CQU5LJydITkhCUzo1OjErMic=",
+          "wrapped": true
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "transition": "CandidateRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "RejectedForReview",
+          "state": "NeedsReview",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": true,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "Terminal",
+          "state": "NeedsReview",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": false,
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "duplicate-returned-identity",
+      "candidate": {
+        "name": "valid-all-discovery",
+        "context": {
+          "name": "valid-all-discovery",
+          "initialization": {
+            "name": "two-step-hipins",
+            "context": {
+              "name": "two-step-initialization",
+              "issues": [],
+              "requestKind": "initialization",
+              "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+              "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjpQVUJMSUMtU1lTVEVNKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+              "expectedUserId": "PUBLIC-USER",
+              "controlReference": "PUBLIC-REF",
+              "profileVersion": 2,
+              "securityFunction": 900,
+              "tanSegmentVersion": 7,
+              "missingProcedureContext": false
+            },
+            "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDczNCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDU1MEBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1JRC1SRVBMWSdISVJNUzo0OjI6NCswMDIwOjpQVUJMSUMtUFJFUC1SRVBMWSszOTIwOjpQVUJMSUMtUEVSTUlTU0lPTlM6OTAwOjk5OSdISUJQQTo1OjM6NCsxKzI4MDpQVUJMSUMtQkFOSytQVUJMSUMtQkFOSy1MQUJFTCsxKzE6MjozKzMwMCdISVVQQTo2OjQ6NCtQVUJMSUMtVVNFUisyKzAnSElUQU5TOjc6Nzo0KzErMSswK0o6TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjA6Ojo6OidISVBJTlM6ODoxOjQrMSsxKzArNToxMjo2OlBVQkxJQy1VU0VSLUxBQkVMOlBVQkxJQy1DVVNUT01FUi1MQUJFTDpIS1NBTDpKOkhLU1BBOk4nSElVUEQ6OTo2OjQrUFVCTElDLTAwMTo6MjgwOlBVQkxJQy1CQU5LK0RFODkzNzA0MDA0NDA1MzIwMTMwMDArUFVCTElDLUNVU1RPTUVSKzErRVVSK1B1YmxpYyBvd25lcisrKytIS1NQQToxJ0hJU1BBUzoxMDoxOjQrMSsxKzArSjpKOk4nJ0hOSEJTOjExOjErMSc=",
+            "wrapped": true,
+            "issues": [],
+            "minimumPinLength": 5,
+            "maximumPinLength": 12,
+            "maximumTanLength": 6,
+            "operationEvidence": "TanReportedRequired"
+          },
+          "initializationMatches": true,
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+          "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAn",
+          "expectedBankMessageNumber": 2,
+          "issues": [],
+          "operationEvidence": "TanReportedNotRequired"
+        },
+        "controlReference": "NEXT-REF",
+        "pinBase64": "MTIzNDU=",
+        "result": "Written",
+        "pinCopies": 1,
+        "candidateMatches": true,
+        "readCode": "HKSPA",
+        "readVersion": 1,
+        "profileVersion": 2,
+        "plainWireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDIwNyszMDArU1lOVEhFVElDKzInSE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnSE5IQlM6NToxKzIn",
+        "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM0MyszMDArU1lOVEhFVElDKzInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxOjIwMjYwOTA4OjEyMzQ1NisyOjI6MTM6QDhAAAAAAAAAAAA6NToxKzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpWOjA6MCswJ0hOVlNEOjk5OToxK0AxNTZASE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnJ0hOSEJTOjU6MSsyJw==",
+        "payloadBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUn"
+      },
+      "responses": [
+        {
+          "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM4MyszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDIwMEBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1SRVBMWSdISVNQQTo0OjE6MytKOkRFODkzNzA0MDA0NDA1MzIwMTMwMDA6UFVCTElDLUJJQzpQVUJMSUMtMDAxOjoyODA6UFVCTElDLUJBTksrSjpERTg5MzcwNDAwNDQwNTMyMDEzMDAwOlBVQkxJQy1CSUM6UFVCTElDLTAwMTo6MjgwOlBVQkxJQy1CQU5LJydITkhCUzo1OjErMic=",
+          "wrapped": true
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "transition": "CandidateRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "RejectedForReview",
+          "state": "NeedsReview",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": true,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "Terminal",
+          "state": "NeedsReview",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": false,
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "institution-mismatch",
+      "candidate": {
+        "name": "valid-all-discovery",
+        "context": {
+          "name": "valid-all-discovery",
+          "initialization": {
+            "name": "two-step-hipins",
+            "context": {
+              "name": "two-step-initialization",
+              "issues": [],
+              "requestKind": "initialization",
+              "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+              "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjpQVUJMSUMtU1lTVEVNKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+              "expectedUserId": "PUBLIC-USER",
+              "controlReference": "PUBLIC-REF",
+              "profileVersion": 2,
+              "securityFunction": 900,
+              "tanSegmentVersion": 7,
+              "missingProcedureContext": false
+            },
+            "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDczNCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDU1MEBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1JRC1SRVBMWSdISVJNUzo0OjI6NCswMDIwOjpQVUJMSUMtUFJFUC1SRVBMWSszOTIwOjpQVUJMSUMtUEVSTUlTU0lPTlM6OTAwOjk5OSdISUJQQTo1OjM6NCsxKzI4MDpQVUJMSUMtQkFOSytQVUJMSUMtQkFOSy1MQUJFTCsxKzE6MjozKzMwMCdISVVQQTo2OjQ6NCtQVUJMSUMtVVNFUisyKzAnSElUQU5TOjc6Nzo0KzErMSswK0o6TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjA6Ojo6OidISVBJTlM6ODoxOjQrMSsxKzArNToxMjo2OlBVQkxJQy1VU0VSLUxBQkVMOlBVQkxJQy1DVVNUT01FUi1MQUJFTDpIS1NBTDpKOkhLU1BBOk4nSElVUEQ6OTo2OjQrUFVCTElDLTAwMTo6MjgwOlBVQkxJQy1CQU5LK0RFODkzNzA0MDA0NDA1MzIwMTMwMDArUFVCTElDLUNVU1RPTUVSKzErRVVSK1B1YmxpYyBvd25lcisrKytIS1NQQToxJ0hJU1BBUzoxMDoxOjQrMSsxKzArSjpKOk4nJ0hOSEJTOjExOjErMSc=",
+            "wrapped": true,
+            "issues": [],
+            "minimumPinLength": 5,
+            "maximumPinLength": 12,
+            "maximumTanLength": 6,
+            "operationEvidence": "TanReportedRequired"
+          },
+          "initializationMatches": true,
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+          "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAn",
+          "expectedBankMessageNumber": 2,
+          "issues": [],
+          "operationEvidence": "TanReportedNotRequired"
+        },
+        "controlReference": "NEXT-REF",
+        "pinBase64": "MTIzNDU=",
+        "result": "Written",
+        "pinCopies": 1,
+        "candidateMatches": true,
+        "readCode": "HKSPA",
+        "readVersion": 1,
+        "profileVersion": 2,
+        "plainWireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDIwNyszMDArU1lOVEhFVElDKzInSE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnSE5IQlM6NToxKzIn",
+        "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM0MyszMDArU1lOVEhFVElDKzInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxOjIwMjYwOTA4OjEyMzQ1NisyOjI6MTM6QDhAAAAAAAAAAAA6NToxKzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpWOjA6MCswJ0hOVlNEOjk5OToxK0AxNTZASE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnJ0hOSEJTOjU6MSsyJw==",
+        "payloadBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUn"
+      },
+      "responses": [
+        {
+          "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMxOCszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDEzNUBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1SRVBMWSdISVNQQTo0OjE6MytKOkRFODkzNzA0MDA0NDA1MzIwMTMwMDA6UFVCTElDLUJJQzpQVUJMSUMtMDAxOjoyODA6T1RIRVItQkFOSycnSE5IQlM6NToxKzIn",
+          "wrapped": true
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "transition": "CandidateRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "RejectedForReview",
+          "state": "NeedsReview",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": true,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "Terminal",
+          "state": "NeedsReview",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": false,
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "identity-conflict",
+      "candidate": {
+        "name": "valid-all-discovery",
+        "context": {
+          "name": "valid-all-discovery",
+          "initialization": {
+            "name": "two-step-hipins",
+            "context": {
+              "name": "two-step-initialization",
+              "issues": [],
+              "requestKind": "initialization",
+              "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+              "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjpQVUJMSUMtU1lTVEVNKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+              "expectedUserId": "PUBLIC-USER",
+              "controlReference": "PUBLIC-REF",
+              "profileVersion": 2,
+              "securityFunction": 900,
+              "tanSegmentVersion": 7,
+              "missingProcedureContext": false
+            },
+            "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDczNCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDU1MEBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1JRC1SRVBMWSdISVJNUzo0OjI6NCswMDIwOjpQVUJMSUMtUFJFUC1SRVBMWSszOTIwOjpQVUJMSUMtUEVSTUlTU0lPTlM6OTAwOjk5OSdISUJQQTo1OjM6NCsxKzI4MDpQVUJMSUMtQkFOSytQVUJMSUMtQkFOSy1MQUJFTCsxKzE6MjozKzMwMCdISVVQQTo2OjQ6NCtQVUJMSUMtVVNFUisyKzAnSElUQU5TOjc6Nzo0KzErMSswK0o6TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjA6Ojo6OidISVBJTlM6ODoxOjQrMSsxKzArNToxMjo2OlBVQkxJQy1VU0VSLUxBQkVMOlBVQkxJQy1DVVNUT01FUi1MQUJFTDpIS1NBTDpKOkhLU1BBOk4nSElVUEQ6OTo2OjQrUFVCTElDLTAwMTo6MjgwOlBVQkxJQy1CQU5LK0RFODkzNzA0MDA0NDA1MzIwMTMwMDArUFVCTElDLUNVU1RPTUVSKzErRVVSK1B1YmxpYyBvd25lcisrKytIS1NQQToxJ0hJU1BBUzoxMDoxOjQrMSsxKzArSjpKOk4nJ0hOSEJTOjExOjErMSc=",
+            "wrapped": true,
+            "issues": [],
+            "minimumPinLength": 5,
+            "maximumPinLength": 12,
+            "maximumTanLength": 6,
+            "operationEvidence": "TanReportedRequired"
+          },
+          "initializationMatches": true,
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+          "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAn",
+          "expectedBankMessageNumber": 2,
+          "issues": [],
+          "operationEvidence": "TanReportedNotRequired"
+        },
+        "controlReference": "NEXT-REF",
+        "pinBase64": "MTIzNDU=",
+        "result": "Written",
+        "pinCopies": 1,
+        "candidateMatches": true,
+        "readCode": "HKSPA",
+        "readVersion": 1,
+        "profileVersion": 2,
+        "plainWireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDIwNyszMDArU1lOVEhFVElDKzInSE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnSE5IQlM6NToxKzIn",
+        "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM0MyszMDArU1lOVEhFVElDKzInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxOjIwMjYwOTA4OjEyMzQ1NisyOjI6MTM6QDhAAAAAAAAAAAA6NToxKzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpWOjA6MCswJ0hOVlNEOjk5OToxK0AxNTZASE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnJ0hOSEJTOjU6MSsyJw==",
+        "payloadBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUn"
+      },
+      "responses": [
+        {
+          "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMxOSszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDEzNkBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1SRVBMWSdISVNQQTo0OjE6MytKOkRFODkzNzA0MDA0NDA1MzIwOTk5OTk6UFVCTElDLUJJQzpQVUJMSUMtMDAxOjoyODA6UFVCTElDLUJBTksnJ0hOSEJTOjU6MSsyJw==",
+          "wrapped": true
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "transition": "CandidateRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "RejectedForReview",
+          "state": "NeedsReview",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": true,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "Terminal",
+          "state": "NeedsReview",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": false,
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "duplicate-discovery-reports",
+      "candidate": {
+        "name": "valid-all-discovery",
+        "context": {
+          "name": "valid-all-discovery",
+          "initialization": {
+            "name": "two-step-hipins",
+            "context": {
+              "name": "two-step-initialization",
+              "issues": [],
+              "requestKind": "initialization",
+              "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+              "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjpQVUJMSUMtU1lTVEVNKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+              "expectedUserId": "PUBLIC-USER",
+              "controlReference": "PUBLIC-REF",
+              "profileVersion": 2,
+              "securityFunction": 900,
+              "tanSegmentVersion": 7,
+              "missingProcedureContext": false
+            },
+            "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDczNCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDU1MEBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1JRC1SRVBMWSdISVJNUzo0OjI6NCswMDIwOjpQVUJMSUMtUFJFUC1SRVBMWSszOTIwOjpQVUJMSUMtUEVSTUlTU0lPTlM6OTAwOjk5OSdISUJQQTo1OjM6NCsxKzI4MDpQVUJMSUMtQkFOSytQVUJMSUMtQkFOSy1MQUJFTCsxKzE6MjozKzMwMCdISVVQQTo2OjQ6NCtQVUJMSUMtVVNFUisyKzAnSElUQU5TOjc6Nzo0KzErMSswK0o6TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjA6Ojo6OidISVBJTlM6ODoxOjQrMSsxKzArNToxMjo2OlBVQkxJQy1VU0VSLUxBQkVMOlBVQkxJQy1DVVNUT01FUi1MQUJFTDpIS1NBTDpKOkhLU1BBOk4nSElVUEQ6OTo2OjQrUFVCTElDLTAwMTo6MjgwOlBVQkxJQy1CQU5LK0RFODkzNzA0MDA0NDA1MzIwMTMwMDArUFVCTElDLUNVU1RPTUVSKzErRVVSK1B1YmxpYyBvd25lcisrKytIS1NQQToxJ0hJU1BBUzoxMDoxOjQrMSsxKzArSjpKOk4nJ0hOSEJTOjExOjErMSc=",
+            "wrapped": true,
+            "issues": [],
+            "minimumPinLength": 5,
+            "maximumPinLength": 12,
+            "maximumTanLength": 6,
+            "operationEvidence": "TanReportedRequired"
+          },
+          "initializationMatches": true,
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+          "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAn",
+          "expectedBankMessageNumber": 2,
+          "issues": [],
+          "operationEvidence": "TanReportedNotRequired"
+        },
+        "controlReference": "NEXT-REF",
+        "pinBase64": "MTIzNDU=",
+        "result": "Written",
+        "pinCopies": 1,
+        "candidateMatches": true,
+        "readCode": "HKSPA",
+        "readVersion": 1,
+        "profileVersion": 2,
+        "plainWireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDIwNyszMDArU1lOVEhFVElDKzInSE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnSE5IQlM6NToxKzIn",
+        "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM0MyszMDArU1lOVEhFVElDKzInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxOjIwMjYwOTA4OjEyMzQ1NisyOjI6MTM6QDhAAAAAAAAAAAA6NToxKzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpWOjA6MCswJ0hOVlNEOjk5OToxK0AxNTZASE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnJ0hOSEJTOjU6MSsyJw==",
+        "payloadBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUn"
+      },
+      "responses": [
+        {
+          "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NSszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDIxMkBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1SRVBMWSdISVNQQTo0OjE6MytKOkRFODkzNzA0MDA0NDA1MzIwMTMwMDA6UFVCTElDLUJJQzpQVUJMSUMtMDAxOjoyODA6UFVCTElDLUJBTksnSElTUEE6NToxOjMrSjpERTg5MzcwNDAwNDQwNTMyMDEzMDAwOlBVQkxJQy1CSUM6UFVCTElDLTAwMTo6MjgwOlBVQkxJQy1CQU5LJydITkhCUzo2OjErMic=",
+          "wrapped": true
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "transition": "CandidateRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "RejectedForReview",
+          "state": "NeedsReview",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": true,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "Terminal",
+          "state": "NeedsReview",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": false,
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "wrong-dialogue-then-valid",
+      "candidate": {
+        "name": "valid-all-discovery",
+        "context": {
+          "name": "valid-all-discovery",
+          "initialization": {
+            "name": "two-step-hipins",
+            "context": {
+              "name": "two-step-initialization",
+              "issues": [],
+              "requestKind": "initialization",
+              "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+              "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjpQVUJMSUMtU1lTVEVNKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+              "expectedUserId": "PUBLIC-USER",
+              "controlReference": "PUBLIC-REF",
+              "profileVersion": 2,
+              "securityFunction": 900,
+              "tanSegmentVersion": 7,
+              "missingProcedureContext": false
+            },
+            "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDczNCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDU1MEBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1JRC1SRVBMWSdISVJNUzo0OjI6NCswMDIwOjpQVUJMSUMtUFJFUC1SRVBMWSszOTIwOjpQVUJMSUMtUEVSTUlTU0lPTlM6OTAwOjk5OSdISUJQQTo1OjM6NCsxKzI4MDpQVUJMSUMtQkFOSytQVUJMSUMtQkFOSy1MQUJFTCsxKzE6MjozKzMwMCdISVVQQTo2OjQ6NCtQVUJMSUMtVVNFUisyKzAnSElUQU5TOjc6Nzo0KzErMSswK0o6TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjA6Ojo6OidISVBJTlM6ODoxOjQrMSsxKzArNToxMjo2OlBVQkxJQy1VU0VSLUxBQkVMOlBVQkxJQy1DVVNUT01FUi1MQUJFTDpIS1NBTDpKOkhLU1BBOk4nSElVUEQ6OTo2OjQrUFVCTElDLTAwMTo6MjgwOlBVQkxJQy1CQU5LK0RFODkzNzA0MDA0NDA1MzIwMTMwMDArUFVCTElDLUNVU1RPTUVSKzErRVVSK1B1YmxpYyBvd25lcisrKytIS1NQQToxJ0hJU1BBUzoxMDoxOjQrMSsxKzArSjpKOk4nJ0hOSEJTOjExOjErMSc=",
+            "wrapped": true,
+            "issues": [],
+            "minimumPinLength": 5,
+            "maximumPinLength": 12,
+            "maximumTanLength": 6,
+            "operationEvidence": "TanReportedRequired"
+          },
+          "initializationMatches": true,
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+          "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAn",
+          "expectedBankMessageNumber": 2,
+          "issues": [],
+          "operationEvidence": "TanReportedNotRequired"
+        },
+        "controlReference": "NEXT-REF",
+        "pinBase64": "MTIzNDU=",
+        "result": "Written",
+        "pinCopies": 1,
+        "candidateMatches": true,
+        "readCode": "HKSPA",
+        "readVersion": 1,
+        "profileVersion": 2,
+        "plainWireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDIwNyszMDArU1lOVEhFVElDKzInSE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnSE5IQlM6NToxKzIn",
+        "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM0MyszMDArU1lOVEhFVElDKzInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxOjIwMjYwOTA4OjEyMzQ1NisyOjI6MTM6QDhAAAAAAAAAAAA6NToxKzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpWOjA6MCswJ0hOVlNEOjk5OToxK0AxNTZASE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnJ0hOSEJTOjU6MSsyJw==",
+        "payloadBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUn"
+      },
+      "responses": [
+        {
+          "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMxNSszMDArRk9SRUlHTisyK0ZPUkVJR046MidITlZTSzo5OTg6MytQSU46Mis5OTgrMSsxOjpQVUJMSUMtU1lTVEVNKzErMjoyOjEzOkA4QAAAAAAAAAAAOjU6MSsyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6VjowOjArMCdITlZTRDo5OTk6MStAMTM2QEhJUk1HOjI6MiswMDEwOjpQVUJMSUMtUkVQTFknSElSTVM6MzoyOjMrMDAyMDo6UFVCTElDLVJFUExZJ0hJU1BBOjQ6MTozK0o6REU4OTM3MDQwMDQ0MDUzMjAxMzAwMDpQVUJMSUMtQklDOlBVQkxJQy0wMDE6OjI4MDpQVUJMSUMtQkFOSycnSE5IQlM6NToxKzIn",
+          "wrapped": true
+        },
+        {
+          "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMxOSszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDEzNkBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1SRVBMWSdISVNQQTo0OjE6MytKOkRFODkzNzA0MDA0NDA1MzIwMTMwMDA6UFVCTElDLUJJQzpQVUJMSUMtMDAxOjoyODA6UFVCTElDLUJBTksnJ0hOSEJTOjU6MSsyJw==",
+          "wrapped": true
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "transition": "CandidateRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "ContextMismatch",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 500,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "ExecutionReported",
+          "state": "ExecutionReported",
+          "atMilliseconds": 700,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": true,
+          "index": 1
+        }
+      ]
+    },
+    {
+      "name": "balance-data-for-discovery-then-valid",
+      "candidate": {
+        "name": "valid-all-discovery",
+        "context": {
+          "name": "valid-all-discovery",
+          "initialization": {
+            "name": "two-step-hipins",
+            "context": {
+              "name": "two-step-initialization",
+              "issues": [],
+              "requestKind": "initialization",
+              "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+              "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjpQVUJMSUMtU1lTVEVNKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+              "expectedUserId": "PUBLIC-USER",
+              "controlReference": "PUBLIC-REF",
+              "profileVersion": 2,
+              "securityFunction": 900,
+              "tanSegmentVersion": 7,
+              "missingProcedureContext": false
+            },
+            "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDczNCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDU1MEBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1JRC1SRVBMWSdISVJNUzo0OjI6NCswMDIwOjpQVUJMSUMtUFJFUC1SRVBMWSszOTIwOjpQVUJMSUMtUEVSTUlTU0lPTlM6OTAwOjk5OSdISUJQQTo1OjM6NCsxKzI4MDpQVUJMSUMtQkFOSytQVUJMSUMtQkFOSy1MQUJFTCsxKzE6MjozKzMwMCdISVVQQTo2OjQ6NCtQVUJMSUMtVVNFUisyKzAnSElUQU5TOjc6Nzo0KzErMSswK0o6TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjA6Ojo6OidISVBJTlM6ODoxOjQrMSsxKzArNToxMjo2OlBVQkxJQy1VU0VSLUxBQkVMOlBVQkxJQy1DVVNUT01FUi1MQUJFTDpIS1NBTDpKOkhLU1BBOk4nSElVUEQ6OTo2OjQrUFVCTElDLTAwMTo6MjgwOlBVQkxJQy1CQU5LK0RFODkzNzA0MDA0NDA1MzIwMTMwMDArUFVCTElDLUNVU1RPTUVSKzErRVVSK1B1YmxpYyBvd25lcisrKytIS1NQQToxJ0hJU1BBUzoxMDoxOjQrMSsxKzArSjpKOk4nJ0hOSEJTOjExOjErMSc=",
+            "wrapped": true,
+            "issues": [],
+            "minimumPinLength": 5,
+            "maximumPinLength": 12,
+            "maximumTanLength": 6,
+            "operationEvidence": "TanReportedRequired"
+          },
+          "initializationMatches": true,
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+          "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAn",
+          "expectedBankMessageNumber": 2,
+          "issues": [],
+          "operationEvidence": "TanReportedNotRequired"
+        },
+        "controlReference": "NEXT-REF",
+        "pinBase64": "MTIzNDU=",
+        "result": "Written",
+        "pinCopies": 1,
+        "candidateMatches": true,
+        "readCode": "HKSPA",
+        "readVersion": 1,
+        "profileVersion": 2,
+        "plainWireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDIwNyszMDArU1lOVEhFVElDKzInSE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnSE5IQlM6NToxKzIn",
+        "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM0MyszMDArU1lOVEhFVElDKzInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxOjIwMjYwOTA4OjEyMzQ1NisyOjI6MTM6QDhAAAAAAAAAAAA6NToxKzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpWOjA6MCswJ0hOVlNEOjk5OToxK0AxNTZASE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnJ0hOSEJTOjU6MSsyJw==",
+        "payloadBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUn"
+      },
+      "responses": [
+        {
+          "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMyNiszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDE0M0BISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1SRVBMWSdISVNBTDo0Ojc6MytERTg5MzcwNDAwNDQwNTMyMDEzMDAwOlBVQkxJQy1CSUMrUFVCTElDLUFDQ09VTlQrRVVSK0M6MSw6RVVSOjIwMjYwOTEwJydITkhCUzo1OjErMic=",
+          "wrapped": true
+        },
+        {
+          "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMxOSszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDEzNkBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1SRVBMWSdISVNQQTo0OjE6MytKOkRFODkzNzA0MDA0NDA1MzIwMTMwMDA6UFVCTElDLUJJQzpQVUJMSUMtMDAxOjoyODA6UFVCTElDLUJBTksnJ0hOSEJTOjU6MSsyJw==",
+          "wrapped": true
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "transition": "CandidateRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "ContextMismatch",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 500,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "ExecutionReported",
+          "state": "ExecutionReported",
+          "atMilliseconds": 700,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": true,
+          "index": 1
+        }
+      ]
+    },
+    {
+      "name": "data-references-signature-header-then-valid",
+      "candidate": {
+        "name": "valid-all-discovery",
+        "context": {
+          "name": "valid-all-discovery",
+          "initialization": {
+            "name": "two-step-hipins",
+            "context": {
+              "name": "two-step-initialization",
+              "issues": [],
+              "requestKind": "initialization",
+              "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+              "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjpQVUJMSUMtU1lTVEVNKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+              "expectedUserId": "PUBLIC-USER",
+              "controlReference": "PUBLIC-REF",
+              "profileVersion": 2,
+              "securityFunction": 900,
+              "tanSegmentVersion": 7,
+              "missingProcedureContext": false
+            },
+            "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDczNCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDU1MEBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1JRC1SRVBMWSdISVJNUzo0OjI6NCswMDIwOjpQVUJMSUMtUFJFUC1SRVBMWSszOTIwOjpQVUJMSUMtUEVSTUlTU0lPTlM6OTAwOjk5OSdISUJQQTo1OjM6NCsxKzI4MDpQVUJMSUMtQkFOSytQVUJMSUMtQkFOSy1MQUJFTCsxKzE6MjozKzMwMCdISVVQQTo2OjQ6NCtQVUJMSUMtVVNFUisyKzAnSElUQU5TOjc6Nzo0KzErMSswK0o6TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjA6Ojo6OidISVBJTlM6ODoxOjQrMSsxKzArNToxMjo2OlBVQkxJQy1VU0VSLUxBQkVMOlBVQkxJQy1DVVNUT01FUi1MQUJFTDpIS1NBTDpKOkhLU1BBOk4nSElVUEQ6OTo2OjQrUFVCTElDLTAwMTo6MjgwOlBVQkxJQy1CQU5LK0RFODkzNzA0MDA0NDA1MzIwMTMwMDArUFVCTElDLUNVU1RPTUVSKzErRVVSK1B1YmxpYyBvd25lcisrKytIS1NQQToxJ0hJU1BBUzoxMDoxOjQrMSsxKzArSjpKOk4nJ0hOSEJTOjExOjErMSc=",
+            "wrapped": true,
+            "issues": [],
+            "minimumPinLength": 5,
+            "maximumPinLength": 12,
+            "maximumTanLength": 6,
+            "operationEvidence": "TanReportedRequired"
+          },
+          "initializationMatches": true,
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+          "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAn",
+          "expectedBankMessageNumber": 2,
+          "issues": [],
+          "operationEvidence": "TanReportedNotRequired"
+        },
+        "controlReference": "NEXT-REF",
+        "pinBase64": "MTIzNDU=",
+        "result": "Written",
+        "pinCopies": 1,
+        "candidateMatches": true,
+        "readCode": "HKSPA",
+        "readVersion": 1,
+        "profileVersion": 2,
+        "plainWireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDIwNyszMDArU1lOVEhFVElDKzInSE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnSE5IQlM6NToxKzIn",
+        "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM0MyszMDArU1lOVEhFVElDKzInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxOjIwMjYwOTA4OjEyMzQ1NisyOjI6MTM6QDhAAAAAAAAAAAA6NToxKzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpWOjA6MCswJ0hOVlNEOjk5OToxK0AxNTZASE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnJ0hOSEJTOjU6MSsyJw==",
+        "payloadBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUn"
+      },
+      "responses": [
+        {
+          "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMxOSszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDEzNkBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1SRVBMWSdISVNQQTo0OjE6MitKOkRFODkzNzA0MDA0NDA1MzIwMTMwMDA6UFVCTElDLUJJQzpQVUJMSUMtMDAxOjoyODA6UFVCTElDLUJBTksnJ0hOSEJTOjU6MSsyJw==",
+          "wrapped": true
+        },
+        {
+          "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMxOSszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDEzNkBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1SRVBMWSdISVNQQTo0OjE6MytKOkRFODkzNzA0MDA0NDA1MzIwMTMwMDA6UFVCTElDLUJJQzpQVUJMSUMtMDAxOjoyODA6UFVCTElDLUJBTksnJ0hOSEJTOjU6MSsyJw==",
+          "wrapped": true
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "transition": "CandidateRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "ContextMismatch",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 500,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "ExecutionReported",
+          "state": "ExecutionReported",
+          "atMilliseconds": 700,
+          "candidates": 1,
+          "handled": 1,
+          "evidence": true,
+          "index": 1
+        }
+      ]
+    },
+    {
+      "name": "mismatch-does-not-renew-deadline",
+      "candidate": {
+        "name": "valid-all-discovery",
+        "context": {
+          "name": "valid-all-discovery",
+          "initialization": {
+            "name": "two-step-hipins",
+            "context": {
+              "name": "two-step-initialization",
+              "issues": [],
+              "requestKind": "initialization",
+              "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+              "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjpQVUJMSUMtU1lTVEVNKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+              "expectedUserId": "PUBLIC-USER",
+              "controlReference": "PUBLIC-REF",
+              "profileVersion": 2,
+              "securityFunction": 900,
+              "tanSegmentVersion": 7,
+              "missingProcedureContext": false
+            },
+            "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDczNCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDU1MEBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1JRC1SRVBMWSdISVJNUzo0OjI6NCswMDIwOjpQVUJMSUMtUFJFUC1SRVBMWSszOTIwOjpQVUJMSUMtUEVSTUlTU0lPTlM6OTAwOjk5OSdISUJQQTo1OjM6NCsxKzI4MDpQVUJMSUMtQkFOSytQVUJMSUMtQkFOSy1MQUJFTCsxKzE6MjozKzMwMCdISVVQQTo2OjQ6NCtQVUJMSUMtVVNFUisyKzAnSElUQU5TOjc6Nzo0KzErMSswK0o6TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjA6Ojo6OidISVBJTlM6ODoxOjQrMSsxKzArNToxMjo2OlBVQkxJQy1VU0VSLUxBQkVMOlBVQkxJQy1DVVNUT01FUi1MQUJFTDpIS1NBTDpKOkhLU1BBOk4nSElVUEQ6OTo2OjQrUFVCTElDLTAwMTo6MjgwOlBVQkxJQy1CQU5LK0RFODkzNzA0MDA0NDA1MzIwMTMwMDArUFVCTElDLUNVU1RPTUVSKzErRVVSK1B1YmxpYyBvd25lcisrKytIS1NQQToxJ0hJU1BBUzoxMDoxOjQrMSsxKzArSjpKOk4nJ0hOSEJTOjExOjErMSc=",
+            "wrapped": true,
+            "issues": [],
+            "minimumPinLength": 5,
+            "maximumPinLength": 12,
+            "maximumTanLength": 6,
+            "operationEvidence": "TanReportedRequired"
+          },
+          "initializationMatches": true,
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+          "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAn",
+          "expectedBankMessageNumber": 2,
+          "issues": [],
+          "operationEvidence": "TanReportedNotRequired"
+        },
+        "controlReference": "NEXT-REF",
+        "pinBase64": "MTIzNDU=",
+        "result": "Written",
+        "pinCopies": 1,
+        "candidateMatches": true,
+        "readCode": "HKSPA",
+        "readVersion": 1,
+        "profileVersion": 2,
+        "plainWireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDIwNyszMDArU1lOVEhFVElDKzInSE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnSE5IQlM6NToxKzIn",
+        "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM0MyszMDArU1lOVEhFVElDKzInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxOjIwMjYwOTA4OjEyMzQ1NisyOjI6MTM6QDhAAAAAAAAAAAA6NToxKzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpWOjA6MCswJ0hOVlNEOjk5OToxK0AxNTZASE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnJ0hOSEJTOjU6MSsyJw==",
+        "payloadBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUn"
+      },
+      "responses": [
+        {
+          "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMxNSszMDArRk9SRUlHTisyK0ZPUkVJR046MidITlZTSzo5OTg6MytQSU46Mis5OTgrMSsxOjpQVUJMSUMtU1lTVEVNKzErMjoyOjEzOkA4QAAAAAAAAAAAOjU6MSsyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6VjowOjArMCdITlZTRDo5OTk6MStAMTM2QEhJUk1HOjI6MiswMDEwOjpQVUJMSUMtUkVQTFknSElSTVM6MzoyOjMrMDAyMDo6UFVCTElDLVJFUExZJ0hJU1BBOjQ6MTozK0o6REU4OTM3MDQwMDQ0MDUzMjAxMzAwMDpQVUJMSUMtQklDOlBVQkxJQy0wMDE6OjI4MDpQVUJMSUMtQkFOSycnSE5IQlM6NToxKzIn",
+          "wrapped": true
+        },
+        {
+          "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMxOSszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDEzNkBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1SRVBMWSdISVNQQTo0OjE6MytKOkRFODkzNzA0MDA0NDA1MzIwMTMwMDA6UFVCTElDLUJJQzpQVUJMSUMtMDAxOjoyODA6UFVCTElDLUJBTksnJ0hOSEJTOjU6MSsyJw==",
+          "wrapped": true
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "transition": "CandidateRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "ContextMismatch",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 9999,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "Terminal",
+          "state": "TimedOut",
+          "atMilliseconds": 10000,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 1
+        }
+      ]
+    },
+    {
+      "name": "deadline-equality",
+      "candidate": {
+        "name": "valid-all-discovery",
+        "context": {
+          "name": "valid-all-discovery",
+          "initialization": {
+            "name": "two-step-hipins",
+            "context": {
+              "name": "two-step-initialization",
+              "issues": [],
+              "requestKind": "initialization",
+              "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+              "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjpQVUJMSUMtU1lTVEVNKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+              "expectedUserId": "PUBLIC-USER",
+              "controlReference": "PUBLIC-REF",
+              "profileVersion": 2,
+              "securityFunction": 900,
+              "tanSegmentVersion": 7,
+              "missingProcedureContext": false
+            },
+            "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDczNCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDU1MEBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1JRC1SRVBMWSdISVJNUzo0OjI6NCswMDIwOjpQVUJMSUMtUFJFUC1SRVBMWSszOTIwOjpQVUJMSUMtUEVSTUlTU0lPTlM6OTAwOjk5OSdISUJQQTo1OjM6NCsxKzI4MDpQVUJMSUMtQkFOSytQVUJMSUMtQkFOSy1MQUJFTCsxKzE6MjozKzMwMCdISVVQQTo2OjQ6NCtQVUJMSUMtVVNFUisyKzAnSElUQU5TOjc6Nzo0KzErMSswK0o6TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjA6Ojo6OidISVBJTlM6ODoxOjQrMSsxKzArNToxMjo2OlBVQkxJQy1VU0VSLUxBQkVMOlBVQkxJQy1DVVNUT01FUi1MQUJFTDpIS1NBTDpKOkhLU1BBOk4nSElVUEQ6OTo2OjQrUFVCTElDLTAwMTo6MjgwOlBVQkxJQy1CQU5LK0RFODkzNzA0MDA0NDA1MzIwMTMwMDArUFVCTElDLUNVU1RPTUVSKzErRVVSK1B1YmxpYyBvd25lcisrKytIS1NQQToxJ0hJU1BBUzoxMDoxOjQrMSsxKzArSjpKOk4nJ0hOSEJTOjExOjErMSc=",
+            "wrapped": true,
+            "issues": [],
+            "minimumPinLength": 5,
+            "maximumPinLength": 12,
+            "maximumTanLength": 6,
+            "operationEvidence": "TanReportedRequired"
+          },
+          "initializationMatches": true,
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+          "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAn",
+          "expectedBankMessageNumber": 2,
+          "issues": [],
+          "operationEvidence": "TanReportedNotRequired"
+        },
+        "controlReference": "NEXT-REF",
+        "pinBase64": "MTIzNDU=",
+        "result": "Written",
+        "pinCopies": 1,
+        "candidateMatches": true,
+        "readCode": "HKSPA",
+        "readVersion": 1,
+        "profileVersion": 2,
+        "plainWireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDIwNyszMDArU1lOVEhFVElDKzInSE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnSE5IQlM6NToxKzIn",
+        "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM0MyszMDArU1lOVEhFVElDKzInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxOjIwMjYwOTA4OjEyMzQ1NisyOjI6MTM6QDhAAAAAAAAAAAA6NToxKzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpWOjA6MCswJ0hOVlNEOjk5OToxK0AxNTZASE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnJ0hOSEJTOjU6MSsyJw==",
+        "payloadBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUn"
+      },
+      "responses": [
+        {
+          "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMxOSszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDEzNkBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1SRVBMWSdISVNQQTo0OjE6MytKOkRFODkzNzA0MDA0NDA1MzIwMTMwMDA6UFVCTElDLUJJQzpQVUJMSUMtMDAxOjoyODA6UFVCTElDLUJBTksnJ0hOSEJTOjU6MSsyJw==",
+          "wrapped": true
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "transition": "CandidateRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "Terminal",
+          "state": "TimedOut",
+          "atMilliseconds": 10000,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "second-start-does-not-renew-deadline",
+      "candidate": {
+        "name": "valid-all-discovery",
+        "context": {
+          "name": "valid-all-discovery",
+          "initialization": {
+            "name": "two-step-hipins",
+            "context": {
+              "name": "two-step-initialization",
+              "issues": [],
+              "requestKind": "initialization",
+              "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+              "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjpQVUJMSUMtU1lTVEVNKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+              "expectedUserId": "PUBLIC-USER",
+              "controlReference": "PUBLIC-REF",
+              "profileVersion": 2,
+              "securityFunction": 900,
+              "tanSegmentVersion": 7,
+              "missingProcedureContext": false
+            },
+            "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDczNCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDU1MEBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1JRC1SRVBMWSdISVJNUzo0OjI6NCswMDIwOjpQVUJMSUMtUFJFUC1SRVBMWSszOTIwOjpQVUJMSUMtUEVSTUlTU0lPTlM6OTAwOjk5OSdISUJQQTo1OjM6NCsxKzI4MDpQVUJMSUMtQkFOSytQVUJMSUMtQkFOSy1MQUJFTCsxKzE6MjozKzMwMCdISVVQQTo2OjQ6NCtQVUJMSUMtVVNFUisyKzAnSElUQU5TOjc6Nzo0KzErMSswK0o6TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjA6Ojo6OidISVBJTlM6ODoxOjQrMSsxKzArNToxMjo2OlBVQkxJQy1VU0VSLUxBQkVMOlBVQkxJQy1DVVNUT01FUi1MQUJFTDpIS1NBTDpKOkhLU1BBOk4nSElVUEQ6OTo2OjQrUFVCTElDLTAwMTo6MjgwOlBVQkxJQy1CQU5LK0RFODkzNzA0MDA0NDA1MzIwMTMwMDArUFVCTElDLUNVU1RPTUVSKzErRVVSK1B1YmxpYyBvd25lcisrKytIS1NQQToxJ0hJU1BBUzoxMDoxOjQrMSsxKzArSjpKOk4nJ0hOSEJTOjExOjErMSc=",
+            "wrapped": true,
+            "issues": [],
+            "minimumPinLength": 5,
+            "maximumPinLength": 12,
+            "maximumTanLength": 6,
+            "operationEvidence": "TanReportedRequired"
+          },
+          "initializationMatches": true,
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+          "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAn",
+          "expectedBankMessageNumber": 2,
+          "issues": [],
+          "operationEvidence": "TanReportedNotRequired"
+        },
+        "controlReference": "NEXT-REF",
+        "pinBase64": "MTIzNDU=",
+        "result": "Written",
+        "pinCopies": 1,
+        "candidateMatches": true,
+        "readCode": "HKSPA",
+        "readVersion": 1,
+        "profileVersion": 2,
+        "plainWireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDIwNyszMDArU1lOVEhFVElDKzInSE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnSE5IQlM6NToxKzIn",
+        "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM0MyszMDArU1lOVEhFVElDKzInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxOjIwMjYwOTA4OjEyMzQ1NisyOjI6MTM6QDhAAAAAAAAAAAA6NToxKzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpWOjA6MCswJ0hOVlNEOjk5OToxK0AxNTZASE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnJ0hOSEJTOjU6MSsyJw==",
+        "payloadBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUn"
+      },
+      "responses": [
+        {
+          "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMxOSszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDEzNkBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1SRVBMWSdISVNQQTo0OjE6MytKOkRFODkzNzA0MDA0NDA1MzIwMTMwMDA6UFVCTElDLUJJQzpQVUJMSUMtMDAxOjoyODA6UFVCTElDLUJBTksnJ0hOSEJTOjU6MSsyJw==",
+          "wrapped": true
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "transition": "CandidateRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "start",
+          "transition": "WrongState",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 9999,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "snapshot",
+          "transition": "Snapshot",
+          "state": "TimedOut",
+          "atMilliseconds": 10000,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "cancel-pending",
+      "candidate": {
+        "name": "valid-all-discovery",
+        "context": {
+          "name": "valid-all-discovery",
+          "initialization": {
+            "name": "two-step-hipins",
+            "context": {
+              "name": "two-step-initialization",
+              "issues": [],
+              "requestKind": "initialization",
+              "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+              "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjpQVUJMSUMtU1lTVEVNKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+              "expectedUserId": "PUBLIC-USER",
+              "controlReference": "PUBLIC-REF",
+              "profileVersion": 2,
+              "securityFunction": 900,
+              "tanSegmentVersion": 7,
+              "missingProcedureContext": false
+            },
+            "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDczNCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDU1MEBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1JRC1SRVBMWSdISVJNUzo0OjI6NCswMDIwOjpQVUJMSUMtUFJFUC1SRVBMWSszOTIwOjpQVUJMSUMtUEVSTUlTU0lPTlM6OTAwOjk5OSdISUJQQTo1OjM6NCsxKzI4MDpQVUJMSUMtQkFOSytQVUJMSUMtQkFOSy1MQUJFTCsxKzE6MjozKzMwMCdISVVQQTo2OjQ6NCtQVUJMSUMtVVNFUisyKzAnSElUQU5TOjc6Nzo0KzErMSswK0o6TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjA6Ojo6OidISVBJTlM6ODoxOjQrMSsxKzArNToxMjo2OlBVQkxJQy1VU0VSLUxBQkVMOlBVQkxJQy1DVVNUT01FUi1MQUJFTDpIS1NBTDpKOkhLU1BBOk4nSElVUEQ6OTo2OjQrUFVCTElDLTAwMTo6MjgwOlBVQkxJQy1CQU5LK0RFODkzNzA0MDA0NDA1MzIwMTMwMDArUFVCTElDLUNVU1RPTUVSKzErRVVSK1B1YmxpYyBvd25lcisrKytIS1NQQToxJ0hJU1BBUzoxMDoxOjQrMSsxKzArSjpKOk4nJ0hOSEJTOjExOjErMSc=",
+            "wrapped": true,
+            "issues": [],
+            "minimumPinLength": 5,
+            "maximumPinLength": 12,
+            "maximumTanLength": 6,
+            "operationEvidence": "TanReportedRequired"
+          },
+          "initializationMatches": true,
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+          "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAn",
+          "expectedBankMessageNumber": 2,
+          "issues": [],
+          "operationEvidence": "TanReportedNotRequired"
+        },
+        "controlReference": "NEXT-REF",
+        "pinBase64": "MTIzNDU=",
+        "result": "Written",
+        "pinCopies": 1,
+        "candidateMatches": true,
+        "readCode": "HKSPA",
+        "readVersion": 1,
+        "profileVersion": 2,
+        "plainWireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDIwNyszMDArU1lOVEhFVElDKzInSE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnSE5IQlM6NToxKzIn",
+        "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM0MyszMDArU1lOVEhFVElDKzInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxOjIwMjYwOTA4OjEyMzQ1NisyOjI6MTM6QDhAAAAAAAAAAAA6NToxKzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpWOjA6MCswJ0hOVlNEOjk5OToxK0AxNTZASE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnJ0hOSEJTOjU6MSsyJw==",
+        "payloadBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUn"
+      },
+      "responses": [
+        {
+          "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMxOSszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDEzNkBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1SRVBMWSdISVNQQTo0OjE6MytKOkRFODkzNzA0MDA0NDA1MzIwMTMwMDA6UFVCTElDLUJJQzpQVUJMSUMtMDAxOjoyODA6UFVCTElDLUJBTksnJ0hOSEJTOjU6MSsyJw==",
+          "wrapped": true
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "transition": "CandidateRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "cancel",
+          "transition": "Cancelled",
+          "state": "Cancelled",
+          "atMilliseconds": 50,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "Terminal",
+          "state": "Cancelled",
+          "atMilliseconds": 50,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "stop-ready",
+      "candidate": {
+        "name": "valid-all-discovery",
+        "context": {
+          "name": "valid-all-discovery",
+          "initialization": {
+            "name": "two-step-hipins",
+            "context": {
+              "name": "two-step-initialization",
+              "issues": [],
+              "requestKind": "initialization",
+              "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+              "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjpQVUJMSUMtU1lTVEVNKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+              "expectedUserId": "PUBLIC-USER",
+              "controlReference": "PUBLIC-REF",
+              "profileVersion": 2,
+              "securityFunction": 900,
+              "tanSegmentVersion": 7,
+              "missingProcedureContext": false
+            },
+            "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDczNCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDU1MEBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1JRC1SRVBMWSdISVJNUzo0OjI6NCswMDIwOjpQVUJMSUMtUFJFUC1SRVBMWSszOTIwOjpQVUJMSUMtUEVSTUlTU0lPTlM6OTAwOjk5OSdISUJQQTo1OjM6NCsxKzI4MDpQVUJMSUMtQkFOSytQVUJMSUMtQkFOSy1MQUJFTCsxKzE6MjozKzMwMCdISVVQQTo2OjQ6NCtQVUJMSUMtVVNFUisyKzAnSElUQU5TOjc6Nzo0KzErMSswK0o6TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjA6Ojo6OidISVBJTlM6ODoxOjQrMSsxKzArNToxMjo2OlBVQkxJQy1VU0VSLUxBQkVMOlBVQkxJQy1DVVNUT01FUi1MQUJFTDpIS1NBTDpKOkhLU1BBOk4nSElVUEQ6OTo2OjQrUFVCTElDLTAwMTo6MjgwOlBVQkxJQy1CQU5LK0RFODkzNzA0MDA0NDA1MzIwMTMwMDArUFVCTElDLUNVU1RPTUVSKzErRVVSK1B1YmxpYyBvd25lcisrKytIS1NQQToxJ0hJU1BBUzoxMDoxOjQrMSsxKzArSjpKOk4nJ0hOSEJTOjExOjErMSc=",
+            "wrapped": true,
+            "issues": [],
+            "minimumPinLength": 5,
+            "maximumPinLength": 12,
+            "maximumTanLength": 6,
+            "operationEvidence": "TanReportedRequired"
+          },
+          "initializationMatches": true,
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+          "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAn",
+          "expectedBankMessageNumber": 2,
+          "issues": [],
+          "operationEvidence": "TanReportedNotRequired"
+        },
+        "controlReference": "NEXT-REF",
+        "pinBase64": "MTIzNDU=",
+        "result": "Written",
+        "pinCopies": 1,
+        "candidateMatches": true,
+        "readCode": "HKSPA",
+        "readVersion": 1,
+        "profileVersion": 2,
+        "plainWireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDIwNyszMDArU1lOVEhFVElDKzInSE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnSE5IQlM6NToxKzIn",
+        "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM0MyszMDArU1lOVEhFVElDKzInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxOjIwMjYwOTA4OjEyMzQ1NisyOjI6MTM6QDhAAAAAAAAAAAA6NToxKzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpWOjA6MCswJ0hOVlNEOjk5OToxK0AxNTZASE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnJ0hOSEJTOjU6MSsyJw==",
+        "payloadBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUn"
+      },
+      "responses": [
+        {
+          "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMxOSszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDEzNkBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1SRVBMWSdISVNQQTo0OjE6MytKOkRFODkzNzA0MDA0NDA1MzIwMTMwMDA6UFVCTElDLUJJQzpQVUJMSUMtMDAxOjoyODA6UFVCTElDLUJBTksnJ0hOSEJTOjU6MSsyJw==",
+          "wrapped": true
+        }
+      ],
+      "steps": [
+        {
+          "action": "stop",
+          "transition": "Stopped",
+          "state": "Stopped",
+          "atMilliseconds": 0,
+          "candidates": 0,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "start",
+          "transition": "Terminal",
+          "state": "Stopped",
+          "atMilliseconds": 0,
+          "candidates": 0,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "dispose-pending",
+      "candidate": {
+        "name": "valid-all-discovery",
+        "context": {
+          "name": "valid-all-discovery",
+          "initialization": {
+            "name": "two-step-hipins",
+            "context": {
+              "name": "two-step-initialization",
+              "issues": [],
+              "requestKind": "initialization",
+              "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+              "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjpQVUJMSUMtU1lTVEVNKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+              "expectedUserId": "PUBLIC-USER",
+              "controlReference": "PUBLIC-REF",
+              "profileVersion": 2,
+              "securityFunction": 900,
+              "tanSegmentVersion": 7,
+              "missingProcedureContext": false
+            },
+            "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDczNCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDU1MEBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1JRC1SRVBMWSdISVJNUzo0OjI6NCswMDIwOjpQVUJMSUMtUFJFUC1SRVBMWSszOTIwOjpQVUJMSUMtUEVSTUlTU0lPTlM6OTAwOjk5OSdISUJQQTo1OjM6NCsxKzI4MDpQVUJMSUMtQkFOSytQVUJMSUMtQkFOSy1MQUJFTCsxKzE6MjozKzMwMCdISVVQQTo2OjQ6NCtQVUJMSUMtVVNFUisyKzAnSElUQU5TOjc6Nzo0KzErMSswK0o6TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjA6Ojo6OidISVBJTlM6ODoxOjQrMSsxKzArNToxMjo2OlBVQkxJQy1VU0VSLUxBQkVMOlBVQkxJQy1DVVNUT01FUi1MQUJFTDpIS1NBTDpKOkhLU1BBOk4nSElVUEQ6OTo2OjQrUFVCTElDLTAwMTo6MjgwOlBVQkxJQy1CQU5LK0RFODkzNzA0MDA0NDA1MzIwMTMwMDArUFVCTElDLUNVU1RPTUVSKzErRVVSK1B1YmxpYyBvd25lcisrKytIS1NQQToxJ0hJU1BBUzoxMDoxOjQrMSsxKzArSjpKOk4nJ0hOSEJTOjExOjErMSc=",
+            "wrapped": true,
+            "issues": [],
+            "minimumPinLength": 5,
+            "maximumPinLength": 12,
+            "maximumTanLength": 6,
+            "operationEvidence": "TanReportedRequired"
+          },
+          "initializationMatches": true,
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+          "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAn",
+          "expectedBankMessageNumber": 2,
+          "issues": [],
+          "operationEvidence": "TanReportedNotRequired"
+        },
+        "controlReference": "NEXT-REF",
+        "pinBase64": "MTIzNDU=",
+        "result": "Written",
+        "pinCopies": 1,
+        "candidateMatches": true,
+        "readCode": "HKSPA",
+        "readVersion": 1,
+        "profileVersion": 2,
+        "plainWireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDIwNyszMDArU1lOVEhFVElDKzInSE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnSE5IQlM6NToxKzIn",
+        "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM0MyszMDArU1lOVEhFVElDKzInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxOjIwMjYwOTA4OjEyMzQ1NisyOjI6MTM6QDhAAAAAAAAAAAA6NToxKzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpWOjA6MCswJ0hOVlNEOjk5OToxK0AxNTZASE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnJ0hOSEJTOjU6MSsyJw==",
+        "payloadBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUn"
+      },
+      "responses": [
+        {
+          "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMxOSszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDEzNkBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1SRVBMWSdISVNQQTo0OjE6MytKOkRFODkzNzA0MDA0NDA1MzIwMTMwMDA6UFVCTElDLUJJQzpQVUJMSUMtMDAxOjoyODA6UFVCTElDLUJBTksnJ0hOSEJTOjU6MSsyJw==",
+          "wrapped": true
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "transition": "CandidateRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "dispose",
+          "transition": "Stopped",
+          "state": "Stopped",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "response",
+          "transition": "Terminal",
+          "state": "Stopped",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "clock-regression",
+      "candidate": {
+        "name": "valid-all-discovery",
+        "context": {
+          "name": "valid-all-discovery",
+          "initialization": {
+            "name": "two-step-hipins",
+            "context": {
+              "name": "two-step-initialization",
+              "issues": [],
+              "requestKind": "initialization",
+              "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "originRequestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDEzNiszMDArMCsxJ0hLSUROOjI6MisyODA6UFVCTElDLUJBTksrUFVCTElDLUNVU1RPTUVSK1BVQkxJQy1TWVNURU0rMSdIS1ZWQjozOjMrMSsyKzIrUFVCTElDLVBST0RVQ1QrMS4wJ0hOSEJTOjQ6MSsxJw==",
+              "procedureResponseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM5NiszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSElSTUc6MjoyKzAwMTA6OlBVQkxJQy1SRVBMWSdISVJNUzozOjI6MiswMDIwOjpQVUJMSUMtSUQtUkVQTFknSElSTVM6NDoyOjMrMDAyMDo6UFVCTElDLVBSRVAtUkVQTFkrMzkyMDo6UFVCTElDLVBFUk1JU1NJT05TOjkwMDo5OTknSElCUEE6NTozOjMrMSsyODA6UFVCTElDLUJBTksrUFVCTElDLUJBTkstTEFCRUwrMSsxOjI6MyszMDAnSElVUEE6Njo0OjMrUFVCTElDLVVTRVIrMiswJ0hJVEFOUzo3Ojc6MysxKzErMCtKOk46MDo5MDA6MjpQVUJMSUNfTUVUSE9EOkFwcDoxLjA6UHVibGljIG1ldGhvZDo2OjE6QXBwcm92YWw6MjA0ODpOOjE6TjowOjA6TjpKOjAwOjA6TjowOjo6OjonSE5IQlM6ODoxKzEn",
+              "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtQVUJMSUMtUkVGKzErMSsxOjpQVUJMSUMtU1lTVEVNKzErMToyMDI2MDkwODoxMjM0NTYrMTo5OTk6MSs2OjEwOjE2KzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpTOjA6MCc=",
+              "expectedUserId": "PUBLIC-USER",
+              "controlReference": "PUBLIC-REF",
+              "profileVersion": 2,
+              "securityFunction": 900,
+              "tanSegmentVersion": 7,
+              "missingProcedureContext": false
+            },
+            "responseBase64": "SE5IQks6MTozKzAwMDAwMDAwMDczNCszMDArU1lOVEhFVElDKzErU1lOVEhFVElDOjEnSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDU1MEBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1JRC1SRVBMWSdISVJNUzo0OjI6NCswMDIwOjpQVUJMSUMtUFJFUC1SRVBMWSszOTIwOjpQVUJMSUMtUEVSTUlTU0lPTlM6OTAwOjk5OSdISUJQQTo1OjM6NCsxKzI4MDpQVUJMSUMtQkFOSytQVUJMSUMtQkFOSy1MQUJFTCsxKzE6MjozKzMwMCdISVVQQTo2OjQ6NCtQVUJMSUMtVVNFUisyKzAnSElUQU5TOjc6Nzo0KzErMSswK0o6TjowOjkwMDoyOlBVQkxJQ19NRVRIT0Q6QXBwOjEuMDpQdWJsaWMgbWV0aG9kOjY6MTpBcHByb3ZhbDoyMDQ4Ok46MTpOOjA6MDpOOko6MDA6MDpOOjA6Ojo6OidISVBJTlM6ODoxOjQrMSsxKzArNToxMjo2OlBVQkxJQy1VU0VSLUxBQkVMOlBVQkxJQy1DVVNUT01FUi1MQUJFTDpIS1NBTDpKOkhLU1BBOk4nSElVUEQ6OTo2OjQrUFVCTElDLTAwMTo6MjgwOlBVQkxJQy1CQU5LK0RFODkzNzA0MDA0NDA1MzIwMTMwMDArUFVCTElDLUNVU1RPTUVSKzErRVVSK1B1YmxpYyBvd25lcisrKytIS1NQQToxJ0hJU1BBUzoxMDoxOjQrMSsxKzArSjpKOk4nJ0hOSEJTOjExOjErMSc=",
+            "wrapped": true,
+            "issues": [],
+            "minimumPinLength": 5,
+            "maximumPinLength": 12,
+            "maximumTanLength": 6,
+            "operationEvidence": "TanReportedRequired"
+          },
+          "initializationMatches": true,
+          "requestBase64": "SE5IQks6MTozKzAwMDAwMDAwMDA2MSszMDArU1lOVEhFVElDKzInSEtTUEE6MjoxJ0hOSEJTOjM6MSsyJw==",
+          "headerBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAn",
+          "expectedBankMessageNumber": 2,
+          "issues": [],
+          "operationEvidence": "TanReportedNotRequired"
+        },
+        "controlReference": "NEXT-REF",
+        "pinBase64": "MTIzNDU=",
+        "result": "Written",
+        "pinCopies": 1,
+        "candidateMatches": true,
+        "readCode": "HKSPA",
+        "readVersion": 1,
+        "profileVersion": 2,
+        "plainWireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDIwNyszMDArU1lOVEhFVElDKzInSE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnSE5IQlM6NToxKzIn",
+        "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDM0MyszMDArU1lOVEhFVElDKzInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxOjIwMjYwOTA4OjEyMzQ1NisyOjI6MTM6QDhAAAAAAAAAAAA6NToxKzI4MDpQVUJMSUMtQkFOSzpQVUJMSUMtVVNFUjpWOjA6MCswJ0hOVlNEOjk5OToxK0AxNTZASE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUnJ0hOSEJTOjU6MSsyJw==",
+        "payloadBase64": "SE5TSEs6Mjo0K1BJTjoyKzkwMCtORVhULVJFRisxKzErMTo6UFVCTElDLVNZU1RFTSsxKzE6MjAyNjA5MDg6MTIzNDU2KzE6OTk5OjErNjoxMDoxNisyODA6UFVCTElDLUJBTks6UFVCTElDLVVTRVI6UzowOjAnSEtTUEE6MzoxJ0hOU0hBOjQ6MitORVhULVJFRisrMTIzNDUn"
+      },
+      "responses": [
+        {
+          "wireBase64": "SE5IQks6MTozKzAwMDAwMDAwMDMxOSszMDArU1lOVEhFVElDKzIrU1lOVEhFVElDOjInSE5WU0s6OTk4OjMrUElOOjIrOTk4KzErMTo6UFVCTElDLVNZU1RFTSsxKzI6MjoxMzpAOEAAAAAAAAAAADo1OjErMjgwOlBVQkxJQy1CQU5LOlBVQkxJQy1VU0VSOlY6MDowKzAnSE5WU0Q6OTk5OjErQDEzNkBISVJNRzoyOjIrMDAxMDo6UFVCTElDLVJFUExZJ0hJUk1TOjM6MjozKzAwMjA6OlBVQkxJQy1SRVBMWSdISVNQQTo0OjE6MytKOkRFODkzNzA0MDA0NDA1MzIwMTMwMDA6UFVCTElDLUJJQzpQVUJMSUMtMDAxOjoyODA6UFVCTElDLUJBTksnJ0hOSEJTOjU6MSsyJw==",
+          "wrapped": true
+        }
+      ],
+      "steps": [
+        {
+          "action": "start",
+          "transition": "CandidateRecorded",
+          "state": "AwaitingResponse",
+          "atMilliseconds": 0,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        },
+        {
+          "action": "snapshot",
+          "transition": "Snapshot",
+          "state": "ClockInvalid",
+          "atMilliseconds": -1,
+          "candidates": 1,
+          "handled": 0,
+          "evidence": false,
+          "index": 0
+        }
+      ]
+    }
+  ]
+}

@@ -70,6 +70,23 @@ public sealed class FinTsAllAccountDiscoveryEvidence
             if (report.Accounts.Count == 0 && !unavailable) { responseIssues |= FinTsReadContextIssue.MissingReport; }
             returned.AddRange(report.Accounts);
         }
+        MatchAccounts(parameters, advertisement, returned, unavailable, out var matches, out var unmatched, out bool hasAccountIssues, cancellationToken);
+        if (hasAccountIssues) { issues |= FinTsAllDiscoveryIssue.AccountNeedsReview; }
+        if (unmatched.Count != 0 && !unavailable) { issues |= FinTsAllDiscoveryIssue.UnmatchedUserAccounts; }
+        return new(request, response, parameters, issues, responseIssues, outcome, matches, unmatched);
+    }
+
+    internal static void MatchAccounts(
+        FinTsReadParameterSet parameters,
+        FinTsReadAdvertisement? advertisement,
+        IReadOnlyList<FinTsReadAccount> returned,
+        bool unavailable,
+        out List<FinTsDiscoveryAccountEvidence> matches,
+        out List<FinTsAccountParameters> unmatched,
+        out bool hasAccountIssues,
+        CancellationToken cancellationToken)
+    {
+        var source = parameters.Source;
         var nationalIndex = new Dictionary<(string, string, string, string), List<FinTsAccountParameters>>();
         var ibanIndex = new Dictionary<string, List<FinTsAccountParameters>>(StringComparer.Ordinal);
         foreach (var account in source.Accounts)
@@ -87,8 +104,9 @@ public sealed class FinTsAllAccountDiscoveryEvidence
             var key = National(account); nationalCounts[key] = nationalCounts.GetValueOrDefault(key) + 1;
             if (account.Iban.Length != 0) { ibanCounts[account.Iban] = ibanCounts.GetValueOrDefault(account.Iban) + 1; }
         }
-        List<FinTsDiscoveryAccountEvidence> matches = [];
+        matches = [];
         HashSet<FinTsAccountParameters> matched = [];
+        hasAccountIssues = false;
         int totalCandidates = 0;
         foreach (var account in returned)
         {
@@ -134,11 +152,9 @@ public sealed class FinTsAllAccountDiscoveryEvidence
             var entry = new FinTsDiscoveryAccountEvidence(account, ordered, rowIssues, signatures);
             matches.Add(entry);
             if (entry.MatchedAccount is { } clean) { matched.Add(clean); }
-            if (rowIssues != FinTsDiscoveryAccountIssue.None) { issues |= FinTsAllDiscoveryIssue.AccountNeedsReview; }
+            if (rowIssues != FinTsDiscoveryAccountIssue.None) { hasAccountIssues = true; }
         }
-        var unmatched = source.Accounts.Where(a => !matched.Contains(a)).ToList();
-        if (unmatched.Count != 0 && !unavailable) { issues |= FinTsAllDiscoveryIssue.UnmatchedUserAccounts; }
-        return new(request, response, parameters, issues, responseIssues, outcome, matches, unmatched);
+        unmatched = source.Accounts.Where(a => !matched.Contains(a)).ToList();
     }
 
     internal static FinTsAllDiscoveryIssue RequestIssues(FinTsReadRequestContext request, FinTsReadParameterSet parameters,

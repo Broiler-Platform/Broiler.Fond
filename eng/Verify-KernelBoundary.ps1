@@ -1,7 +1,11 @@
 [CmdletBinding()]
 param(
-    [string] $RepositoryRoot = (Split-Path -Parent $PSScriptRoot)
+    [string] $RepositoryRoot
 )
+
+if ([string]::IsNullOrWhiteSpace($RepositoryRoot)) {
+    $RepositoryRoot = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot ".."))
+}
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
@@ -18,6 +22,17 @@ $failures = [System.Collections.Generic.List[string]]::new()
 function Add-Failure {
     param([string] $Message)
     [void] $failures.Add($Message)
+}
+
+function Get-RelativePath {
+    param([string] $BasePath, [string] $Path)
+    $method = [System.IO.Path].GetMethod("GetRelativePath", [type[]]@([string], [string]))
+    if ($null -ne $method) {
+        return [System.IO.Path]::GetRelativePath($BasePath, $Path)
+    }
+    $baseUri = [System.Uri]::new(($BasePath.TrimEnd('\', '/') + '\'))
+    $targetUri = [System.Uri]::new($Path)
+    return [System.Uri]::UnescapeDataString($baseUri.MakeRelativeUri($targetUri).ToString().Replace('/', [System.IO.Path]::DirectorySeparatorChar))
 }
 
 function Get-EvaluatedProperty {
@@ -58,7 +73,7 @@ foreach ($project in $projects) {
 
 foreach ($project in $projects) {
     $projectPath = [System.IO.Path]::GetFullPath($project.FullName)
-    $relativeProject = [System.IO.Path]::GetRelativePath($repositoryRootPath, $projectPath)
+    $relativeProject = Get-RelativePath $repositoryRootPath $projectPath
     [xml] $projectXml = Get-Content -LiteralPath $projectPath -Raw
 
     if ($projectXml.Project.GetAttribute("Sdk") -ne "Microsoft.NET.Sdk") {
@@ -174,7 +189,7 @@ $sourceRules = [ordered]@{
 }
 
 foreach ($sourceFile in @(Get-ChildItem -LiteralPath $kernelRoot -Recurse -File -Filter "*.cs")) {
-    $relativeSource = [System.IO.Path]::GetRelativePath($kernelRoot, $sourceFile.FullName)
+    $relativeSource = Get-RelativePath $kernelRoot $sourceFile.FullName
     if ($relativeSource -match "(?i)(^|[\\/])(?:bin|obj)([\\/]|$)") { continue }
 
     $lineNumber = 0
@@ -190,7 +205,7 @@ foreach ($sourceFile in @(Get-ChildItem -LiteralPath $kernelRoot -Recurse -File 
 
 $forbiddenExtensions = @(".dll", ".exe", ".so", ".dylib", ".a", ".lib", ".xaml", ".axaml", ".razor", ".cshtml")
 foreach ($file in @(Get-ChildItem -LiteralPath $kernelRoot -Recurse -File)) {
-    $relativeFile = [System.IO.Path]::GetRelativePath($kernelRoot, $file.FullName)
+    $relativeFile = Get-RelativePath $kernelRoot $file.FullName
     if ($relativeFile -match "(?i)(^|[\\/])(?:bin|obj)([\\/]|$)") { continue }
     if ($forbiddenExtensions -contains $file.Extension.ToLowerInvariant()) {
         Add-Failure "$relativeFile is not allowed inside the platform-neutral kernel."

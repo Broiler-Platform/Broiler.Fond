@@ -631,3 +631,273 @@ nested-trailer/whole-message boundaries. Tests verify actual PIN-array erasure
 and complete failed-output prefix cleanup. Production performs no parsing of
 credential-bearing output; all fixtures are public synthetic data. See
 [ADR 0053](../../../../docs/adr/0053-first-read-pin-only-request-assembly.md).
+
+## First-read PIN-only request-envelope fixtures
+
+`pin-tan-read-request-envelope-v1.json` adds thirty-three independent envelope
+fixtures and 456 checks. Python builds expected plaintext wrappers and exact
+binary payloads independently. Cases retain both profiles, TAN/read versions,
+escaped fields, options and requirement failures, and add missing/date-only
+timestamps. Tests compare immutable metadata with every actual segment and check
+binary and whole-message lengths. Additional checks cover all nine ownership
+observations, actual PIN-array erasure, complete failed-prefix cleanup, untouched
+tails, preflight, null inputs, culture independence and concurrent encoding.
+All credential-bearing parsed output is public synthetic test data. See
+[ADR 0054](../../../../docs/adr/0054-first-read-pin-only-request-envelope.md).
+
+## Assembled first-read response-reference fixtures
+
+`pin-tan-read-response-binding-v1.json` adds forty-six independent response
+fixtures and 481 checks. Cases cover read/profile variants, escaped dialogue,
+counter/profile/wrapper mismatches, every request role, old/missing/unknown
+references, wrong operations and unknown/future data. Matching-reference cases
+deliberately retain errors, foreign identities, duplicate data, known version
+differences and invalid business payloads for later semantic checks. Integration
+compares the map with actual synthetic envelopes and binds after credential/output
+cleanup. Other checks cover exact source retention, unchanged bytes, immutable
+collections, cancellation, null diagnostics, cultures and concurrent comparison.
+All inputs are public synthetic data. See
+[ADR 0055](../../../../docs/adr/0055-first-read-response-reference-binding.md).
+
+## Assembled first-read semantic fixtures
+
+`pin-tan-read-semantics-v1.json` adds fifty-nine independent response fixtures and
+495 checks. Cases cover exact account/version/currency scope, each envelope
+identity component, both profiles, separate optional values and dates, real zero,
+unavailable and partial reports, escaped tokens, duplicates, missing data and
+scoped status failures. Source tests reject a separately parsed response tree,
+permit another typed view of the same exact source, and preserve original bytes
+and objects. Qualified data is withheld on every review result. Additional checks
+cover cancellation, null diagnostics, cultures and concurrent evaluation. All
+inputs are public synthetic data. See
+[ADR 0056](../../../../docs/adr/0056-assembled-first-read-response-semantics.md).
+
+## Assembled first-read attempt traces
+
+`pin-tan-read-attempt-v1.json` adds twenty-seven independent lifecycle traces and
+544 checks. Cases cover execution/partial/unavailable/review handoffs, read/profile
+variants, mismatch recovery, unchanged deadlines, second starts, cancellation,
+disposal and regression. All existing semantic fixtures also run through the owner.
+Failure injection at all three processing boundaries covers expiry, cancellation,
+clock failures and reentrant abandonment for every handoff category. Tests inspect
+pending-reference cleanup and one-time concurrent handoff, verify scalar-only
+snapshots, and check start failures, fixed diagnostics and immutable terminal states.
+All inputs are public synthetic data. See
+[ADR 0057](../../../../docs/adr/0057-assembled-first-read-attempt.md).
+
+## Assembled balance-continuation context fixtures
+
+`pin-tan-read-continuation-context-v1.json` adds forty-one independent fixtures and
+348 checks. Cases cover supported versions/profiles, preserved national and
+international accounts and entry options, exact escaped/whitespace/maximum tokens,
+wrong accounts/options/versions, non-partial predecessors and counter/dialogue
+mismatches. Tests retain exact source objects and bytes, integrate a real partial
+attempt handoff, verify the first-read signature restriction, and cover mixed
+source evidence, null inputs, cancellation, cultures and concurrent comparison.
+All inputs are public synthetic data. See
+[ADR 0058](../../../../docs/adr/0058-assembled-balance-continuation-context.md).
+
+## Continuation PIN/TAN signature-context fixtures
+
+`pin-tan-read-continuation-signature-v1.json` adds sixty-nine independent fixtures
+and 531 checks. Cases cover every prior continuation variant, both profiles,
+procedure versions, exact identity, header roles, explicit controls and combined
+issues. Observed timestamps/security references/key fields and optional bounds
+remain unchanged. Tests verify exact qualified source ownership, complete
+withholding on review, actual partial-handoff integration, fixed diagnostics,
+cancellation, cultures and concurrent evaluation. All input is public synthetic
+data. See [ADR 0059](../../../../docs/adr/0059-balance-continuation-pin-tan-signature-context.md).
+
+## Continuation PIN-only trailer fixtures
+
+`pin-tan-read-continuation-pin-trailer-v1.json` adds eighty-two independent wire
+fixtures and 741 checks. Cases cover all continuation signature contexts, inherited
+missing bounds, actual PIN length limits, escaped control/PIN fields, Latin-1,
+spaces and invalid control/DEL/NBSP text. Tests verify preflight without owner
+queries, unchanged request/response bytes, exact output and copy counts, PIN-array
+erasure and failures at all five ownership observations. Reserve, unavailable/wrong
+owners, null arguments, cultures and concurrent encoding are also checked.
+All credential-bearing parsed output is public synthetic test data. See
+[ADR 0060](../../../../docs/adr/0060-continuation-pin-only-trailer-encoding.md).
+
+`pin-tan-read-continuation-request-assembly-v1.json` adds eighty-two independent
+full-message fixtures for the qualified second balance page. Exact bytes cover
+message-3 framing, HKSAL versions 6/7/8, account/options/token preservation,
+header fields, escaping, PIN bounds and every inherited review case.
+The executable adds 691 checks including seven-boundary failure injection,
+whole-message cleanup, owner-array erasure, preflight without owner access,
+cultures and concurrency. All credentials are public synthetic data.
+See [ADR 0061](../../../../docs/adr/0061-continuation-pin-only-request-assembly.md).
+
+`pin-tan-read-continuation-request-envelope-v1.json` adds eighty-two independent
+continuation envelope fixtures with credential-free candidate expectations, exact
+plain/payload/envelope bytes and inherited context/PIN review outcomes. Both
+profiles, HKSAL versions 6/7/8, tokens/options, escaping and absent/date-only/full
+timestamps are covered. The runner adds 627 checks, including every metadata role,
+nine-boundary ownership failures, final-prefix erasure, untouched tails, owner
+storage cleanup, missing-bound preflight, cultures and concurrent writes.
+See [ADR 0062](../../../../docs/adr/0062-continuation-pin-only-request-envelope.md).
+
+`pin-tan-read-continuation-response-binding-v1.json` adds fifty-five independent
+reference fixtures for the second balance page. Candidate metadata and explicit
+response expectations cover message-3 scope, all seven segment roles, stale/future
+counters, profile/dialogue mismatches, missing/unknown references, unexpected data
+and observations reserved for semantic review. The runner adds 576 checks for
+exact source objects/bytes, actual envelope integration, predecessor rejection,
+first/second-page cross-binding, immutable links, cancellation, cultures and
+concurrency. Public synthetic fixtures contain no real banking data.
+See [ADR 0063](../../../../docs/adr/0063-continuation-response-reference-binding.md).
+
+`pin-tan-read-continuation-semantics-v1.json` adds seventy-four independent
+second-page semantic fixtures, including two response-parser rejections for
+control bytes and oversized token parameters. The runner adds 676 checks for
+exact source/provenance, account/version/currency scope, envelope identity,
+scoped outcomes, separate page amounts, unavailable/zero/partial distinctions,
+raw tokens, review withholding, cancellation, cultures and concurrency.
+See [ADR 0064](../../../../docs/adr/0064-continuation-response-semantics.md).
+
+`pin-tan-read-continuation-attempt-v1.json` adds twenty-seven independent traces and
+551 checks. Traces cover second-page balance versions and profiles, escaped dialogue,
+national accounts, all four handoff categories, mismatches followed by valid data,
+fixed-deadline behavior, second starts, cancellation, disposal and regression. All
+seventy-four existing continuation semantic fixtures (excluding response-syntax rejection
+cases) also run through the owner. Failure injection at all three processing boundaries
+covers expiry, cancellation, clock failures and reentrant abandonment for every handoff
+category. Tests inspect pending-reference cleanup and one-time concurrent handoff,
+verify scalar-only snapshots, and check start failures, fixed diagnostics and immutable
+terminal states. All inputs are public synthetic data. See
+[ADR 0065](../../../../docs/adr/0065-assembled-continuation-attempt.md).
+
+`pin-tan-read-later-continuation-context-v1.json` adds forty-one independent
+fixtures for balance continuation beyond page two. Vectors cover third-page
+requests advancing client and expected bank counters from page-two continuation
+evidence, HKSAL versions 6/7/8, national and international accounts, entry count
+options, escaped tokens, significant whitespace, maximum token lengths (35 chars),
+and equivalent empty account components. Negative cases cover missing, empty,
+changed or untrimmed tokens, foreign dialogues, repeated or skipped client/bank
+counters, version/account/options mismatches, and non-partial or review predecessors.
+The runner adds 857 checks, including multi-page execution chaining from page one
+through page three, a bounded 128-page loop verifying page limit enforcement and
+overflow at page 129 (`PageLimitExceeded`), culture independence, cancellation,
+and thread concurrency. See [ADR 0066](../../../../docs/adr/0066-later-page-balance-continuation-context.md).
+
+`pin-tan-read-refresh-attempt-v1.json` adds twenty-three independent traces and
+459 checks. Traces cover multi-page balance refresh progression through execution,
+single-page execution, immediate unavailable reports, page limit boundary terminations
+(budget limit 1..128), message counter exhaustion boundary (counter 9999), foreign dialogue
+rejection, predecessor and origin context mismatches, client/bank counter replay
+rejection, response replay rejection, in-flight cancellation via cancellation tokens,
+pre-cancelled tokens, absolute deadline timeouts, and clock invalidation/regression.
+Balances collected across all accepted pages are aggregated without loss, and map
+losslessly into domain `BalanceSnapshot` models. Snapshots contain only scalar diagnostics.
+All inputs are public synthetic data. See
+[ADR 0067](../../../../docs/adr/0067-assembled-balance-refresh-attempt.md).
+
+## All-account capability context fixtures
+
+`pin-tan-all-account-capability-context-v1.json` adds twenty-seven independent
+fixtures and 195 checks for all-account discovery (`HKSPA:3:1++J'`) capability,
+permission, and parameter evaluation under PIN/TAN. Vectors cover valid one-step
+and two-step TAN profiles, permitted all-account discovery when single-account
+queries are not advertised (`SingleAccountRequestAllowed = N`), empty UPD account
+lists with permitted unlisted operations, signature/dialogue/counter mismatches,
+missing, duplicate, zero-order, and version-2 `HISPAS` advertisements, unlisted
+blocked operation policies, account and permission limits requiring review, and
+selected-account or foreign-operation (`HKSAL`) rejections. Tests verify credential
+comparison integration across valid, short, long, and invalid PIN byte spans without
+leakage, provenance preservation, argument validation, cancellation handling, and
+reflection assertions confirming absence of sensitive fields. All inputs are public
+synthetic data. See [ADR 0068](../../../../docs/adr/0068-assembled-all-account-capability-context.md).
+
+## All-account request envelope fixtures
+
+`pin-tan-all-account-request-envelope-v1.json` adds thirty-seven independent
+fixtures and 408 checks for all-account discovery candidate metadata, plain
+request assembly, trailer writing, and plaintext PIN/TAN envelopes. Vectors
+cover exact plain, payload, and outer envelope bytes against independent fixtures,
+both one-step and two-step PIN/TAN profiles, TAN versions 6 and 7, empty UPD
+account lists, unlisted operations, and `SingleAccountRequestAllowed = N`. Negative
+cases exercise PIN length bounds (too short, too long, nullable bounds), invalid
+character rejection, and candidate construction rejection for all review capability
+contexts. Tests verify failure injection across all nine nested ownership observation
+boundaries, complete output prefix erasure on failure, untouched tails, thread
+safety under parallel encoding, culture independence, and reflection assertions
+confirming absence of sensitive fields. All inputs are public synthetic data. See
+[ADR 0069](../../../../docs/adr/0069-all-account-request-envelope.md).
+
+## All-account response reference binding and semantics fixtures
+
+`pin-tan-all-account-response-v1.json` adds fifty-two independent fixtures and 843 checks
+for all-account discovery (`HKSPA:3:1++J'`) response reference binding, envelope identity
+verification, status evaluation, and user account matching under PIN/TAN. Vectors cover
+clean single-account, multiple-account, and unavailable (3010) discoveries across profiles
+1 and 2, TAN versions 6 and 7. Negative and boundary cases exercise dialogue mismatches,
+message counter discrepancies, missing and profile-mismatched envelopes, missing or unknown
+segment references, role mismatches (`HISAL` balance data targeting discovery candidate),
+read-source provenance rejection of byte-identical reparsed responses, envelope identity
+mismatches (system ID, country code, institution ID, user ID), security execution segregation,
+and account matching issues (unmatched UPD accounts, duplicate returned identities, institution
+mismatches, identity conflicts, version mismatches). Tests verify argument validation, cancellation
+handling, multithreaded parallel execution, culture invariance (`de-DE`, `tr-TR`, `en-US`, `ar-SA`),
+and reflection assertions confirming absence of sensitive fields. All inputs are public synthetic
+data. See [ADR 0070](../../../../docs/adr/0070-all-account-response-semantics.md).
+
+## All-account discovery attempt fixtures
+
+`pin-tan-all-account-attempt-v1.json` adds twenty-eight independent traces and 553 checks
+for the PIN/TAN all-account discovery attempt coordinator (`FinTsPinTanAllAccountDiscoveryAttempt`).
+Traces exercise candidate recording, one-time execution and unavailable handoffs, scoped review
+outcomes, and foreign scope handling (`ContextMismatch`) preserving active candidate and original
+deadline across dialogue mismatches, balance data, and signature header references. Lifecycle
+tests verify fixed deadline expiration, second start rejection (`WrongState`), cancellation,
+stop, dispose, clock regression, and full execution of all fifty-two independent response vectors
+through the attempt coordinator. Tests also verify boundary fault injection (expiry, token cancellation,
+clock regression, stop, dispose, cancel), pre-cancellation, start clock failure, multithreaded
+concurrent submissions producing exactly one evidence handoff, and scalar-only snapshot diagnostics.
+All inputs are public synthetic data. See [ADR 0071](../../../../docs/adr/0071-assembled-all-account-discovery-attempt.md).
+
+## Assembled PIN/TAN read session attempt coordinator fixtures
+
+`pin-tan-read-session-attempt-v1.json` adds twenty-eight independent traces and 1,230 checks
+for the top-level PIN/TAN read session attempt coordinator (`FinTsPinTanReadSessionAttempt`).
+Traces coordinate full multi-stage FinTS 3.0 PIN/TAN dialogues across initialization (`StartInitialization`,
+`AcceptInitializationResponse`), operational read (all-account discovery via `RecordAllAccountCandidate` /
+`AcceptAllAccountResponse` or balance refresh via `RecordBalanceFirstReadCandidate` / `RecordBalanceContinuationCandidate` /
+`AcceptBalanceResponse`, or direct close without operation), and dialogue termination (`RecordClosingCandidate`,
+`AcceptClosingResponse`). Traces exercise clean completion, unavailable reporting, bank abort on close (`9800`),
+scoped review outcomes at each stage, foreign scope handling (`ContextMismatch`) preserving active state,
+dialogue ID mismatch rejection, monotonic counter replay defenses, response counter replay rejections, and
+page limit enforcement (`PageLimitReached`). Lifecycle tests verify single monotonic deadline expiration across
+multi-stage lifecycles, cancellation across stages, stop, dispose, reentrant abandonment, clock regression,
+multithreaded concurrent submissions producing exactly one evidence handoff, and scalar-only snapshot diagnostics.
+All inputs are public synthetic data. See [ADR 0072](../../../../docs/adr/0072-assembled-read-session-attempt.md).
+
+## Assembled PIN/TAN synchronization session attempt coordinator fixtures
+
+`pin-tan-synchronization-session-attempt-v1.json` adds twenty-four independent traces and 626 checks
+for the top-level PIN/TAN synchronization session attempt coordinator (`FinTsPinTanSynchronizationSessionAttempt`).
+Traces coordinate full two-stage FinTS 3.0 PIN/TAN synchronization dialogues across dialogue synchronization
+(`StartSynchronization` with `HKSYN`, `AcceptSynchronizationResponse` validating HISYN report, envelope identity,
+and execution codes, pinning `_dialogueId` and bank message 1) and dialogue termination (`RecordClosingCandidate`,
+`AcceptClosingResponse` with `HKEND`, verifying sequential client message 2 and bank message 2, matching pinned
+`_dialogueId`). Traces exercise clean system ID assignment (`ReinitializationRequired`), clean message recovery,
+one-step assigned system session, escaped system ID and dialogue session, maximum message recovery, bank abort on
+synchronization and closing (`9800` -> `Aborted`), scoped review outcomes (`NeedsReview`), foreign scope handling
+(`ContextMismatch`) preserving candidate and deadline on both synchronization and closing, closing dialogue mismatch
+rejection, monotonic client and bank message counter replay rejections, single monotonic deadline expiration across
+stages, in-flight cancellation across stages, stop before start, dispose, clock regression, second start rejection,
+and missing recovery context rejection. Tests also verify one-time caller-owned terminal evidence handoff containing
+both `SynchronizationEvidence` and `ClosingEvidence`, pre-cancellation, multithreaded concurrent closing response
+submissions producing exactly one evidence handoff, culture invariance across cultures, and scalar-only snapshot
+diagnostics. All inputs are public synthetic data. See [ADR 0073](../../../../docs/adr/0073-assembled-synchronization-session-attempt.md).
+
+## Read-session evidence provenance
+
+Session initialization now uses the same parameter response as its operation
+candidate, including read advertisements and account parameters. The C# session
+driver constructs candidates from accepted evidence rather than independently
+re-evaluating the embedded response. All 28 trace transitions remain unchanged.
+117 additional checks reject detached or foreign initialization, synchronization
+closing contexts and re-evaluated continuation predecessors, then verify valid
+retries and exact predecessor binding through page three. See
+[ADR 0076](../../../../docs/adr/0076-read-session-evidence-provenance.md).

@@ -67,6 +67,28 @@ internal static class Program
         FinTsPinTanReadCredentialComparisonTests.Run(Check);
         FinTsPinTanReadPinTrailerTests.Run(Check);
         FinTsPinTanReadRequestWriterTests.Run(Check);
+        FinTsPinTanReadRequestEnvelopeTests.Run(Check);
+        FinTsPinTanReadResponseBindingTests.Run(Check);
+        FinTsPinTanReadEvidenceTests.Run(Check);
+        FinTsPinTanReadAttemptTests.Run(Check);
+        FinTsPinTanReadContinuationTests.Run(Check);
+        FinTsPinTanReadContinuationSignatureTests.Run(Check);
+        FinTsPinTanReadContinuationPinTrailerTests.Run(Check);
+        FinTsPinTanReadContinuationRequestWriterTests.Run(Check);
+        FinTsPinTanReadContinuationRequestEnvelopeTests.Run(Check);
+        FinTsPinTanReadContinuationResponseBindingTests.Run(Check);
+        FinTsPinTanReadContinuationEvidenceTests.Run(Check);
+        FinTsPinTanReadContinuationAttemptTests.Run(Check);
+        FinTsPinTanReadLaterContinuationContextTests.Run(Check);
+        FinTsPinTanReadRefreshAttemptTests.Run(Check);
+        FinTsPinTanAllAccountCapabilityContextTests.Run(Check);
+        FinTsPinTanAllAccountRequestEnvelopeTests.Run(Check);
+        FinTsPinTanAllAccountResponseTests.Run(Check);
+        FinTsPinTanAllAccountDiscoveryAttemptTests.Run(Check);
+        FinTsPinTanReadSessionAttemptTests.Run(Check);
+        FinTsPinTanReadSessionProvenanceTests.Run(Check);
+        FinTsPinTanSynchronizationSessionAttemptTests.Run(Check);
+        FinTsPinTanSynchronizationSessionClockTests.Run(Check);
         StorageFormatTests.Run(Check);
 
         Check(new AccountId(42) == new AccountId(42), "Typed local IDs must retain value equality.");

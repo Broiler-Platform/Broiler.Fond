@@ -72,7 +72,7 @@ internal static class FinTsPinTanReadCredentialComparisonTests
             using var cancellation = new CancellationTokenSource(); cancellation.Cancel();
             try { FinTsPinTanReadCredentialComparison.Compare(pinContext, FinTsCredentialKind.Pin, sample, cancellation.Token); Verify(false, "Cancelled comparison must throw."); }
             catch (OperationCanceledException error) { Verify(sample.AsSpan().SequenceEqual("PUBLIC-PIN"u8) && !error.ToString().Contains("PUBLIC-PIN", StringComparison.Ordinal), "Cancellation retains caller ownership and exposes no value."); }
-            try { FinTsPinTanReadCredentialComparison.Compare(null!, FinTsCredentialKind.Pin, sample); Verify(false, "Null context must fail."); }
+            try { FinTsPinTanReadCredentialComparison.Compare((FinTsPinTanReadCapabilityContext)null!, FinTsCredentialKind.Pin, sample); Verify(false, "Null context must fail."); }
             catch (ArgumentNullException error) { Verify(sample.AsSpan().SequenceEqual("PUBLIC-PIN"u8) && !error.ToString().Contains("PUBLIC-PIN", StringComparison.Ordinal), "Null input uses fixed diagnostics without altering credentials."); }
             foreach (int invalid in new[] { -1, 2, int.MaxValue })
             {

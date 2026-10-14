@@ -71,3 +71,26 @@ history or weaken a boundary in implementation.
 | [0051](0051-first-read-credential-requirement-comparison.md) | Accepted | Scalar first-read PIN/TAN byte comparison against reported bounds and formats, preserving caller ownership and unresolved requirements |
 | [0052](0052-first-read-pin-only-trailer-encoding.md) | Accepted | First-read PIN-only HNSHA encoding with actual owned-byte validation, bounded staging and expiry/cancellation/output cleanup |
 | [0053](0053-first-read-pin-only-request-assembly.md) | Accepted | Plain first-read PIN-only request assembly with bound segment roles, exact framing and whole-message secret cleanup |
+| [0054](0054-first-read-pin-only-request-envelope.md) | Accepted | First-read PIN-only envelopes with exact binary payloads, immutable candidate metadata and final-output secret cleanup |
+| [0055](0055-first-read-response-reference-binding.md) | Accepted | Assembled first-read response references bound to actual request roles, dialogue, counters and profile with exact source retention |
+| [0056](0056-assembled-first-read-response-semantics.md) | Accepted | Exact-source assembled read semantics with account/version/currency and envelope identity checks, scoped unavailable/partial observations |
+| [0057](0057-assembled-first-read-attempt.md) | Accepted | Bounded assembled first-read attempt with one candidate/deadline, one-time response handoff and terminal metadata cleanup |
+| [0058](0058-assembled-balance-continuation-context.md) | Accepted | Second-page balance context preserving partial-read provenance, exact token/account/options and sequential counters |
+| [0059](0059-balance-continuation-pin-tan-signature-context.md) | Accepted | Continuation PIN/TAN signature context with exact identity, unchanged procedure selection, explicit control and qualified requirement provenance |
+| [0060](0060-continuation-pin-only-trailer-encoding.md) | Accepted | Continuation PIN-only trailer encoding with actual owned-PIN requirement validation, bounded staging and failed-output cleanup |
+| [0061](0061-continuation-pin-only-request-assembly.md) | Accepted | Continuation PIN-only plain request assembly with exact message-3 framing, bound segment roles and whole-message failure cleanup |
+| [0062](0062-continuation-pin-only-request-envelope.md) | Accepted | Continuation PIN-only envelopes with bound candidate metadata, exact binary payload and final-output cleanup |
+| [0063](0063-continuation-response-reference-binding.md) | Accepted | Continuation-response binding against exact message-3 metadata and actual segment roles, preserving source/status observations |
+| [0064](0064-continuation-response-semantics.md) | Accepted | Exact-source continuation-response semantics with inherited account/version/currency scope, envelope identity and separate page observations |
+| [0065](0065-assembled-continuation-attempt.md) | Accepted | Bounded assembled continuation attempt with one candidate/deadline, one-time response handoff and terminal metadata cleanup |
+| [0066](0066-later-page-balance-continuation-context.md) | Accepted | Later-page balance continuation context enabling continuation beyond page two with 128-page limit and sequential counter checks |
+| [0067](0067-assembled-balance-refresh-attempt.md) | Accepted | Multi-page PIN/TAN balance refresh attempt coordinating page one and later-page continuation with page budget, counter monotonicity and balance aggregation |
+| [0068](0068-assembled-all-account-capability-context.md) | Accepted | Pure all-account PIN/TAN capability, permission and parameter evaluation with credential comparison support |
+| [0069](0069-all-account-request-envelope.md) | Accepted | All-account PIN-only request binding, plain request assembly, trailer encoding and plaintext envelopes |
+| [0070](0070-all-account-response-semantics.md) | Accepted | All-account response reference binding, envelope identity comparison, scoped status verification, and account matching |
+| [0071](0071-assembled-all-account-discovery-attempt.md) | Accepted | Bounded assembled all-account discovery attempt with one candidate/deadline, one-time evidence handoff and terminal metadata cleanup |
+| [0072](0072-assembled-read-session-attempt.md) | Accepted | Bounded assembled PIN/TAN read session attempt coordinator across initialization, operation (all-account or balance refresh), and closing stages |
+| [0073](0073-assembled-synchronization-session-attempt.md) | Accepted | Bounded assembled PIN/TAN synchronization session attempt coordinator across synchronization and closing stages |
+| [0074](0074-synchronization-session-clock-boundaries.md) | Accepted | Absolute synchronization session deadlines, fail-closed conversion and reentrant terminal-state preservation |
+| [0075](0075-session-terminal-evidence-ownership.md) | Accepted | Terminal session reference cleanup, stable caller collection snapshots and preserved evidence handoffs |
+| [0076](0076-read-session-evidence-provenance.md) | Accepted | Exact accepted initialization and predecessor evidence for read-session operation, continuation and closing candidates |

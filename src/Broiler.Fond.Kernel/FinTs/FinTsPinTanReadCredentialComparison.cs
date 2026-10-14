@@ -19,11 +19,25 @@ public static class FinTsPinTanReadCredentialComparison
         ReadOnlySpan<byte> value, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(context);
+        return CompareCore(context.Signature, context.HasMatchingEvidence, kind, value, cancellationToken);
+    }
+
+    /// <summary>Compares one supplied credential against reported all-account requirements without retaining or copying its bytes.</summary>
+    public static FinTsPinTanReadCredentialIssue Compare(FinTsPinTanAllAccountCapabilityContext context, FinTsCredentialKind kind,
+        ReadOnlySpan<byte> value, CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(context);
+        return CompareCore(context.Signature, context.HasMatchingEvidence, kind, value, cancellationToken);
+    }
+
+    internal static FinTsPinTanReadCredentialIssue CompareCore(FinTsPinTanReadSignatureContext signature, bool hasMatchingEvidence,
+        FinTsCredentialKind kind, ReadOnlySpan<byte> value, CancellationToken cancellationToken)
+    {
         if (kind is not (FinTsCredentialKind.Pin or FinTsCredentialKind.Tan)) { throw new ArgumentOutOfRangeException(nameof(kind)); }
         cancellationToken.ThrowIfCancellationRequested();
-        if (!context.HasMatchingEvidence) { return FinTsPinTanReadCredentialIssue.ContextNeedsReview; }
-        var requirements = context.Signature.MatchingRequirements!;
-        var procedure = context.Signature.MatchingProcedure;
+        if (!hasMatchingEvidence) { return FinTsPinTanReadCredentialIssue.ContextNeedsReview; }
+        var requirements = signature.MatchingRequirements!;
+        var procedure = signature.MatchingProcedure;
         if (kind == FinTsCredentialKind.Tan && procedure is { IsDecoupled: true }) { return FinTsPinTanReadCredentialIssue.TanInputNotSupported; }
         if (value.IsEmpty) { return FinTsPinTanReadCredentialIssue.EmptyValue; }
         if (value.Length > FinTsSessionCredential.MaximumLength) { return FinTsPinTanReadCredentialIssue.LocalLengthExceeded; }
@@ -46,7 +60,7 @@ public static class FinTsPinTanReadCredentialComparison
         {
             if (requirements.MaximumTanLength is null) { issues |= FinTsPinTanReadCredentialIssue.MissingTanBound; }
             if (value.Length > requirements.MaximumTanLength) { issues |= FinTsPinTanReadCredentialIssue.HipinsTanTooLong; }
-            if (context.Signature.Selection.ProfileVersion == 2)
+            if (signature.Selection.ProfileVersion == 2)
             {
                 if (procedure is null || procedure.MaximumTanLength is null or 0 || procedure.InputFormat is not ("1" or "2"))
                 { issues |= FinTsPinTanReadCredentialIssue.ProcedureRequirementsNeedReview; }
