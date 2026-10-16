@@ -166,11 +166,11 @@ an independent rollback anchor.
 
 - [x] Bootstrap schemas, lexical bytes, manifest digest and envelope vectors.
 - [x] Independent Python fixture generation and .NET verification harness.
-- [ ] Full M1 document schemas, ancestry and encrypted purge-intent schema.
-- [ ] Production bounded ZIP preflight and seekable authenticating reader.
-- [ ] KDF calibration on the supported Windows floor and release minimum.
+- [x] Full M1 document schemas, ancestry and encrypted purge-intent schema ([ADR 0087](0087-profile-storage-schemas-preflight-and-calibration.md)).
+- [x] Production bounded ZIP preflight and seekable authenticating reader ([ADR 0087](0087-profile-storage-schemas-preflight-and-calibration.md), [ADR 0088](0088-production-profile-store-lifecycle.md)).
+- [x] KDF calibration on the supported Windows floor and release minimum ([ADR 0087](0087-profile-storage-schemas-preflight-and-calibration.md)).
 - [ ] Linux/macOS interoperability evidence (fixtures are suitable for CI).
-- [ ] Generation, recovery, purge and rotation fault-injection implementation.
+- [x] Generation, recovery, purge and rotation fault-injection implementation ([ADR 0088](0088-production-profile-store-lifecycle.md)).
 - [ ] Human format/security review before any user profile persistence.
 
 API contracts consulted: [.NET ZipArchive](https://learn.microsoft.com/en-us/dotnet/api/system.io.compression.ziparchive?view=net-10.0)

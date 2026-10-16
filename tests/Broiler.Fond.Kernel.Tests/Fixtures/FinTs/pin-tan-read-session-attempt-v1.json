@@ -1506,7 +1506,7 @@
           "stage": "Terminal",
           "atMilliseconds": 0,
           "requests": 1,
-          "handled": 0,
+          "handled": 1,
           "pages": 0,
           "balances": 0,
           "accounts": 0,
@@ -1519,7 +1519,7 @@
           "stage": "Terminal",
           "atMilliseconds": 0,
           "requests": 1,
-          "handled": 0,
+          "handled": 1,
           "pages": 0,
           "balances": 0,
           "accounts": 0,
@@ -1690,7 +1690,7 @@
           "stage": "Terminal",
           "atMilliseconds": 0,
           "requests": 2,
-          "handled": 1,
+          "handled": 2,
           "pages": 0,
           "balances": 0,
           "accounts": 0,
@@ -1860,7 +1860,7 @@
           "stage": "Terminal",
           "atMilliseconds": 0,
           "requests": 2,
-          "handled": 1,
+          "handled": 2,
           "pages": 0,
           "balances": 0,
           "accounts": 0,
@@ -2054,7 +2054,7 @@
           "stage": "Terminal",
           "atMilliseconds": 0,
           "requests": 3,
-          "handled": 2,
+          "handled": 3,
           "pages": 0,
           "balances": 0,
           "accounts": 1,
@@ -2792,7 +2792,7 @@
       ]
     },
     {
-      "name": "candidate-counter-replay-rejected",
+      "name": "completed-operation-restart-rejected",
       "initialization": {
         "name": "two-step-hipins",
         "context": {
@@ -2957,7 +2957,7 @@
         },
         {
           "action": "recordBalance",
-          "transition": "ReplayRejected",
+          "transition": "WrongState",
           "state": "OperationCompleted",
           "stage": "Closing",
           "atMilliseconds": 0,
@@ -3447,7 +3447,7 @@
         },
         {
           "action": "balanceResponse",
-          "transition": "ExecutionReported",
+          "transition": "PageLimitReached",
           "state": "PageLimitReached",
           "stage": "Closing",
           "atMilliseconds": 0,

@@ -23,3 +23,13 @@ public readonly record struct ObservationId(ulong Value);
 
 /// <summary>Identifies one immutable bank-supplied balance observation.</summary>
 public readonly record struct BalanceSnapshotId(ulong Value);
+
+/// <summary>Identifies one user-facing transaction in a profile.</summary>
+public readonly record struct TransactionId(ulong Value);
+
+/// <summary>Identifies one bank-fact transaction revision.</summary>
+public readonly record struct TransactionRevisionId(ulong Value);
+
+/// <summary>Identifies one user-supplied annotation revision.</summary>
+public readonly record struct AnnotationRevisionId(ulong Value);
+

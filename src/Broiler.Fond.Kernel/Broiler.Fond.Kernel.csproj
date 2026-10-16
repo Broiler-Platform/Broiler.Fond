@@ -7,4 +7,9 @@
     <IsPackable>false</IsPackable>
     <Description>Platform-independent banking kernel for Broiler Fond - Finance on Demand.</Description>
   </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Storage\Schemas\bootstrap-v1.xsd" LogicalName="ProfileEnvelope.bootstrap-v1.xsd" />
+    <EmbeddedResource Include="Storage\Schemas\store-v1.xsd" LogicalName="ProfileEnvelope.store-v1.xsd" />
+    <EmbeddedResource Include="Storage\Schemas\purge-intent-v1.xsd" LogicalName="ProfileEnvelope.purge-intent-v1.xsd" />
+  </ItemGroup>
 </Project>

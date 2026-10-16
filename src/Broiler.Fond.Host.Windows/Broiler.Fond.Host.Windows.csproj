@@ -5,7 +5,8 @@
     <RootNamespace>Broiler.Fond.Host.Windows</RootNamespace>
     <AssemblyName>Broiler.Fond.Host.Windows</AssemblyName>
     <IsPackable>false</IsPackable>
-    <Description>Milestone 0 Windows host shell for Broiler Fond - Finance on Demand.</Description>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Description>Windows host and read-only banking UI for Broiler Fond - Finance on Demand.</Description>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Broiler.Fond.Kernel\Broiler.Fond.Kernel.csproj" />

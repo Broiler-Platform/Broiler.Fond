@@ -94,3 +94,26 @@ history or weaken a boundary in implementation.
 | [0074](0074-synchronization-session-clock-boundaries.md) | Accepted | Absolute synchronization session deadlines, fail-closed conversion and reentrant terminal-state preservation |
 | [0075](0075-session-terminal-evidence-ownership.md) | Accepted | Terminal session reference cleanup, stable caller collection snapshots and preserved evidence handoffs |
 | [0076](0076-read-session-evidence-provenance.md) | Accepted | Exact accepted initialization and predecessor evidence for read-session operation, continuation and closing candidates |
+| [0077](0077-read-session-operation-scope.md) | Accepted | One operation per read session, HKSAL balance scope and distinct page-limit outcomes with bounded accounting |
+| [0078](0078-read-session-diagnostic-lifecycle.md) | Accepted | Resolved retry diagnostics, current response evidence details and truncation preserved through dialogue closing |
+| [0079](0079-read-session-initialization-handoffs.md) | Accepted | Complete caller-owned initialization handoffs for all overloads with exact evidence identity and qualification precedence |
+| [0080](0080-read-session-response-accounting.md) | Accepted | Read-session response accounting across review and terminal outcomes, sequential message counters, and invariance rules |
+| [0081](0081-synchronization-session-diagnostic-lifecycle.md) | Accepted | Synchronization-session counter tracking, diagnostic lifecycle, dialogue pinning, and result handoffs |
+| [0082](0082-synchronization-recovery-application.md) | Accepted | Synchronization recovery application and bank connection operational state transitions |
+| [0083](0083-fints-transport-and-capability-activation.md) | Accepted | Bounded FinTS HTTPS transport, parameter/capability activation, and secret-safe network boundary |
+| [0084](0084-fints-read-ingestion-and-store-binding.md) | Accepted | FinTS read data ingestion, account rediscovery, and store binding application |
+| [0085](0085-fints-read-execution-pipeline.md) | Accepted | FinTS read execution pipeline and session coordinator coordinating transport, pagination, and store ingestion |
+| [0086](0086-fints-synchronization-execution-pipeline.md) | Accepted | FinTS synchronization execution pipeline coordinating transport, synchronization attempt state machine, and recovery application |
+| [0087](0087-profile-storage-schemas-preflight-and-calibration.md) | Accepted | Profile storage schemas, ancestry metadata, purge-intent schemas, bounded ZIP preflight, and supported-floor KDF calibration |
+| [0088](0088-production-profile-store-lifecycle.md) | Accepted | Production profile store lifecycle (`IProfileStore`, `ProfileStore`), seekable frame authentication, branched prior-generation recovery, privacy purge, passphrase rotation, and ID-remapping import/merge |
+| [0089](0089-connection-removal-and-encrypted-diagnostics.md) | Accepted | Connection removal and cached-data purge (`ConnectionRemovalPlanner`, `IProfileStore.RemoveConnection`), opt-in encrypted local diagnostic persistence (`EncryptedLocalDiagnosticStore`), and preview-bound support export |
+| [0090](0090-ambiguous-rediscovery-account-relinking.md) | Accepted | Ambiguous-rediscovery account relinking and provenance-preserving pruning (`AccountRelinkingPlanner`, `IProfileStore.RelinkAccountBinding`) |
+| [0091](0091-fints-product-registration-and-sca-continuation.md) | Accepted | FinTS product registration and interactive/decoupled SCA challenge continuation (`FinTsProductRegistration`, `FinTsScaExecutionCoordinator`) |
+| [0092](0092-windows-host-ui-and-support-workflows.md) | Accepted | Windows host UI architecture, truthful balance presentation, accessible dialogs, and redacted support workflows (`Broiler.Fond.Host.Windows`, `HostSelfTest`, `MainForm`) |
+| [0093](0093-user-reviewed-account-relinking-ui.md) | Accepted | User-reviewed ambiguous-rediscovery account relinking UI (`AccountRelinkingDialog`, `MainForm`, `HostSelfTest`) |
+| [0094](0094-immutable-transaction-domain-models.md) | Accepted | Immutable transaction domain models, verbatim bank facts, independent user annotation revisions, and pending-to-booked links |
+| [0095](0095-statement-parameters-and-capability-negotiation.md) | Accepted | Statement parameter schemas (`HIKAZS`, `HICAZS`), capability evidence matching, and multi-format preference negotiation |
+| [0096](0096-statement-wire-parsers-mt940-and-camt.md) | Accepted | Statement wire parsers for SWIFT MT940 and ISO 20022 CAMT XML (`camt.052`, `camt.053`) |
+
+
+

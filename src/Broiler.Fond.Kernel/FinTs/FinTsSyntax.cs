@@ -50,7 +50,7 @@ public sealed class FinTsDataElement
         return result.AsSpan(0, written).ToArray();
     }
 
-    internal string HeaderText()
+    public string HeaderText()
     {
         if (IsBinary) { throw new FinTsFormatException(FinTsSyntaxError.InvalidHeader); }
         return Encoding.Latin1.GetString(CopyValueBytes());

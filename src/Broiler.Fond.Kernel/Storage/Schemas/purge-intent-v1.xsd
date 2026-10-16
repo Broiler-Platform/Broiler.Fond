@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:p="urn:broiler:fond:purge:1" targetNamespace="urn:broiler:fond:purge:1" elementFormDefault="qualified">
+  <xs:simpleType name="uuid">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="positiveId">
+    <xs:restriction base="xs:unsignedLong">
+      <xs:minInclusive value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="digest">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9a-f]{64}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="operationType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PrivacyPurge" />
+      <xs:enumeration value="PassphraseRotation" />
+      <xs:enumeration value="WholeProfileErasure" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="purgeStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Pending" />
+      <xs:enumeration value="Committed" />
+      <xs:enumeration value="Completed" />
+      <xs:enumeration value="Aborted" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="purgeIntent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="replacementGeneration" type="p:positiveId" minOccurs="0" />
+        <xs:element name="targetInventory">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="targetFile" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="name" type="xs:string" use="required" />
+                  <xs:attribute name="sha256" type="p:digest" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="note" type="xs:string" minOccurs="0" />
+      </xs:sequence>
+      <xs:attribute name="version" type="xs:string" use="required" fixed="1" />
+      <xs:attribute name="profileId" type="p:uuid" use="required" />
+      <xs:attribute name="branchId" type="p:uuid" use="required" />
+      <xs:attribute name="generation" type="p:positiveId" use="required" />
+      <xs:attribute name="operationType" type="p:operationType" use="required" />
+      <xs:attribute name="status" type="p:purgeStatus" use="required" />
+      <xs:attribute name="createdAt" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

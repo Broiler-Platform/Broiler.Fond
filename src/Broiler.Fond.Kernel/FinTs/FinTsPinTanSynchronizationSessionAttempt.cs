@@ -63,7 +63,7 @@ public enum FinTsPinTanSynchronizationSessionIssue
 /// <summary>Caller-owned evidence container produced by an assembled PIN/TAN synchronization session attempt.</summary>
 public sealed class FinTsPinTanSynchronizationSessionResult
 {
-    internal FinTsPinTanSynchronizationSessionResult(
+    public FinTsPinTanSynchronizationSessionResult(
         FinTsPinTanSynchronizationSessionTransition transition,
         FinTsPinTanSynchronizationSessionStage stage,
         FinTsPinTanSynchronizationEvidence? synchronizationEvidence = null,
@@ -79,6 +79,11 @@ public sealed class FinTsPinTanSynchronizationSessionResult
     public FinTsPinTanSynchronizationSessionStage Stage { get; }
     public FinTsPinTanSynchronizationEvidence? SynchronizationEvidence { get; }
     public FinTsPinTanDialogueEndEvidence? ClosingEvidence { get; }
+
+    public bool HasMatchingEvidence =>
+        ClosingEvidence is not null
+            ? ClosingEvidence.Outcome == FinTsDialogueEndOutcome.ClosureReported
+            : (SynchronizationEvidence?.HasMatchingEvidence ?? false);
 }
 
 /// <summary>Scalar-only diagnostics snapshot for an assembled PIN/TAN synchronization session attempt.</summary>
@@ -213,6 +218,8 @@ public sealed class FinTsPinTanSynchronizationSessionAttempt : IDisposable
                 _closingBindingIssues);
         }
     }
+
+    public string? DialogueId { get { lock (_gate) return _dialogueId; } }
 
     /// <summary>
     /// Starts the synchronization dialogue with client message 1 (HKSYN). Begins the single monotonic deadline.
@@ -357,7 +364,9 @@ public sealed class FinTsPinTanSynchronizationSessionAttempt : IDisposable
                 bool isAbort = data.Source.ReplySegments.Any(static s => s.Replies.Any(static r => r.Code == "9800"));
                 if (isAbort)
                 {
-                    _issues |= FinTsPinTanSynchronizationSessionIssue.AbortReported;
+                    _dialogueId = FinTsReadContextEvidence.Dialog(data.Source.Frame);
+                    _lastBankNumber = data.Source.Frame.MessageNumber;
+                    _issues = FinTsPinTanSynchronizationSessionIssue.AbortReported;
                     _responsesHandled++;
                     _synchronizationEvidence = evidence;
                     _pendingSynchronization = null;
@@ -368,7 +377,9 @@ public sealed class FinTsPinTanSynchronizationSessionAttempt : IDisposable
 
                 if (!evidence.HasMatchingEvidence)
                 {
-                    _issues |= FinTsPinTanSynchronizationSessionIssue.SynchronizationNeedsReview;
+                    _dialogueId = FinTsReadContextEvidence.Dialog(data.Source.Frame);
+                    _lastBankNumber = data.Source.Frame.MessageNumber;
+                    _issues = FinTsPinTanSynchronizationSessionIssue.SynchronizationNeedsReview;
                     _responsesHandled++;
                     _synchronizationEvidence = evidence;
                     _pendingSynchronization = null;
@@ -457,6 +468,9 @@ public sealed class FinTsPinTanSynchronizationSessionAttempt : IDisposable
                 return FinTsPinTanSynchronizationSessionTransition.ContextMismatch;
             }
 
+            // Candidate accepted: clear resolved transient candidate errors from earlier attempts
+            _issues = FinTsPinTanSynchronizationSessionIssue.None;
+            _closingBindingIssues = FinTsPinTanResponseBindingIssue.None;
             _pendingClosing = candidate;
             _lastClientNumber = candidate.MessageNumber;
             _requestsRecorded++;
@@ -527,6 +541,7 @@ public sealed class FinTsPinTanSynchronizationSessionAttempt : IDisposable
 
                 if (evidence.Outcome == FinTsDialogueEndOutcome.ClosureReported)
                 {
+                    _issues = FinTsPinTanSynchronizationSessionIssue.None;
                     _lastBankNumber = response.Frame.MessageNumber;
                     _closingEvidence = evidence;
                     _responsesHandled++;
@@ -541,7 +556,8 @@ public sealed class FinTsPinTanSynchronizationSessionAttempt : IDisposable
 
                 if (evidence.Outcome == FinTsDialogueEndOutcome.AbortReported)
                 {
-                    _issues |= FinTsPinTanSynchronizationSessionIssue.AbortReported;
+                    _issues = FinTsPinTanSynchronizationSessionIssue.AbortReported;
+                    _lastBankNumber = response.Frame.MessageNumber;
                     _closingEvidence = evidence;
                     _responsesHandled++;
                     _pendingClosing = null;
@@ -554,7 +570,8 @@ public sealed class FinTsPinTanSynchronizationSessionAttempt : IDisposable
                 }
 
                 // Unresolved / review
-                _issues |= FinTsPinTanSynchronizationSessionIssue.ClosingStatusNeedsReview;
+                _issues = FinTsPinTanSynchronizationSessionIssue.ClosingStatusNeedsReview;
+                _lastBankNumber = response.Frame.MessageNumber;
                 _closingEvidence = evidence;
                 _responsesHandled++;
                 _pendingClosing = null;

@@ -3925,8 +3925,8 @@ read_session_attempt_trace("session-bank-abort-on-close", [
 # 8. Session initialization review
 read_session_attempt_trace("session-initialization-review", [
     session_step("start", "CandidateRecorded", "AwaitingInitializationResponse", stage="Initialization", at=0, requests=1, handled=0),
-    session_step("initResponse", "RejectedForReview", "NeedsReview", stage="Terminal", at=0, requests=1, handled=0),
-    session_step("recordClosing", "Terminal", "NeedsReview", stage="Terminal", at=0, requests=1, handled=0),
+    session_step("initResponse", "RejectedForReview", "NeedsReview", stage="Terminal", at=0, requests=1, handled=1),
+    session_step("recordClosing", "Terminal", "NeedsReview", stage="Terminal", at=0, requests=1, handled=1),
 ], init="foreign-profile", op_type="None")
 
 # 9. Session all-account review
@@ -3934,7 +3934,7 @@ read_session_attempt_trace("session-all-account-review", [
     session_step("start", "CandidateRecorded", "AwaitingInitializationResponse", stage="Initialization", at=0, requests=1, handled=0),
     session_step("initResponse", "DialogueOpen", "DialogueOpen", stage="Operation", at=0, requests=1, handled=1),
     session_step("recordAllAccount", "CandidateRecorded", "AwaitingAllAccountResponse", stage="Operation", at=0, requests=2, handled=1),
-    session_step("allAccountResponse", "RejectedForReview", "NeedsReview", stage="Terminal", at=0, requests=2, handled=1),
+    session_step("allAccountResponse", "RejectedForReview", "NeedsReview", stage="Terminal", at=0, requests=2, handled=2),
 ], op_type="AllAccount", all_account="institution-mismatch")
 
 # 10. Session balance read review
@@ -3942,7 +3942,7 @@ read_session_attempt_trace("session-balance-read-review", [
     session_step("start", "CandidateRecorded", "AwaitingInitializationResponse", stage="Initialization", at=0, requests=1, handled=0),
     session_step("initResponse", "DialogueOpen", "DialogueOpen", stage="Operation", at=0, requests=1, handled=1),
     session_step("recordBalance", "CandidateRecorded", "AwaitingBalanceFirstReadResponse", stage="Operation", at=0, requests=2, handled=1),
-    session_step("balanceResponse", "RejectedForReview", "NeedsReview", stage="Terminal", at=0, requests=2, handled=1),
+    session_step("balanceResponse", "RejectedForReview", "NeedsReview", stage="Terminal", at=0, requests=2, handled=2),
 ], op_type="BalanceRefresh", balance_initial="foreign-iban")
 
 # 11. Session closing review
@@ -3952,7 +3952,7 @@ read_session_attempt_trace("session-closing-review", [
     session_step("recordAllAccount", "CandidateRecorded", "AwaitingAllAccountResponse", stage="Operation", at=0, requests=2, handled=1),
     session_step("allAccountResponse", "ExecutionReported", "OperationCompleted", stage="Closing", at=0, requests=2, handled=2, accounts=1),
     session_step("recordClosing", "CandidateRecorded", "AwaitingClosingResponse", stage="Closing", at=0, requests=3, handled=2, accounts=1),
-    session_step("closingResponse", "RejectedForReview", "NeedsReview", stage="Terminal", at=0, requests=3, handled=2, accounts=1),
+    session_step("closingResponse", "RejectedForReview", "NeedsReview", stage="Terminal", at=0, requests=3, handled=3, accounts=1),
 ], op_type="AllAccount", all_account="clean-discovery", closing_code="9050", scoped_code=None)
 
 # 12. Foreign init response keeps state
@@ -3989,13 +3989,13 @@ read_session_attempt_trace("candidate-dialogue-mismatch-rejected", [
     session_step("recordAllAccount", "CandidateRecorded", "AwaitingAllAccountResponse", stage="Operation", at=0, requests=2, handled=1),
 ], op_type="AllAccount", all_account="clean-discovery", extra_responses=[all_account_response_by_name["clean-escaped-dialogue"]])
 
-# 16. Candidate counter replay rejected
-read_session_attempt_trace("candidate-counter-replay-rejected", [
+# 16. Completed operation cannot restart
+read_session_attempt_trace("completed-operation-restart-rejected", [
     session_step("start", "CandidateRecorded", "AwaitingInitializationResponse", stage="Initialization", at=0, requests=1, handled=0),
     session_step("initResponse", "DialogueOpen", "DialogueOpen", stage="Operation", at=0, requests=1, handled=1),
     session_step("recordBalance", "CandidateRecorded", "AwaitingBalanceFirstReadResponse", stage="Operation", at=0, requests=2, handled=1),
     session_step("balanceResponse", "ExecutionReported", "OperationCompleted", stage="Closing", at=0, requests=2, handled=2, pages=1, balances=1),
-    session_step("recordBalance", "ReplayRejected", "OperationCompleted", stage="Closing", at=0, requests=2, handled=2, pages=1, balances=1),
+    session_step("recordBalance", "WrongState", "OperationCompleted", stage="Closing", at=0, requests=2, handled=2, pages=1, balances=1),
 ], op_type="BalanceRefresh", balance_initial="balance-seven")
 
 # 17. Response counter replay rejected
@@ -4012,7 +4012,7 @@ read_session_attempt_trace("page-limit-reached-session", [
     session_step("start", "CandidateRecorded", "AwaitingInitializationResponse", stage="Initialization", at=0, requests=1, handled=0),
     session_step("initResponse", "DialogueOpen", "DialogueOpen", stage="Operation", at=0, requests=1, handled=1),
     session_step("recordBalance", "CandidateRecorded", "AwaitingBalanceFirstReadResponse", stage="Operation", at=0, requests=2, handled=1),
-    session_step("balanceResponse", "ExecutionReported", "PageLimitReached", stage="Closing", at=0, requests=2, handled=2, pages=1, balances=1),
+    session_step("balanceResponse", "PageLimitReached", "PageLimitReached", stage="Closing", at=0, requests=2, handled=2, pages=1, balances=1),
     session_step("recordClosing", "CandidateRecorded", "AwaitingClosingResponse", stage="Closing", at=0, requests=3, handled=2, pages=1, balances=1),
     session_step("closingResponse", "Closed", "Closed", stage="Terminal", at=0, requests=3, handled=3, pages=1, balances=1),
 ], op_type="BalanceRefresh", balance_initial="partial-balance", maximum=1)

@@ -87,9 +87,27 @@ internal static class Program
         FinTsPinTanAllAccountDiscoveryAttemptTests.Run(Check);
         FinTsPinTanReadSessionAttemptTests.Run(Check);
         FinTsPinTanReadSessionProvenanceTests.Run(Check);
+        FinTsPinTanReadSessionOperationTests.Run(Check);
+        FinTsPinTanReadSessionDiagnosticTests.Run(Check);
+        FinTsPinTanReadSessionInitializationTests.Run(Check);
+        FinTsPinTanReadSessionAccountingTests.Run(Check);
         FinTsPinTanSynchronizationSessionAttemptTests.Run(Check);
         FinTsPinTanSynchronizationSessionClockTests.Run(Check);
+        FinTsPinTanSynchronizationSessionDiagnosticTests.Run(Check);
+        FinTsSynchronizationRecoveryApplicationTests.Run(Check);
+        FinTsTransportAndActivationTests.Run(Check);
+        FinTsReadIngestionTests.Run(Check);
+        FinTsReadExecutionPipelineTests.Run(Check);
+        FinTsSynchronizationExecutionPipelineTests.Run(Check);
+        FinTsScaExecutionPipelineTests.Run(Check);
         StorageFormatTests.Run(Check);
+        StoreArchiveFormatTests.Run(Check);
+        ProfileStoreLifecycleTests.Run(Check);
+        DisconnectAndDiagnosticPersistenceTests.Run(Check);
+        AccountRelinkingTests.Run(Check);
+        TransactionDomainTests.Run(Check);
+        StatementCapabilitiesTests.Run(Check);
+        StatementWireParserTests.Run(Check);
 
         Check(new AccountId(42) == new AccountId(42), "Typed local IDs must retain value equality.");
         Check(new Money(12.34m, "EUR") == new Money(12.34m, "EUR"), "Money must retain exact decimal value equality.");

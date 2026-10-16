@@ -10,157 +10,11 @@ application connects directly to accounts that its user owns or is authorized
 to use. Broiler does not receive credentials, account data, transaction data,
 or payment instructions.
 
-> **Milestone 1 in progress.** The kernel now validates manual institution
-> endpoints, tracks confirmation and quarantine, and provides in-memory identity
-> allocation, startup checks, lossless account rediscovery, and exact account-value
-> projections with freshness warnings and per-currency totals.
-> A test-only read workflow simulator exercises synthetic outcomes; opt-in
-> structured diagnostics provide an in-memory support preview.
-> A bounded FinTS byte parser now validates syntax and outer framing against
-> synthetic fixtures; authenticated protocol security remains pending.
-> Typed HIRMG/HIRMS replies and local dialogue correlation now preserve receipt,
-> pending, error, unknown and indeterminate outcomes without enabling live reads.
-> BPD/UPD parsing preserves bank/user/account parameters and permission evidence;
-> it activates no capability or cached state.
-> Read-operation schemas now compare explicit-version bank and account evidence,
-> exposing missing or conflicting requirements without authorizing requests.
-> PIN/TAN response-envelope and HIPINS schemas now preserve bounded structural
-> evidence, including reported TAN flags; they authenticate no message.
-> TAN-procedure and challenge schemas now cover versions 6/7, preserving
-> separate-device approval parameters and raw challenges without live continuation.
-> Reported permitted procedures and restricted request-bound challenge checks
-> now expose scope mismatches and ambiguous outcomes without authorization.
-> A synthetic SCA continuation model now records one pending challenge with
-> bounded queries, replay rejection, terminal cancellation and a fixed deadline.
-> Account-discovery and balance schemas now preserve exact source identifiers,
-> separate optional amounts and source dates against synthetic fixtures.
-> Single-account read comparisons now check request/account/capability scope,
-> response references and partial-page provenance without ingesting balances.
-> A local read-refresh attempt now owns one pending request, enforces timeout
-> and page limits, and consumes matching response observations once per attempt.
-> Scoped unavailable reports now terminate separately from errors, missing
-> responses and real zero balances, preserving their original source shape.
-> All-account discovery now matches returned identities against supplied account
-> parameters while retaining unknown accounts, ambiguity and unmatched entries.
-> Its local attempt now consumes a bound response once, returns comparison
-> evidence for inspection, and releases pending context on terminal outcomes.
-> A typed unsigned read-request writer now emits exact discovery and balance
-> frames with strict text encoding, delimiter escaping and bounded fields.
-> Initialization identification/preparation schemas and unsigned encoding now
-> preserve explicit customer, system, parameter-version and product fields.
-> Initialization responses now compare dialogue/reference and parameter identity
-> scope while preserving missing data and unresolved observations for review.
-> A local initialization attempt now pins the request and expected user identity,
-> returns bound evidence once and releases context on terminal outcomes.
-> Synchronization schemas and unsigned encoding now preserve system identifiers,
-> message numbers and exact signature counters without applying returned values.
-> Synchronization context checks now compare mode/profile requirements and prior
-> recovery scope, marking matching evidence as requiring close and reinitialization.
-> Dialogue-end schemas and unsigned encoding now bind standard closing replies,
-> preserving normal closure, explicit abort and unresolved evidence separately.
-> A local synchronization-and-closing attempt now requires an explicit close,
-> consumes each stage once and shares one deadline through terminal cleanup.
-> PIN/TAN signature-header schemas now preserve identity, reference and timestamp
-> observations, enforcing profile/code rules without handling credentials.
-> Signature-header context checks now bind initialization/synchronization identity
-> and explicitly sourced procedure reports while retaining unresolved evidence.
-> Typed signature-header encoding now emits exact escaped bytes with canonical
-> optional fields, preserving caller values and rejecting precision loss.
-> A local credential buffer now clears transferred input, supports one-time TAN
-> copy-out and zeroes owned bytes on consumption, cancellation or disposal.
-> Access expiry is checked on API calls; live credential entry remains pending.
-> HNSHA trailer encoding now uses owned credentials and bounded caller output,
-> checks TAN placement and clears temporary or failed-output secret bytes.
-> Plain PIN/TAN initialization and synchronization assembly now preserves bound
-> fields, calculates exact framing and clears staged or failed whole-message output.
-> PIN/TAN request envelopes now bind credential-free metadata and exact binary payloads,
-> with bounded staging and cleanup through the final caller-output handoff.
-> Assembled-request metadata now binds response references to actual segment
-> roles while preserving errors and unresolved data for later semantic checks.
-> Assembled initialization now compares scoped execution reports and parameter/
-> envelope identities, retaining missing data and version changes without activation.
-> Assembled synchronization now checks report and recovery scope, retaining exact
-> values and requiring close/reinitialization after matching observations.
-> An assembled initialization attempt now pins one candidate, returns scoped
-> evidence once and releases pending metadata on terminal outcomes or disposal.
-> An assembled synchronization attempt now owns candidate/recovery metadata and
-> returns evidence once under a fixed deadline, requiring closing/reinitialization.
-> PIN/TAN closing candidates now bind synchronization dialogue and identity scope,
-> encoding PIN-only envelopes with exact framing and failed-output cleanup.
-> Assembled closing replies now bind actual segment roles, dialogue and envelope
-> identity, distinguishing reported closure, abort and unresolved observations.
-> A closing attempt now owns one candidate and deadline, returns scoped evidence
-> once, and releases metadata after closure, abort, review or abandonment.
-> An explicit initialization path now combines returned TAN procedures and
-> permission reports with exact source checks and one-time evidence handoff.
-> Combined initialization now checks HIPINS length bounds and reported TAN flags,
-> preserving missing or conflicting requirements without granting permission.
-> First-read signature context now binds returned initialization evidence to
-> dialogue, counters and unchanged procedure selection without signing a request.
-> Initialization now integrates returned read advertisements; first-read account
-> checks compare explicit permissions and request options without enabling reads.
-> First-read credential comparison now checks supplied PIN/TAN bytes against
-> reported length and format requirements without retaining or consuming them.
-> PIN-only read trailers now validate owned staging bytes against reported bounds
-> and clear temporary or failed output bytes through expiry and cancellation.
-> Plain first-read assembly now preserves bound fields and segment roles,
-> computes exact framing and clears staged or failed whole-message output.
-> First-read envelopes now preserve exact binary payloads and bound candidate
-> metadata, with credential checks and cleanup through final output handoff.
-> Assembled first-read replies now map to actual request roles and compare
-> dialogue, counters and profile while preserving unresolved response evidence.
-> Assembled read semantics now check exact-source accounts, versions, currencies
-> and envelope identity, preserving execution, partial and unavailable observations.
-> A bounded assembled read attempt now pins one candidate and deadline, hands
-> evidence out once and releases pending metadata on every terminal outcome.
-> Balance-continuation context now checks exact tokens, unchanged account/options
-> and sequential counters against qualified partial-read evidence.
-> Continuation signature context now binds header identity, unchanged procedure
-> selection and an explicit control reference to that qualified second page.
-> Continuation PIN-only trailers now validate actual owned PIN bytes against
-> inherited bounds and clear staged or failed output through final handoff.
-> Continuation plain requests now preserve message-3 framing, exact tokens and
-> bound segment roles, with PIN checks and whole-message failure cleanup.
-> Continuation envelopes now preserve exact binary payloads and credential-free
-> candidate metadata, with PIN checks and cleanup through final output handoff.
-> Continuation response references now bind to exact message-3 metadata and actual
-> segment roles, preserving unresolved payload and status observations for review.
-> Continuation semantics now check exact-source data, account/version/currency
-> and envelope identity, preserving separate second-page outcomes and raw tokens.
-> A bounded assembled continuation attempt now pins one candidate and deadline,
-> hands evidence out once and releases pending metadata on every terminal outcome.
-> Later-page balance continuation context now enables continuation beyond page two
-> with 128-page limit and sequential counter checks against continuation evidence.
-> A multi-page PIN/TAN balance refresh attempt now coordinates page one and later pages
-> under a single deadline and page budget, aggregating balances without loss.
-> All-account capability context under PIN/TAN now evaluates SEPA account discovery
-> permissions, signature requirements, unlisted blocked operation policies and credential
-> bounds without authorizing requests.
-> All-account discovery request envelopes now bind candidate metadata and wrap plain
-> discovery requests into plaintext PIN/TAN envelopes with bounded secret cleanup.
-> All-account response reference binding and semantics now correlate candidate
-> segment roles, verify envelope identity, scope status strictly to read segment 3,
-> and match returned accounts against parameter evidence with exact-source provenance.
-> A bounded assembled all-account discovery attempt now pins one candidate and deadline,
-> hands evidence out once, and releases pending metadata on every terminal outcome.
-> An assembled PIN/TAN read session attempt coordinator now manages the full FinTS 3.0 PIN/TAN dialogue
-> lifecycle across initialization, operational read (all-account discovery or multi-page balance refresh),
-> and dialogue closing under a single monotonic deadline, strict dialogue ID pinning, monotonic counters,
-> replay defenses, transient foreign-scope segregation, caller-owned evidence handoff, and immediate terminal cleanup.
-> An assembled PIN/TAN synchronization session attempt coordinator now manages the full FinTS 3.0 PIN/TAN dialogue
-> lifecycle across synchronization and dialogue closing under a single monotonic deadline, strict dialogue ID pinning,
-> monotonic message counters, replay defenses, transient foreign-scope segregation, caller-owned terminal evidence handoff,
-> clean closure transitioning to ReinitializationRequired, and immediate terminal metadata cleanup.
-> Synchronization sessions now preserve absolute deadlines across fractional clock
-> intervals and fail closed on conversion errors without replacing terminal outcomes.
-> Both session coordinators now release retained evidence and dialogue data on every
-> terminal outcome, preserving caller-owned results, collection snapshots and scalar counts.
-> Read-session candidates now require the exact accepted initialization and predecessor
-> evidence; matching dialogue IDs, counters or tokens cannot substitute another session's evidence.
-> The host remains an inert development shell.
-> It has no bank connection, credential handling,
-> persistence, payment, transaction-sync, or graphical UI implementation. It is
-> not a registered FinTS product or a production banking client.
+> **Milestone 1 in progress (ADRs 0003–0093).**
+> - **Domain & identity:** Manual HTTPS institution endpoint validation with confirmation/quarantine ([ADR 0003](docs/adr/0003-user-operated-boundary.md)), shared 64-bit `LocalIdentityLedger` with atomic batch commits and startup validation ([ADR 0006](docs/adr/0006-local-identity-allocation.md)), lossless `AccountSourceLocator` and `AccountRediscoveryPlanner` ([ADR 0007](docs/adr/0007-account-source-rediscovery.md)), exact ISO 4217 `Money` and `AccountValueProjection` with freshness warnings and unmixed currency totals ([ADR 0008](docs/adr/0008-account-values-and-exact-money.md)), ambiguous-rediscovery account relinking with provenance-preserving candidate pruning via `ExecutePrivacyPurge` ([ADR 0090](docs/adr/0090-ambiguous-rediscovery-account-relinking.md)), and user-reviewed relinking UI with deterministic live previews ([ADR 0093](docs/adr/0093-user-reviewed-account-relinking-ui.md)).
+> - **Encrypted profile storage, lifecycle, disconnect & diagnostics (`M1-01`, `M1-02`, `M1-08`):** Authenticated-encrypted `BFPE` v1 envelope ([ADR 0004](docs/adr/0004-profile-envelope-v1.md)), ZIP/XML snapshot protocol (`bootstrap-v1.xsd`, [ADR 0005](docs/adr/0005-profile-snapshots-v1.md)), full M1 financial store schemas (`store-v1.xsd`), ancestry lineage, encrypted purge-intent schemas (`purge-intent-v1.xsd`), bounded hostile-input ZIP preflight validation, supported-floor PBKDF2-HMAC-SHA256 calibration (`600,000..5,000,000` iterations, [ADR 0087](docs/adr/0087-profile-storage-schemas-preflight-and-calibration.md)), production `IProfileStore` / `ProfileStore` lifecycle with single-writer directory locking, seekable authenticating frame stream (`SeekableAuthenticatedProfileStream`), atomic generation promotion, branched prior-generation recovery, privacy purge, passphrase rotation, whole-profile erasure, backup/restore, and ID-remapping import/merge ([ADR 0088](docs/adr/0088-production-profile-store-lifecycle.md)), plus connection removal / cached-data purge (`ConnectionRemovalPlanner`, `IProfileStore.RemoveConnection`) and opt-in encrypted local diagnostic persistence (`EncryptedLocalDiagnosticStore`, `ExportReviewedSupportPreview`, [ADR 0089](docs/adr/0089-connection-removal-and-encrypted-diagnostics.md)).
+> - **FinTS 3.0 protocol, sessions, execution pipelines & SCA continuation:** Bounded FinTS 3.0 byte syntax/framing, typed `HIRMG`/`HIRMS` correlation, `HIBPA`/`HIUPA`/`HIUPD`/`HIPINS` parameter and `HITANS`/`HITAN` v6–v7 challenge schemas, PIN/TAN security headers/trailers/envelopes (`HNSHK`, `HNSHA`, `HNVSK`, `HNVSD`), zeroized `SessionCredentialBuffer`, single- and multi-page read/discovery/initialization/synchronization/closing attempts, multi-stage session coordinators (`FinTsPinTanReadSessionAttempt`, `FinTsPinTanSynchronizationSessionAttempt`), connection state recovery (`FinTsSynchronizationRecoveryApplication`), capability activation (`FinTsCapabilityActivation`), bounded HTTPS transport (`FinTsHttpsTransport`), read store ingestion (`FinTsReadIngestionApplication`), end-to-end execution pipelines (`FinTsReadExecutionPipeline`, `FinTsSynchronizationExecutionPipeline`), FinTS product registration (`FinTsProductRegistration`, `KernelProduct.FinTsRegistration`), and interactive/decoupled SCA challenge continuation (`FinTsScaExecutionCoordinator`; [ADRs 0009](docs/adr/0009-synthetic-workflows-and-diagnostics.md)–[0086](docs/adr/0086-fints-synchronization-execution-pipeline.md), [ADR 0091](docs/adr/0091-fints-product-registration-and-sca-continuation.md)).
+> - **Windows host UI & support workflows (`M1-06`, `M1-07`, `M1-08`, `ADR 0092`, `ADR 0093`):** Accessible desktop UI (`Broiler.Fond.Host.Windows`, `MainForm`), headless self-test (`HostSelfTest`) meeting smoke test invariants, profile passphrase lock/unlock, manual endpoint entry with independent HTTPS confirmation dialog disclosing phishing risks (`EndpointConfirmationDialog`), session PIN/TAN prompts with volatile buffer zeroization (`CredentialPromptDialog`, `ScaChallengeDialog`), user-reviewed account relinking dialog (`AccountRelinkingDialog`), truthful balance presentation with freshness indicators and strict multi-currency isolation, connection disconnect and irreversible privacy purge dialog (`ConnectionRemovalDialog`), and SHA-256 preview digest bound redacted support export dialog (`SupportExportDialog`) with zero background telemetry.
 
 ## Product direction
 
@@ -188,45 +42,19 @@ in separately gated milestones.
 
 ## Engineering foundation and current development
 
-The M0 foundation remains enforced as M1 development begins:
+The [Milestone 0 foundation](docs/milestone-0.md) remains strictly enforced as [Milestone 1](docs/milestone-1.md) progresses:
 
-- `Broiler.Fond.Kernel` targets platform-neutral `net10.0` and contains only
-  domain types, manual endpoint validation, in-memory identity allocation,
-  startup validation, account rediscovery, exact value projections, bounded
-  in-memory diagnostics, FinTS syntax/framing, response/correlation primitives
-  and bounded BPD/UPD/read-capability, PIN/TAN envelope/parameter and TAN
-  procedure/challenge evidence, restricted request-bound comparisons and
-  a bounded in-memory SCA continuation model, account-discovery/balance schemas
-  and single-account read-context evidence with a bounded read-refresh lifecycle,
-  the host-facing boundary, and
-  unimplemented connector/storage seams.
-- `Broiler.Fond.Host.Windows` is the initial `net10.0-windows` console shell.
-- `Broiler.Fond.Kernel.Tests` is a small BCL-only executable verification
-  runner; no external test framework or package feed is required.
-- repository build rules and `eng/Verify-KernelBoundary.ps1` reject package,
-  platform UI, native/COM, unsafe-code, and out-of-kernel project dependencies
-  in the kernel.
-- GitHub Actions verifies the full solution and smoke-runs the inert host on
-  Windows, then independently builds the kernel and its checks on Linux. CI
-  does not publish artifacts; the dispatch-only Publish workflow builds the
-  host self-contained and framework-dependent for win-x64 and drafts an
-  unpublished pre-release (tag `fond-v<version>`, from `BroilerFondVersion`).
+- `Broiler.Fond.Kernel` targets platform-neutral `net10.0` and contains pure domain models, manual endpoint validation, identity allocation and startup checks, account rediscovery, exact money and balance projections, bounded structured diagnostics and opt-in encrypted local diagnostic persistence (`EncryptedLocalDiagnosticStore`), production encrypted profile storage (`IProfileStore`, `ProfileStore`, `ConnectionRemovalPlanner`, `SeekableAuthenticatedProfileStream`, `ProfileEnvelopeCodec`, `StoreArchiveCodec`, `ZipPreflight`, `SupportedFloorKdfCalibration`), and the complete FinTS 3.0 PIN/TAN read and synchronization protocol stack (wire framing, parameter/challenge schemas, security headers/trailers/envelopes, session coordinators, capability activation, bounded HTTPS transport, store ingestion, and end-to-end execution pipelines).
+- `Broiler.Fond.Host.Windows` targets `net10.0-windows` implementing the accessible read-only banking desktop UI with dual-mode startup (headless automated self-test during CI smoke runs and interactive `MainForm` when launched by the user).
+- `Broiler.Fond.Kernel.Tests` is a self-contained BCL-only executable verification runner exercising 64 deterministic FinTS wire/session fixture suites, 5 independent storage envelope vectors, full XML schema/ZIP preflight/KDF calibration checks, 127 production `ProfileStore` lifecycle checks, 65 connection removal and encrypted diagnostic persistence checks, 57 account relinking checks, and concurrency/boundary suites; no external test framework or package feed is required.
+- Repository build rules and `eng/Verify-KernelBoundary.ps1` reject third-party packages, platform UI, native/COM, unsafe code, and out-of-kernel project dependencies in the kernel.
+- GitHub Actions verifies the full solution and smoke-runs the inert host on Windows, then independently builds the kernel and its checks on Linux. CI does not publish artifacts; the manual dispatch-only Publish workflow builds the host self-contained and framework-dependent for `win-x64` and drafts an unpublished pre-release (tag `fond-v<version>`, from `BroilerFondVersion`).
 
-The [M1 progress and acceptance backlog](docs/milestone-1.md) records completed
-work, remaining implementation, and release dependencies. Endpoint confirmation
-is a domain primitive; the user-facing setup and authentication flows are pending.
-The storage format now has [proposed envelope](docs/adr/0004-profile-envelope-v1.md)
-and [snapshot](docs/adr/0005-profile-snapshots-v1.md) specifications, five independent
-synthetic vectors, and test-only BCL reference verification. User profile
-persistence remains disabled pending complete schemas, calibration and review.
-The [identity contract](docs/adr/0006-local-identity-allocation.md) now provides
-allocation batches, exhaustion handling and startup integrity checks. Durable
-entity commits remain pending. The [rediscovery planner](docs/adr/0007-account-source-rediscovery.md)
-preserves exact identities and quarantines changed or ambiguous sources; connector,
-durable application and user-review integration remain pending.
-The [account-value contract](docs/adr/0008-account-values-and-exact-money.md)
-keeps unavailable and stale data explicit and prevents mixed-currency or silently
-rounded totals. Balance retrieval and UI integration remain pending.
+The [M1 progress and acceptance backlog](docs/milestone-1.md) and [roadmap](docs/roadmap.md) record completed work and remaining alpha exit criteria:
+
+- **Storage format, lifecycle & disconnect/diagnostics (`M1-01`, `M1-02`, `M1-08`):** Implemented in the kernel ([ADRs 0004](docs/adr/0004-profile-envelope-v1.md), [0005](docs/adr/0005-profile-snapshots-v1.md), [0087](docs/adr/0087-profile-storage-schemas-preflight-and-calibration.md), [0088](docs/adr/0088-production-profile-store-lifecycle.md), [0089](docs/adr/0089-connection-removal-and-encrypted-diagnostics.md)): encrypted `BFPE` v1 envelope, `bootstrap-v1.xsd`, `store-v1.xsd`, `purge-intent-v1.xsd`, bounded ZIP preflight validation, PBKDF2 calibration (`600,000..5,000,000` iterations), exclusive directory locking, seekable frame authentication, atomic generation promotion, branched prior-generation recovery, privacy purge, passphrase rotation, whole-profile erasure, backup/restore, ID-remapping import/merge, connection removal with cached-data purge (`ConnectionRemovalPlanner`, `IProfileStore.RemoveConnection`), opt-in encrypted local diagnostic persistence (`EncryptedLocalDiagnosticStore`), and SHA-256 preview-bound local support export. Storage format human review and cross-host Linux execution evidence are complete and recorded ([docs/storage-format-review.md](docs/storage-format-review.md)).
+- **Identity, rediscovery & relinking (`M1-03`, `M1-07`):** `LocalIdentityLedger` ([ADR 0006](docs/adr/0006-local-identity-allocation.md)), `AccountRediscoveryPlanner` ([ADR 0007](docs/adr/0007-account-source-rediscovery.md)), `AccountValueProjection` ([ADR 0008](docs/adr/0008-account-values-and-exact-money.md)), `FinTsReadIngestionApplication` ([ADR 0084](docs/adr/0084-fints-read-ingestion-and-store-binding.md)), durable `ProfileStore` snapshot commits ([ADR 0088](docs/adr/0088-production-profile-store-lifecycle.md)), deterministic account relinking with privacy purge (`AccountRelinkingPlanner`, `IProfileStore.RelinkAccountBinding`, [ADR 0090](docs/adr/0090-ambiguous-rediscovery-account-relinking.md)), and user-reviewed relinking dialog (`AccountRelinkingDialog`, [ADR 0093](docs/adr/0093-user-reviewed-account-relinking-ui.md)) with truthful balance presentation ([ADR 0092](docs/adr/0092-windows-host-ui-and-support-workflows.md)) are implemented in the kernel and Windows host.
+- **FinTS read & synchronization slice (`M1-04`, `M1-05`, `M1-06`, `M1-08`):** End-to-end read and synchronization pipelines ([ADRs 0085](docs/adr/0085-fints-read-execution-pipeline.md), [0086](docs/adr/0086-fints-synchronization-execution-pipeline.md)) over bounded HTTPS transport ([ADR 0083](docs/adr/0083-fints-transport-and-capability-activation.md)), FinTS product registration (`FinTsProductRegistration`), interactive/decoupled SCA challenge continuation (`FinTsScaExecutionCoordinator`, [ADR 0091](docs/adr/0091-fints-product-registration-and-sca-continuation.md)), and Windows host setup/dialogs/support workflows ([ADR 0092](docs/adr/0092-windows-host-ui-and-support-workflows.md)) are implemented. Controlled live bank acceptance (`M1-09`) and human release sign-off (`M1-10`) remain pending.
 
 Prerequisite: a compatible .NET 10 SDK. Run the same full check used by CI:
 
@@ -245,6 +73,8 @@ The platform-neutral subset can be checked with:
 - [Product specification and roadmap](docs/roadmap.md)
 - [Milestone 0 definition and inventory](docs/milestone-0.md)
 - [Milestone 1 progress and acceptance backlog](docs/milestone-1.md)
+- [Milestone 2 progress and acceptance backlog](docs/milestone-2.md)
+- [Storage format review and cross-host evidence](docs/storage-format-review.md)
 - [Architecture decisions](docs/adr/README.md)
 - [Compatibility evidence](docs/compatibility/README.md)
 - [Security policy](SECURITY.md)

@@ -45,6 +45,7 @@ public enum FinTsPinTanReadSessionTransition
     RejectedForReview,
     WrongState,
     Terminal,
+    PageLimitReached,
 }
 
 [Flags]
@@ -63,6 +64,7 @@ public enum FinTsPinTanReadSessionIssue
     PageLimitReached = 1 << 9,
     StageOutOfSequence = 1 << 10,
     EvidenceSourceMismatch = 1 << 11,
+    OperationMismatch = 1 << 12,
 }
 
 public sealed class FinTsPinTanReadSessionResult
@@ -75,11 +77,15 @@ public sealed class FinTsPinTanReadSessionResult
         FinTsPinTanReadEvidence? balanceFirstPageEvidence = null,
         FinTsPinTanReadContinuationEvidence? balanceContinuationEvidence = null,
         IReadOnlyList<FinTsBalanceReport>? aggregatedBalances = null,
-        FinTsPinTanDialogueEndEvidence? closingEvidence = null)
+        FinTsPinTanDialogueEndEvidence? closingEvidence = null,
+        FinTsPinTanInitializationProcedureEvidence? procedureEvidence = null,
+        FinTsPinTanInitializationEvidence? initializationEvidence = null)
     {
         Transition = transition;
         Stage = stage;
         RequirementsEvidence = requirementsEvidence;
+        ProcedureEvidence = requirementsEvidence?.Procedures ?? procedureEvidence;
+        InitializationEvidence = ProcedureEvidence?.Initialization ?? initializationEvidence;
         AllAccountEvidence = allAccountEvidence;
         BalanceFirstPageEvidence = balanceFirstPageEvidence;
         BalanceContinuationEvidence = balanceContinuationEvidence;
@@ -91,18 +97,36 @@ public sealed class FinTsPinTanReadSessionResult
 
     public FinTsPinTanReadSessionTransition Transition { get; }
     public FinTsPinTanReadSessionStage Stage { get; }
+    /// <summary>Caller-owned initialization evidence, including semantic review; null when no initialization response is handed out.</summary>
+    public FinTsPinTanInitializationEvidence? InitializationEvidence { get; }
+    /// <summary>Combined procedure qualification on procedure-aware paths; inspect this or the richer requirements evidence.</summary>
+    public FinTsPinTanInitializationProcedureEvidence? ProcedureEvidence { get; }
     public FinTsPinTanInitializationRequirementsEvidence? RequirementsEvidence { get; }
     public FinTsPinTanAllAccountEvidence? AllAccountEvidence { get; }
     public FinTsPinTanReadEvidence? BalanceFirstPageEvidence { get; }
     public FinTsPinTanReadContinuationEvidence? BalanceContinuationEvidence { get; }
     public ReadOnlyCollection<FinTsBalanceReport> AggregatedBalances { get; }
     public FinTsPinTanDialogueEndEvidence? ClosingEvidence { get; }
+    /// <summary>Uses the most complete initialization qualification supplied; a matching child cannot override a parent's review outcome.</summary>
     public bool HasMatchingEvidence =>
-        (RequirementsEvidence?.HasMatchingEvidence ?? false) ||
+        (RequirementsEvidence?.HasMatchingEvidence ?? ProcedureEvidence?.HasMatchingEvidence ?? InitializationEvidence?.HasMatchingEvidence ?? false) ||
         (AllAccountEvidence?.HasMatchingEvidence ?? false) ||
         (BalanceFirstPageEvidence?.HasMatchingEvidence ?? false) ||
         (BalanceContinuationEvidence?.HasMatchingEvidence ?? false) ||
         (ClosingEvidence?.HasMatchingEvidence ?? false);
+
+    public static FinTsPinTanReadSessionResult Create(
+        FinTsPinTanReadSessionTransition transition,
+        FinTsPinTanReadSessionStage stage,
+        FinTsPinTanInitializationRequirementsEvidence? requirementsEvidence = null,
+        FinTsPinTanAllAccountEvidence? allAccountEvidence = null,
+        FinTsPinTanReadEvidence? balanceFirstPageEvidence = null,
+        FinTsPinTanReadContinuationEvidence? balanceContinuationEvidence = null,
+        IReadOnlyList<FinTsBalanceReport>? aggregatedBalances = null,
+        FinTsPinTanDialogueEndEvidence? closingEvidence = null,
+        FinTsPinTanInitializationProcedureEvidence? procedureEvidence = null,
+        FinTsPinTanInitializationEvidence? initializationEvidence = null) =>
+        new(transition, stage, requirementsEvidence, allAccountEvidence, balanceFirstPageEvidence, balanceContinuationEvidence, aggregatedBalances, closingEvidence, procedureEvidence, initializationEvidence);
 }
 
 /// <summary>Scalar-only lifecycle diagnostics; no accounts, credentials, continuation tokens, or response payloads.</summary>
@@ -156,6 +180,7 @@ public sealed class FinTsPinTanReadSessionSnapshot
     public int ResponsesHandled { get; }
     public int ClientMessageNumber { get; }
     public int BankMessageNumber { get; }
+    /// <summary>Accepted balance pages in the single read operation, retained after terminal cleanup.</summary>
     public int PagesAccepted { get; }
     public int BalancesReported { get; }
     public int AccountsDiscovered { get; }
@@ -178,6 +203,8 @@ public sealed class FinTsPinTanReadSessionSnapshot
 /// Caller-owned results and collection snapshots remain usable after cleanup.
 /// Build operation and closing candidates from this session's accepted initialization,
 /// and continuation candidates from the exact accepted predecessor evidence.
+/// Each session supports one discovery or balance operation. Completion or the page
+/// budget moves to closing; another operation requires a new initialized session.
 /// </summary>
 public sealed class FinTsPinTanReadSessionAttempt : IDisposable
 {
@@ -435,30 +462,34 @@ public sealed class FinTsPinTanReadSessionAttempt : IDisposable
                 ObserveClock(); CheckCancellation(cancellationToken);
                 if (!IsActive) { return new(FinTsPinTanReadSessionTransition.Terminal, _stage); }
 
+                ClearTransientDiagnostics();
                 _bindingIssues = binding.Issues;
                 _initializationIssues = evidence.Issues;
                 _requirementsIssues = requirementsEvidence?.Issues ?? FinTsPinTanInitializationRequirementsIssue.None;
                 bool matching = requirementsEvidence?.HasMatchingEvidence ?? procedureEvidence?.HasMatchingEvidence ?? evidence.HasMatchingEvidence;
 
+                _lastBankNumber = parameters.Source.Frame.MessageNumber;
+                _responsesHandled++;
+
                 if (!matching)
                 {
                     _issues |= FinTsPinTanReadSessionIssue.InitializationNeedsReview;
                     Close(FinTsPinTanReadSessionState.NeedsReview);
-                    return new(FinTsPinTanReadSessionTransition.RejectedForReview, _stage, requirementsEvidence: requirementsEvidence);
+                    return new(FinTsPinTanReadSessionTransition.RejectedForReview, _stage,
+                        requirementsEvidence: requirementsEvidence, procedureEvidence: procedureEvidence, initializationEvidence: evidence);
                 }
 
                 _issues = FinTsPinTanReadSessionIssue.None;
                 _dialogueId = evidence.ReportedDialogueId;
-                _lastBankNumber = parameters.Source.Frame.MessageNumber;
                 _requirementsEvidence = requirementsEvidence;
                 _procedureEvidence = procedureEvidence;
                 _initializationEvidence = evidence;
                 _pendingInitialization = null;
-                _responsesHandled++;
                 _state = FinTsPinTanReadSessionState.DialogueOpen;
                 _stage = FinTsPinTanReadSessionStage.Operation;
 
-                return new(FinTsPinTanReadSessionTransition.DialogueOpen, _stage, requirementsEvidence: requirementsEvidence);
+                return new(FinTsPinTanReadSessionTransition.DialogueOpen, _stage,
+                    requirementsEvidence: requirementsEvidence, procedureEvidence: procedureEvidence, initializationEvidence: evidence);
             }
             catch (OperationCanceledException)
             {
@@ -476,7 +507,7 @@ public sealed class FinTsPinTanReadSessionAttempt : IDisposable
         {
             ObserveClock(); CheckCancellation(cancellationToken);
             if (!IsActive) { return FinTsPinTanReadSessionTransition.Terminal; }
-            if (_state is not (FinTsPinTanReadSessionState.DialogueOpen or FinTsPinTanReadSessionState.OperationCompleted))
+            if (_state != FinTsPinTanReadSessionState.DialogueOpen)
             {
                 return FinTsPinTanReadSessionTransition.WrongState;
             }
@@ -513,6 +544,7 @@ public sealed class FinTsPinTanReadSessionAttempt : IDisposable
                 return FinTsPinTanReadSessionTransition.ContextMismatch;
             }
 
+            ClearTransientDiagnostics();
             _pendingAllAccount = candidate;
             _requestsRecorded++;
             _state = FinTsPinTanReadSessionState.AwaitingAllAccountResponse;
@@ -565,8 +597,13 @@ public sealed class FinTsPinTanReadSessionAttempt : IDisposable
                 ObserveClock(); CheckCancellation(cancellationToken);
                 if (!IsActive) { return new(FinTsPinTanReadSessionTransition.Terminal, _stage); }
 
+                ClearTransientDiagnostics();
                 _allAccountIssues = evidence.Issues;
+                _readIssues = evidence.ResponseIssues;
                 _bindingIssues = binding.Issues;
+                _lastClientNumber = _pendingAllAccount!.MessageNumber;
+                _lastBankNumber = response.Source.Frame.MessageNumber;
+                _responsesHandled++;
 
                 if (!evidence.HasMatchingEvidence)
                 {
@@ -578,10 +615,7 @@ public sealed class FinTsPinTanReadSessionAttempt : IDisposable
                 _issues = FinTsPinTanReadSessionIssue.None;
                 _allAccountEvidence = evidence;
                 _accountsDiscovered = evidence.Accounts.Count;
-                _lastClientNumber = _pendingAllAccount!.MessageNumber;
-                _lastBankNumber = response.Source.Frame.MessageNumber;
                 _pendingAllAccount = null;
-                _responsesHandled++;
                 _state = FinTsPinTanReadSessionState.OperationCompleted;
                 _stage = FinTsPinTanReadSessionStage.Closing;
 
@@ -607,7 +641,7 @@ public sealed class FinTsPinTanReadSessionAttempt : IDisposable
         {
             ObserveClock(); CheckCancellation(cancellationToken);
             if (!IsActive) { return FinTsPinTanReadSessionTransition.Terminal; }
-            if (_state is not (FinTsPinTanReadSessionState.DialogueOpen or FinTsPinTanReadSessionState.OperationCompleted))
+            if (_state != FinTsPinTanReadSessionState.DialogueOpen)
             {
                 return FinTsPinTanReadSessionTransition.WrongState;
             }
@@ -643,6 +677,13 @@ public sealed class FinTsPinTanReadSessionAttempt : IDisposable
                 return FinTsPinTanReadSessionTransition.ContextMismatch;
             }
 
+            if (candidate.Context.Signature.Request.Request.Source.Code != "HKSAL")
+            {
+                _issues |= FinTsPinTanReadSessionIssue.OperationMismatch;
+                return FinTsPinTanReadSessionTransition.ContextMismatch;
+            }
+
+            ClearTransientDiagnostics();
             _pendingBalanceFirstRead = candidate;
             _requestsRecorded++;
             _state = FinTsPinTanReadSessionState.AwaitingBalanceFirstReadResponse;
@@ -711,6 +752,7 @@ public sealed class FinTsPinTanReadSessionAttempt : IDisposable
                 return FinTsPinTanReadSessionTransition.ContextMismatch;
             }
 
+            ClearTransientDiagnostics();
             _pendingBalanceContinuation = candidate;
             _requestsRecorded++;
             _state = FinTsPinTanReadSessionState.AwaitingBalanceContinuationResponse;
@@ -765,9 +807,13 @@ public sealed class FinTsPinTanReadSessionAttempt : IDisposable
                     ObserveClock(); CheckCancellation(cancellationToken);
                     if (!IsActive) { return new(FinTsPinTanReadSessionTransition.Terminal, _stage); }
 
+                    ClearTransientDiagnostics();
                     _issues = evidence.Issues != FinTsPinTanReadIssue.None ? _issues | FinTsPinTanReadSessionIssue.OperationNeedsReview : _issues;
                     _bindingIssues = binding.Issues;
                     _readIssues = evidence.ReadIssues;
+                    _lastClientNumber = _pendingBalanceFirstRead.MessageNumber;
+                    _lastBankNumber = response.Source.Frame.MessageNumber;
+                    _responsesHandled++;
 
                     if (!evidence.HasMatchingEvidence)
                     {
@@ -776,11 +822,8 @@ public sealed class FinTsPinTanReadSessionAttempt : IDisposable
                     }
 
                     _balancePages++;
-                    _lastClientNumber = _pendingBalanceFirstRead.MessageNumber;
-                    _lastBankNumber = response.Source.Frame.MessageNumber;
                     _balanceFirstPageEvidence = evidence;
                     _pendingBalanceFirstRead = null;
-                    _responsesHandled++;
 
                     foreach (var balance in response.Balances) { _balances.Add(balance); }
                     _balancesReported = _balances.Count;
@@ -804,7 +847,7 @@ public sealed class FinTsPinTanReadSessionAttempt : IDisposable
                         _issues |= FinTsPinTanReadSessionIssue.PageLimitReached;
                         _state = FinTsPinTanReadSessionState.PageLimitReached;
                         _stage = FinTsPinTanReadSessionStage.Closing;
-                        return new(FinTsPinTanReadSessionTransition.ExecutionReported, _stage, balanceFirstPageEvidence: evidence, aggregatedBalances: _balances);
+                        return new(FinTsPinTanReadSessionTransition.PageLimitReached, _stage, balanceFirstPageEvidence: evidence, aggregatedBalances: _balances);
                     }
 
                     _state = FinTsPinTanReadSessionState.WaitingForBalanceContinuation;
@@ -827,10 +870,14 @@ public sealed class FinTsPinTanReadSessionAttempt : IDisposable
                     ObserveClock(); CheckCancellation(cancellationToken);
                     if (!IsActive) { return new(FinTsPinTanReadSessionTransition.Terminal, _stage); }
 
+                    ClearTransientDiagnostics();
                     _issues = evidence.Issues != FinTsPinTanReadIssue.None ? _issues | FinTsPinTanReadSessionIssue.OperationNeedsReview : _issues;
                     _bindingIssues = binding.Issues;
                     _readIssues = evidence.ReadIssues;
                     _continuationIssues = evidence.Request.Context.Continuation.Issues;
+                    _lastClientNumber = _pendingBalanceContinuation.MessageNumber;
+                    _lastBankNumber = response.Source.Frame.MessageNumber;
+                    _responsesHandled++;
 
                     if (!evidence.HasMatchingEvidence)
                     {
@@ -839,11 +886,8 @@ public sealed class FinTsPinTanReadSessionAttempt : IDisposable
                     }
 
                     _balancePages++;
-                    _lastClientNumber = _pendingBalanceContinuation.MessageNumber;
-                    _lastBankNumber = response.Source.Frame.MessageNumber;
                     _balanceContinuationPages.Add(evidence);
                     _pendingBalanceContinuation = null;
-                    _responsesHandled++;
 
                     foreach (var balance in response.Balances) { _balances.Add(balance); }
                     _balancesReported = _balances.Count;
@@ -867,7 +911,7 @@ public sealed class FinTsPinTanReadSessionAttempt : IDisposable
                         _issues |= FinTsPinTanReadSessionIssue.PageLimitReached;
                         _state = FinTsPinTanReadSessionState.PageLimitReached;
                         _stage = FinTsPinTanReadSessionStage.Closing;
-                        return new(FinTsPinTanReadSessionTransition.ExecutionReported, _stage, balanceContinuationEvidence: evidence, aggregatedBalances: _balances);
+                        return new(FinTsPinTanReadSessionTransition.PageLimitReached, _stage, balanceContinuationEvidence: evidence, aggregatedBalances: _balances);
                     }
 
                     _state = FinTsPinTanReadSessionState.WaitingForBalanceContinuation;
@@ -926,6 +970,7 @@ public sealed class FinTsPinTanReadSessionAttempt : IDisposable
                 return FinTsPinTanReadSessionTransition.ContextMismatch;
             }
 
+            ClearTransientDiagnostics();
             _pendingClosing = candidate;
             _requestsRecorded++;
             _state = FinTsPinTanReadSessionState.AwaitingClosingResponse;
@@ -978,24 +1023,22 @@ public sealed class FinTsPinTanReadSessionAttempt : IDisposable
                 ObserveClock(); CheckCancellation(cancellationToken);
                 if (!IsActive) { return new(FinTsPinTanReadSessionTransition.Terminal, _stage); }
 
+                ClearTransientDiagnostics();
                 _closingIssues = evidence.Issues;
                 _bindingIssues = binding.Issues;
                 _closingEvidence = evidence;
                 _lastClientNumber = _pendingClosing!.MessageNumber;
                 _lastBankNumber = response.Frame.MessageNumber;
                 _pendingClosing = null;
+                _responsesHandled++;
 
                 if (evidence.Outcome == FinTsDialogueEndOutcome.ClosureReported)
                 {
-                    _issues = FinTsPinTanReadSessionIssue.None;
-                    _responsesHandled++;
                     Close(FinTsPinTanReadSessionState.Closed);
                     return new(FinTsPinTanReadSessionTransition.Closed, _stage, closingEvidence: evidence);
                 }
                 if (evidence.Outcome == FinTsDialogueEndOutcome.AbortReported)
                 {
-                    _issues = FinTsPinTanReadSessionIssue.None;
-                    _responsesHandled++;
                     Close(FinTsPinTanReadSessionState.Aborted);
                     return new(FinTsPinTanReadSessionTransition.AbortReported, _stage, closingEvidence: evidence);
                 }
@@ -1078,6 +1121,23 @@ public sealed class FinTsPinTanReadSessionAttempt : IDisposable
         {
             if (IsActive) { Close(FinTsPinTanReadSessionState.ClockInvalid); }
         }
+    }
+
+    // A newly accepted candidate or evaluated in-scope response resolves prior retry
+    // diagnostics. Page-limit truncation is an operation outcome and survives closing.
+    private void ClearTransientDiagnostics()
+    {
+        const FinTsPinTanReadSessionIssue transient =
+            FinTsPinTanReadSessionIssue.BindingNeedsReview |
+            FinTsPinTanReadSessionIssue.DialogueIdMismatch |
+            FinTsPinTanReadSessionIssue.MessageNumberMismatch |
+            FinTsPinTanReadSessionIssue.ReplayDetected |
+            FinTsPinTanReadSessionIssue.EvidenceSourceMismatch |
+            FinTsPinTanReadSessionIssue.OperationMismatch;
+        _issues &= ~transient;
+        _bindingIssues = FinTsPinTanResponseBindingIssue.None;
+        _readIssues = FinTsReadContextIssue.None;
+        _continuationIssues = FinTsPinTanReadContinuationIssue.None;
     }
 
     private void Close(FinTsPinTanReadSessionState state)

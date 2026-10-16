@@ -11,6 +11,8 @@
     <ProjectReference Include="..\..\src\Broiler.Fond.Kernel\Broiler.Fond.Kernel.csproj" />
     <EmbeddedResource Include="Fixtures/ProfileEnvelope/v1.json" LogicalName="ProfileEnvelope.v1.json" />
     <EmbeddedResource Include="Fixtures/ProfileEnvelope/bootstrap-v1.xsd" LogicalName="ProfileEnvelope.bootstrap-v1.xsd" />
+    <EmbeddedResource Include="Fixtures/ProfileEnvelope/store-v1.xsd" LogicalName="ProfileEnvelope.store-v1.xsd" />
+    <EmbeddedResource Include="Fixtures/ProfileEnvelope/purge-intent-v1.xsd" LogicalName="ProfileEnvelope.purge-intent-v1.xsd" />
     <EmbeddedResource Include="Fixtures/FinTs/syntax-v1.json" LogicalName="FinTs.syntax-v1.json" />
     <EmbeddedResource Include="Fixtures/FinTs/responses-v1.json" LogicalName="FinTs.responses-v1.json" />
     <EmbeddedResource Include="Fixtures/FinTs/parameters-v1.json" LogicalName="FinTs.parameters-v1.json" />

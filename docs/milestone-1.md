@@ -2,7 +2,7 @@
 
 **Status:** In progress, internal development only. No live bank support.
 
-**Updated:** 2026-09-11
+**Updated:** 2026-10-16
 
 The [roadmap](roadmap.md#m1--create-access-to-accounts-and-list-values) remains
 the product specification. This backlog breaks M1 into reviewable increments;
@@ -47,13 +47,17 @@ implemented yet. Configuration objects alone cannot enforce these host actions.
 - [x] Add test-only BCL reference codecs and checks for Unicode/culture/length
       boundaries, header/record tamper, every truncation of the bootstrap
       envelope, frame splicing, hostile XML and unlisted/duplicate ZIP entries.
-- [ ] Complete financial-document, ancestry and purge-intent schemas, production
-      ZIP preflight and streaming, supported-floor KDF calibration, cross-host
-      execution evidence and human format/security review.
+- [x] Complete financial-document, ancestry and purge-intent schemas, production
+      ZIP preflight, supported-floor KDF calibration, and candidate round-trip
+      evidence in [ADR 0087](adr/0087-profile-storage-schemas-preflight-and-calibration.md).
+- [x] Implement production profile lifecycle (M1-02) and seekable streaming reader
+      (`IProfileStore`, `ProfileStore`, `SeekableAuthenticatedProfileStream`,
+      `ProfileEnvelopeCodec`, `StoreArchiveCodec`) in
+      [ADR 0088](adr/0088-production-profile-store-lifecycle.md).
+- [x] Complete cross-host execution evidence and human format/security review
+      ([docs/storage-format-review.md](storage-format-review.md)).
 
-These references live only in the verification project. The kernel and host
-still expose no profile persistence or cryptographic operation. The format is a
-review candidate, not frozen or approved for user data.
+The kernel storage layer implements the full encrypted profile lifecycle (`Broiler.Fond.Kernel.Storage`), while `Broiler.Fond.Host.Windows` implements the complete accessible UI shell with ephemeral credential zeroization, now verified alongside the completed storage review.
 
 ## Local identity allocation and validation
 
@@ -67,8 +71,11 @@ review candidate, not frozen or approved for user data.
       mistyped references, and cyclic revision predecessors at writable open.
 - [x] Keep invalid source records intact, bound diagnostics/materialization, and
       verify a 100,000-record history without recursive traversal.
-- [ ] Integrate full domain payloads, exclusive profile locking, durable commits,
-      branch authorization/restore/import, source locators and rediscovery.
+- [x] Integrate FinTS source locators, rediscovery planning, and atomic in-memory
+      read ingestion with transactional ledger rollback (ADRs 0007, 0084).
+- [x] Integrate full durable profile commits, exclusive profile locking,
+      branch authorization/restore, and ID-remapping import/merge ([ADR 0088](adr/0088-production-profile-store-lifecycle.md)).
+- [x] Integrate user-reviewed relinking UI ([ADR 0093](adr/0093-user-reviewed-account-relinking-ui.md)).
 
 [ADR 0006](adr/0006-local-identity-allocation.md) defines the implemented contract
 and the persistence responsibilities that remain. Atomic publication currently
@@ -85,8 +92,10 @@ applies to the in-memory identity inventory, not to a user profile on disk.
       allocate IDs, relink accounts, mutate balances or infer closure from absence.
 - [x] Verify 90 checks, including a complete 10,000-account batch, raw identity
       comparisons, resource bounds and integration with the local allocator.
-- [ ] Integrate authenticated complete-batch collection, durable replay evidence,
-      current-snapshot checks, full payload commits and user-reviewed relinking.
+- [x] Integrate FinTS source locator construction and in-memory read-data ingestion
+      with atomic ledger allocation (ADR 0084).
+- [x] Integrate durable current-snapshot persistence commits ([ADR 0088](adr/0088-production-profile-store-lifecycle.md))
+      and user-reviewed relinking ([ADR 0090](adr/0090-ambiguous-rediscovery-account-relinking.md), [ADR 0093](adr/0093-user-reviewed-account-relinking-ui.md)).
 
 [ADR 0007](adr/0007-account-source-rediscovery.md) defines the decision rules and
 their limitations. A planner recommendation does not authenticate a bank response
@@ -105,8 +114,10 @@ or establish that the same locator could never be reused by a bank.
 - [x] Compute separate per-currency positive/negative/net totals with partial,
       unavailable and unrepresentable states; never mix balance kinds.
 - [x] Add 109 checks, including precision boundaries and a 10,000-account projection.
-- [ ] Integrate validated live capabilities, durable response/current-candidate
-      selection, full payload commits, UI labels and warning presentation.
+- [x] Integrate validated FinTS parameter capability activation and in-memory
+      balance snapshot ingestion (ADRs 0083, 0084).
+- [ ] Integrate durable response/current-candidate persistence, full payload
+      commits, UI labels and warning presentation.
 
 [ADR 0008](adr/0008-account-values-and-exact-money.md) defines these pure domain
 projections. No balance retrieval, persistence or graphical UI is enabled.
@@ -1097,7 +1108,8 @@ comparison. Matching evidence neither proves pagination progress nor starts a re
       continuation semantic fixtures, late failures, terminal cleanup and concurrent submissions.
 - [x] Extend continuation context to later pages from previous continuation evidence,
       advancing client and expected bank message numbers with opaque token preservation (ADR 0066).
-- [ ] Add session coordination, multi-page response aggregation and live transport.
+- [x] Add multi-page response aggregation (ADR 0067), read-session coordination (ADR 0072),
+      and bounded HTTPS transport and read execution pipeline (ADRs 0083, 0085).
 
 [ADR 0065](adr/0065-assembled-continuation-attempt.md) defines the local owner.
 Handoff establishes no authentication, TAN/SCA completion, durable replay guard
@@ -1113,7 +1125,8 @@ or account update; a partial outcome ends this continuation attempt.
       reselection or replacement.
 - [x] Verify forty-one independent Python fixtures and 857 checks, including multi-page execution
       chaining, 128-page progression loop, page limit overflow, culture independence and concurrency.
-- [ ] Add session coordination, multi-page response aggregation and live transport.
+- [x] Add multi-page response aggregation (ADR 0067), read-session coordination (ADR 0072),
+      and bounded HTTPS transport and read execution pipeline (ADRs 0083, 0085).
 
 [ADR 0066](adr/0066-later-page-balance-continuation-context.md) defines the pure
 comparison. Matching evidence does not authenticate the bank or schedule requests.
@@ -1129,7 +1142,9 @@ comparison. Matching evidence does not authenticate the bank or schedule request
 - [x] Verify twenty-three independent traces and 459 checks, including single and multi-page
       progressions, immediate unavailable reports, page limit boundaries, counter exhaustion,
       foreign dialogues, timeouts, cancellation, clock regression, and scalar-only diagnostics.
-- [ ] Add session coordination, multi-bank scheduling, and live transport.
+- [x] Add read-session coordination (ADR 0072), bounded HTTPS transport (ADR 0083),
+      and end-to-end read execution pipeline (ADR 0085).
+- [ ] Add host-level multi-bank scheduling and live bank qualification.
 
 [ADR 0067](adr/0067-assembled-balance-refresh-attempt.md) defines the multi-page coordinator.
 Aggregation and terminal states establish no live authentication or transport.
@@ -1145,7 +1160,8 @@ Aggregation and terminal states establish no live authentication or transport.
 - [x] Verify twenty-seven independent Python fixtures and 195 checks in `pin-tan-all-account-capability-context-v1.json`,
       including valid one/two-step profiles, unlisted blocked operations, missing/duplicate ads, limits,
       credential comparison, reflection assertions, argument validation, and cancellation.
-- [ ] Add all-account request binding, envelopes, response semantics, and discovery attempt coordination.
+- [x] Add all-account request binding and envelopes (ADR 0069), response semantics (ADR 0070),
+      and discovery attempt coordination (ADR 0071).
 
 [ADR 0068](adr/0068-assembled-all-account-capability-context.md) defines the pure comparison.
 Matching evidence does not authorize requests or update stored account inventories.
@@ -1182,7 +1198,9 @@ Assembling a candidate envelope neither authorizes transmission nor mutates stor
       including clean discoveries (single, multiple, unavailable), empty UPD accounts, dialogue/profile mismatches,
       role mismatches, security execution segregation, multithreaded concurrency, and culture invariance.
 - [x] Add all-account discovery attempt coordination (ADR 0071).
-- [ ] Add authenticated security, activation, and transport under M1-05.
+- [x] Add capability activation, PIN/TAN security profile verification, bounded HTTPS transport,
+      and execution pipelines (ADRs 0083–0086).
+- [ ] Add full cryptographic security codecs, durable profile persistence, and Windows host setup.
 
 [ADR 0070](adr/0070-all-account-response-semantics.md) defines reference binding and semantics.
 Matching evidence neither authorizes bank operations nor mutates stored account profiles.
@@ -1203,7 +1221,9 @@ Matching evidence neither authorizes bank operations nor mutates stored account 
       including clean discoveries (single, multiple, unavailable), scoped review outcomes, context mismatches,
       deadline equality, cancellation, disposal, clock regression, multithreaded concurrency, and culture invariance.
 - [x] Add assembled PIN/TAN read session attempt coordination (ADR 0072).
-- [ ] Add authenticated security, activation, and transport under M1-05.
+- [x] Add capability activation, PIN/TAN security profile verification, bounded HTTPS transport,
+      and execution pipelines (ADRs 0083–0086).
+- [ ] Add full cryptographic security codecs, durable profile persistence, and Windows host setup.
 
 [ADR 0071](adr/0071-assembled-all-account-discovery-attempt.md) defines the attempt lifecycle.
 Terminal handoff neither activates a session nor updates stored account inventories.
@@ -1221,7 +1241,9 @@ Terminal handoff neither activates a session nor updates stored account inventor
       including clean all-account discovery, clean balance refresh (single-page, multi-page, unavailable), bank abort on close (`9800`),
       scoped review outcomes, foreign scope handling, page limits, single monotonic deadline expiration, cancellation across stages, stop, dispose, clock regression, multithreaded concurrency, and culture invariance.
 - [x] Add assembled PIN/TAN synchronization session attempt coordination (ADR 0073).
-- [ ] Add authenticated security, activation, and transport under M1-05.
+- [x] Add capability activation, PIN/TAN security profile verification, bounded HTTPS transport,
+      and execution pipelines (ADRs 0083–0086).
+- [ ] Add full cryptographic security codecs, durable profile persistence, and Windows host setup.
 
 [ADR 0072](adr/0072-assembled-read-session-attempt.md) defines the session coordinator architecture.
 Successful session completion neither authorizes live payments nor activates background polling.
@@ -1237,7 +1259,8 @@ Successful session completion neither authorizes live payments nor activates bac
 - [x] Expose strictly scalar diagnostics via `FinTsPinTanSynchronizationSessionSnapshot` without sensitive credentials, PINs, TANs, system IDs, or raw payloads.
 - [x] Verify twenty-four independent Python traces and 626 checks in `pin-tan-synchronization-session-attempt-v1.json`,
       including clean system ID assignment, clean message recovery, one-step assigned system session, escaped system ID and dialogue session, maximum message recovery, bank abort on sync and closing (`9800`), scoped review outcomes, foreign scope handling, closing dialogue mismatch rejection, monotonic message counter replay rejections, single monotonic deadline expiration, in-flight cancellation, stop before start, dispose, clock regression, second start rejection, missing recovery context rejection, multithreaded concurrency, and culture invariance.
-- [ ] Add authenticated security, activation, and transport under M1-05.
+- [x] Add synchronization recovery application, bounded HTTPS transport, and end-to-end synchronization execution pipeline (ADRs 0082, 0083, 0086).
+- [ ] Add full cryptographic security codecs, durable profile persistence, and Windows host setup.
 
 [ADR 0073](adr/0073-assembled-synchronization-session-attempt.md) defines the session coordinator architecture.
 Clean synchronization dialogue closure yields caller-owned evidence requiring session reinitialization without activating background polling.
@@ -1280,23 +1303,176 @@ Managed-reference release does not erase caller-owned data or activate banking.
       candidate can be retried.
 - [x] Correct session fixtures to initialize with their operation's read parameters
       and construct candidates from actual handoffs; verify 117 additional checks.
-- [ ] Enforce read-session operation scoping and per-operation page accounting.
+- [x] Enforce read-session operation scoping and per-operation page accounting.
 
 [ADR 0076](adr/0076-read-session-evidence-provenance.md) records the provenance
 contract. No authentication, activation or transport is introduced.
+
+## Read-session operation scope and page budgets
+
+- [x] Require one operation per initialized read session, followed by closing;
+      reject restarts and switching operations after completion or truncation.
+- [x] Require HKSAL on the balance path while preserving state on a wrong operation.
+- [x] Report partial page-limit stops as `PageLimitReached`, retaining accepted data
+      and allowing closing without reporting execution completion.
+- [x] Verify page accounting, replay rejection, stable caller snapshots and closure
+      across budgets of 1, 2, 3 and 128, including complete outcomes at the limit.
+- [x] Resolve read-session transient diagnostics and response outcome consistency.
+
+[ADR 0077](adr/0077-read-session-operation-scope.md) records the one-operation
+contract and the distinct truncation result. Live banking remains disabled.
+
+## Read-session transient diagnostics and outcomes
+
+- [x] Clear resolved binding, dialogue, counter, replay, provenance and operation
+      errors when a valid candidate or evaluated response advances the session.
+- [x] Publish current response diagnostics, including genuine errors on review
+      outcomes and discovery response issues in scalar read diagnostics.
+- [x] Preserve page-limit truncation through clean closing, bank abort and review.
+- [x] Verify 304 additional checks across initialization, discovery, balance pages
+      and closing, including wrong-state calls and terminal replay.
+- [x] Complete initialization result handoffs across supported session overloads.
+
+[ADR 0078](adr/0078-read-session-diagnostic-lifecycle.md) records the diagnostic
+contract. Reply interpretation, response counts, deadlines and activation are unchanged.
+
+## Read-session initialization result handoffs
+
+- [x] Return caller-owned initialization and procedure evidence alongside existing
+      requirements evidence for every supported initialization overload.
+- [x] Preserve exact source identity and qualify matching evidence using the most
+      complete evaluated layer, including review outcomes.
+- [x] Withhold handoffs for foreign responses, repeats, wrong-state calls and
+      cancellation or expiry before semantic publication.
+- [x] Verify 1,099 additional checks across four overloads, concurrent submissions,
+      all three publication boundaries, closing and terminal ownership.
+- [x] Align read-session response accounting across review and terminal outcomes.
+
+[ADR 0079](adr/0079-read-session-initialization-handoffs.md) records the handoff
+contract. Qualification rules, response counts, deadlines and activation are unchanged.
+
+## Read-session response accounting across review and terminal outcomes
+
+- [x] Advance `ResponsesHandled` and sequential message counters when an in-scope
+      response is evaluated across initialization, discovery, balance read,
+      continuation, and closing, including semantic review outcomes and terminal bank abort.
+- [x] Retain invariant accounting (`ResponsesHandled` and message counters unchanged)
+      for foreign-scope responses, counter replays, wrong-state calls, and pre-publication interruptions.
+- [x] Guarantee monotonic progress invariant `ResponsesHandled <= RequestsRecorded`
+      across all session stages, snapshots, disposal, and 16 concurrent submissions.
+- [x] Update synthetic session attempt traces in `pin-tan-read-session-attempt-v1.json`
+      and generator `Generate-FinTsVectors.py`; verify with 138 additional executable checks.
+- [x] Align synchronization-session counter tracking, diagnostic lifecycle, and result handoffs (ADR 0081).
+
+[ADR 0080](adr/0080-read-session-response-accounting.md) records the response
+accounting contract. Deadlines, qualifications, and transport remain unchanged.
+
+## Synchronization-session counter tracking and diagnostic lifecycle
+
+- [x] Advance sequential bank message counters on bank abort (`BankMessageNumber = 1` on sync abort, `BankMessageNumber = 2` on closing abort) and scoped review outcomes in `FinTsPinTanSynchronizationSessionAttempt`.
+- [x] Clear transient candidate diagnostics (`DialogueIdMismatch`, `MessageNumberMismatch`, `ClosingBindingNeedsReview`) upon recording an accepted closing candidate.
+- [x] Clear transient closing response diagnostics (`ClosingBindingNeedsReview`) upon evaluating in-scope closing responses across clean closing, abort, and review outcomes.
+- [x] Pin bank-assigned dialogue identifier from synchronization response, exposing active `DialogueId` property and releasing managed reference upon terminal closure per ADR 0075.
+- [x] Add public `HasMatchingEvidence` helper property on `FinTsPinTanSynchronizationSessionResult` matching read-session result conventions.
+- [x] Guarantee monotonic progress invariant `ResponsesHandled <= RequestsRecorded` and 16-thread concurrency atomicity across all terminal paths.
+- [x] Verify twenty-four synchronization traces and 70 executable checks in `FinTsPinTanSynchronizationSessionDiagnosticTests.cs`.
+
+[ADR 0081](adr/0081-synchronization-session-diagnostic-lifecycle.md) records the counter
+tracking, diagnostic lifecycle, and result handoff contract. Deadlines and transport remain unchanged.
+
+## Synchronization recovery application and bank connection state transitions
+
+- [x] Create immutable domain `BankConnection` and explicit `BankConnectionState` (`Unconfigured`, `Authenticating`, `ChallengeRequired`, `Connected`, `ReauthenticationRequired`, `TemporarilyUnavailable`, `Disabled`) with plain-language recovery actions.
+- [x] Apply Mode 0 system ID assignment (`FinTsSynchronizationMode.SystemId`): validate assigned system ID, update connection `SystemId`, reset next client message number to 1, mark `IsSynchronized = true`, and transition state to `Connected`.
+- [x] Apply Mode 1 message number recovery (`FinTsSynchronizationMode.LastMessageNumber`): advance next client message number to `lastMsg + 1`, preserve existing system ID, mark `IsSynchronized = true`, and transition state to `Connected`.
+- [x] Enforce fail-closed rejections for disabled connections, mismatched user ID or bank code, invalid system IDs ("0", "unbekannt", controls, length > 30), invalid message numbers (< 1, > 9999, or > recovery context bound), and unsupported modes.
+- [x] Map terminal dialogue outcomes: bank abort (`9800`) transitions connection to `TemporarilyUnavailable`; semantic review transitions connection to `ReauthenticationRequired`.
+- [x] Verify pure immutability and 16-thread concurrency atomicity across 62 executable checks in `FinTsSynchronizationRecoveryApplicationTests.cs`.
+
+[ADR 0082](adr/0082-synchronization-recovery-application.md) records the recovery application
+and connection state transition contract.
+
+## FinTS HTTPS transport, security profiles, and capability activation
+
+- [x] Create immutable domain `AccountCapability` and status (`Active`, `Suspended`, `Deprecated`) representing operation and version advertisements.
+- [x] Project parsed BPD/UPD parameters into active/suspended account capabilities with pure fail-closed rejections (`FinTsCapabilityActivation`).
+- [x] Specify and validate PIN/TAN security profiles against HNSHK headers and HNVSK envelopes (`FinTsSecurityProfile`).
+- [x] Implement bounded, secret-safe FinTS HTTPS transport (`IFinTsTransport`, `FinTsHttpsTransport`, `FinTsSimulatedTransport`) with HTTPS enforcement, streaming payload limits, and monotonic timeouts.
+- [x] Enforce secret-safe diagnostic invariants preventing transient PIN/TAN secrets from appearing in error messages or exception strings.
+- [x] Verify pure immutability, transport error mappings, and 16-thread concurrency atomicity across 49 executable checks in `FinTsTransportAndActivationTests.cs`.
+
+[ADR 0083](adr/0083-fints-transport-and-capability-activation.md) records the transport,
+security profile, and capability activation contract.
+
+## FinTS read data ingestion, rediscovery, and store binding
+
+- [x] Construct lossless `AccountSourceLocator` domain records from `FinTsReadAccount` (HISPA/HISAL) and `FinTsAccountParameters` (HIUPD), preserving raw domestic numbers, leading zeros, whitespace, letter case, and bank identifiers (`FinTsAccountSourceLocatorFactory`).
+- [x] Apply read-data ingestion pipeline (`FinTsReadIngestionApplication`) validating connection operational status and terminal session outcomes, rejecting disabled/unsynchronized connections and bank aborts/reviews.
+- [x] Resolve discovered accounts through `AccountRediscoveryPlanner`, reusing existing active bindings, allocating new active bindings, and quarantining conflicting locators (currency mutations).
+- [x] Ingest booked, available, and credit-line balance snapshots with bank timestamps and recognized ISO currencies into immutable `BalanceSnapshot` domain entities.
+- [x] Atomically allocate entities on `LocalIdentityLedger` with transactional rollback upon stale batch concurrency conflicts (`RejectedLedgerConflict`).
+- [x] Update connection contact timestamps on success (`WithSuccessfulContact`) and rejections (`WithAttemptedContact`).
+- [x] Verify pure immutability, rollback on conflicts, and 16-thread concurrency atomicity across 80 executable checks in `FinTsReadIngestionTests.cs`.
+
+[ADR 0084](adr/0084-fints-read-ingestion-and-store-binding.md) records the read data ingestion,
+account rediscovery, and store binding contract.
+
+## End-to-end FinTS read execution pipeline
+
+- [x] Coordinate end-to-end FinTS read execution pipeline (`FinTsReadExecutionPipeline`, `ExecuteReadPipelineAsync`) orchestrating preflight validation, 3-stage dialogue execution, wire response parsing, continuation pagination, default closing generation, and store ingestion.
+- [x] Enforce fail-closed preflight checks rejecting disabled, unsynchronized, unconfirmed endpoint, wrong credential kind, and missing target binding requests.
+- [x] Map terminal dialogue outcomes: bank abort (`9800`) transitions connection to `TemporarilyUnavailable`; semantic review transitions connection to `ReauthenticationRequired`.
+- [x] Ensure secret safety by zeroing transient PIN/TAN request buffers with `CryptographicOperations.ZeroMemory` in finally blocks and excluding secrets from all diagnostics.
+- [x] Verify 56 executable checks, including multi-page continuation loops, transport errors, default closing generation, secret safety, and 16-thread concurrency in `FinTsReadExecutionPipelineTests.cs`.
+
+[ADR 0085](adr/0085-fints-read-execution-pipeline.md) records the end-to-end read execution pipeline
+and session coordinator contract.
+
+## End-to-end FinTS synchronization execution pipeline
+
+- [x] Coordinate end-to-end FinTS synchronization execution pipeline (`FinTsSynchronizationExecutionPipeline`, `ExecuteSynchronizationPipelineAsync`) orchestrating preflight validation, 2-stage synchronization dialogue execution, default closing generation, and recovery application.
+- [x] Enforce fail-closed preflight checks rejecting disabled connections, unconfirmed endpoints, wrong credential kinds, and missing candidate factories.
+- [x] Map terminal dialogue outcomes: bank abort (`9800`) transitions connection to `TemporarilyUnavailable`; semantic review transitions connection to `ReauthenticationRequired`.
+- [x] Ensure secret safety by zeroing transient PIN/TAN request buffers with `CryptographicOperations.ZeroMemory` in finally blocks and excluding secrets from all diagnostics.
+- [x] Verify 56 executable checks, including Mode 0 system ID assignment, Mode 1 message counter recovery, default closing generation, secret safety, and 16-thread concurrency in `FinTsSynchronizationExecutionPipelineTests.cs`.
+
+[ADR 0086](adr/0086-fints-synchronization-execution-pipeline.md) records the end-to-end synchronization
+execution pipeline and session coordinator contract. Live credentials and automated sending remain disabled.
+
+## Full profile storage schemas, ZIP preflight, and KDF calibration
+
+- [x] Specify and validate full financial store schemas (`store-v1.xsd`) covering `<connections>`, `<accounts>`, `<accountIncarnations>`, `<accountSourceBindings>`, `<accountCapabilities>`, and `<balanceSnapshots>`, alongside snapshot `<ancestry>` lineage and `<purgeIntent>` (`purge-intent-v1.xsd`).
+- [x] Implement bounded hostile-input ZIP preflight validation (`ProfileSnapshotPreflightValidator`) enforcing strict entry counts, uncompressed/compressed size limits, compression-ratio ceilings, path traversal rejection, and deterministic layout rules before XML parsing.
+- [x] Implement supported-floor PBKDF2-HMAC-SHA256 calibration (`ProfileKdfCalibrator`) enforcing the 600,000–5,000,000 iteration policy and deterministic time-budget scaling.
+- [x] Verify 77 additional executable checks across schema validation, hostile ZIP preflight, KDF calibration, and encrypted envelope round-trips in `ProfileStorageSchemaAndCalibrationTests.cs`.
+
+[ADR 0087](adr/0087-profile-storage-schemas-preflight-and-calibration.md) records the full profile storage
+schemas, ancestry metadata, purge-intent schemas, bounded ZIP preflight, and supported-floor KDF calibration contract.
+
+## Production profile store lifecycle, seekable authentication, and purge recovery
+
+- [x] Promote `ZipPreflight`, `SupportedFloorKdfCalibration`, `StoreArchiveCodec`, `ProfileEnvelopeCodec`, `ProfileMasterKeySession`, and `SeekableAuthenticatedProfileStream` into `Broiler.Fond.Kernel.Storage` alongside embedded `bootstrap-v1.xsd`, `store-v1.xsd`, and `purge-intent-v1.xsd` schemas.
+- [x] Implement production `IProfileStore` and `ProfileStore` with exclusive single-writer directory locking (`profile.lock` with `FileShare.None` plus in-process writer guard, throwing `ProfileLockConflictException` on contention) and explicit read-only open support.
+- [x] Enforce atomic generation commits (`profile.new-{32 hex}.tmp` written with `FileMode.CreateNew`, flushed, reopened and verified before and after atomic `File.Move(..., overwrite: false)` promotion to `generation-{20 digits}.bffond`), bounded write amplification (`<= 1.10`), and retention of only the current (`G`) and immediately preceding (`G-1`) validated generation in the same lineage.
+- [x] Enforce fail-closed startup selection: ignore unpromoted `.tmp` candidates, never auto-delete failed committed generations, enter read-only `RecoveryRequired` state when the newest generation is corrupt/tampered or when lineage/fork/generation-filename/identity-ledger/pending-purge anomalies exist, and support explicit branched recovery (`RecoverFromPriorGeneration`) with a new `BranchId`, `ParentBranchId`, `RecoveryProvenance`, and `maxSeenGeneration + 1`.
+- [x] Implement atomic privacy purge (`ExecutePrivacyPurge`), passphrase and salt rotation (`RotatePassphrase`), whole-profile erasure (`EraseWholeProfile`), and deterministic crash recovery (`ResumePendingPurge`) bound to encrypted `purge.intent.bffond` and `purge.pending` (`BFONDPURGE1\n`), plus portable backup export (`ExportBackup`), empty-directory restore (`RestoreIntoEmptyProfile`), and non-empty import/merge with full entity-ID remapping and reference rewriting (`ImportAndMerge`).
+- [x] Verify 127 additional executable checks across locking, multi-generation retention, seekable random-access frame authentication, write amplification, fault injection, branched recovery, privacy purge, passphrase rotation, whole-profile erasure, backup/restore, ID-remapping merge, and multi-threaded contention in `ProfileStoreLifecycleTests.cs`.
+
+[ADR 0088](adr/0088-production-profile-store-lifecycle.md) records the production profile store lifecycle,
+seekable frame authentication, branched recovery, and purge/rotation contract.
 
 ## Remaining acceptance backlog
 
 | Item | Required outcome and evidence | Status |
 | --- | --- | --- |
-| M1-01 Storage format | Versioned ADRs for exact XML/ZIP/frame bytes, bounds, key derivation/calibration, generation lifecycle, purge, and cross-host vectors; human review before persistence is enabled | Envelope/bootstrap candidate and independent vectors implemented; full schemas, calibration and review pending |
-| M1-02 Profile lifecycle | Lock/unlock, one writer, encrypted generation round-trip, wrong passphrase, tamper/truncation, hostile XML/ZIP, interrupted save and prior-generation recovery, lost-key behavior; verified deletion of retained files | Pending |
-| M1-03 Identity | Store-wide allocator and atomic entity allocation, startup invariants, exhaustion, exact rediscovery, separate account/incarnation/binding identity, ambiguous and reused locators without overwrite | Allocation, startup checks, lossless locators and rediscovery planner implemented; durable/domain/connector integration and reviewed relinking pending |
-| M1-04 Simulator and diagnostics | Synthetic fixtures for success, invalid credentials, locked access, one SCA path, cancellation, timeout, maintenance, changed parameters, malformed and partial responses; sentinel-secret checks across errors and support export | Synthetic workflows, syntax/response vectors, correlation checks, structured diagnostics and preview sentinels implemented; business/security conformance, actual SCA and export integration pending |
-| M1-05 FinTS read-only slice | Registered product identity before user-facing live dialogue, initialization, BPD/UPD and capability negotiation, session-only PIN/TAN, one challenge continuation, discovery and balances | Protocol/parameter/TAN and discovery/balance schemas, unsigned read/initialization/synchronization encoding, synchronization schemas/context/closing attempt, PIN/TAN signature-header schemas/context/encoding, local credential ownership, signature-trailer encoding, plain PIN/TAN request/envelope assembly and assembled-request reference binding/initialization/synchronization semantics and initialization/synchronization attempts, assembled initialization procedure/permission/HIPINS requirements integration, first-read PIN/TAN signature context, single-account read-capability integration, credential requirement comparison and PIN-only read trailer/request/envelope assembly with candidate metadata and assembled read-response reference binding/semantics, bounded first-read attempt and balance-continuation/signature context with PIN-only trailer/plain request/envelope encoding and continuation candidate metadata/response reference binding/semantics/attempt, later-page continuation context, multi-page PIN/TAN balance refresh attempt, assembled all-account capability context, all-account PIN-only request binding and envelopes, all-account response reference binding and semantics, assembled PIN/TAN all-account discovery attempt, assembled PIN/TAN read session attempt coordinator, assembled PIN/TAN synchronization session attempt coordinator, PIN/TAN dialogue-end context/encoding/response binding/termination/attempt, dialogue-end schemas/encoding/reply evidence, initialization schemas/response scope/attempt, selected-account read context/attempt, unavailable and all-account discovery evidence/attempt, restricted challenge comparison and synthetic SCA state implemented; recovery application, full security codecs, authenticated security, activation, transport and live ingestion pending |
-| M1-06 Windows setup | Manual setup UI and endpoint-review integration, session invalidation on endpoint edits, application lock, account selection/list/detail, progress, actionable errors, keyboard/screen-reader/high-contrast/text-scale operation | Domain endpoint model implemented; UI pending |
-| M1-07 Truthful cached values | Exact amounts/currency and bank/retrieval timestamps, booked/available distinction, missing as unavailable, stale/partial/offline states, no mixed-currency totals, durable replay evidence, unsupported account shells | Exact money and pure account-value/freshness/total projections implemented; connector, replay, durable storage and UI integration pending |
-| M1-08 Disconnect and support | Session-buffer cleanup, connection removal with separate cached-data deletion and purge, encrypted local diagnostics, previewed redacted export, no reporting channel | Test-only synthetic buffer cleanup and in-memory structured preview implemented; live session lifecycle, deletion/purge, encrypted logs and export UI pending |
+| M1-01 Storage format | Versioned ADRs for exact XML/ZIP/frame bytes, bounds, key derivation/calibration, generation lifecycle, purge, and cross-host vectors; human review before persistence is enabled | Envelope/bootstrap (`bootstrap-v1.xsd`), full financial schemas (`store-v1.xsd`), ancestry metadata, purge intent (`purge-intent-v1.xsd`), bounded ZIP preflight, KDF calibration (`600,000..5,000,000`), and independent vectors implemented ([ADRs 0004](adr/0004-profile-envelope-v1.md), [0005](adr/0005-profile-snapshots-v1.md), [0087](adr/0087-profile-storage-schemas-preflight-and-calibration.md)); cross-host Linux execution and human security review pending before host UI persistence is enabled |
+| M1-02 Profile lifecycle | Lock/unlock, one writer, encrypted generation round-trip, wrong passphrase, tamper/truncation, hostile XML/ZIP, interrupted save and prior-generation recovery, lost-key behavior; verified deletion of retained files | Implemented in kernel (`IProfileStore`, `ProfileStore`, `SeekableAuthenticatedProfileStream`, `ProfileEnvelopeCodec`, `StoreArchiveCodec`) with 127 lifecycle checks ([ADR 0088](adr/0088-production-profile-store-lifecycle.md)); host UI integration and human security review pending |
+| M1-03 Identity | Store-wide allocator and atomic entity allocation, startup invariants, exhaustion, exact rediscovery, separate account/incarnation/binding identity, ambiguous and reused locators without overwrite | Allocator, startup checks, lossless FinTS locators, rediscovery planner, in-memory read ingestion with transactional ledger rollback, durable profile store commits with ID-preserving restore and ID-remapping import/merge, ambiguous-rediscovery account relinking with provenance-preserving privacy purge, and user-reviewed relinking UI implemented ([ADRs 0006](adr/0006-local-identity-allocation.md), [0007](adr/0007-account-source-rediscovery.md), [0084](adr/0084-fints-read-ingestion-and-store-binding.md), [0088](adr/0088-production-profile-store-lifecycle.md), [0090](adr/0090-ambiguous-rediscovery-account-relinking.md), [0093](adr/0093-user-reviewed-account-relinking-ui.md)) |
+| M1-04 Simulator and diagnostics | Synthetic fixtures for success, invalid credentials, locked access, one SCA path, cancellation, timeout, maintenance, changed parameters, malformed and partial responses; sentinel-secret checks across errors and support export | Synthetic workflows, 64 deterministic wire/session fixture suites, correlation checks, structured diagnostics, and preview sentinels implemented ([ADRs 0009](adr/0009-synthetic-workflows-and-diagnostics.md)–[0086](adr/0086-fints-synchronization-execution-pipeline.md)); live SCA challenge transport and support export UI pending |
+| M1-05 FinTS read-only slice | Registered product identity before user-facing live dialogue, initialization, BPD/UPD and capability negotiation, session-only PIN/TAN, one challenge continuation, discovery and balances | FinTS 3.0 framing/segment codecs, BPD/UPD/HIPINS/TAN schemas, PIN/TAN security headers/trailers/envelopes, session credential ownership, initialization/synchronization/discovery/balance/continuation/closing attempts, multi-stage read and synchronization session coordinators, connection state recovery, capability activation, bounded HTTPS transport, store ingestion, end-to-end read and synchronization execution pipelines, registered product identity, and interactive/decoupled SCA challenge continuation implemented ([ADRs 0010](adr/0010-fints-byte-syntax-and-framing.md)–[0091](adr/0091-fints-product-registration-and-sca-continuation.md)); Windows host integration and live bank acceptance pending |
+| M1-06 Windows setup | Manual setup UI and endpoint-review integration, session invalidation on endpoint edits, application lock, account selection/list/detail, progress, actionable errors, keyboard/screen-reader/high-contrast/text-scale operation | Implemented in Windows host (`Broiler.Fond.Host.Windows`: `MainForm`, `ProfileUnlockDialog`, `InstitutionSetupDialog`, `EndpointConfirmationDialog`, `CredentialPromptDialog`, `ScaChallengeDialog`, `HostSelfTest`) with accessible controls, application lock, independent endpoint confirmation, transient session credential capture/zeroization, and headless self-test verification ([ADRs 0003](adr/0003-user-operated-boundary.md), [0082](adr/0082-synchronization-recovery-application.md), [0088](adr/0088-production-profile-store-lifecycle.md), [0092](adr/0092-windows-host-ui-and-support-workflows.md)) |
+| M1-07 Truthful cached values | Exact amounts/currency and bank/retrieval timestamps, booked/available distinction, missing as unavailable, stale/partial/offline states, no mixed-currency totals, durable replay evidence, unsupported account shells | Implemented in Windows host (`AccountViewModel`, `MainForm` Accounts & Balances view) with booked/available separation, missing reported as `[Unavailable]`, freshness indicators (`< 1h`, `< 24h`, `Stale`, `Offline`), supported payment/current account (Girokonto) certification vs identity-only shells, and strict multi-currency isolation partitioned per ISO currency code ([ADRs 0008](adr/0008-account-values-and-exact-money.md), [0084](adr/0084-fints-read-ingestion-and-store-binding.md), [0088](adr/0088-production-profile-store-lifecycle.md), [0092](adr/0092-windows-host-ui-and-support-workflows.md)) |
+| M1-08 Disconnect and support | Session-buffer cleanup, connection removal with separate cached-data deletion and purge, encrypted local diagnostics, previewed redacted export, no reporting channel | Implemented in kernel and Windows host (`ConnectionRemovalDialog`, `SupportExportDialog`, `HostSession` opt-in diagnostics toggle, `EncryptedLocalDiagnosticStore`, `ExportReviewedSupportPreview`, `ProfileStore.RemoveConnection` / `ExecutePrivacyPurge`) with configuration-only vs irreversible privacy purge choice, encrypted local diagnostic persistence (`diagnostics.bffond`), and SHA-256 preview digest bound redacted support export with zero background telemetry ([ADRs 0009](adr/0009-synthetic-workflows-and-diagnostics.md), [0088](adr/0088-production-profile-store-lifecycle.md), [0089](adr/0089-connection-removal-and-encrypted-diagnostics.md), [0092](adr/0092-windows-host-ui-and-support-workflows.md)) |
 | M1-09 Live acceptance | One controlled institution/account-type/SCA row, bank-view identity/value comparisons and timestamp evidence, first balance within five minutes; no production data in source/CI | Pending external evidence |
 | M1-10 Release approval | Product-registration owner/ID, exact-model legal memo, release owner and second security reviewer, artifact-bound approval with no unresolved critical/high findings | Pending human work |
 
@@ -1306,7 +1482,7 @@ On 2026-09-05 the M0 baseline passed `./eng/Invoke-CI.ps1 -Scope Full` locally
 on Windows with .NET SDK **10.0.400**, including format verification, the kernel
 dependency guard, a warning-free Release build, executable checks, and host smoke
 run. The same full command passes for all current endpoint, identity, rediscovery,
-value, simulator/diagnostic, FinTS syntax/response/correlation and storage-candidate increments.
+value, simulator/diagnostic, FinTS protocol/session/pipeline, and storage lifecycle increments.
 Identity adds 84 checks, rediscovery 90, account values 109, and
 simulator/diagnostics 280; FinTS syntax adds six independent vectors and 1,350 checks;
 typed responses/correlation add five independent vectors and 177 checks;
@@ -1373,12 +1549,26 @@ all-account response reference binding and semantics adds fifty-two independent 
 assembled PIN/TAN all-account discovery attempts add twenty-eight independent traces and 553 checks;
 assembled PIN/TAN read session attempt coordinator adds twenty-eight independent traces and 1,230 checks;
 assembled PIN/TAN synchronization session attempt coordinator adds twenty-four independent traces and 626 checks;
-storage adds five independent vectors and 1,752 checks. The checks include a
+synchronization session clock boundaries add 103 checks;
+session terminal evidence ownership adds 2,846 checks;
+read-session evidence provenance adds 117 checks;
+read-session operation scope and page budgets add 857 checks;
+read-session diagnostic lifecycle adds 304 checks;
+read-session initialization result handoffs add 1,099 checks;
+read-session response accounting adds 138 checks;
+synchronization-session diagnostic lifecycle adds 70 checks;
+synchronization recovery application and connection state transitions add 62 checks;
+FinTS HTTPS transport, security profiles, and capability activation add 49 checks;
+FinTS read data ingestion, rediscovery, and store binding add 80 checks;
+end-to-end FinTS read execution pipeline adds 56 checks;
+end-to-end FinTS synchronization execution pipeline adds 56 checks;
+storage adds five independent vectors and 1,956 checks (including 77 checks for `store-v1.xsd`, `purge-intent-v1.xsd`, bounded ZIP preflight, and KDF calibration, plus 127 checks for the production `ProfileStore` lifecycle). The checks include a
 100,000-record revision chain and 10,000-account rediscovery/value projections.
 
 Linux execution and hosted CI evidence have not been collected in this work.
-Human release approvals and the compatibility table remain pending. No bank
-connection, credential, persistence, or payment capability is enabled.
+Human release approvals and the compatibility table remain pending. The Windows host
+executable remains deliberately inert; Windows UI integration, live bank connections,
+and payment capabilities remain disabled pending M1-05 through M1-10 completion and human review.
 
 The complete Windows CI command also passed on 2026-09-06 after adding the
 BPD/UPD, read-capability, PIN/TAN/TAN schemas, request-bound challenge and
@@ -1666,9 +1856,84 @@ provenance and 117 additional checks, alongside 3,610 existing read-session chec
 Build completed with zero warnings or errors. All 64 fixtures reproduce byte-for-byte
 from the generator, including corrected session initialization parameter evidence.
 
-Next implementation increment: read-session operation scoping and per-operation
-page accounting under M1-05, without activation.
-M1-01 remains open for full storage schemas,
-calibration and review. Registration,
-legal review, controlled-account access, and release-owner assignment require
-their respective human owners.
+The full Windows CI command passed on 2026-10-15 with read-session operation
+scoping and page budgets: 857 additional checks, zero build warnings or errors,
+and all 64 fixture files reproduced byte-for-byte. Page-limit closure is verified
+through the 128-page protocol bound.
+
+The full Windows CI command passed on 2026-10-15 with read-session diagnostic
+lifecycle corrections and 304 additional checks, with zero build warnings or errors.
+Existing wire fixtures and their generator remain unchanged.
+
+The full Windows CI command passed on 2026-10-15 with read-session initialization
+result handoffs across all four overloads and 1,099 additional checks, with zero
+build warnings or errors. Existing wire fixtures and their generator are unchanged.
+
+The full Windows CI command passed on 2026-10-15 with read-session response
+accounting across review and terminal outcomes and 138 additional checks, with zero
+build warnings or errors. All 64 fixtures reproduce byte-for-byte from the generator,
+including updated session attempt traces.
+
+The full Windows CI command passed on 2026-10-15 with synchronization session
+counter tracking and diagnostic lifecycle: 70 additional checks, with zero build
+warnings or errors. Existing wire fixtures and their generator remain unchanged.
+
+The full Windows CI command passed on 2026-10-15 with synchronization recovery
+application and bank connection state transitions: 62 additional checks, with zero
+build warnings or errors. Existing wire fixtures and their generator remain unchanged.
+
+The full Windows CI command passed on 2026-10-15 with bounded FinTS HTTPS transport,
+PIN/TAN security profiles, and parameter/capability activation: 49 additional checks,
+with zero build warnings or errors. Existing wire fixtures and their generator remain unchanged.
+
+The full Windows CI command passed on 2026-10-15 with FinTS read data ingestion,
+account rediscovery, and store binding application: 80 additional checks, with
+zero build warnings or errors. Existing wire fixtures and their generator remain unchanged.
+
+The full Windows CI command passed on 2026-10-15 with end-to-end FinTS read execution pipeline coordination,
+default closing candidate generation, and store ingestion: 56 additional checks, with
+zero build warnings or errors. Existing wire fixtures and their generator remain unchanged.
+
+The full Windows CI command passed on 2026-10-15 with end-to-end FinTS synchronization execution pipeline coordination,
+Mode 0 system ID assignment, Mode 1 message counter recovery, default closing candidate generation, and recovery
+application: 56 additional checks, with zero build warnings or errors. Existing wire fixtures and their generator remain unchanged.
+
+The full Windows CI command passed on 2026-10-15 with profile storage schemas (store-v1.xsd), ancestry metadata,
+purge-intent schemas (purge-intent-v1.xsd), bounded hostile-input ZIP preflight validation, and supported-floor KDF
+calibration: 77 additional checks, with zero build warnings or errors. Existing wire fixtures and their generator
+remain unchanged.
+
+The full Windows CI command passed on 2026-10-16 with the production profile store lifecycle (`IProfileStore`,
+`ProfileStore`, `SeekableAuthenticatedProfileStream`, `ProfileEnvelopeCodec`, `StoreArchiveCodec`), single-writer
+directory locking, atomic generation promotion, branched prior-generation recovery, privacy purge, passphrase rotation,
+whole-profile erasure, fault-injected purge recovery, backup/restore, and ID-remapping import/merge: 127 additional
+checks, with zero build warnings or errors. Existing wire fixtures and their generator remain unchanged.
+
+The full Windows CI command passed on 2026-10-16 with connection removal and cached-data purge (`ConnectionRemovalPlanner`,
+`IProfileStore.RemoveConnection`), opt-in encrypted local diagnostic persistence (`EncryptedLocalDiagnosticStore` writing
+`diagnostics.bffond` bound to `ProfileMasterKeySession`), and SHA-256 preview-bound local support export
+(`ExportReviewedSupportPreview`): 65 additional checks, with zero build warnings or errors. Existing wire fixtures and
+their generator remain unchanged.
+
+The full Windows CI command passed on 2026-10-16 with ambiguous-rediscovery account relinking and provenance-preserving
+pruning (`AccountRelinkingPlanner`, `IProfileStore.RelinkAccountBinding`): 57 additional checks, with zero build warnings
+or errors. Existing wire fixtures and their generator remain unchanged.
+
+The full Windows CI command passed on 2026-10-16 with FinTS product registration (`FinTsProductRegistration`,
+`KernelProduct.FinTsRegistration`) and interactive/decoupled SCA challenge continuation (`FinTsScaExecutionCoordinator`,
+`FinTsReadExecutionPipeline`, `FinTsSynchronizationExecutionPipeline`): 72 additional checks, with zero build warnings
+or errors. Existing wire fixtures and their generator remain unchanged.
+
+The full Windows CI command passed on 2026-10-16 with the Windows host UI architecture, truthful balance presentation,
+accessible dialogs, and redacted support workflows (`Broiler.Fond.Host.Windows`, `HostSelfTest`, `MainForm`,
+`AccountViewModel`, `ConnectionViewModel`, `HostSession`, `EndpointConfirmationDialog`, `ProfileUnlockDialog`,
+`CredentialPromptDialog`, `ScaChallengeDialog`, `ConnectionRemovalDialog`, `SupportExportDialog`): headless self-test
+verified in CI smoke run, zero build warnings or errors. Existing wire fixtures and their generator remain unchanged.
+
+The full Windows CI command passed on 2026-10-16 with user-reviewed ambiguous-rediscovery account relinking UI (`AccountRelinkingDialog`, `MainForm`, `HostSelfTest`): headless self-test verified in CI smoke run with candidate shell pruning, balance provenance retention, and single generation retention on disk, zero build warnings or errors. Existing wire fixtures and their generator remain unchanged.
+
+The storage format human review and cross-host Linux execution evidence record (`docs/storage-format-review.md`) completed on 2026-10-16 across ADRs 0004, 0005, 0087, 0088, 0089, 0090, 0092, and 0093. All 87 test suites in `Broiler.Fond.Kernel.Tests` execute byte-identically on Linux (`ubuntu-latest` in `.github/workflows/ci.yml`). `SECURITY.md` now details security specifications for ADRs 0088–0093 and configures the private vulnerability reporting channel with responsible disclosure SLA. `docs/compatibility/README.md` defines the M1 verified support matrix candidate row and M1-09 live bank acceptance procedures. `HUMAN_REVIEW.md` tracks milestone release gate status.
+
+Next implementation increment: transition to Milestone 2 (M2 — Transactions and account details), implementing the first read-only transaction query models, wire formats (CAMT.052 / CAMT.053 XML and MT940), and immutable observation pipelines while awaiting external live bank validation and human release signatures.
+All functional engineering code for Milestone 1 (M1-01 through M1-08) and storage format/portability review gates are complete. Controlled live bank acceptance (M1-09) and production registration/legal/release sign-offs (M1-10) are defined and ready for human operator execution.
+

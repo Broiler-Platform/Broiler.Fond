@@ -156,14 +156,14 @@ internal static class FinTsPinTanReadLaterContinuationContextTests
         Console.WriteLine($"FinTS later-page balance-continuation context passed ({vectors.Length} independent vectors, {count} checks).");
     }
 
-    private static FinTsReadRequestContext MakeContinuationRequest(int messageNumber, int expectedBankNumber, string token)
+    internal static FinTsReadRequestContext MakeContinuationRequest(int messageNumber, int expectedBankNumber, string token)
     {
         string wire = $"HNHBK:1:3+000000000000+300+SYNTHETIC+{messageNumber}'HKSAL:2:7+PUBLIC-IBAN:PUBLIC-BIC+N++{token}'HNHBS:3:1+{messageNumber}'";
         wire = wire.Replace("000000000000", wire.Length.ToString("D12", CultureInfo.InvariantCulture), StringComparison.Ordinal);
         return FinTsReadRequestContext.Parse(FinTsMessageFrame.Parse(Encoding.Latin1.GetBytes(wire)), expectedBankNumber);
     }
 
-    private static FinTsResponse MakeContinuationResponse(int messageNumber, string token)
+    internal static FinTsResponse MakeContinuationResponse(int messageNumber, string token)
     {
         string inner = $"HIRMG:2:2+0010::PUBLIC-REPLY'HIRMS:3:2:3+3040::PUBLIC-REPLY:{token}'HISAL:4:7:3+PUBLIC-IBAN:PUBLIC-BIC+PUBLIC-ACCOUNT+EUR+C:1,:EUR:20260910'";
         string envelope = $"HNVSK:998:3+PIN:2+998+1+1::PUBLIC-SYSTEM+1+2:2:13:@8@\0\0\0\0\0\0\0\0:5:1+280:PUBLIC-BANK:PUBLIC-USER:V:0:0+0'HNVSD:999:1+@{inner.Length}@{inner}'";

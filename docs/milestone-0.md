@@ -1,5 +1,7 @@
 # Milestone 0 — Engineering foundation
 
+**Status:** Complete (verified 2026-09-05).
+
 ## Outcome
 
 Milestone 0 establishes a buildable, policy-enforced skeleton for **Broiler
@@ -42,20 +44,20 @@ partial banking implementations and must not simulate success.
 
 The milestone is complete only when evidence shows all of the following:
 
-- [ ] An SDK selected by the repository's .NET 10 policy restores and builds
+- [x] An SDK selected by the repository's .NET 10 policy restores and builds
       the solution without warnings; the exact SDK is captured as evidence.
-- [ ] Formatting and analyzer checks pass.
-- [ ] The kernel-boundary check proves that the kernel targets `net10.0`, uses
+- [x] Formatting and analyzer checks pass.
+- [x] The kernel-boundary check proves that the kernel targets `net10.0`, uses
       no third-party package, contains no platform-specific dependency, and
       does not reference a host project.
-- [ ] The BCL-only verification executable passes.
-- [ ] The kernel builds on both Windows and Linux CI runners.
-- [ ] The inert Windows host builds and its no-capability smoke run passes on
+- [x] The BCL-only verification executable passes.
+- [x] The kernel builds on both Windows and Linux CI runners.
+- [x] The inert Windows host builds and its no-capability smoke run passes on
       the Windows CI runner.
-- [ ] Repository and generated outputs contain no production secret or
+- [x] Repository and generated outputs contain no production secret or
       financial-data fixture.
-- [ ] The governance documents exist with approval states left pending.
-- [ ] No live institution appears in the verified compatibility table.
+- [x] The governance documents exist with approval states left pending.
+- [x] No live institution appears in the verified compatibility table.
 
 For a local equivalent of the full CI path, run:
 

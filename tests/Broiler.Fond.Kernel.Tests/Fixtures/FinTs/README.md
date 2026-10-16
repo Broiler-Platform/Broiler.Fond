@@ -901,3 +901,37 @@ re-evaluating the embedded response. All 28 trace transitions remain unchanged.
 closing contexts and re-evaluated continuation predecessors, then verify valid
 retries and exact predecessor binding through page three. See
 [ADR 0076](../../../../docs/adr/0076-read-session-evidence-provenance.md).
+
+## Read-session operation scope and page accounting
+
+The session fixture now expects `PageLimitReached` for a partial response at the
+page budget and `WrongState` for an initial read submitted after operation completion.
+The completed-operation trace is named `completed-operation-restart-rejected`.
+Additional executable coverage reuses public synthetic responses to exercise
+budgets of 1, 2, 3 and 128, exact-once balance/page accounting, complete and unavailable
+outcomes at the limit, stable snapshots, and closing after truncation. A valid
+selected-account HKSPA candidate is rejected by the HKSAL balance entry point.
+See [ADR 0077](../../../../docs/adr/0077-read-session-operation-scope.md).
+
+## Read-session response accounting across review and terminal outcomes
+
+The session fixture `pin-tan-read-session-attempt-v1.json` now reflects evaluated
+response counting across review outcomes in traces 8 (`session-initialization-review`),
+9 (`session-all-account-review`), 10 (`session-balance-read-review`), and 11
+(`session-closing-review`), advancing `handled` counts to 1, 2, 2, and 3 respectively.
+Additional executable coverage exercises all four initialization overloads, operational
+review, continuation review, clean/abort/review closing, foreign and replay invariance,
+monotonic progress invariant `ResponsesHandled <= RequestsRecorded`, and 16-thread
+concurrent review submissions. See [ADR 0080](../../../../docs/adr/0080-read-session-response-accounting.md).
+
+## Synchronization-session counter tracking and diagnostic lifecycle
+
+The synchronization session fixture `pin-tan-synchronization-session-attempt-v1.json`
+is verified across all 24 traces for monotonic progress `ResponsesHandled <= RequestsRecorded`.
+Additional executable checks in `FinTsPinTanSynchronizationSessionDiagnosticTests.cs` exercise
+bank message counter updates (`BankMessageNumber = 1` on sync abort/review, `BankMessageNumber = 2`
+on closing abort/review/close), transient candidate and response diagnostic clearing upon retries,
+active `DialogueId` availability and ADR 0075 terminal release, `HasMatchingEvidence` result handoff,
+and 16-thread concurrency atomicity across all terminal paths.
+See [ADR 0081](../../../../docs/adr/0081-synchronization-session-diagnostic-lifecycle.md).
+

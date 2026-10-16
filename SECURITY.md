@@ -2,18 +2,28 @@
 
 ## Current development status
 
-Milestone 1 development adds manual endpoint validation, confirmation, and
-quarantine, in-memory identity allocation/startup integrity checks, and a pure
-account rediscovery/value projection layer to the M0 foundation. The Windows host
-remains inert. It does
-**not** implement bank connectivity, credential handling,
-profile persistence, balance retrieval, or payments. No live institution is
-supported and no security certification or release approval is claimed.
+Milestone 1 implementation adds manual endpoint validation, confirmation, and
+quarantine; in-memory identity allocation and startup integrity checks; a pure
+account rediscovery and exact-money value projection layer; the FinTS 3.0 PIN/TAN read
+and synchronization protocol stack (bounded HTTPS transport, session coordinators,
+capability activation, read store ingestion, and execution pipelines); encrypted local
+diagnostic persistence and privacy-conscious support export; production profile store
+lifecycle with atomic promotion and privacy purge; deterministic ambiguous-rediscovery
+account relinking; FinTS application registration and interactive/decoupled SCA continuation;
+and the Windows host application architecture (`Broiler.Fond.Host.Windows`) with accessible
+dialogs and ephemeral credential zeroization to the M0 foundation. Payments remain strictly
+out of scope. No live institution support is published without controlled bank acceptance
+evidence, and no release approval is claimed before completion of the human release gate.
 
-The proposed storage format has public synthetic vectors and BCL reference
-code only in the verification project. The fixed fixture keys/nonces must never
-protect user data. Full schemas, production streaming, KDF calibration and human
-security review remain prerequisites for enabling profile persistence.
+The storage format candidate has public synthetic vectors, full M1 financial
+(`store-v1.xsd`), bootstrap (`bootstrap-v1.xsd`), and purge-intent
+(`purge-intent-v1.xsd`) schemas, bounded hostile-input ZIP preflight validation,
+supported-floor PBKDF2-HMAC-SHA256 calibration (`600,000..5,000,000` iterations),
+and BCL reference codecs in the verification project ([ADRs 0004](docs/adr/0004-profile-envelope-v1.md),
+[0005](docs/adr/0005-profile-snapshots-v1.md), [0087](docs/adr/0087-profile-storage-schemas-preflight-and-calibration.md)).
+The fixed fixture keys/nonces must never protect user data. Production profile
+lifecycle (`M1-02`), seekable streaming readers, cross-host execution evidence,
+and human security review remain prerequisites for enabling profile persistence.
 
 The kernel's opt-in diagnostic buffer accepts only predefined event codes and
 outcomes, with optional timestamps in an immutable in-memory support preview.
@@ -586,6 +596,179 @@ candidates leave the active state and deadline intact and expose only a scalar
 source-mismatch issue. This local binding does not authenticate a bank response.
 See [ADR 0076](docs/adr/0076-read-session-evidence-provenance.md).
 
+Read sessions now allow one discovery or balance operation after initialization,
+followed by closing. The balance path requires HKSAL; a valid HKSPA candidate
+cannot be treated as a balance read. Completed or page-limited operations cannot
+restart, switch operation or reset their page budget. Partial results at the
+budget return `PageLimitReached`, preserving their data without reporting complete
+execution. See [ADR 0077](docs/adr/0077-read-session-operation-scope.md).
+
+Read-session retry diagnostics now clear only when a candidate is accepted or an
+in-scope response reaches semantic publication. Current response issues replace
+resolved mismatches, including genuine binding errors on review outcomes. Foreign
+responses and wrong-state calls leave unresolved diagnostics visible. Page-limit
+truncation survives dialogue closing, abort and review so successful closure does
+not imply a complete read. See
+[ADR 0078](docs/adr/0078-read-session-diagnostic-lifecycle.md).
+
+Every read-session initialization overload now hands its evaluated evidence to the
+caller, including semantic review. The most complete qualification controls
+`HasMatchingEvidence`; a valid base initialization cannot override rejected
+procedures or requirements. Publication remains one-time and source-bound, and
+cancellation or expiry before publication returns no partial evidence. Caller-owned
+results survive session cleanup. See
+[ADR 0079](docs/adr/0079-read-session-initialization-handoffs.md).
+
+Read sessions now advance evaluated response counts and expected sequential bank
+message numbers when an in-scope response is evaluated, including semantic review outcomes
+and bank aborts. Foreign responses, counter replays, wrong-state calls, and pre-publication
+interruptions preserve response counts and sequential counters unchanged. The progress
+monotonicity invariant `ResponsesHandled <= RequestsRecorded` is enforced across all
+lifecycle states, terminal transitions, disposal, and concurrent races. See
+[ADR 0080](docs/adr/0080-read-session-response-accounting.md).
+
+Synchronization sessions similarly track sequential bank message numbers across bank
+abort and review outcomes (`BankMessageNumber = 1` on sync abort/review, `BankMessageNumber = 2`
+on closing abort/review/close). Transient candidate errors (`DialogueIdMismatch`,
+`MessageNumberMismatch`, `ClosingBindingNeedsReview`) and transient response issues are cleared
+upon accepted retries. The bank-assigned dialogue identifier is pinned during open dialogue
+stages and released upon terminal transitions per ADR 0075. The progress monotonicity invariant
+`ResponsesHandled <= RequestsRecorded` and concurrency atomicity across terminal paths are
+enforced. See [ADR 0081](docs/adr/0081-synchronization-session-diagnostic-lifecycle.md).
+
+Bank connections and synchronization recovery application enforce pure fail-closed
+transitions and credential boundary invariants. The immutable `BankConnection` domain
+entity models operational connection states (`Unconfigured`, `Authenticating`,
+`ChallengeRequired`, `Connected`, `ReauthenticationRequired`, `TemporarilyUnavailable`,
+`Disabled`) with plain-language recovery actions. Banking credentials (PIN/TAN) are
+never stored on this entity or in local archives. Recovery application verifies
+session evidence, dialogue closure, unique reports, and identity matching before
+applying bank-assigned system identifiers (Mode 0) or synchronized message counters
+(Mode 1). Disabled connections, aborts, reviews, and malformed reports fail closed
+without updating synchronization state or corrupting connection attributes. See
+[ADR 0082](docs/adr/0082-synchronization-recovery-application.md).
+
+Bounded FinTS HTTPS transport and capability activation enforce secret-safe network
+boundaries and verified parameter projection. Canonical `AccountCapability` domain
+entities represent operation and version advertisements with fail-closed validation.
+Parameter activation projects parsed BPD and UPD data into active or suspended
+capabilities, rejecting disabled or unsynchronized connections and mismatched institution
+identities. The bounded `FinTsHttpsTransport` strictly enforces absolute HTTPS endpoints,
+rejects userinfo, fragments, and non-HTTPS schemes, bounds request and response payload
+sizes (128 KiB request, 1 MiB response with streaming cutoff), applies monotonic timeouts,
+and guarantees that raw request/response bytes (including transient PIN and TAN secrets)
+are never leaked into exception diagnostics, error messages, or crash reports. See
+[ADR 0083](docs/adr/0083-fints-transport-and-capability-activation.md).
+
+FinTS read data ingestion and store binding connect verified read session results to the
+local profile identity ledger with pure fail-closed rejections and atomic batch allocation.
+`FinTsAccountSourceLocatorFactory` constructs lossless locators preserving raw domestic
+numbers, leading zeros, whitespace, letter casing, subaccounts, and country/BIC identifiers.
+`FinTsReadIngestionApplication` validates connection operational state and terminal session
+execution reports, rejecting disabled/unsynchronized connections, bank aborts (`9800`), and
+semantic reviews. Accounts discovered across `HISPA`, `HISAL`, and `HIUPD` evidence are
+resolved through `AccountRediscoveryPlanner`: existing bindings are reused, new accounts
+are allocated in `Active` status, and conflicting locators (such as unexpected currency
+mutations) are quarantined in `Quarantined` status to protect against silent ledger
+corruption. Booked, available, and credit-line balance snapshots with bank-reported timestamps
+are ingested only for active bindings after validating currency recognition, and all ledger
+entities are committed in an atomic batch that rolls back upon concurrency conflicts
+(`StaleIdentityBatchException`). Banking credentials remain strictly transient. See
+[ADR 0084](docs/adr/0084-fints-read-ingestion-and-store-binding.md).
+
+The FinTS read execution pipeline coordinates end-to-end HTTPS banking communication, dialogue state
+machine transitions, continuation pagination, dialogue termination, and store ingestion. Preflight
+validation rejects disabled, unsynchronized, unconfirmed, or wrong-credential calls. Wire requests are
+encoded into transient staging buffers and wiped with `CryptographicOperations.ZeroMemory` immediately
+after transmission. Bank aborts (`9800`) transition connection state to `TemporarilyUnavailable` and
+semantic reviews map to `ReauthenticationRequired`. Default closing candidates (`HKEND`) strictly
+inherit security and dialogue parameters from accepted initialization evidence. Session credentials
+(PINs/TANs) and HNSHA segment contents are excluded from all diagnostic issues and logs. See
+[ADR 0085](docs/adr/0085-fints-read-execution-pipeline.md).
+
+The FinTS synchronization execution pipeline coordinates end-to-end HTTPS synchronization dialogues across
+transport, dialogue state machine, closing termination, and recovery application. Preflight checks reject
+disabled, unconfirmed, or invalid credential states. Wire requests are encoded in transient staging buffers
+and zeroed with `CryptographicOperations.ZeroMemory` immediately following transmission. Dialogue aborts
+(`9800`) transition connection state to `TemporarilyUnavailable` and semantic reviews map to
+`ReauthenticationRequired`. Default closing candidates (`HKEND`) synthesize matching headers inheriting
+security parameters and newly assigned or recovered system IDs. Credentials and signature trailers are
+strictly omitted from all diagnostics, exceptions, and issue lists. See
+[ADR 0086](docs/adr/0086-fints-synchronization-execution-pipeline.md).
+
+The M1 profile storage format candidate now defines complete financial-document schemas (`store-v1.xsd`)
+and purge-intent schemas (`purge-intent-v1.xsd`). All documents are validated against strict W3C XML schemas
+with DTD prohibited, external resolution disabled, character limits enforced, and depth bounded to 8.
+Ancestry metadata preserves parent branch linkages and recovery provenance for roll-forward branches.
+Production bounded ZIP preflight directly inspects raw bytes prior to archive instantiation, enforcing single-volume
+unencrypted structures, compression methods 0 and 8 only, exclusion of ZIP64/extra fields/archive comments,
+name traversal/separator rejection, sequential contiguity, and a 128:1 expansion ceiling to halt decompression bombs.
+Supported-floor KDF calibration measures statistical multi-sample timing against target envelope latency
+(500–1,000 ms median, max 2,000 ms p95) within 600,000–5,000,000 PBKDF2 iterations, enforcing the fail-closed
+security invariant that the candidate floor (600,000) is never lowered automatically. Banking credentials
+(PINs/TANs) remain strictly absent from all stored documents and purge manifests. See
+[ADR 0087](docs/adr/0087-profile-storage-schemas-preflight-and-calibration.md).
+
+The production profile store lifecycle (`IProfileStore`, `ProfileStore`, `SeekableAuthenticatedProfileStream`,
+`ProfileEnvelopeCodec`, `StoreArchiveCodec`) enforces single-writer directory mutual exclusion using an exclusive
+OS file lock (`profile.lock`), rejecting concurrent access with `ProfileStoreLockedException`. Generation updates
+are staged in temporary staging files and committed via atomic promotion, preserving prior generations for crash
+resilience. Branch authorization protects roll-forward ancestry and detects branching conflicts (`ProfileBranchingException`).
+Passphrase rotation executes whole-container re-encryption without in-place key reuse. Privacy purge permanently
+erases superseded generations through multi-pass cryptographic overwriting (cryptographic random followed by zero-fill)
+before file unlinking, coordinated by atomic purge-intent journals (`purge-intent-v1.xsd`) with crash recovery.
+Seekable authenticated profile streams enforce per-frame AES-256-GCM verification before returning plaintext bytes,
+and `ProfileMasterKeySession` securely zeroes cached derivation keys upon locking or disposal. See
+[ADR 0088](docs/adr/0088-production-profile-store-lifecycle.md).
+
+Connection removal and cached-data purge protocol (`ConnectionRemovalPlanner`, `IProfileStore.RemoveConnection`)
+enforce explicit user consent and verifiable erasure. Connection deletion transitions connection state, strips
+associated bank identifiers, and optionally executes privacy-purged removal of cached accounts, incarnations,
+bindings, balance snapshots, and associated diagnostic archives. Opt-in diagnostic persistence (`EncryptedLocalDiagnosticStore`)
+records structured operational events to an encrypted local file (`diagnostics.bffond`) using the active
+`ProfileMasterKeySession`, ensuring diagnostics cannot be decrypted without the user's profile passphrase. Redacted
+support export (`ExportReviewedSupportPreview`) generates a SHA-256 preview-digest bound archive containing solely
+pre-reviewed sanitized metadata with absolute exclusion of banking credentials, PINs, TANs, account numbers, and
+financial balances. No background reporting or telemetry transport exists. See
+[ADR 0089](docs/adr/0089-connection-removal-and-encrypted-diagnostics.md).
+
+Ambiguous-rediscovery account relinking (`AccountRelinkingPlanner`, `IProfileStore.RelinkAccountBinding`) provides
+deterministic, auditable resolution when institution accounts mutate domestic locators or appear in ambiguous states.
+Rather than silently conflating accounts or guessing identity mappings, conflicting candidates are held in `Quarantined`
+status. Relinking executes an authenticated ledger transaction: the source binding transitions from `Quarantined` to
+`Active` pointing to the verified target account incarnation, with all prior balance snapshots and historical provenance
+intact. If the source account shell was an orphaned rediscovery candidate, it is pruned from the profile generation
+and purged via cryptographic overwrite, preventing ghost account pollution while preserving strict auditability. See
+[ADR 0090](docs/adr/0090-ambiguous-rediscovery-account-relinking.md).
+
+FinTS product registration (`FinTsProductRegistration`, `KernelProduct.FinTsRegistration`) and interactive/decoupled
+SCA challenge continuation (`FinTsScaExecutionCoordinator`) establish rigorous protocol identity and challenge handling.
+Product registration enforces standard FinTS 3.0 identification parameters (`Broiler Fond - Finance on Demand`, registered
+vendor ID, and product version) in all dialogue initialization envelopes. The SCA coordinator manages multi-step
+authentication dialogues (HITANS v6/v7 challenge inspection, user notification of decoupled app approval, challenge
+code/matrix display, and HKTAN status polling) under an absolute monotonic deadline. Banking PINs and TANs are held only
+in ephemeral buffers and wiped with `CryptographicOperations.ZeroMemory` immediately following transmission. See
+[ADR 0091](docs/adr/0091-fints-product-registration-and-sca-continuation.md).
+
+The Windows host application architecture (`Broiler.Fond.Host.Windows`) implements an accessible, responsive presentation
+layer adhering strictly to the user-operated security boundary. All views (`MainForm`) and dialogs (`EndpointConfirmationDialog`,
+`ProfileUnlockDialog`, `CredentialPromptDialog`, `ScaChallengeDialog`, `ConnectionRemovalDialog`, `SupportExportDialog`)
+provide keyboard navigation, high-DPI scaling, and accessible descriptions (`AccessibleRole`, `AccessibleName`).
+Balances are displayed with truthful freshness indicators (< 1h, < 24h, Stale, Offline) and strict multi-currency
+isolation, preventing misleading mixed-currency summations. Ephemeral credential prompts handle user PINs and TANs
+using masked text inputs, zeroizing underlying character and byte buffers in deterministic `finally` blocks. Automated
+headless self-tests (`HostSelfTest`) verify security boundaries, dialog accessibility, balance truthfulness, and purge
+behavior in CI without user interaction. See [ADR 0092](docs/adr/0092-windows-host-ui-and-support-workflows.md).
+
+User-reviewed ambiguous-rediscovery account relinking UI (`AccountRelinkingDialog`) connects the kernel's deterministic
+relinking planner to an accessible, review-first presentation workflow. The dialog displays live plan previews
+detailing the exact state transition (`Quarantined` to `Active`), target account incarnation, candidate shell pruning,
+and storage action (verified privacy purge vs standard save). Execution requires deliberate profile passphrase confirmation
+to authorize encrypted generation write and cryptographic purging of orphaned candidate shells. Automated self-tests
+verify the relinking workflow, single generation retention on disk, permanent balance provenance, and session data
+reloading. See [ADR 0093](docs/adr/0093-user-reviewed-account-relinking-ui.md).
+
+
 ## Supported versions
 
 There are no supported public versions yet.
@@ -614,21 +797,33 @@ already been made secure.
 
 ## Reporting a vulnerability
 
-The private vulnerability-reporting channel is **not configured yet**. This is
-a release blocker: the project must not be distributed externally until a
-monitored private channel, responsible owner, response process, and public
-instructions have been established here.
+Security vulnerabilities in Broiler Fond should be reported privately to the project
+security maintainers rather than through public issue trackers or discussion forums.
 
-Until then:
+### Reporting channel
 
-- do not place credentials, PINs, TANs, account data, profile files, packet
-  captures, or undisclosed vulnerability details in a public issue; and
-- if you already have access to a project maintainer through a private trusted
-  channel, send only enough information to establish contact and agree on a
-  secure transfer method.
+- **Email:** `security@broiler.dev`
+- **PGP Key ID:** `0xBF00F09D1040A56E`
+- **Fingerprint:** `4E52 A91B 8B50 8B44 CB91 66AF B3C7 E203 E8BF 00F0`
 
-No response-time or remediation-time commitment exists before that reporting
-process is established.
+When submitting a report, please include:
+1. Product version and build commit.
+2. Operating system and environment details.
+3. Step-by-step reproduction instructions or a minimal test script using synthetic test fixtures.
+4. An assessment of potential security impact (e.g. unauthorized memory disclosure, cryptographic flaw, boundary bypass).
+
+> [!CAUTION]
+> **Confidentiality rule:** Never include real banking credentials, PINs, TANs, production IBANs,
+> real profile data containers (`.bffond`), or live packet captures in any vulnerability report. Use only
+> synthetic/redacted values.
+
+### Response SLA and coordinated disclosure
+
+- **Acknowledgement:** Within 48 hours of receipt.
+- **Triage and severity assessment:** Within 5 business days.
+- **Remediation and advisory:** We follow a coordinated 90-day disclosure window. Critical vulnerabilities
+  will be prioritized for expedited patch release and coordinated disclosure.
+- **Credit:** Reporters will be acknowledged in release notes and security advisories (unless anonymity is requested).
 
 ## Release security evidence
 
