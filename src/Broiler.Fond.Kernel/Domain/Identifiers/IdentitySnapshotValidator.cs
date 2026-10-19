@@ -193,5 +193,5 @@ public static class IdentitySnapshotValidator
     }
 
     private static bool IsRevision(LocalEntityKind kind) =>
-        kind is LocalEntityKind.TransactionRevision or LocalEntityKind.AnnotationRevision;
+        kind is LocalEntityKind.TransactionRevision or LocalEntityKind.AnnotationRevision or LocalEntityKind.PaymentDraftRevision;
 }

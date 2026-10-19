@@ -22,7 +22,8 @@ public sealed class AnnotationRevision
         string? note = null,
         string? category = null,
         IEnumerable<string>? tags = null,
-        bool isExcludedFromBudget = false)
+        bool isExcludedFromBudget = false,
+        IEnumerable<TransactionSplitItem>? splits = null)
     {
         if (id.Value == 0UL || transactionId.Value == 0UL)
         {
@@ -79,14 +80,41 @@ public sealed class AnnotationRevision
 
         validatedTags.Sort(StringComparer.OrdinalIgnoreCase);
 
+        List<TransactionSplitItem>? validatedSplits = null;
+        if (splits is not null)
+        {
+            var splitList = splits.ToList();
+            if (splitList.Count > 0)
+            {
+                if (splitList.Count < TransactionSplitValidator.MinimumSplitCount)
+                {
+                    throw new ArgumentException($"A split annotation requires at least {TransactionSplitValidator.MinimumSplitCount} split items.", nameof(splits));
+                }
+
+                var indices = new HashSet<int>();
+                foreach (var split in splitList)
+                {
+                    if (!indices.Add(split.Index))
+                    {
+                        throw new ArgumentException($"Duplicate split item index {split.Index}.", nameof(splits));
+                    }
+                }
+
+                validatedSplits = splitList.OrderBy(s => s.Index).ToList();
+            }
+        }
+
         Id = id;
         TransactionId = transactionId;
         ModifiedAt = modifiedAt;
         SupersedesId = supersedesId;
         Note = string.IsNullOrWhiteSpace(note) ? null : note.Trim();
-        Category = string.IsNullOrWhiteSpace(category) ? null : category.Trim();
+        Category = validatedSplits != null && validatedSplits.Count > 0 && string.IsNullOrWhiteSpace(category)
+            ? "[Split]"
+            : (string.IsNullOrWhiteSpace(category) ? null : category.Trim());
         Tags = validatedTags.AsReadOnly();
         IsExcludedFromBudget = isExcludedFromBudget;
+        Splits = validatedSplits?.AsReadOnly();
     }
 
     public AnnotationRevisionId Id { get; }
@@ -97,4 +125,6 @@ public sealed class AnnotationRevision
     public string? Category { get; }
     public ReadOnlyCollection<string> Tags { get; }
     public bool IsExcludedFromBudget { get; }
+    public ReadOnlyCollection<TransactionSplitItem>? Splits { get; }
+    public bool IsSplit => Splits is not null && Splits.Count > 1;
 }

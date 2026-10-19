@@ -55,3 +55,22 @@ jobs:
       - name: Verify, build, and test kernel
         shell: pwsh
         run: ./eng/Invoke-CI.ps1 -Scope Kernel
+
+  macos-kernel:
+    name: macOS kernel portability
+    runs-on: macos-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up .NET 10
+        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Verify, build, and test kernel
+        shell: pwsh
+        run: ./eng/Invoke-CI.ps1 -Scope Kernel

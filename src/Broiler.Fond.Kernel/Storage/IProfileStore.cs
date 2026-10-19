@@ -149,6 +149,12 @@ public interface IProfileStore : IDisposable
     ProfileSaveMetrics Save(StoreSnapshot snapshot, DateTimeOffset? savedAt = null);
 
     /// <summary>
+    /// Atomically applies a transformation to the current snapshot and commits the resulting generation.
+    /// Thread-safe and protected by the store's exclusive sync root.
+    /// </summary>
+    ProfileSaveMetrics MutateAndSave(Func<StoreSnapshot, StoreSnapshot> mutator, DateTimeOffset? savedAt = null);
+
+    /// <summary>
     /// Opens a seekable read-only stream over the active generation file that authenticates each 64 KiB
     /// AES-256-GCM frame before returning plaintext bytes.
     /// </summary>
@@ -211,7 +217,8 @@ public interface IProfileStore : IDisposable
     ProfileSaveMetrics ImportAndMerge(
         string backupFilePath,
         string backupPassphrase,
-        DateTimeOffset? savedAt = null);
+        DateTimeOffset? savedAt = null,
+        bool rejectForkConflicts = false);
 
     /// <summary>
     /// Removes a bank connection according to the selected <see cref="ConnectionRemovalDataDisposition"/>

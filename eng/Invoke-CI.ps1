@@ -1,6 +1,6 @@
 [CmdletBinding()]
 param(
-    [ValidateSet("Full", "Kernel")]
+    [ValidateSet("Full", "Kernel", "MultiPlatform")]
     [string] $Scope = "Full"
 )
 

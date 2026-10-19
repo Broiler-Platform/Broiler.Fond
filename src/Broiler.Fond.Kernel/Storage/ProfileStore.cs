@@ -426,6 +426,22 @@ public sealed partial class ProfileStore : IProfileStore
         }
     }
 
+    public ProfileSaveMetrics MutateAndSave(Func<StoreSnapshot, StoreSnapshot> mutator, DateTimeOffset? savedAt = null)
+    {
+        ArgumentNullException.ThrowIfNull(mutator);
+        lock (_syncRoot)
+        {
+            EnsureWritableReady();
+            if (_currentSnapshot is null)
+            {
+                throw new InvalidOperationException("Current snapshot is not loaded.");
+            }
+
+            StoreSnapshot modified = mutator(_currentSnapshot);
+            return Save(modified, savedAt);
+        }
+    }
+
     public SeekableAuthenticatedProfileStream OpenCurrentGenerationAuthenticatedStream()
     {
         lock (_syncRoot)
@@ -908,7 +924,8 @@ public sealed partial class ProfileStore : IProfileStore
     public ProfileSaveMetrics ImportAndMerge(
         string backupFilePath,
         string backupPassphrase,
-        DateTimeOffset? savedAt = null)
+        DateTimeOffset? savedAt = null,
+        bool rejectForkConflicts = false)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(backupFilePath);
         ArgumentNullException.ThrowIfNull(backupPassphrase);
@@ -949,7 +966,8 @@ public sealed partial class ProfileStore : IProfileStore
                 _profileId,
                 _branchId,
                 nextGen,
-                timestamp);
+                timestamp,
+                rejectForkConflicts);
 
             _lastSaveMetrics = CommitGenerationCore(merged, nextGen, timestamp, retainPreviousGeneration: true);
             return _lastSaveMetrics;

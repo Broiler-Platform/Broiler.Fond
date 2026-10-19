@@ -4,9 +4,9 @@
 - **Product:** Fond - Finance on Demand
 - **Technical name:** `Broiler.Fond`
 
-**Status:** In progress (Milestone 1 foundation complete; Milestone 2 initiated).
+**Status:** Complete (Milestone 1 foundation complete; Milestone 2 complete).
 
-**Last updated:** 2026-10-16
+**Last updated:** 2026-10-18
 
 The [roadmap](roadmap.md#m2--transactions-and-account-details) defines the product specification.
 This backlog breaks Milestone 2 into reviewable increments; completion of one increment does not
@@ -85,27 +85,27 @@ modifying bank-reported facts.
 
 ### M2-04: Multi-Page Pagination, Range Queries, and Overlap Sync
 
-- [ ] Construct bounded statement range requests (`HKKAZ` / `HKCAZ`) with optional start date, end date, and continuation tokens.
-- [ ] Implement multi-page continuation coordinator with strict page limits and monotonic timeouts.
-- [ ] Implement overlap sync algorithm: query recent window (e.g. last 30–90 days), correlate against cached observations,
-  detect gaps, and update latest sync checkpoint.
-- [ ] Verify ten repeated overlapping syncs produce zero duplicate transactions and zero balance discrepancies.
+- [x] Construct bounded statement range requests (`HKKAZ` / `HKCAZ`) with optional start date, end date, and continuation tokens (`FinTsStatementRequestWriter`, [ADR 0097](adr/0097-statement-pagination-range-queries-and-overlap-sync.md)).
+- [x] Implement multi-page continuation coordinator with strict page limits and monotonic timeouts (`StatementContinuationCoordinator`, [ADR 0097](adr/0097-statement-pagination-range-queries-and-overlap-sync.md)).
+- [x] Implement overlap sync algorithm: query recent window (e.g. last 30–90 days), correlate against cached observations,
+  detect gaps, and update latest sync checkpoint (`StatementOverlapSyncPlanner`, `StatementSyncCheckpoint`, [ADR 0097](adr/0097-statement-pagination-range-queries-and-overlap-sync.md)).
+- [x] Verify ten repeated overlapping syncs produce zero duplicate transactions and zero balance discrepancies (`StatementSyncTests`, 90 checks).
 
 ### M2-05: Transaction Ledger Storage Extension
 
-- [ ] Extend profile container schema (`store-v2.xsd` or dedicated `transactions-v1.xsd` within profile ZIP container).
-- [ ] Maintain atomic generation promotion and crash-resilient privacy purge.
-- [ ] Ensure backward compatibility: older profiles cleanly migrate without data loss.
-- [ ] Verify serialization round-trips, hostile input rejection, and tamper detection.
+- [x] Extend profile container schema with embedded `transactions-v1.xsd` in profile ZIP container ([ADR 0098](adr/0098-transaction-ledger-storage-extension.md)).
+- [x] Maintain atomic generation promotion and crash-resilient privacy purge (`StoreArchiveCodec.CreateStoreZip`, `ProfileStore.ExecutePrivacyPurge`, [ADR 0098](adr/0098-transaction-ledger-storage-extension.md)).
+- [x] Ensure backward compatibility: older 7-document v1 profiles cleanly migrate without data loss, upgrading to 8 documents on commit ([ADR 0098](adr/0098-transaction-ledger-storage-extension.md)).
+- [x] Verify serialization round-trips, hostile input rejection, tamper detection, and cross-snapshot ID remapping (`TransactionLedgerStorageTests`, 124 checks).
 
 ### M2-06: Windows Host UI Transaction Views & CSV Export
 
-- [ ] Implement accessible Transaction List and Detail view in `Broiler.Fond.Host.Windows`:
+- [x] Implement accessible Transaction List and Detail view in `Broiler.Fond.Host.Windows` ([ADR 0099](adr/0099-windows-host-transaction-views-and-csv-export.md)):
   - Keyboard navigation, high-DPI rendering, and accessible screen-reader labels.
   - Filtering by account, date range, transaction status (booked vs pending), amount range, and text search.
   - Detail pane showing complete bank references, counterparty info, and unedited remittance information.
-- [ ] Implement local high-performance search (< 300 ms p95 with 100,000 cached transactions).
-- [ ] Implement privacy-conscious CSV export with user preview, file destination selection, and zero telemetry.
+- [x] Implement local high-performance search (< 300 ms p95 with 100,000 cached transactions) (`TransactionSearchEngine`, `TransactionSearchAndExportTests`, [ADR 0099](adr/0099-windows-host-transaction-views-and-csv-export.md)).
+- [x] Implement privacy-conscious CSV export with user preview, file destination selection, and zero telemetry (`TransactionCsvExporter`, `CsvExportDialog`, [ADR 0099](adr/0099-windows-host-transaction-views-and-csv-export.md)).
 
 ---
 

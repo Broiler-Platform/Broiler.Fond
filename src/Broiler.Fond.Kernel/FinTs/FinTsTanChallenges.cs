@@ -6,7 +6,7 @@ namespace Broiler.Fond.Kernel.FinTs;
 /// <summary>Untrusted HITAN evidence. Raw text/markup and binary challenge data must not be executed or logged.</summary>
 public sealed class FinTsTanChallenge
 {
-    internal FinTsTanChallenge(FinTsSegment source) => Source = source;
+    public FinTsTanChallenge(FinTsSegment source) => Source = source ?? throw new ArgumentNullException(nameof(source));
     public FinTsSegment Source { get; }
     public int RequestSegmentNumber => Source.Reference!.Value;
     public string Process => Source.Fields[0].Elements[0].HeaderText();

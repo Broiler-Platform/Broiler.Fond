@@ -10,8 +10,8 @@
            Text="Broiler.Fond.Kernel must not depend on a platform UI framework." />
     <Error Condition="'$(AllowUnsafeBlocks)' == 'true'"
            Text="Broiler.Fond.Kernel must not enable unsafe code." />
-    <Error Condition="'@(PackageReference)' != ''"
-           Text="Broiler.Fond.Kernel must not contain PackageReference items." />
+    <Error Condition="'@(PackageReference->WithMetadataValue('IsImplicitlyDefined', 'false'))' != ''"
+           Text="Broiler.Fond.Kernel must not contain explicit PackageReference items." />
     <Error Condition="'@(ProjectReference)' != ''"
            Text="Broiler.Fond.Kernel must not contain ProjectReference items." />
     <Error Condition="'@(NativeReference)' != '' Or '@(COMReference)' != ''"

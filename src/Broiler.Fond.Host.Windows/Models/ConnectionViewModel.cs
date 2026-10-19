@@ -24,6 +24,8 @@ public sealed class ConnectionViewModel
     public string StateDisplay { get; }
     public bool CanRefresh { get; }
     public bool RequiresReconfirmation { get; }
+    public bool CanReauthenticate { get; }
+    public bool CanEditEndpoint => true;
 
     public string SecurityProfileDisplay { get; }
     public string ProceduresCountDisplay { get; }
@@ -59,13 +61,25 @@ public sealed class ConnectionViewModel
 
         State = connection.State;
         RequiresReconfirmation = !isConfirmed || string.Equals(connection.State, "Quarantined", StringComparison.OrdinalIgnoreCase);
-        CanRefresh = connection.IsSynchronized && isConfirmed;
+        CanRefresh = (string.Equals(connection.State, "Connected", StringComparison.OrdinalIgnoreCase) ||
+                      string.Equals(connection.State, "Synchronized", StringComparison.OrdinalIgnoreCase)) &&
+                     isConfirmed;
+        CanReauthenticate = string.Equals(connection.State, "ReauthenticationRequired", StringComparison.OrdinalIgnoreCase) ||
+                            string.Equals(connection.State, "Configured", StringComparison.OrdinalIgnoreCase) ||
+                            string.Equals(connection.State, "TemporarilyUnavailable", StringComparison.OrdinalIgnoreCase);
 
         StateDisplay = connection.State switch
         {
-            "Synchronized" or "Connected" => isConfirmed
+            "Synchronized" => isConfirmed
                 ? "[✓ Synchronized]"
                 : "[⚠ Synchronized (Unconfirmed Host)]",
+            "Connected" => isConfirmed
+                ? "[✓ Connected]"
+                : "[⚠ Connected (Unconfirmed Host)]",
+            "ReauthenticationRequired" => "[⚠ Reauthentication Required]",
+            "TemporarilyUnavailable" => "[⏳ Temporarily Unavailable]",
+            "ChallengeRequired" => "[🔐 Challenge Required]",
+            "Authenticating" => "[🔄 Authenticating]",
             "Configured" or "Unconfigured" => "[⚪ Configured - Not Synchronized]",
             "Quarantined" => "[⚠ Quarantined - Reconfirmation Required]",
             "Disabled" => "[✕ Disabled]",

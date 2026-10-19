@@ -21,6 +21,11 @@ public enum LocalEntityKind
     Transaction,
     TransactionRevision,
     AnnotationRevision,
+    PaymentDraft,
+    PaymentDraftRevision,
+    PaymentAttempt,
+    PaymentStateTransition,
+    BeneficiaryTemplate,
 }
 
 /// <summary>A local reference and the kind its target must have.</summary>

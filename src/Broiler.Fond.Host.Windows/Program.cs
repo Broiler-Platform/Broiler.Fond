@@ -17,9 +17,16 @@ internal static class Program
         }
 
         // Headless / Smoke / Self-Test mode
-        _ = HostSelfTest.Run();
-        Console.WriteLine($"{KernelProduct.FullDisplayName} - Milestone {KernelProduct.Milestone} development shell");
-        Console.WriteLine("Banking, storage, credential, UI, and network operations are not implemented.");
+        int checks = HostSelfTest.Run();
+        if (args.Contains("--self-test"))
+        {
+            Console.WriteLine($"Host Self-Test & BFSG Accessibility: {checks} checks completed successfully.");
+        }
+        else
+        {
+            Console.WriteLine($"{KernelProduct.FullDisplayName} - Milestone {KernelProduct.Milestone} development shell");
+            Console.WriteLine("Banking, storage, credential, UI, and network operations are not implemented.");
+        }
         return 0;
     }
 }

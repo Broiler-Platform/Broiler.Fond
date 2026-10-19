@@ -9,6 +9,9 @@ internal static class StoreArchiveReference
     internal const string PurgeNamespace = StoreArchiveCodec.PurgeNamespace;
 
     public static IReadOnlyList<string> StoreDocumentNames => StoreArchiveCodec.StoreDocumentNames;
+    public static IReadOnlyList<string> StoreDocumentNamesV3 => StoreArchiveCodec.StoreDocumentNamesV3;
+    public static IReadOnlyList<string> StoreDocumentNamesV2 => StoreArchiveCodec.StoreDocumentNamesV2;
+    public static IReadOnlyList<string> LegacyStoreDocumentNames => StoreArchiveCodec.LegacyStoreDocumentNames;
 
     internal static byte[] SerializeProfile(StoreProfileDocument profile) =>
         StoreArchiveCodec.SerializeProfile(profile);
@@ -27,6 +30,18 @@ internal static class StoreArchiveReference
 
     internal static byte[] SerializeLedger(StoreLedgerDocument doc) =>
         StoreArchiveCodec.SerializeLedger(doc);
+
+    internal static byte[] SerializeTransactions(StoreTransactionsDocument doc) =>
+        StoreArchiveCodec.SerializeTransactions(doc);
+
+    internal static StoreTransactionsDocument ParseAndValidateTransactions(byte[] bytes) =>
+        StoreArchiveCodec.ParseAndValidateTransactions(bytes);
+
+    internal static byte[] SerializePayments(StorePaymentsDocument doc) =>
+        StoreArchiveCodec.SerializePayments(doc);
+
+    internal static byte[] SerializeTemplates(StoreTemplatesDocument doc) =>
+        StoreArchiveCodec.SerializeTemplates(doc);
 
     internal static byte[] SerializeManifest(
         Guid profileId,
@@ -49,4 +64,17 @@ internal static class StoreArchiveReference
 
     internal static StorePurgeIntent ValidateAndParsePurgeIntent(byte[] xmlBytes) =>
         StoreArchiveCodec.ValidateAndParsePurgeIntent(xmlBytes);
+
+    internal static void ValidateIdentityAndSemanticInvariants(StoreSnapshot snapshot) =>
+        StoreArchiveCodec.ValidateIdentityAndSemanticInvariants(snapshot);
+
+    internal static StoreSnapshot MergeSnapshotsWithIdRemapping(
+        StoreSnapshot targetSnapshot,
+        StoreSnapshot importedSnapshot,
+        Guid targetProfileId,
+        Guid targetBranchId,
+        ulong targetGeneration,
+        DateTimeOffset savedAt) =>
+        StoreArchiveCodec.MergeSnapshotsWithIdRemapping(
+            targetSnapshot, importedSnapshot, targetProfileId, targetBranchId, targetGeneration, savedAt);
 }

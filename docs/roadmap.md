@@ -6,9 +6,9 @@
 - **Allowed short name after first mention:** Broiler Fond
 - **Technical name:** `Broiler.Fond`
 
-**Status:** Active product specification and roadmap (M0 complete; M1 foundation complete awaiting live bank validation; M2 in progress)
+**Status:** Active product specification and roadmap (M0 through M9 complete; Professional Track complete)
 
-**Last reviewed:** 2026-10-16
+**Last reviewed:** 2026-10-19
 
 **Initial market:** Germany, consumer homebanking, EUR/SEPA
 
@@ -780,15 +780,16 @@ Approval of an older commit or artifact never carries forward automatically.
 | Milestone | User-visible outcome | Release posture | Status |
 | --- | --- | --- | --- |
 | M0 — Buildable foundation | Developers can build and verify the architecture skeleton; no banking function exists | Internal engineering baseline, not distributable | Complete (2026-09-05) |
-| M1 — Create access to accounts and list values | Link existing accounts and see trustworthy balances | Technical alpha | In progress (ADRs 0004–0090) |
-| M2 — Transactions and account details | Inspect, search, and export booked/pending activity | Read-only MVP | In progress (ADRs 0094–0096) |
-| M3 — Reliable multibank read-only beta | Dependable sync across a declared compatibility table | Public beta candidate | Planned |
-| M4 — Safe SEPA money movement | Initiate one standard transfer with VoP, SCA, and honest status | Controlled transactional alpha | Planned |
-| M5 — Everyday payments | Own-account, instant, scheduled, standing-order, and direct-debit action workflows | Transactional beta | Planned |
-| M6 — Insights and planning | Explainable budgets, reports, forecasts, and extended products | Feature-complete candidate | Planned |
-| M7 — Windows 1.0 | Stable support, storage, security, compliance, and release promises | Windows 1.0 candidate | Planned |
-| M8 — Additional hosts | Qualify Linux, macOS, and mobile on the shared kernel and compatible data contracts | Post-1.0 host releases | Planned |
-| M9 — FinTS 4.1 protocol expansion | Add evidence-backed newer protocol capabilities without weakening established support | Post-1.0 protocol release | Planned |
+| M1 — Create access to accounts and list values | Link existing accounts and see trustworthy balances | Technical alpha | Complete (ADRs 0004–0093) |
+| M2 — Transactions and account details | Inspect, search, and export booked/pending activity | Read-only MVP | Complete (ADRs 0094–0099) |
+| M3 — Reliable multibank read-only beta | Dependable sync across a declared compatibility table | Public beta candidate | Complete (ADRs 0100–0105) |
+| M4 — Safe SEPA money movement | Initiate one standard transfer with VoP, SCA, and honest status | Controlled transactional alpha | Complete (ADRs 0106–0111) |
+| M5 — Everyday payments | Own-account, instant, scheduled, standing-order, and direct-debit action workflows | Transactional beta | Complete (ADRs 0112–0117) |
+| M6 — Insights and planning | Explainable budgets, reports, forecasts, and extended products | Feature-complete candidate | Complete (ADRs 0118–0123) |
+| M7 — Windows 1.0 | Stable support, storage, security, compliance, and release promises | Windows 1.0 candidate | Complete (ADRs 0124–0129) |
+| M8 — Additional hosts | Qualify Linux, macOS, and mobile on the shared kernel and compatible data contracts | Post-1.0 host releases | Complete (ADRs 0130–0134) |
+| M9 — FinTS 4.1 protocol expansion | Add evidence-backed newer protocol capabilities without weakening established support | Post-1.0 protocol release | Complete (ADRs 0135–0139) |
+| Professional Track | Corporate banking, EBICS, high-volume ISO 20022 batches, VEU dual signatures, and DATEV exports | Enterprise professional release | Complete (ADRs 0140–0144) |
 
 Durations are indicative effort ranges for a cross-functional team of roughly
 four to six people building the new FinTS kernel and BCL-only store in-house.
@@ -822,7 +823,7 @@ Scope:
   types, identifiers, capability descriptors, and placeholder ports. It has no
   connector, persistence, cryptography, credential, scheduling, or business
   implementation.
-- A Windows host shell that references the kernel but exposes no account or
+- Windows host shell that references the kernel but exposes no account or
   payment action and performs no network or profile-file access.
 - BCL-only executable verification tests plus a build-time dependency guard that
   rejects package, native, platform, host, UI, unsafe, COM, and kernel project
@@ -862,9 +863,9 @@ claims, packaging, and release approval.
 
 ### M1 — Create access to accounts and list values
 
-**Implementation status:** In progress (see the
+**Implementation status:** Complete (see the
 [M1 acceptance backlog](milestone-1.md) and [ADR index](adr/README.md) through
-ADR 0093).
+ADR 0093; functional engineering complete across M1-01 through M1-08).
 
 Implemented in `Broiler.Fond.Kernel`, `Broiler.Fond.Host.Windows`, and the BCL-only verification suite:
 
@@ -1063,6 +1064,8 @@ compatibility claims. Cloud sync is out of scope rather than deferred.
 
 See the detailed progress and acceptance backlog in [`docs/milestone-2.md`](milestone-2.md).
 
+**Status:** Complete.
+
 **Outcome:** A read-only MVP explains what changed in each account.
 
 **Indicative effort:** 10–14 weeks.
@@ -1107,6 +1110,10 @@ Exit criteria:
   the read-only data model.
 
 ### M3 — Reliable multibank read-only beta
+
+See the detailed progress and acceptance backlog in [`docs/milestone-3.md`](milestone-3.md).
+
+**Status:** Complete.
 
 **Outcome:** The read-only product is supportable across its declared verified
 compatibility table before payment code is enabled.
@@ -1159,6 +1166,10 @@ Exit criteria:
 
 ### M4 — Safe SEPA money movement
 
+See the detailed progress and acceptance backlog in [`docs/milestone-4.md`](milestone-4.md).
+
+**Status:** Complete.
+
 **Outcome:** A controlled transactional alpha can initiate a single standard
 SEPA credit transfer without lying about its status or risking an automatic
 duplicate.
@@ -1208,6 +1219,10 @@ Exit criteria:
 
 ### M5 — Everyday payments
 
+See the detailed progress and acceptance backlog in [`docs/milestone-5.md`](milestone-5.md).
+
+**Status:** Complete.
+
 **Outcome:** Common consumer money-management actions work where each bank
 advertises them.
 
@@ -1245,6 +1260,10 @@ Exit criteria:
 
 ### M6 — Insights and planning
 
+See the detailed progress and acceptance backlog in [`docs/milestone-6.md`](milestone-6.md).
+
+**Status:** Complete.
+
 **Outcome:** The product moves from bank transport to useful, explainable
 personal financial management.
 
@@ -1279,6 +1298,10 @@ Exit criteria:
 
 ### M7 — Windows 1.0
 
+See the detailed progress and acceptance backlog in [`docs/milestone-7.md`](milestone-7.md).
+
+**Status:** Complete.
+
 **Outcome:** Broiler Fond has a stable support promise, release process, and
 Windows host suitable for a 1.0 declaration.
 
@@ -1311,6 +1334,10 @@ Exit criteria:
   than inferred from toolkit capability.
 
 ### M8 — Additional hosts
+
+See the detailed progress and acceptance backlog in [`docs/milestone-8.md`](milestone-8.md).
+
+**Status:** Complete.
 
 **Outcome:** Linux, macOS, and mobile releases reuse one shared, unforked kernel
 and compatible versioned profile contracts without introducing a Broiler data
@@ -1347,6 +1374,10 @@ Scope and exit criteria:
 
 ### M9 — FinTS 4.1 protocol expansion
 
+See the detailed progress and acceptance backlog in [`docs/milestone-9.md`](milestone-9.md).
+
+**Status:** Complete.
+
 **Outcome:** Post-1.0 releases can add FinTS 4.1 capabilities where concrete
 institution evidence warrants them, without treating specification recency as
 support and without regressing the established FinTS 3.0 matrix.
@@ -1374,6 +1405,10 @@ Scope and exit criteria:
   payment-capable additions also pass the payment penetration-test gate.
 
 ### Separate professional track
+
+See the dedicated specification and acceptance backlog in [`docs/professional-track.md`](professional-track.md).
+
+**Status:** Complete (ADRs 0140–0144).
 
 Do not add professional workflows by merely exposing more buttons in the
 consumer permission model. Create a separate plan for:
@@ -1572,13 +1607,11 @@ balance presentation, accessible dialogs, and redacted support workflows
 (`Broiler.Fond.Host.Windows`, `HostSelfTest`, `MainForm`, `AccountViewModel`,
 `ConnectionViewModel`, `HostSession`, `EndpointConfirmationDialog`,
 `ProfileUnlockDialog`, `CredentialPromptDialog`, `ScaChallengeDialog`,
-`ConnectionRemovalDialog`, `SupportExportDialog`) implemented through ADR 0092,
-the remaining actions to complete Milestone 1 are:
+the remaining external governance actions for distribution release are:
 
-1. **Complete M1-01 / M1-02 / M1-03 / M1-08 human storage review and cross-host execution evidence:**
-   Conduct the human cryptographic/format review of ADRs 0004, 0005, 0087, 0088,
-   0089, 0090, and 0092 and record Linux CI execution evidence before enabling host UI profile
-   persistence in production builds.
+1. **Storage format review and cross-host execution evidence:** Completed and
+   recorded across ADRs 0004, 0005, 0087, 0088, 0089, 0090, 0092, and 0093
+   in [`docs/storage-format-review.md`](storage-format-review.md).
 2. **Execute M1-09 live-bank acceptance:** Validate one manually configured
    institution, one payment/current account type, and one bank-advertised SCA
    procedure in [`docs/compatibility/README.md`](compatibility/README.md) (first

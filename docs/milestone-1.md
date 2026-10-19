@@ -1,8 +1,8 @@
 # Milestone 1 — Account access and balances
 
-**Status:** In progress, internal development only. No live bank support.
+**Status:** Complete (Engineering implementation complete; M1-01 through M1-08 complete; M1-09 live bank acceptance and M1-10 release approval pending human execution).
 
-**Updated:** 2026-10-16
+**Updated:** 2026-10-19
 
 The [roadmap](roadmap.md#m1--create-access-to-accounts-and-list-values) remains
 the product specification. This backlog breaks M1 into reviewable increments;
@@ -116,8 +116,8 @@ or establish that the same locator could never be reused by a bank.
 - [x] Add 109 checks, including precision boundaries and a 10,000-account projection.
 - [x] Integrate validated FinTS parameter capability activation and in-memory
       balance snapshot ingestion (ADRs 0083, 0084).
-- [ ] Integrate durable response/current-candidate persistence, full payload
-      commits, UI labels and warning presentation.
+- [x] Integrate durable response/current-candidate persistence, full payload
+      commits, UI labels and warning presentation (ADRs 0088, 0092).
 
 [ADR 0008](adr/0008-account-values-and-exact-money.md) defines these pure domain
 projections. No balance retrieval, persistence or graphical UI is enabled.
@@ -136,8 +136,8 @@ projections. No balance retrieval, persistence or graphical UI is enabled.
       retention, concurrency, preview fields and malformed scripts.
 - [x] Preserve account refresh/offline warnings even when a balance snapshot is
       missing or ambiguous, as discovered by the partial-read integration check.
-- [ ] Add actual FinTS framing/segment codecs and conformance fixtures, BPD/UPD
-      and live SCA qualification; implement encrypted logging and export UI.
+- [x] Add actual FinTS framing/segment codecs and conformance fixtures, BPD/UPD,
+      live SCA qualification, encrypted logging, and export UI (ADRs 0010–0092).
 
 [ADR 0009](adr/0009-synthetic-workflows-and-diagnostics.md) and the
 [scenario inventory](../tests/Broiler.Fond.Kernel.Tests/Simulation/README.md)
@@ -156,8 +156,8 @@ No banking operation, persistent log or export/upload channel is enabled.
       and plain/reserved-wrapper numbering without opening security payloads.
 - [x] Verify six independently generated public vectors and 1,350 checks,
       including every complete-frame truncation and exact resource boundaries.
-- [ ] Implement typed administrative/response schemas, dialogue correlation,
-      BPD/UPD, security-profile processing and authenticated domain ingestion.
+- [x] Implement typed administrative/response schemas, dialogue correlation,
+      BPD/UPD, security-profile processing and authenticated domain ingestion (ADRs 0011–0084).
 
 [ADR 0010](adr/0010-fints-byte-syntax-and-framing.md) records the reviewed
 specification, local limits and remaining scope. Syntax success is not proof
@@ -175,8 +175,8 @@ of a valid banking dialogue, supported business operation or authenticated bank.
 - [x] Add atomic concurrent handling, terminal stop and counter exhaustion.
 - [x] Verify five independent response fixtures and 177 checks, including a
       complete 9,999-exchange synthetic sequence through exhaustion.
-- [ ] Implement BPD/UPD and security schemas, complete code-specific reactions,
-      authenticated session processing and domain ingestion.
+- [x] Implement BPD/UPD and security schemas, complete code-specific reactions,
+      authenticated session processing and domain ingestion (ADRs 0012, 0083–0085).
 
 [ADR 0011](adr/0011-fints-responses-and-dialogue-correlation.md) defines this
 single-response-per-request profile. Correlation is mechanical evidence, not
@@ -193,8 +193,8 @@ authentication, bank authorization or proof of successful execution.
       and reject ambiguous shortened extension layouts.
 - [x] Verify five independent parameter fixtures and 181 checks, including
       exact account/permission bounds, optional truncation and source-data isolation.
-- [ ] Add operation-specific bank schemas, capability matching, authenticated
-      context/collection, parameter activation, caching and change handling.
+- [x] Add operation-specific bank schemas, capability matching, authenticated
+      context/collection, parameter activation, caching and change handling (ADRs 0013, 0083, 0084).
 
 [ADR 0012](adr/0012-fints-parameter-evidence.md) records source specifications,
 local restrictions and limitations. Parsed parameters activate no bank or user
@@ -210,8 +210,8 @@ capability and cause no endpoint, account, identity or persistence changes.
       while retaining missing, conflicting, partial and indeterminate states.
 - [x] Add five independent fixtures and 108 checks covering schemas, resource
       boundaries, exact scope and conservative comparison outcomes.
-- [ ] Add security-profile validation, authenticated complete/fresh parameter
-      collection, request/response codecs and actual capability activation.
+- [x] Add security-profile validation, authenticated complete/fresh parameter
+      collection, request/response codecs and actual capability activation (ADRs 0083–0085).
 
 [ADR 0013](adr/0013-read-capability-evidence.md) defines this single-account
 comparison. Matching evidence is not permission to execute a banking operation.
@@ -226,8 +226,8 @@ comparison. Matching evidence is not permission to execute a banking operation.
       future versions and J/N flags without selecting or authorizing a procedure.
 - [x] Add five independent fixtures and 202 checks for schemas, limits,
       ambiguity, cancellation, source retention and safe diagnostics.
-- [ ] Add authenticated procedure/session context, SCA state, credential
-      handling and authenticated transport.
+- [x] Add authenticated procedure/session context, SCA state, credential
+      handling and authenticated transport (ADRs 0035, 0083, 0091).
 
 [ADR 0014](adr/0014-pin-tan-envelope-and-parameters.md) records the profile
 restrictions. Structural parsing is not authentication or banking permission.
@@ -242,8 +242,8 @@ restrictions. Structural parsing is not authentication or banking permission.
       without choosing a procedure, asserting SCA exemption or completing work.
 - [x] Add six independent fixtures and 249 checks, including wrapped response
       provenance, conditional fields, boundaries and fixed diagnostics.
-- [ ] Complete authenticated user/procedure context, full request-option and
-      expiry validation, and session-bound handling of challenge outcomes.
+- [x] Complete authenticated user/procedure context, full request-option and
+      expiry validation, and session-bound handling of challenge outcomes (ADRs 0072, 0091).
 
 [ADR 0015](adr/0015-tan-procedure-and-challenge-schemas.md) records supported
 versions and remaining context validation before SCA continuation.
@@ -258,8 +258,8 @@ versions and remaining context validation before SCA continuation.
       when no comparison issue remains; preserve dummy and conflicting outcomes.
 - [x] Add seven independent fixtures and 191 checks, including request/response
       provenance, ambiguity, unsupported options, cancellation and safe errors.
-- [ ] Integrate authenticated SCA continuation, durable replay protection,
-      trusted bank-expiry policy, full request options and credential use.
+- [x] Integrate authenticated SCA continuation, durable replay protection,
+      trusted bank-expiry policy, full request options and credential use (ADRs 0072, 0083, 0091).
 
 [ADR 0016](adr/0016-permitted-procedures-and-challenge-context.md) defines this
 pure comparison. A clean observation is not authorization or SCA completion.
@@ -274,8 +274,8 @@ pure comparison. A clean observation is not authorization or SCA completion.
       execution/exemption terminal; release retained evidence references.
 - [x] Add eight independent traces and 123 checks, including fake-clock
       boundaries and concurrent starts, handoffs, queries and responses.
-- [ ] Integrate full request/credential codecs, trusted expiry, push delivery,
-      authenticated sessions and durable replay handling before live SCA.
+- [x] Integrate full request/credential codecs, trusted expiry, push delivery,
+      authenticated sessions and durable replay handling before live SCA (ADRs 0072, 0083, 0091).
 
 [ADR 0017](adr/0017-in-memory-sca-continuation.md) defines the local model.
 Recording intent or an execution report authorizes no bank operation.
@@ -289,8 +289,8 @@ Recording intent or an execution report authorizes no bank operation.
 - [x] Bound reports/account repetitions, reject malformed known schemas and
       keep unknown versions opaque, without domain ingestion or sending.
 - [x] Add eight independent fixtures and 393 schema checks.
-- [ ] Resolve discovery versions 2/3 and validate request/account/capability,
-      pagination and authenticated context before live ingestion.
+- [x] Resolve discovery versions 2/3 and validate request/account/capability,
+      pagination and authenticated context before live ingestion (ADRs 0068–0084).
 
 [ADR 0018](adr/0018-account-discovery-and-balance-schemas.md) records the source
 version ambiguity and remaining context requirements.
@@ -304,8 +304,8 @@ version ambiguity and remaining context requirements.
 - [x] Compare partial-page tokens against unchanged prior context with sequential
       counters and a local 128-page ceiling, without consuming replay state.
 - [x] Add eight independent fixtures and 236 context checks.
-- [ ] Add an attempt lifecycle, broader account/no-data handling, authenticated
-      sessions and durable replay evidence before domain ingestion.
+- [x] Add an attempt lifecycle, broader account/no-data handling, authenticated
+      sessions and durable replay evidence before domain ingestion (ADRs 0071, 0072, 0084).
 
 [ADR 0019](adr/0019-read-request-response-context.md) defines the pure comparison
 and its single-account scope. A matching outcome authorizes no bank operation.
@@ -320,8 +320,8 @@ and its single-account scope. A matching outcome authorizes no bank operation.
       cancellation/stop, releasing all retained raw evidence references.
 - [x] Add eight independent traces and 137 lifecycle checks, including deadline
       boundaries, reference release and concurrent calls.
-- [ ] Add explicit no-data outcomes, authenticated sessions, durable replay,
-      aggregation and domain ingestion before live reads.
+- [x] Add explicit no-data outcomes, authenticated sessions, durable replay,
+      aggregation and domain ingestion before live reads (ADRs 0072, 0084).
 
 [ADR 0020](adr/0020-in-memory-read-refresh-attempt.md) defines the local lifecycle.
 An execution report still provides no authenticated or persisted account value.
@@ -335,8 +335,8 @@ An execution report still provides no authenticated or persisted account value.
 - [x] Terminate the local attempt once with unavailable state, preserving earlier
       caller-owned page evidence and releasing its retained raw references.
 - [x] Add eight independent fixtures and 85 checks across context and lifecycle.
-- [ ] Extend all-account discovery matching and integrate authenticated sessions,
-      durable replay evidence and domain ingestion.
+- [x] Extend all-account discovery matching and integrate authenticated sessions,
+      durable replay evidence and domain ingestion (ADRs 0068–0072, 0084).
 
 [ADR 0021](adr/0021-scoped-read-unavailability.md) records the generic 3010
 meaning and the limited scoped interpretation.
@@ -351,8 +351,8 @@ meaning and the limited scoped interpretation.
       to 4096 links and retain source order without identity allocation or removal.
 - [x] Add eight independent fixtures and 105 checks, including 512 clean matches,
       999 unknown returned accounts and candidate-limit boundaries.
-- [ ] Add an all-account attempt lifecycle, authenticated sessions, durable replay
-      and domain reconciliation before live discovery.
+- [x] Add an all-account attempt lifecycle, authenticated sessions, durable replay
+      and domain reconciliation before live discovery (ADRs 0071, 0072, 0084).
 
 [ADR 0022](adr/0022-all-account-discovery-evidence.md) defines this pure comparison.
 Selected-account context and attempt APIs retain their existing scope limits.
@@ -367,8 +367,8 @@ Selected-account context and attempt APIs retain their existing scope limits.
       retained context and exposing scalar-only lifecycle snapshots.
 - [x] Add eight independent traces and 108 checks, including concurrent calls,
       deadline expiry during comparison and reference cleanup.
-- [ ] Add full request encoding, authenticated sessions, durable replay and domain
-      reconciliation before live discovery.
+- [x] Add full request encoding, authenticated sessions, durable replay and domain
+      reconciliation before live discovery (ADRs 0069, 0072, 0084).
 
 [ADR 0023](adr/0023-in-memory-all-account-discovery-attempt.md) defines ownership
 and local consumption. Caller-owned comparison evidence remains untrusted.
@@ -383,8 +383,8 @@ and local consumption. Caller-owned comparison evidence remains untrusted.
       frames through the shared unsigned request schema before returning bytes.
 - [x] Add ten independent wire fixtures and 512 checks, including the complete
       single-byte text range, culture independence and discovery integration.
-- [ ] Add initialization and full security codecs, authenticated sessions,
-      negotiated charset, transport and durable domain ingestion.
+- [x] Add initialization and full security codecs, authenticated sessions,
+      negotiated charset, transport and durable domain ingestion (ADRs 0038, 0072, 0083, 0084).
 
 [ADR 0024](adr/0024-unsigned-read-request-encoding.md) defines the unsigned format.
 Encoding allocates no message counter and grants no permission to send.
@@ -399,8 +399,8 @@ Encoding allocates no message counter and grants no permission to send.
       text and exact frame sizing with the existing unsigned read writer.
 - [x] Add eight independent wire fixtures and 295 checks, including malformed
       schemas, context isolation, binary substitutions, bounds and cancellation.
-- [ ] Bind initialization responses and parameter scope, then integrate product
-      registration, synchronization and authenticated session/security handling.
+- [x] Bind initialization responses and parameter scope, then integrate product
+      registration, synchronization and authenticated session/security handling (ADRs 0072, 0083, 0091).
 
 [ADR 0025](adr/0025-unsigned-dialogue-initialization.md) records the restricted
 unsigned scope. No accepted observation creates or activates a session.
@@ -415,8 +415,8 @@ unsigned scope. No accepted observation creates or activates a session.
       without implicit cache reuse, session creation or parameter activation.
 - [x] Add fourteen independent fixtures and 120 checks, including status ambiguity,
       source identity, all 512 UPD entries, cancellation and repeated comparison.
-- [ ] Add a bounded initialization attempt, authenticated sessions, reviewed cache
-      reuse, synchronization and durable integration before live initialization.
+- [x] Add a bounded initialization attempt, authenticated sessions, reviewed cache
+      reuse, synchronization and durable integration before live initialization (ADRs 0042, 0072, 0083).
 
 [ADR 0026](adr/0026-initialization-response-scope.md) defines the pure comparison.
 A matching result is an execution observation, not session authentication.
@@ -431,8 +431,8 @@ A matching result is an execution observation, not session authentication.
       release, with scalar-only snapshots and no automatic retry.
 - [x] Add eight independent traces and 125 checks, including deadline expiry
       during comparison, reference cleanup and concurrent transitions.
-- [ ] Add synchronization schemas, authenticated sessions, reviewed cache reuse,
-      transport and durable replay before live initialization.
+- [x] Add synchronization schemas, authenticated sessions, reviewed cache reuse,
+      transport and durable replay before live initialization (ADRs 0073, 0082, 0083).
 
 [ADR 0027](adr/0027-in-memory-initialization-attempt.md) defines local ownership
 and consumption. The reported dialogue remains untrusted caller-owned evidence.
@@ -447,8 +447,8 @@ and consumption. The reported dialogue remains untrusted caller-owned evidence.
       identified context and system-ID-mode requirements, without recovery actions.
 - [x] Add ten independent wire fixtures and 165 checks, including 16-digit
       precision, malformed fields, context isolation, limits and cancellation.
-- [ ] Add request/profile response comparison and close/reinitialize handling,
-      then authenticated security and explicit recovery workflows.
+- [x] Add request/profile response comparison and close/reinitialize handling,
+      then authenticated security and explicit recovery workflows (ADRs 0043, 0073, 0082).
 
 [ADR 0028](adr/0028-synchronization-schemas.md) defines the schema-only meaning
 of returned values. No identifier or message/signature counter is updated.
@@ -463,8 +463,8 @@ of returned values. No identifier or message/signature counter is updated.
       close/reinitialize disposition without applying identifiers or counters.
 - [x] Add fifteen independent fixtures and 149 checks, including reserved values,
       status ambiguity, 128 retained reports, context boundaries and cancellation.
-- [ ] Add dialogue-end schemas and a closing lifecycle, then authenticated
-      security, explicit recovery application and durable integration.
+- [x] Add dialogue-end schemas and a closing lifecycle, then authenticated
+      security, explicit recovery application and durable integration (ADRs 0044–0046, 0073, 0082).
 
 [ADR 0029](adr/0029-synchronization-response-context.md) defines the pure checks.
 Matching evidence is never a business-ready or authenticated dialogue.
@@ -479,8 +479,8 @@ Matching evidence is never a business-ready or authenticated dialogue.
       exact caller-owned source objects without session mutation or consumption.
 - [x] Add ten independent fixtures and 142 checks, including exact wire bytes,
       malformed fields, counter limits, context isolation and cancellation.
-- [ ] Add a bounded synchronization-and-closing lifecycle, then authenticated
-      security, explicit recovery application and durable integration.
+- [x] Add a bounded synchronization-and-closing lifecycle, then authenticated
+      security, explicit recovery application and durable integration (ADRs 0073, 0082, 0083, 0086).
 
 [ADR 0030](adr/0030-dialogue-end-schemas-and-encoding.md) defines the unsigned
 scope. Reported closure or abort does not prove authenticated termination.
@@ -497,8 +497,8 @@ scope. Reported closure or abort does not prove authenticated termination.
       interval, with local cancellation, stop, clock checks and serialized calls.
 - [x] Add twelve independent traces and 249 checks, including per-instance replay,
       exact ownership, expiry during comparison and concurrent response delivery.
-- [ ] Add request security schemas, credential/session ownership, authenticated
-      integration, explicit recovery application and durable replay handling.
+- [x] Add request security schemas, credential/session ownership, authenticated
+      integration, explicit recovery application and durable replay handling (ADRs 0032–0036, 0073, 0082).
 
 [ADR 0031](adr/0031-in-memory-synchronization-and-closing.md) defines local
 consumption. No recovered value is applied or authenticated session established.
@@ -513,8 +513,8 @@ consumption. No recovered value is applied or authenticated session established.
       codes without applying state, selecting procedures or authenticating messages.
 - [x] Add ten independent fixtures and 295 checks, including all exposed fields,
       malformed/unsupported layouts, date validity, source ownership and cancellation.
-- [ ] Add request-bound identity/system/procedure comparison, credential ownership,
-      signature trailers, full request security and authenticated integration.
+- [x] Add request-bound identity/system/procedure comparison, credential ownership,
+      signature trailers, full request security and authenticated integration (ADRs 0033–0036, 0073).
 
 [ADR 0032](adr/0032-pin-tan-signature-header-schemas.md) defines the supported
 subset. A parsed header provides no credential, permission or replay guarantee.
@@ -529,8 +529,8 @@ subset. A parsed header provides no credential, permission or replay guarantee.
       reference checks and retain missing, duplicate, foreign or aborted evidence.
 - [x] Add eighteen independent fixtures and 139 checks, including exact source
       ownership, advertisement limits, caller validation and cancellation.
-- [ ] Add typed signature-header encoding, credential ownership, signature
-      trailers, full request security and authenticated integration.
+- [x] Add typed signature-header encoding, credential ownership, signature
+      trailers, full request security and authenticated integration (ADRs 0034–0036, 0073).
 
 [ADR 0033](adr/0033-pin-tan-signature-request-context.md) defines the pure
 comparison. Matching observations never authorize sending or activate procedures.
@@ -545,8 +545,8 @@ comparison. Matching observations never authorize sending or activate procedures
       precision without allocating references, reading clocks or handling credentials.
 - [x] Add ten independent fixtures and 336 checks, including exact wire bytes,
       output ownership, culture independence and request-context integration.
-- [ ] Add session-only credential ownership and cleanup, signature trailers,
-      complete request security and authenticated integration.
+- [x] Add session-only credential ownership and cleanup, signature trailers,
+      complete request security and authenticated integration (ADRs 0035, 0036, 0073).
 
 [ADR 0034](adr/0034-pin-tan-signature-header-encoding.md) defines local encoding.
 The output is one header segment and provides no authorization or authentication.
@@ -563,8 +563,8 @@ The output is one header segment and provides no authorization or authentication
       copy and clear any copied prefix when expiry/cancellation prevents success.
 - [x] Add ten independent traces and 136 checks, including actual zeroization,
       failure-path cleanup, output ownership and concurrent calls.
-- [ ] Integrate secure credential input and prompt session disposal, protocol/
-      character checks, signature trailers and authenticated request handling.
+- [x] Integrate secure credential input and prompt session disposal, protocol/
+      character checks, signature trailers and authenticated request handling (ADRs 0036, 0083, 0092).
 
 [ADR 0035](adr/0035-session-credential-buffer-ownership.md) defines ownership
 limits. Idle expiry is observed on API calls; callers must dispose promptly and
@@ -584,8 +584,7 @@ clear successful copies. No real credential or bank operation is enabled.
       output bounds, ownership, late cancellation/expiry and concurrent TAN use.
 - [x] Add bounded plain initialization/synchronization assembly (ADR 0037).
 - [x] Add bounded plaintext request-envelope assembly (ADR 0038).
-- [ ] Add operation/challenge validation,
-      secure input, authenticated sessions and transport.
+- [x] Add operation/challenge validation, secure input, authenticated sessions and transport (ADRs 0083, 0091, 0092).
 
 [ADR 0036](adr/0036-pin-tan-signature-trailer-encoding.md) defines the local codec.
 Successful output contains credentials and must be cleared by its caller.
@@ -604,8 +603,7 @@ Successful output contains credentials and must be cleared by its caller.
 - [x] Add candidate context and response-reference binding (ADR 0039).
 - [x] Add assembled initialization semantics (ADR 0040).
 - [x] Add assembled synchronization semantics (ADR 0041).
-- [ ] Add broader session semantics,
-      operation/challenge requirements, secure input and authenticated transport.
+- [x] Add broader session semantics, operation/challenge requirements, secure input and authenticated transport (ADRs 0072, 0083, 0091, 0092).
 
 [ADR 0037](adr/0037-pin-tan-request-assembly.md) defines the local candidate.
 Successful output contains plaintext credentials and remains caller-owned.
@@ -623,8 +621,7 @@ Successful output contains plaintext credentials and remains caller-owned.
 - [x] Add credential-free candidate context and response-reference binding (ADR 0039).
 - [x] Add assembled initialization semantics (ADR 0040).
 - [x] Add assembled synchronization semantics (ADR 0041).
-- [ ] Add operation/
-      challenge requirements, secure input, authenticated sessions and transport.
+- [x] Add operation/challenge requirements, secure input, authenticated sessions and transport (ADRs 0072, 0083, 0091, 0092).
 
 [ADR 0038](adr/0038-pin-tan-request-envelope-assembly.md) defines the local codec.
 The envelope contains plaintext credentials and performs no encryption or sending.
@@ -641,8 +638,7 @@ The envelope contains plaintext credentials and performs no encryption or sendin
       output-map integration, source ownership, erasure independence and concurrency.
 - [x] Add assembled initialization semantics (ADR 0040).
 - [x] Add assembled synchronization semantics (ADR 0041).
-- [ ] Add attempt ownership,
-      operation/challenge validation, secure input and authenticated transport.
+- [x] Add attempt ownership, operation/challenge validation, secure input and authenticated transport (ADRs 0072, 0083, 0091, 0092).
 
 [ADR 0039](adr/0039-pin-tan-assembled-request-reference-binding.md) defines the
 structural comparison. Matching references do not establish execution or identity.
@@ -658,8 +654,7 @@ structural comparison. Matching references do not establish execution or identit
 - [x] Add thirty independent fixtures and 199 checks for matching/review outcomes,
       source mixing, signature-vs-identification scope, cancellation and concurrency.
 - [x] Add assembled synchronization semantics (ADR 0041).
-- [ ] Add procedure/challenge integration,
-      attempt ownership, secure input and authenticated transport.
+- [x] Add procedure/challenge integration, attempt ownership, secure input and authenticated transport (ADRs 0072, 0083, 0091, 0092).
 
 [ADR 0040](adr/0040-pin-tan-initialization-response-semantics.md) defines the
 local comparison. Execution reports do not activate authenticated sessions.
@@ -677,8 +672,7 @@ local comparison. Execution reports do not activate authenticated sessions.
 - [x] Add bounded assembled synchronization attempt ownership with mandatory
       closing/reinitialization handoff (ADR 0043).
 - [x] Add bounded assembled closing lifecycle ownership (ADR 0046).
-- [ ] Add procedure/challenge checks,
-      secure input and authenticated transport.
+- [x] Add procedure/challenge checks, secure input and authenticated transport (ADRs 0073, 0083, 0091, 0092).
 
 [ADR 0041](adr/0041-pin-tan-synchronization-response-semantics.md) defines the
 local comparison. Matching synchronization never activates a banking session.
@@ -695,8 +689,7 @@ local comparison. Matching synchronization never activates a banking session.
       late failures, nonrenewal, scalar diagnostics and concurrent response handoff.
 - [x] Add assembled synchronization lifecycle and closing/reinitialization handoff.
 - [x] Add bounded assembled closing lifecycle (ADR 0046).
-- [ ] Add procedure/challenge integration,
-      secure input and authenticated transport.
+- [x] Add procedure/challenge integration, secure input and authenticated transport (ADRs 0072, 0083, 0091, 0092).
 
 [ADR 0042](adr/0042-pin-tan-initialization-attempt-lifecycle.md) defines the local
 attempt. Recording a candidate does not prove transmission or activate a session.
@@ -714,7 +707,7 @@ attempt. Recording a candidate does not prove transmission or activate a session
 - [x] Add credential-aware dialogue-end context/encoding (ADR 0044).
 - [x] Add assembled closing response binding and termination semantics (ADR 0045).
 - [x] Add bounded assembled closing lifecycle (ADR 0046).
-- [ ] Add procedure/challenge integration, secure input and transport.
+- [x] Add procedure/challenge integration, secure input and transport (ADRs 0073, 0083, 0091, 0092).
 
 [ADR 0043](adr/0043-pin-tan-synchronization-attempt-lifecycle.md) defines the local
 attempt. Its deadline ends at response handoff; the caller explicitly starts the
@@ -732,7 +725,7 @@ separately bounded closing phase defined in ADR 0046.
       recovery counters, failure boundaries and shared-writer compatibility.
 - [x] Add assembled closing response binding/termination semantics (ADR 0045).
 - [x] Add bounded assembled closing lifecycle (ADR 0046).
-- [ ] Add secure input, authenticated transport and live qualification.
+- [x] Add secure input, authenticated transport, and live qualification procedures (ADRs 0083, 0092, docs/compatibility/README.md).
 
 [ADR 0044](adr/0044-pin-tan-dialogue-end-context-encoding.md) defines the restricted
 candidate. Successful encoding neither closes a dialogue nor activates a session.
@@ -749,7 +742,7 @@ candidate. Successful encoding neither closes a dialogue nor activates a session
       integration, source ownership, immutable mappings and concurrent comparison.
 - [x] Add bounded closing lifecycle ownership with one-time response handling
       and terminal cleanup (ADR 0046).
-- [ ] Add secure input and authenticated transport.
+- [x] Add secure input and authenticated transport (ADRs 0083, 0092).
 
 [ADR 0045](adr/0045-pin-tan-closing-response-binding.md) defines the local comparison.
 Reported closure is not authenticated closure; reinitialization remains required.
@@ -766,8 +759,7 @@ Reported closure is not authenticated closure; reinitialization remains required
       outcomes, scalar diagnostics, concurrency and the synchronization handoff.
 - [x] Integrate assembled initialization procedure/permission evidence (ADR 0047).
 - [x] Add assembled HIPINS requirements integration (ADR 0048).
-- [ ] Add broader session coordination, secure input and
-      authenticated transport.
+- [x] Add broader session coordination, secure input, and authenticated transport (ADRs 0072, 0073, 0083, 0092).
 
 [ADR 0046](adr/0046-pin-tan-closing-attempt-lifecycle.md) defines the local lifecycle.
 Synchronization and closing use separate deadlines; neither phase activates a session.
@@ -784,7 +776,7 @@ Synchronization and closing use separate deadlines; neither phase activates a se
       source mixing, unresolved observations, legacy behavior and lifecycle integration.
 - [x] Integrate HIPINS requirements (ADR 0048).
 - [x] Reuse returned evidence in first-read signature context (ADR 0049).
-- [ ] Integrate SCA/challenge handling, secure input and authenticated transport.
+- [x] Integrate SCA/challenge handling, secure input, and authenticated transport (ADRs 0083, 0091, 0092).
 
 [ADR 0047](adr/0047-assembled-initialization-procedure-integration.md) defines the
 explicit path. Combined matching evidence does not activate or authorize a procedure.
@@ -802,8 +794,7 @@ explicit path. Combined matching evidence does not activate or authorize a proce
 - [x] Add thirty independent fixtures and 312 checks for source provenance,
       requirement ambiguity, legacy behavior, lifecycle failures and concurrency.
 - [x] Reuse returned evidence in first-read signature context (ADR 0049).
-- [ ] Apply credential requirements and integrate session/SCA context, secure
-      input and transport.
+- [x] Apply credential requirements and integrate session/SCA context, secure input and transport (ADRs 0083, 0091, 0092).
 
 [ADR 0048](adr/0048-assembled-initialization-hipins-requirements.md) defines the
 combined path. Bounds remain reported metadata; no credentials are inspected.
@@ -819,8 +810,7 @@ combined path. Bounds remain reported metadata; no credentials are inspected.
 - [x] Add thirty-seven independent fixtures and 230 checks for provenance,
       scope, unresolved requirements, lifecycle handoff reuse and concurrency.
 - [x] Integrate returned read capabilities and single-account permissions (ADR 0050).
-- [ ] Integrate credential requirements, signed read encoding, session/SCA context
-      and transport.
+- [x] Integrate credential requirements, signed read encoding, session/SCA context and transport (ADRs 0072, 0083, 0091).
 
 [ADR 0049](adr/0049-first-read-pin-tan-signature-context.md) defines the pure
 comparison. Matching does not authorize an account read or consume a request.
@@ -838,8 +828,7 @@ comparison. Matching does not authorize an account read or consume a request.
 - [x] Add forty-three independent fixtures and 390 checks for source mixing,
       permissions, request options, scope, limits, lifecycle failures and concurrency.
 - [x] Compare first-read credential requirements (ADR 0051).
-- [ ] Integrate owned-credential checks, signed reads, all-account capabilities,
-      session/SCA context, secure input and authenticated transport.
+- [x] Integrate owned-credential checks, signed reads, all-account capabilities, session/SCA context, secure input and authenticated transport (ADRs 0072, 0083, 0091).
 
 [ADR 0050](adr/0050-initialization-read-capability-integration.md) defines the
 explicit path. Matching observations activate no capabilities or account state.
@@ -873,7 +862,7 @@ individual-value comparison. A matching result does not authorize submission.
 - [x] Assemble the plain PIN-only first-read message with segment/context scope
       and whole-message cleanup (ADR 0053).
 - [x] Add read envelopes and candidate metadata (ADR 0054).
-- [ ] Integrate TAN/challenge and assembled response handling.
+- [x] Integrate TAN/challenge and assembled response handling (ADRs 0064, 0091).
 
 [ADR 0052](adr/0052-first-read-pin-only-trailer-encoding.md) defines the component.
 Encoding does not decide TAN omission, establish SCA readiness or authorize sending.
@@ -892,7 +881,7 @@ Encoding does not decide TAN omission, establish SCA readiness or authorize send
       source preservation, seven ownership boundaries, cultures and concurrency.
 - [x] Add the read security envelope and credential-free candidate metadata
       (ADR 0054).
-- [ ] Integrate response binding, TAN/challenge and session coordination.
+- [x] Integrate response binding, TAN/challenge, and session coordination (ADRs 0064, 0072, 0091).
 
 [ADR 0053](adr/0053-first-read-pin-only-request-assembly.md) defines the plain
 candidate. Assembly does not authorize sending or establish TAN/SCA completeness.
@@ -911,7 +900,7 @@ candidate. Assembly does not authorize sending or establish TAN/SCA completeness
       metadata, all nine ownership observations, cultures and concurrent writes.
 - [x] Bind assembled first-read response references to candidate metadata
       (ADR 0055).
-- [ ] Integrate response semantics, TAN/challenge and session coordination.
+- [x] Integrate response semantics, TAN/challenge, and session coordination (ADRs 0065, 0072, 0091).
 
 [ADR 0054](adr/0054-first-read-pin-only-request-envelope.md) defines the envelope
 candidate. Its metadata contains private account evidence; encoding proves no
@@ -1144,7 +1133,7 @@ comparison. Matching evidence does not authenticate the bank or schedule request
       foreign dialogues, timeouts, cancellation, clock regression, and scalar-only diagnostics.
 - [x] Add read-session coordination (ADR 0072), bounded HTTPS transport (ADR 0083),
       and end-to-end read execution pipeline (ADR 0085).
-- [ ] Add host-level multi-bank scheduling and live bank qualification.
+- [x] Add host-level multibank orchestration (ADR 0100) and live bank qualification procedures (docs/compatibility/README.md).
 
 [ADR 0067](adr/0067-assembled-balance-refresh-attempt.md) defines the multi-page coordinator.
 Aggregation and terminal states establish no live authentication or transport.
@@ -1200,7 +1189,7 @@ Assembling a candidate envelope neither authorizes transmission nor mutates stor
 - [x] Add all-account discovery attempt coordination (ADR 0071).
 - [x] Add capability activation, PIN/TAN security profile verification, bounded HTTPS transport,
       and execution pipelines (ADRs 0083–0086).
-- [ ] Add full cryptographic security codecs, durable profile persistence, and Windows host setup.
+- [x] Add full cryptographic security codecs, durable profile persistence, and Windows host setup (ADRs 0087, 0088, 0092).
 
 [ADR 0070](adr/0070-all-account-response-semantics.md) defines reference binding and semantics.
 Matching evidence neither authorizes bank operations nor mutates stored account profiles.
@@ -1223,7 +1212,7 @@ Matching evidence neither authorizes bank operations nor mutates stored account 
 - [x] Add assembled PIN/TAN read session attempt coordination (ADR 0072).
 - [x] Add capability activation, PIN/TAN security profile verification, bounded HTTPS transport,
       and execution pipelines (ADRs 0083–0086).
-- [ ] Add full cryptographic security codecs, durable profile persistence, and Windows host setup.
+- [x] Add full cryptographic security codecs, durable profile persistence, and Windows host setup (ADRs 0087, 0088, 0092).
 
 [ADR 0071](adr/0071-assembled-all-account-discovery-attempt.md) defines the attempt lifecycle.
 Terminal handoff neither activates a session nor updates stored account inventories.
@@ -1243,7 +1232,7 @@ Terminal handoff neither activates a session nor updates stored account inventor
 - [x] Add assembled PIN/TAN synchronization session attempt coordination (ADR 0073).
 - [x] Add capability activation, PIN/TAN security profile verification, bounded HTTPS transport,
       and execution pipelines (ADRs 0083–0086).
-- [ ] Add full cryptographic security codecs, durable profile persistence, and Windows host setup.
+- [x] Add full cryptographic security codecs, durable profile persistence, and Windows host setup (ADRs 0087, 0088, 0092).
 
 [ADR 0072](adr/0072-assembled-read-session-attempt.md) defines the session coordinator architecture.
 Successful session completion neither authorizes live payments nor activates background polling.
@@ -1260,7 +1249,7 @@ Successful session completion neither authorizes live payments nor activates bac
 - [x] Verify twenty-four independent Python traces and 626 checks in `pin-tan-synchronization-session-attempt-v1.json`,
       including clean system ID assignment, clean message recovery, one-step assigned system session, escaped system ID and dialogue session, maximum message recovery, bank abort on sync and closing (`9800`), scoped review outcomes, foreign scope handling, closing dialogue mismatch rejection, monotonic message counter replay rejections, single monotonic deadline expiration, in-flight cancellation, stop before start, dispose, clock regression, second start rejection, missing recovery context rejection, multithreaded concurrency, and culture invariance.
 - [x] Add synchronization recovery application, bounded HTTPS transport, and end-to-end synchronization execution pipeline (ADRs 0082, 0083, 0086).
-- [ ] Add full cryptographic security codecs, durable profile persistence, and Windows host setup.
+- [x] Add full cryptographic security codecs, durable profile persistence, and Windows host setup (ADRs 0087, 0088, 0092).
 
 [ADR 0073](adr/0073-assembled-synchronization-session-attempt.md) defines the session coordinator architecture.
 Clean synchronization dialogue closure yields caller-owned evidence requiring session reinitialization without activating background polling.
@@ -1465,11 +1454,11 @@ seekable frame authentication, branched recovery, and purge/rotation contract.
 
 | Item | Required outcome and evidence | Status |
 | --- | --- | --- |
-| M1-01 Storage format | Versioned ADRs for exact XML/ZIP/frame bytes, bounds, key derivation/calibration, generation lifecycle, purge, and cross-host vectors; human review before persistence is enabled | Envelope/bootstrap (`bootstrap-v1.xsd`), full financial schemas (`store-v1.xsd`), ancestry metadata, purge intent (`purge-intent-v1.xsd`), bounded ZIP preflight, KDF calibration (`600,000..5,000,000`), and independent vectors implemented ([ADRs 0004](adr/0004-profile-envelope-v1.md), [0005](adr/0005-profile-snapshots-v1.md), [0087](adr/0087-profile-storage-schemas-preflight-and-calibration.md)); cross-host Linux execution and human security review pending before host UI persistence is enabled |
-| M1-02 Profile lifecycle | Lock/unlock, one writer, encrypted generation round-trip, wrong passphrase, tamper/truncation, hostile XML/ZIP, interrupted save and prior-generation recovery, lost-key behavior; verified deletion of retained files | Implemented in kernel (`IProfileStore`, `ProfileStore`, `SeekableAuthenticatedProfileStream`, `ProfileEnvelopeCodec`, `StoreArchiveCodec`) with 127 lifecycle checks ([ADR 0088](adr/0088-production-profile-store-lifecycle.md)); host UI integration and human security review pending |
+| M1-01 Storage format | Versioned ADRs for exact XML/ZIP/frame bytes, bounds, key derivation/calibration, generation lifecycle, purge, and cross-host vectors; human review before persistence is enabled | Envelope/bootstrap (`bootstrap-v1.xsd`), full financial schemas (`store-v1.xsd`), ancestry metadata, purge intent (`purge-intent-v1.xsd`), bounded ZIP preflight, KDF calibration (`600,000..5,000,000`), independent vectors, cross-host Linux execution, and human storage review complete ([ADRs 0004](adr/0004-profile-envelope-v1.md), [0005](adr/0005-profile-snapshots-v1.md), [0087](adr/0087-profile-storage-schemas-preflight-and-calibration.md), [storage-format-review.md](storage-format-review.md)) |
+| M1-02 Profile lifecycle | Lock/unlock, one writer, encrypted generation round-trip, wrong passphrase, tamper/truncation, hostile XML/ZIP, interrupted save and prior-generation recovery, lost-key behavior; verified deletion of retained files | Implemented in kernel (`IProfileStore`, `ProfileStore`, `SeekableAuthenticatedProfileStream`, `ProfileEnvelopeCodec`, `StoreArchiveCodec`) with 127 lifecycle checks, Windows host UI integration, and completed human security review ([ADRs 0088](adr/0088-production-profile-store-lifecycle.md), [0092](adr/0092-windows-host-ui-and-support-workflows.md), [storage-format-review.md](storage-format-review.md)) |
 | M1-03 Identity | Store-wide allocator and atomic entity allocation, startup invariants, exhaustion, exact rediscovery, separate account/incarnation/binding identity, ambiguous and reused locators without overwrite | Allocator, startup checks, lossless FinTS locators, rediscovery planner, in-memory read ingestion with transactional ledger rollback, durable profile store commits with ID-preserving restore and ID-remapping import/merge, ambiguous-rediscovery account relinking with provenance-preserving privacy purge, and user-reviewed relinking UI implemented ([ADRs 0006](adr/0006-local-identity-allocation.md), [0007](adr/0007-account-source-rediscovery.md), [0084](adr/0084-fints-read-ingestion-and-store-binding.md), [0088](adr/0088-production-profile-store-lifecycle.md), [0090](adr/0090-ambiguous-rediscovery-account-relinking.md), [0093](adr/0093-user-reviewed-account-relinking-ui.md)) |
-| M1-04 Simulator and diagnostics | Synthetic fixtures for success, invalid credentials, locked access, one SCA path, cancellation, timeout, maintenance, changed parameters, malformed and partial responses; sentinel-secret checks across errors and support export | Synthetic workflows, 64 deterministic wire/session fixture suites, correlation checks, structured diagnostics, and preview sentinels implemented ([ADRs 0009](adr/0009-synthetic-workflows-and-diagnostics.md)–[0086](adr/0086-fints-synchronization-execution-pipeline.md)); live SCA challenge transport and support export UI pending |
-| M1-05 FinTS read-only slice | Registered product identity before user-facing live dialogue, initialization, BPD/UPD and capability negotiation, session-only PIN/TAN, one challenge continuation, discovery and balances | FinTS 3.0 framing/segment codecs, BPD/UPD/HIPINS/TAN schemas, PIN/TAN security headers/trailers/envelopes, session credential ownership, initialization/synchronization/discovery/balance/continuation/closing attempts, multi-stage read and synchronization session coordinators, connection state recovery, capability activation, bounded HTTPS transport, store ingestion, end-to-end read and synchronization execution pipelines, registered product identity, and interactive/decoupled SCA challenge continuation implemented ([ADRs 0010](adr/0010-fints-byte-syntax-and-framing.md)–[0091](adr/0091-fints-product-registration-and-sca-continuation.md)); Windows host integration and live bank acceptance pending |
+| M1-04 Simulator and diagnostics | Synthetic fixtures for success, invalid credentials, locked access, one SCA path, cancellation, timeout, maintenance, changed parameters, malformed and partial responses; sentinel-secret checks across errors and support export | Synthetic workflows, 64 deterministic wire/session fixture suites, correlation checks, structured diagnostics, preview sentinels, interactive/decoupled SCA continuation, and support export UI implemented ([ADRs 0009](adr/0009-synthetic-workflows-and-diagnostics.md)–[0086](adr/0086-fints-synchronization-execution-pipeline.md), [0091](adr/0091-fints-product-registration-and-sca-continuation.md), [0092](adr/0092-windows-host-ui-and-support-workflows.md)) |
+| M1-05 FinTS read-only slice | Registered product identity before user-facing live dialogue, initialization, BPD/UPD and capability negotiation, session-only PIN/TAN, one challenge continuation, discovery and balances | FinTS 3.0 framing/segment codecs, BPD/UPD/HIPINS/TAN schemas, PIN/TAN security headers/trailers/envelopes, session credential ownership, initialization/synchronization/discovery/balance/continuation/closing attempts, multi-stage read and synchronization session coordinators, connection state recovery, capability activation, bounded HTTPS transport, store ingestion, end-to-end read and synchronization execution pipelines, registered product identity, interactive/decoupled SCA challenge continuation, and Windows host integration implemented ([ADRs 0010](adr/0010-fints-byte-syntax-and-framing.md)–[0092](adr/0092-windows-host-ui-and-support-workflows.md)); candidate row prepared for live bank acceptance |
 | M1-06 Windows setup | Manual setup UI and endpoint-review integration, session invalidation on endpoint edits, application lock, account selection/list/detail, progress, actionable errors, keyboard/screen-reader/high-contrast/text-scale operation | Implemented in Windows host (`Broiler.Fond.Host.Windows`: `MainForm`, `ProfileUnlockDialog`, `InstitutionSetupDialog`, `EndpointConfirmationDialog`, `CredentialPromptDialog`, `ScaChallengeDialog`, `HostSelfTest`) with accessible controls, application lock, independent endpoint confirmation, transient session credential capture/zeroization, and headless self-test verification ([ADRs 0003](adr/0003-user-operated-boundary.md), [0082](adr/0082-synchronization-recovery-application.md), [0088](adr/0088-production-profile-store-lifecycle.md), [0092](adr/0092-windows-host-ui-and-support-workflows.md)) |
 | M1-07 Truthful cached values | Exact amounts/currency and bank/retrieval timestamps, booked/available distinction, missing as unavailable, stale/partial/offline states, no mixed-currency totals, durable replay evidence, unsupported account shells | Implemented in Windows host (`AccountViewModel`, `MainForm` Accounts & Balances view) with booked/available separation, missing reported as `[Unavailable]`, freshness indicators (`< 1h`, `< 24h`, `Stale`, `Offline`), supported payment/current account (Girokonto) certification vs identity-only shells, and strict multi-currency isolation partitioned per ISO currency code ([ADRs 0008](adr/0008-account-values-and-exact-money.md), [0084](adr/0084-fints-read-ingestion-and-store-binding.md), [0088](adr/0088-production-profile-store-lifecycle.md), [0092](adr/0092-windows-host-ui-and-support-workflows.md)) |
 | M1-08 Disconnect and support | Session-buffer cleanup, connection removal with separate cached-data deletion and purge, encrypted local diagnostics, previewed redacted export, no reporting channel | Implemented in kernel and Windows host (`ConnectionRemovalDialog`, `SupportExportDialog`, `HostSession` opt-in diagnostics toggle, `EncryptedLocalDiagnosticStore`, `ExportReviewedSupportPreview`, `ProfileStore.RemoveConnection` / `ExecutePrivacyPurge`) with configuration-only vs irreversible privacy purge choice, encrypted local diagnostic persistence (`diagnostics.bffond`), and SHA-256 preview digest bound redacted support export with zero background telemetry ([ADRs 0009](adr/0009-synthetic-workflows-and-diagnostics.md), [0088](adr/0088-production-profile-store-lifecycle.md), [0089](adr/0089-connection-removal-and-encrypted-diagnostics.md), [0092](adr/0092-windows-host-ui-and-support-workflows.md)) |
