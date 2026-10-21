@@ -11,8 +11,9 @@ public enum FinTsPinTanSynchronizationIssue
 public sealed class FinTsPinTanSynchronizationEvidence
 {
     private FinTsPinTanSynchronizationEvidence(FinTsPinTanResponseBinding binding, FinTsSynchronizationDataSet data,
-        FinTsSynchronizationRecoveryContext? recovery, FinTsPinTanSynchronizationIssue issues, FinTsSynchronizationIssue synchronizationIssues)
-    { Binding = binding; Data = data; RecoveryContext = recovery; Issues = issues; SynchronizationIssues = synchronizationIssues; }
+        FinTsSynchronizationRecoveryContext? recovery, FinTsPinTanSynchronizationIssue issues, FinTsSynchronizationIssue synchronizationIssues, FinTsSignedTanResult? approval = null)
+    { Binding = binding; Data = data; RecoveryContext = recovery; Issues = issues; SynchronizationIssues = synchronizationIssues; Approval = approval; }
+    public FinTsSignedTanResult? Approval { get; }
     public FinTsPinTanResponseBinding Binding { get; }
     public FinTsPinTanRequestBinding Request => Binding.Request;
     public FinTsResponse Response => Binding.Response;
@@ -28,6 +29,9 @@ public sealed class FinTsPinTanSynchronizationEvidence
 
     public static FinTsPinTanSynchronizationEvidence Evaluate(FinTsPinTanResponseBinding binding, FinTsSynchronizationDataSet data,
         FinTsSynchronizationRecoveryContext? recoveryContext = null, CancellationToken cancellationToken = default)
+        => EvaluateCore(binding, data, recoveryContext, cancellationToken, null);
+    internal static FinTsPinTanSynchronizationEvidence EvaluateCore(FinTsPinTanResponseBinding binding, FinTsSynchronizationDataSet data,
+        FinTsSynchronizationRecoveryContext? recoveryContext, CancellationToken cancellationToken, FinTsSignedTanResult? approval)
     {
         ArgumentNullException.ThrowIfNull(binding); ArgumentNullException.ThrowIfNull(data); cancellationToken.ThrowIfCancellationRequested();
         var issues = FinTsPinTanSynchronizationIssue.None;
@@ -40,6 +44,26 @@ public sealed class FinTsPinTanSynchronizationEvidence
         var profile = binding.Request.ProfileVersion == 1 ? FinTsSynchronizationProfile.PinTan1 : FinTsSynchronizationProfile.PinTan2;
         var details = FinTsSynchronizationEvidence.RequestIssues(request!, profile, recoveryContext) |
             FinTsSynchronizationEvidence.ReportIssues(request!.Synchronization.Mode, data, profile, recoveryContext, cancellationToken);
+        if (approval is not null)
+        {
+            if (approval.Status != FinTsSignedTanStatus.Confirmed || approval.Request is not { } approved || !approved.IsCurrent ||
+                !ReferenceEquals(approved.Origin, binding.Request) || !ReferenceEquals(approved.Challenge.Response.Source, data.Source))
+                issues |= FinTsPinTanSynchronizationIssue.BindingNeedsReview;
+            else
+            {
+                var parameters = FinTsParameterSet.Parse(data.Source, cancellationToken);
+                var tan = FinTsTanParameterSet.Parse(parameters, cancellationToken);
+                var pin = FinTsPinTanParameterSet.Parse(parameters, cancellationToken);
+                var read = FinTsReadParameterSet.Parse(parameters, cancellationToken);
+                var interpreted = tan.Advertisements.Select(a => a.Source).Concat(pin.Advertisements.Select(a => a.Source))
+                    .Concat(read.Advertisements.Select(a => a.Source)).Append(approved.Challenge.Challenge!.Source).ToHashSet();
+                var parameterIssues = FinTsInitializationEvidence.ParameterIssues(request.Identification, request.Preparation, parameters,
+                    binding.Request.ExpectedUserId, cancellationToken, interpreted.Concat(data.Reports.Select(r => r.Source)).ToHashSet());
+                if (parameterIssues != 0) issues |= FinTsPinTanSynchronizationIssue.SynchronizationNeedsReview;
+                if (data.UninterpretedSegments.All(s => s.Code is "HIBPA" or "HIUPA" or "HIUPD" || interpreted.Contains(s)))
+                    details &= ~FinTsSynchronizationIssue.UninterpretedReports;
+            }
+        }
         if (recoveryContext?.PreviousDialogueId == binding.ReportedDialogueId) { details |= FinTsSynchronizationIssue.RecoveryContextMismatch; }
         if (details != FinTsSynchronizationIssue.None) { issues |= FinTsPinTanSynchronizationIssue.SynchronizationNeedsReview; }
         var response = binding.Response;
@@ -70,8 +94,10 @@ public sealed class FinTsPinTanSynchronizationEvidence
             foreach (var reply in segment.Replies)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                if (!seen.Add(reply.Code) || !reply.ElementReference.IsEmpty || reply.Parameters.Any(p => !p.IsEmpty) ||
-                    !(segment.IsMessageLevel ? reply.Code is "0010" or "0020" : reply.Code == "0020"))
+                bool permission = approval is not null && role == FinTsPinTanRequestSegmentRole.Preparation && reply.Code == "3920";
+                bool challenge = approval is not null && role == FinTsPinTanRequestSegmentRole.TanOperation && reply.Code == "0030";
+                if (!seen.Add(reply.Code) || !reply.ElementReference.IsEmpty || !permission && reply.Parameters.Any(p => !p.IsEmpty) ||
+                    !(permission || challenge || (segment.IsMessageLevel ? reply.Code is "0010" or "0020" : reply.Code == "0020")))
                 { issues |= FinTsPinTanSynchronizationIssue.StatusNeedsReview; }
                 if (reply.Code != "0020") { continue; }
                 if (segment.IsMessageLevel) { messageExecution = true; }
@@ -80,6 +106,6 @@ public sealed class FinTsPinTanSynchronizationEvidence
         }
         if (!messageExecution && !synchronizationExecution) { issues |= FinTsPinTanSynchronizationIssue.StatusNeedsReview; }
         cancellationToken.ThrowIfCancellationRequested();
-        return new(binding, data, recoveryContext, issues, details);
+        return new(binding, data, recoveryContext, issues, details, approval);
     }
 }

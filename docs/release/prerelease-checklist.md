@@ -64,6 +64,10 @@ must not be distributed as a banking-capable prerelease.
 
 ## Banking and protocol evidence
 
+- [ ] Balance-refresh scope matches the [BR-09 qualification record](../bank-refresh-qualification.md);
+      each advertised live bank/procedure row has dated evidence for this exact candidate.
+      Scripted fixtures and UI migration completion are not live compatibility evidence.
+
 - [ ] Institution endpoints come from the documented manual/authenticated
       source process; unexpected host changes are quarantined for user review.
 - [ ] TLS behavior, certificate failure, redirects, timeouts, malformed input,

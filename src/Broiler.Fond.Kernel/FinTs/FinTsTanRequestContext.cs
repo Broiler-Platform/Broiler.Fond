@@ -12,6 +12,18 @@ public sealed class FinTsTanRequestContext
     public FinTsMessageFrame Frame { get; }
     public FinTsSegment Segment { get; }
     public int ExpectedBankMessageNumber { get; }
+    internal FinTsPinTanRequestBinding? OriginBinding { get; private init; }
+    internal static FinTsTanRequestContext ForSynchronization(FinTsPinTanRequestBinding origin, CancellationToken ct)
+    {
+        var tan = origin.SignatureEvidence.Request.Frame.Syntax.Segments.Single(s => s.Code == "HKTAN");
+        var body = new System.Text.StringBuilder();
+        FinTsPinTanRequestWriter.AppendPublicSegment(body, origin.SignatureEvidence.Header.Source, 2);
+        foreach (var segment in origin.SignatureEvidence.Request.Frame.Syntax.Segments.Skip(1).SkipLast(1))
+            FinTsPinTanRequestWriter.AppendPublicSegment(body, segment, segment.Number + 1);
+        // Public metadata for our assembler's actual body positions; no secret-bearing wire is parsed.
+        var frame = FinTsMessageFrame.Parse(FinTsUnsignedWireEncoding.Frame("0", 1, body, tan.Number + 2), ct);
+        return new(frame, frame.Syntax.Segments.Single(s => s.Code == "HKTAN"), 1) { OriginBinding = origin };
+    }
     public string Process => Segment.Fields[0].Elements[0].HeaderText();
     public FinTsDataElement Operation => Segment.Fields[1].Elements[0];
     public FinTsDataElement? OrderHash => Element(3);

@@ -52,7 +52,7 @@ function git(...args) {
 
 function readConfiguredVersion() {
   const output = execFileSync('dotnet', [
-    'msbuild', 'src/Broiler.Fond.Host.Windows/Broiler.Fond.Host.Windows.csproj', '-nologo',
+    'msbuild', 'src/Broiler.Fond.Host.Desktop/Broiler.Fond.Host.Desktop.csproj', '-nologo',
     '-getProperty:BroilerFondVersion',
   ], { cwd: root, encoding: 'utf8' });
   return output.trim();

@@ -109,7 +109,19 @@ public sealed class FinTsPinTanSignatureEvidence
             // Re-evaluate only the HITANS/3920-specific vocabulary below; retain every other initialization binding requirement.
             if ((binding.Issues & ~(FinTsInitializationIssue.StatusNeedsReview | FinTsInitializationIssue.UninterpretedParameters)) != 0)
             { issues |= FinTsPinTanSignatureIssue.ProcedureScopeMismatch; }
-            if (parameters.UninterpretedSegments.Count != 0) { issues |= FinTsPinTanSignatureIssue.UninterpretedParameters; }
+            try
+            {
+                // Public/identified parameter replies can include typed PIN/TAN and read advertisements as well as HITANS.
+                // Parsing them grants no read permission; unknown or ambiguous layouts remain blocked.
+                var pinTan = FinTsPinTanParameterSet.Parse(parameters.Source, cancellationToken);
+                var reads = FinTsReadParameterSet.Parse(parameters.Source, cancellationToken);
+                var interpreted = pinTan.Advertisements.Select(a => a.Source).Concat(reads.Advertisements.Select(a => a.Source)).ToHashSet();
+                if (parameters.UninterpretedSegments.Any(s => !interpreted.Contains(s)) || pinTan.Advertisements.Count > 1 ||
+                    pinTan.Advertisements.Any(a => a.HasConflictingPinLengthBounds) ||
+                    reads.Advertisements.GroupBy(a => (a.Source.Code, a.Source.Version)).Any(g => g.Count() > 1))
+                    issues |= FinTsPinTanSignatureIssue.UninterpretedParameters;
+            }
+            catch (FinTsFormatException) { issues |= FinTsPinTanSignatureIssue.UninterpretedParameters; }
             if (source.PinTanEnvelope is not null || source.HasErrors || source.HasConflictingClasses || source.HasIndeterminateProcessing)
             { issues |= FinTsPinTanSignatureIssue.ProcedureResponseNeedsReview; }
             bool messageExecution = false, identityExecution = false, preparationExecution = false;

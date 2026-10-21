@@ -10,6 +10,12 @@
 
 **Last reviewed:** 2026-10-19
 
+**Desktop integration follow-up (2026-10-21):** Both refresh actions now use the
+tested batch workflow. End-user bank procedure acquisition/selection and signed
+SCA remain incomplete; no live bank is qualified. See the
+[balance refresh roadmap](balance-refresh-roadmap.md) and
+[BR-09 qualification record](bank-refresh-qualification.md).
+
 **Initial market:** Germany, consumer homebanking, EUR/SEPA
 
 **Initial delivery:** Purely user-operated Windows application
@@ -354,11 +360,16 @@ Windows host + Broiler.UI                 Later hosts
           +------- .NET runtime APIs only -+
 ```
 
-The Windows host owns presentation, window lifecycle, and packaging. It calls a
-host-neutral kernel API; the kernel never references Windows or `Broiler.UI`.
-Future hosts reuse the same kernel and encrypted archive format rather than
-forking financial behavior. Network access uses .NET networking APIs from the
-kernel and always goes directly from the user's device to the chosen bank.
+The Windows host initially owned presentation, window lifecycle, and packaging
+via Windows Forms. It calls a host-neutral kernel API; the kernel never references
+Windows or `Broiler.UI`. The presentation modernization track transitions from
+Windows Forms to a decoupled, cross-platform architecture (`Broiler.UI` +
+`Broiler.Fond.Presentation` + `Broiler.Fond.Host.Desktop`), fully detailed in
+[Roadmap: Migration from Windows Forms to Broiler UI](broiler-ui-roadmap.md) and
+[ADR 0145](adr/0145-broiler-ui-cross-platform-presentation-architecture.md). Future
+hosts reuse the same kernel and encrypted archive format rather than forking
+financial behavior. Network access uses .NET networking APIs from the kernel and
+always goes directly from the user's device to the chosen bank.
 
 The kernel grows by complete vertical slices rather than attempting all FinTS
 segments at once:
@@ -790,6 +801,8 @@ Approval of an older commit or artifact never carries forward automatically.
 | M8 — Additional hosts | Qualify Linux, macOS, and mobile on the shared kernel and compatible data contracts | Post-1.0 host releases | Complete (ADRs 0130–0134) |
 | M9 — FinTS 4.1 protocol expansion | Add evidence-backed newer protocol capabilities without weakening established support | Post-1.0 protocol release | Complete (ADRs 0135–0139) |
 | Professional Track | Corporate banking, EBICS, high-volume ISO 20022 batches, VEU dual signatures, and DATEV exports | Enterprise professional release | Complete (ADRs 0140–0144) |
+| Broiler UI Track | Presentation decoupling, cross-platform Broiler UI component system, 17 dialog ports, virtualized workspace, and WinForms deprecation | Cross-platform UI modernization | Roadmap defined (BUI-01–BUI-06, ADR 0145; see [broiler-ui-roadmap.md](broiler-ui-roadmap.md)) |
+
 
 Durations are indicative effort ranges for a cross-functional team of roughly
 four to six people building the new FinTS kernel and BCL-only store in-house.
@@ -1696,6 +1709,14 @@ advice.
   and durable write primitives.
 
 ## Change log
+
+- **2026-10-19:** Published the comprehensive Broiler UI Migration Roadmap
+  ([docs/broiler-ui-roadmap.md](broiler-ui-roadmap.md)) and architectural
+  decision record ([ADR 0145](adr/0145-broiler-ui-cross-platform-presentation-architecture.md)),
+  defining the 6-phase migration from Windows Forms to a decoupled, cross-platform
+  presentation architecture (`Broiler.UI` + `Broiler.Fond.Presentation` +
+  `Broiler.Fond.Host.Desktop`).
+
 
 - **2026-10-16:** Reviewed and refactored the roadmap and M1 status
   documentation to reflect the current state through ADR 0087, replacing the

@@ -10,7 +10,7 @@ capability activation, read store ingestion, and execution pipelines); encrypted
 diagnostic persistence and privacy-conscious support export; production profile store
 lifecycle with atomic promotion and privacy purge; deterministic ambiguous-rediscovery
 account relinking; FinTS application registration and interactive/decoupled SCA continuation;
-and the Windows host application architecture (`Broiler.Fond.Host.Windows`) with accessible
+and the cross-platform desktop host application architecture (`Broiler.Fond.Host.Desktop` powered by Broiler UI, replacing legacy Windows Forms per ADR 0145) with accessible
 dialogs and ephemeral credential zeroization to the M0 foundation. Payments remain strictly
 out of scope. No live institution support is published without controlled bank acceptance
 evidence, and no release approval is claimed before completion of the human release gate.
@@ -750,15 +750,15 @@ code/matrix display, and HKTAN status polling) under an absolute monotonic deadl
 in ephemeral buffers and wiped with `CryptographicOperations.ZeroMemory` immediately following transmission. See
 [ADR 0091](docs/adr/0091-fints-product-registration-and-sca-continuation.md).
 
-The Windows host application architecture (`Broiler.Fond.Host.Windows`) implements an accessible, responsive presentation
-layer adhering strictly to the user-operated security boundary. All views (`MainForm`) and dialogs (`EndpointConfirmationDialog`,
-`ProfileUnlockDialog`, `CredentialPromptDialog`, `ScaChallengeDialog`, `ConnectionRemovalDialog`, `SupportExportDialog`)
+The cross-platform desktop host application architecture (`Broiler.Fond.Host.Desktop` powered by Broiler UI, replacing legacy `Broiler.Fond.Host.Windows` per ADR 0145) implements an accessible, responsive presentation
+layer adhering strictly to the user-operated security boundary. All views (`BroilerMainWindow`) and dialogs (`BroilerEndpointConfirmationDialog`,
+`BroilerProfileUnlockDialog`, `BroilerCredentialPromptDialog`, `BroilerScaChallengeDialog`, `BroilerConnectionRemovalDialog`, `BroilerSupportExportDialog`)
 provide keyboard navigation, high-DPI scaling, and accessible descriptions (`AccessibleRole`, `AccessibleName`).
 Balances are displayed with truthful freshness indicators (< 1h, < 24h, Stale, Offline) and strict multi-currency
 isolation, preventing misleading mixed-currency summations. Ephemeral credential prompts handle user PINs and TANs
-using masked text inputs, zeroizing underlying character and byte buffers in deterministic `finally` blocks. Automated
-headless self-tests (`HostSelfTest`) verify security boundaries, dialog accessibility, balance truthfulness, and purge
-behavior in CI without user interaction. See [ADR 0092](docs/adr/0092-windows-host-ui-and-support-workflows.md).
+using pinned-buffer controls (`BroilerSecureTextBox`), zeroizing underlying character and byte buffers in deterministic `finally` and `Dispose` blocks. Automated
+headless self-tests (`BroilerUiSelfTest` and `DesktopHostSelfTest`) verify security boundaries, dialog accessibility, balance truthfulness, and purge
+behavior in CI without user interaction. See [ADR 0092](docs/adr/0092-windows-host-ui-and-support-workflows.md) and [ADR 0145](docs/adr/0145-broiler-ui-cross-platform-presentation-architecture.md).
 
 User-reviewed ambiguous-rediscovery account relinking UI (`AccountRelinkingDialog`) connects the kernel's deterministic
 relinking planner to an accessible, review-first presentation workflow. The dialog displays live plan previews

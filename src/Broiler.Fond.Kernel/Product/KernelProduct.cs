@@ -18,8 +18,9 @@ public static class KernelProduct
     public const int Milestone = 1;
 
     /// <summary>
-    /// Designated FinTS 3.0 product registration identity for HKVVB dialogue preparation.
-    /// Product ID: "BROILER-FOND", Version: "1.0", Registration Code: "9999999999".
+    /// Historical protocol/test product metadata, not evidence of application registration approval.
+    /// Desktop bank preparation requires an explicitly configured assigned application product ID
+    /// and must not use this placeholder as a production fallback.
     /// </summary>
     public static readonly FinTsProductRegistration FinTsRegistration = new(
         productIdentifier: "BROILER-FOND",

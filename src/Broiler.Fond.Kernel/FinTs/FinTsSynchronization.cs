@@ -104,11 +104,19 @@ public sealed class FinTsUnsignedSynchronizationRequest
         ArgumentNullException.ThrowIfNull(frame); cancellationToken.ThrowIfCancellationRequested();
         var segments = frame.Syntax.Segments;
         if (segments.Any(s => s.Code is "HNVSK" or "HNVSD" or "HNSHK" or "HNSHA")) { throw new FinTsFormatException(FinTsSyntaxError.UnsupportedSecurityWrapper); }
-        if (segments.Count != 5 || frame.MessageNumber != 1 || segments[0].Fields[2].Elements[0].HeaderText() != "0" ||
+        if (segments.Count is not (5 or 6) || frame.MessageNumber != 1 || segments[0].Fields[2].Elements[0].HeaderText() != "0" ||
             segments[0].Fields.Count == 5 && !ParameterFields.Empty(segments[0].Fields[4])) { throw SynchronizationFields.Invalid(); }
         var identification = FinTsInitializationIdentification.Parse(segments[1], cancellationToken);
         var preparation = FinTsInitializationPreparation.Parse(segments[2], cancellationToken);
         var synchronization = FinTsSynchronizationRequest.Parse(segments[3], cancellationToken);
+        if (segments.Count == 6)
+        {
+            FinTsTanRequestContext tan;
+            try { tan = FinTsTanRequestContext.Parse(frame, 5, 1, cancellationToken); }
+            catch (FinTsFormatException) { throw SynchronizationFields.Invalid(); }
+            if (tan.Process != "4" || tan.Operation.HeaderText() != "HKIDN" || tan.Segment.Fields.Count != 2)
+                throw SynchronizationFields.Invalid();
+        }
         if (identification.IsAnonymous || synchronization.Mode == FinTsSynchronizationMode.SystemId &&
             (identification.SystemId != "0" || identification.SystemStatus != FinTsCustomerSystemStatus.Required)) { throw SynchronizationFields.Invalid(); }
         return new(frame, identification, preparation, synchronization);
@@ -117,6 +125,15 @@ public sealed class FinTsUnsignedSynchronizationRequest
 
 public static class FinTsUnsignedSynchronizationWriter
 {
+    public static byte[] EncodeWithApprovalRequest(FinTsInitializationInput input, int tanSegmentVersion, CancellationToken cancellationToken = default)
+    {
+        if (tanSegmentVersion is not (6 or 7)) throw SynchronizationFields.Invalid();
+        var body = FinTsUnsignedInitializationWriter.CreateBody(input, cancellationToken);
+        body.Append("HKSYN:4:3+0'HKTAN:5:").Append(tanSegmentVersion.ToString(CultureInfo.InvariantCulture)).Append("+4+HKIDN'");
+        byte[] wire = FinTsUnsignedWireEncoding.Frame("0", 1, body, 6);
+        _ = FinTsUnsignedSynchronizationRequest.Parse(FinTsMessageFrame.Parse(wire, cancellationToken), cancellationToken);
+        return wire;
+    }
     /// <summary>Local unsigned encoding; supplies no credentials, signature sentinel, transport or recovery action.</summary>
     public static byte[] Encode(FinTsInitializationInput input, FinTsSynchronizationMode mode, CancellationToken cancellationToken = default)
     {

@@ -56,7 +56,7 @@ public sealed record FinTsProductRegistration
     /// <summary>The product version transmitted in HKVVB:3:3 field 5 (max 5 characters).</summary>
     public string ProductVersion { get; }
 
-    /// <summary>Optional Deutsche Kreditwirtschaft (DK) registration code (e.g. 9999999999 or 25-char assigned ID).</summary>
+    /// <summary>Optional registration metadata. Production initialization must also put the assigned application ID in ProductIdentifier.</summary>
     public string? RegistrationCode { get; }
 
     /// <summary>User-facing full product name.</summary>

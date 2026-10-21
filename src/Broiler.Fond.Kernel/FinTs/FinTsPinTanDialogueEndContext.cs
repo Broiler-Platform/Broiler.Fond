@@ -31,7 +31,8 @@ public sealed class FinTsPinTanDialogueEndContext
         if (!synchronization.HasMatchingEvidence) { issues |= FinTsPinTanDialogueEndContextIssue.SynchronizationNeedsReview; }
         if (request.Request.DialogueId != synchronization.ReportedDialogueId) { issues |= FinTsPinTanDialogueEndContextIssue.DialogueMismatch; }
         // This restricted path closes the new synchronization dialogue, not the older recovered dialogue.
-        if (request.Frame.MessageNumber != 2 || request.ExpectedBankMessageNumber != 2) { issues |= FinTsPinTanDialogueEndContextIssue.CounterMismatch; }
+        int closingNumber = synchronization.Approval is null ? 2 : 3;
+        if (request.Frame.MessageNumber != closingNumber || request.ExpectedBankMessageNumber != closingNumber) { issues |= FinTsPinTanDialogueEndContextIssue.CounterMismatch; }
         var previous = synchronization.Request.SignatureEvidence.Header;
         if (header.CountryCode != previous.CountryCode || header.InstitutionId != previous.InstitutionId || header.UserId != previous.UserId)
         { issues |= FinTsPinTanDialogueEndContextIssue.IdentityMismatch; }

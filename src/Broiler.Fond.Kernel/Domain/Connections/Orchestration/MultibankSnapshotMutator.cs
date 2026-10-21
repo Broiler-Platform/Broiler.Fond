@@ -170,7 +170,7 @@ public static class MultibankSnapshotMutator
                 b.AccountIncarnationId.Value,
                 b.AccountBindingId.Value,
                 b.Kind.ToString(),
-                b.Value?.Amount.ToString("0.00", CultureInfo.InvariantCulture),
+                b.Value?.Amount.ToString(CultureInfo.InvariantCulture),
                 b.Value?.Currency,
                 b.BankTimestamp,
                 b.RetrievedAt,

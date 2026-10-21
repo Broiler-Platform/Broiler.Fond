@@ -162,6 +162,8 @@ history or weaken a boundary in implementation.
 | [0142](0142-iso-20022-batch-processing-and-granular-reconciliation.md) | Accepted | ISO 20022 batch processing, bulk payments, control sums, and granular reconciliation (`BulkPaymentBatch`, `Iso20022BatchXmlCodec`, `BatchReconciliationEngine`) |
 | [0143](0143-distributed-electronic-signatures-veu-lifecycle.md) | Accepted | Distributed Electronic Signatures (VEU / EDS), signature classes, and multi-actor order lifecycle (`VeuSignatureClass`, `VeuOrderState`, `VeuOrder`, `EbicsVeuCoordinator`) |
 | [0144](0144-accounting-exports-and-datev-interoperability.md) | Accepted | Accounting exports, DATEV CSV interoperability, enterprise audit manifests, and key recovery policies (`DatevExportGenerator`, `DatevBookingRecord`, `EnterpriseAuditExporter`) |
+| [0145](0145-broiler-ui-cross-platform-presentation-architecture.md) | Accepted | Broiler UI cross-platform presentation architecture, 3-tier decoupling, ephemeral credential memory hygiene, and Windows Forms deprecation (`Broiler.UI`, `Broiler.Fond.Presentation`, `BroilerSecureTextBox`, `BroilerVirtualDataGrid`) |
+
 
 
 

@@ -59,6 +59,9 @@ public enum FinTsReadExecutionStatus
 /// <summary>Configures the operational parameters and candidate builders for a FinTS read execution run.</summary>
 public sealed class FinTsReadExecutionOptions
 {
+    /// <summary>Strict existing-binding ingestion; used by the production single-account balance workflow.</summary>
+    public bool VerifiedTargetOnly { get; init; }
+    public Action<FinTsDialogueCleanupOutcome>? CleanupObserver { get; init; }
     public FinTsReadExecutionKind Kind { get; init; } = FinTsReadExecutionKind.AllAccountDiscovery;
     public KnownAccountBinding? TargetAccountBinding { get; init; }
     public TimeSpan Timeout { get; init; } = TimeSpan.FromSeconds(60);
@@ -277,7 +280,8 @@ public static class FinTsReadExecutionPipeline
                 "A valid, available PIN credential is required.");
         }
 
-        if (options.Kind == FinTsReadExecutionKind.BalanceRefresh && options.TargetAccountBinding is null)
+        if ((options.VerifiedTargetOnly && options.Kind != FinTsReadExecutionKind.BalanceRefresh) ||
+            (options.Kind == FinTsReadExecutionKind.BalanceRefresh && options.TargetAccountBinding is null))
         {
             return FinTsReadExecutionResult.Failure(
                 FinTsReadExecutionStatus.RejectedMissingCandidate,
@@ -551,6 +555,15 @@ public static class FinTsReadExecutionPipeline
                 }
 
                 FinTsPinTanReadRequestBinding balanceCandidate = options.BalanceFirstReadCandidateFactory(attempt);
+                if (options.VerifiedTargetOnly)
+                {
+                    var target = options.TargetAccountBinding!;
+                    var accounts = balanceCandidate.Context.Signature.Request.Request.Accounts;
+                    if (accounts.Count != 1 || accounts[0].Iban != target.Locator.Iban ||
+                        !FinTsTargetBalanceIngestion.MatchesParameter(connection, target, balanceCandidate.Context.Account, accounts[0].Bic))
+                        return FinTsReadExecutionResult.Failure(FinTsReadExecutionStatus.RejectedMissingCandidate, connection,
+                            "The balance candidate does not match the verified target; no balance request was sent.");
+                }
                 var recTrans = attempt.RecordBalanceFirstReadCandidate(balanceCandidate, cancellationToken);
                 if (recTrans != FinTsPinTanReadSessionTransition.CandidateRecorded)
                 {
@@ -708,6 +721,7 @@ public static class FinTsReadExecutionPipeline
             // -------------------------------------------------------------
             // Stage 3: Dialogue Closing
             // -------------------------------------------------------------
+            var firstBalanceEvidence = attempt.BalanceFirstPageEvidence;
             FinTsPinTanDialogueEndRequestBinding closingCandidate = options.ClosingCandidateFactory is not null
                 ? options.ClosingCandidateFactory(attempt)
                 : CreateDefaultClosingCandidate(attempt, cancellationToken);
@@ -762,24 +776,29 @@ public static class FinTsReadExecutionPipeline
             }
 
             // Synthesize consolidated verified session result for ingestion
+            if (options.VerifiedTargetOnly && operationResult.Transition != FinTsPinTanReadSessionTransition.ExecutionReported)
+                return FinTsReadExecutionResult.Failure(FinTsReadExecutionStatus.RejectedProtocolFailure, connection,
+                    "The balance response was incomplete; no balance was ingested.");
             var consolidatedResult = FinTsPinTanReadSessionResult.Create(
                 FinTsPinTanReadSessionTransition.ExecutionReported,
                 FinTsPinTanReadSessionStage.Terminal,
                 requirementsEvidence: initResult.RequirementsEvidence ?? operationResult.RequirementsEvidence,
                 allAccountEvidence: operationResult.AllAccountEvidence,
-                balanceFirstPageEvidence: operationResult.BalanceFirstPageEvidence,
+                balanceFirstPageEvidence: firstBalanceEvidence,
                 balanceContinuationEvidence: operationResult.BalanceContinuationEvidence,
                 aggregatedBalances: operationResult.AggregatedBalances,
                 closingEvidence: closingResult.ClosingEvidence,
                 procedureEvidence: initResult.ProcedureEvidence ?? operationResult.ProcedureEvidence,
                 initializationEvidence: initResult.InitializationEvidence ?? operationResult.InitializationEvidence);
 
-            var ingestionResult = FinTsReadIngestionApplication.Apply(
+            var ingestionResult = options.VerifiedTargetOnly
+                ? FinTsTargetBalanceIngestion.Apply(connection, options.TargetAccountBinding!, consolidatedResult, knownBindings, ledger, clock.GetUtcNow(), cancellationToken)
+                : FinTsReadIngestionApplication.Apply(
                 connection,
                 consolidatedResult,
                 knownBindings,
                 ledger,
-                now,
+                clock.GetUtcNow(),
                 cancellationToken);
 
             if (!ingestionResult.IsSuccess)
@@ -812,6 +831,11 @@ public static class FinTsReadExecutionPipeline
                 connection.WithAttemptedContact(now),
                 $"Transport error ({ex.Issue}): {ex.Message}");
         }
+        catch (FinTsCandidateException ex)
+        {
+            return FinTsReadExecutionResult.Failure(FinTsReadExecutionStatus.RejectedMissingCandidate,
+                connection.WithAttemptedContact(now), $"The current bank evidence cannot build the required request ({ex.Failure}).");
+        }
         catch (FinTsFormatException ex)
         {
             return FinTsReadExecutionResult.Failure(
@@ -825,6 +849,18 @@ public static class FinTsReadExecutionPipeline
                 FinTsReadExecutionStatus.RejectedProtocolFailure,
                 connection.WithAttemptedContact(now),
                 $"Unexpected execution failure: {ex.Message}");
+        }
+        finally
+        {
+            // Only an accepted initialization with no recorded operation is safe to close here.
+            // Never replay a request after an unknown transport outcome or retry an attempted close.
+            if (attempt.GetSnapshot().State == FinTsPinTanReadSessionState.DialogueOpen && attempt.InitializationEvidence is not null)
+            {
+                var cleanup = await FinTsDialogueCleanup.CloseAsync(
+                    () => options.ClosingCandidateFactory?.Invoke(attempt) ?? CreateDefaultClosingCandidate(attempt),
+                    transport, endpoint, credential).ConfigureAwait(false);
+                FinTsDialogueCleanup.Notify(options.CleanupObserver, cleanup);
+            }
         }
     }
 

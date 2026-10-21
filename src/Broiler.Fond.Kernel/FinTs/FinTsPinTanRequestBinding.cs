@@ -4,7 +4,7 @@ namespace Broiler.Fond.Kernel.FinTs;
 
 public enum FinTsPinTanRequestSegmentRole
 {
-    MessageHeader, EnvelopeHeader, EnvelopeData, SignatureHeader, Identification, Preparation, Synchronization, SignatureTrailer, MessageTrailer, DialogueEnd, ReadOperation,
+    MessageHeader, EnvelopeHeader, EnvelopeData, SignatureHeader, Identification, Preparation, Synchronization, SignatureTrailer, MessageTrailer, DialogueEnd, ReadOperation, TanOperation,
 }
 
 /// <summary>Credential-free description of one actual outgoing segment position, including reserved wrapper numbers.</summary>
@@ -35,8 +35,10 @@ public sealed class FinTsPinTanRequestBinding
         ];
         bool sync = signature.Request.Synchronization is not null;
         if (sync) { segments.Add(new("HKSYN", 5, 3, FinTsPinTanRequestSegmentRole.Synchronization)); }
-        segments.Add(new("HNSHA", sync ? 6 : 5, 2, FinTsPinTanRequestSegmentRole.SignatureTrailer));
-        segments.Add(new("HNHBS", sync ? 7 : 6, 1, FinTsPinTanRequestSegmentRole.MessageTrailer));
+        var tan = signature.Request.Frame.Syntax.Segments.SingleOrDefault(s => s.Code == "HKTAN");
+        if (tan is not null) segments.Add(new("HKTAN", tan.Number + 1, tan.Version, FinTsPinTanRequestSegmentRole.TanOperation));
+        segments.Add(new("HNSHA", signature.Request.Frame.Syntax.Segments.Count + 1, 2, FinTsPinTanRequestSegmentRole.SignatureTrailer));
+        segments.Add(new("HNHBS", signature.Request.Frame.Syntax.Segments.Count + 2, 1, FinTsPinTanRequestSegmentRole.MessageTrailer));
         Segments = segments.AsReadOnly();
     }
     public FinTsPinTanSignatureEvidence SignatureEvidence { get; }
@@ -116,9 +118,10 @@ public sealed class FinTsPinTanResponseBinding
             {
                 "HIBPA" or "HIUPA" or "HIUPD" or "HIPINS" or "HITANS" or "HISALS" or "HISPAS" => request.PreparationNumber,
                 "HISYN" => request.SynchronizationNumber,
+                "HITAN" => request.Segments.SingleOrDefault(s => s.Role == FinTsPinTanRequestSegmentRole.TanOperation)?.Number,
                 _ => null,
             };
-            bool supported = (segment.Code, segment.Version) is ("HIBPA", 3) or ("HIUPA", 4) or ("HIUPD", 6) or ("HIPINS", 1) or ("HITANS", 6 or 7) or ("HISYN", 4) or ("HISALS", 6 or 7 or 8) or ("HISPAS", 1 or 2 or 3);
+            bool supported = (segment.Code, segment.Version) is ("HIBPA", 3) or ("HIUPA", 4) or ("HIUPD", 6) or ("HIPINS", 1) or ("HITANS", 6 or 7) or ("HISYN", 4) or ("HISALS", 6 or 7 or 8) or ("HISPAS", 1 or 2 or 3) || segment.Code == "HITAN" && segment.Version is 6 or 7 && expected is not null;
             if (!supported) { issues |= FinTsPinTanResponseBindingIssue.UninterpretedData; }
             if (segment.Code == "HISYN" && expected is null || expected is not null && segment.Reference != expected)
             { issues |= FinTsPinTanResponseBindingIssue.SegmentRoleMismatch; }

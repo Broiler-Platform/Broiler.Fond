@@ -7,12 +7,11 @@ name: Publish
 #   Broiler.Fond-<version>-win-x64-self-contained.zip       host + the .NET runtime
 #   Broiler.Fond-<version>-win-x64-framework-dependent.zip  host, runs on an installed .NET 10
 #
-# The Milestone 0 host is an inert console shell; the release notes say so, and the draft stays
-# private until someone publishes it (docs/release/prerelease-checklist.md governs that).
+# The desktop includes local profile and bounded banking workflows. Live-bank qualification
+# is still pending; drafts stay unpublished until the release checklist is satisfied.
 #
-# NuGet.config lists no package source: the solution needs none to build. Publishing for a
-# runtime identifier does need Microsoft's runtime and apphost packs, so the publish step names
-# nuget.org - and only nuget.org - on the command line. Nothing is pushed to a feed.
+# Restore uses nuget.org for the Broiler UI packages and runtime/apphost packs.
+# Nothing is pushed to a package feed.
 #
 # The version is BroilerFondVersion (Directory.Build.props) raised past every earlier run's
 # fond-v* tag, and a successful run tags its commit, so preview numbers only ever increase and
@@ -87,7 +86,7 @@ jobs:
     env:
       VERSION: ${{ needs.version.outputs.version }}
       OUT: artifacts/publish/win-x64-${{ matrix.variant }}
-      EXECUTABLE: Broiler.Fond.Host.Windows.exe
+      EXECUTABLE: Broiler.Fond.Host.Desktop.exe
     steps:
       - name: Check out source
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -104,7 +103,7 @@ jobs:
       - name: Publish
         run: |
           $selfContained = if ('${{ matrix.variant }}' -eq 'self-contained') { 'true' } else { 'false' }
-          dotnet publish src/Broiler.Fond.Host.Windows/Broiler.Fond.Host.Windows.csproj `
+          dotnet publish src/Broiler.Fond.Host.Desktop/Broiler.Fond.Host.Desktop.csproj `
             -c Release -r win-x64 --self-contained $selfContained `
             --source https://api.nuget.org/v3/index.json `
             "-p:BroilerFondVersion=$env:VERSION" `
@@ -123,8 +122,11 @@ jobs:
 
       - name: Smoke-test the executable
         run: |
-          & (Join-Path $env:OUT $env:EXECUTABLE)
-          if ($LASTEXITCODE -ne 0) { throw "The host exited with code $LASTEXITCODE." }
+          foreach ($mode in @('--smoke', '--qualification')) {
+            $process = Start-Process -FilePath (Join-Path $env:OUT $env:EXECUTABLE) `
+              -ArgumentList $mode -WindowStyle Hidden -Wait -PassThru
+            if ($process.ExitCode -ne 0) { throw "Packaged host $mode failed with code $($process.ExitCode)." }
+          }
 
       - name: Upload
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1

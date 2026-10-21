@@ -170,7 +170,7 @@ internal static class FinTsScaExecutionPipelineTests
         using var pin = CreatePin();
         var endpoint = new Uri(TestEndpoint);
 
-        // 1. Successful decoupled polling (q0 -> pending 3956, q1 -> execution reported 0020)
+        // Unsigned response fixtures must not authorize production status-query dispatch.
         using (var transport = new FinTsSimulatedTransport())
         {
             transport.EnqueueResponse(q0Response);
@@ -181,14 +181,14 @@ internal static class FinTsScaExecutionPipelineTests
                 TimeSpan.FromSeconds(30), 10, allowAutomaticQueries: true,
                 scaChallengeHandler: null, scaContinuationCandidateFactory: null).AsTask().GetAwaiter().GetResult();
 
-            verify(result.IsSuccess, $"Decoupled SCA polling should succeed when bank reports execution: {result.FailureReason}");
+            verify(!result.IsSuccess && transport.RecordedTransmissions.Count == 0, "Unsigned decoupled polling is rejected before dispatch.");
             verify(!result.IsExempt, "Decoupled SCA is not exempt.");
             verify(!result.IsCancelled, "Decoupled SCA was not cancelled.");
-            verify(result.QueriesRecorded == 2, "Two queries should have been recorded.");
-            verify(result.TerminalResponse is not null, "Terminal response should be returned.");
+            verify(result.QueriesRecorded == 0, "Unsupported polling records no queries.");
+            verify(result.TerminalResponse is null, "Unsupported polling cannot supply terminal evidence.");
         }
 
-        // 2. Transport failure on status query
+        // Missing signed builder rejects even when a transport error is queued.
         using (var transport = new FinTsSimulatedTransport())
         {
             transport.EnqueueFailure(new FinTsTransportException(FinTsTransportIssue.NetworkFailure, "Socket disconnected.", endpoint));
@@ -198,9 +198,10 @@ internal static class FinTsScaExecutionPipelineTests
                 TimeSpan.FromSeconds(30), 10, allowAutomaticQueries: true,
                 scaChallengeHandler: null, scaContinuationCandidateFactory: null).AsTask().GetAwaiter().GetResult();
 
-            verify(!result.IsSuccess, "Transport failure must stop polling.");
-            verify(result.FailureReason!.Contains("HTTP 0", StringComparison.Ordinal) || result.FailureReason.Contains("transport", StringComparison.OrdinalIgnoreCase) || result.FailureReason.Contains("Socket disconnected", StringComparison.Ordinal),
-                "Failure reason must mention transport error.");
+            verify(!result.IsSuccess, "Unsupported polling must fail.");
+            verify(result.FailureReason!.Contains("signed status-query builder", StringComparison.Ordinal),
+                "Unsupported polling explains the missing signed builder before any transport error.");
+            verify(transport.RecordedTransmissions.Count == 0, "Unsupported polling never dispatches a query.");
         }
     }
 
@@ -270,7 +271,7 @@ internal static class FinTsScaExecutionPipelineTests
                 "Failure must indicate credential is not a TAN.");
         }
 
-        // 5. Successful interactive TAN continuation
+        // Missing signed builder cannot fall back to an unsigned message.
         using (var transport = new FinTsSimulatedTransport())
         {
             var terminalWire = Convert.FromBase64String(GetScaVector(1).GetProperty("queries")[1].GetProperty("responseBase64").GetString()!);
@@ -287,9 +288,19 @@ internal static class FinTsScaExecutionPipelineTests
                 },
                 scaContinuationCandidateFactory: null).AsTask().GetAwaiter().GetResult();
 
-            verify(result.IsSuccess, "Interactive TAN continuation should succeed.");
+            verify(!result.IsSuccess && transport.RecordedTransmissions.Count == 0, "Missing signed TAN builder rejects without dispatch.");
             verify(!result.IsCancelled, "Not cancelled.");
-            verify(result.QueriesRecorded == 1, "One continuation message recorded.");
+            verify(result.QueriesRecorded == 0, "Unsupported continuation records no dispatch.");
+        }
+
+        using (var transport = new FinTsSimulatedTransport())
+        {
+            var result = FinTsScaExecutionCoordinator.ExecuteAsync(initialEvidence, transport, endpoint, pin,
+                TimeSpan.FromSeconds(30), 10, true,
+                (_, _, _) => throw new InvalidOperationException("secret-marker"), null).AsTask().GetAwaiter().GetResult();
+            verify(!result.IsSuccess && !result.FailureReason!.Contains("secret-marker", StringComparison.Ordinal),
+                "SCA interaction exceptions cannot expose secret markers in returned failures.");
+            verify(transport.RecordedTransmissions.Count == 0, "Failed SCA interaction never dispatches a continuation.");
         }
     }
 
@@ -371,12 +382,19 @@ internal static class FinTsScaExecutionPipelineTests
         // 1. Synchronization response contains SCA challenge, user cancels
         using (var transport = new FinTsSimulatedTransport())
         {
-            var syncCandidate = FinTsSynchronizationExecutionPipeline.CreateDefaultSynchronizationCandidate(conn, procCtx);
-            transport.EnqueueResponse(Convert.FromBase64String(GetScaVector(0).GetProperty("responseBase64").GetString()!));
+            using var syncDoc = JsonDocument.Parse(Assembly.GetExecutingAssembly().GetManifestResourceStream("FinTs.pin-tan-synchronization-session-attempt-v1.json")!);
+            var syncVec = syncDoc.RootElement.GetProperty("vectors")[0];
+            byte[] procBytes = Convert.FromBase64String(syncVec.GetProperty("syncCandidate").GetProperty("procedureResponseBase64").GetString()!);
+            byte[] template = Convert.FromBase64String(syncVec.GetProperty("syncResponse").GetProperty("wireBase64").GetString()!);
+            var factory = new FinTsProductionCandidateFactory(
+                conn,
+                new FinTsProductRegistration("ASSIGNED-APP-ID", "2.1"),
+                procCtx,
+                new FinTsPinTanSignatureSelection(2, 900, 7));
+            transport.EnqueueResponse(Broiler.Fond.TestSupport.SignedTanTestWire.Initial(template, procBytes));
 
-            var options = FinTsSynchronizationExecutionOptions.SystemId(
-                syncFactory: _ => syncCandidate,
-                scaChallengeHandler: (_, _, _) => ValueTask.FromResult<FinTsSessionCredential?>(null));
+            var options = factory.SynchronizationOptions(
+                textTanPrompt: (_, _) => ValueTask.FromResult<FinTsSessionCredential?>(null));
 
             var result = FinTsSynchronizationExecutionPipeline.ExecuteAsync(
                 conn, transport, pin, options).AsTask().GetAwaiter().GetResult();

@@ -20,6 +20,10 @@ internal static class Program
         Check(KernelProduct.ProductName == "Fond - Finance on Demand", "Product-name constant differs from the product decision.");
         Check(KernelProduct.FullDisplayName == "Broiler Fond - Finance on Demand", "Full display name differs from the product decision.");
         Check(KernelProduct.Milestone == 1, "The kernel must declare the milestone currently in development.");
+        FinTsProductionCandidateFactoryTests.Run(Check);
+        FinTsBankParameterBootstrapTests.Run(Check);
+        FinTsProcedureQualificationTests.Run(Check);
+        FinTsSignedTextTanTests.Run(Check);
         InstitutionConfigurationTests.Run(Check);
         IdentityTests.Run(Check);
         AccountRediscoveryTests.Run(Check);

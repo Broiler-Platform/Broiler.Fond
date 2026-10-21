@@ -21,7 +21,7 @@ set -euo pipefail
 version=${1:?usage: eng/release-draft.sh <version> <artifacts-dir>}
 artifacts=${2:?usage: eng/release-draft.sh <version> <artifacts-dir>}
 tag="fond-v$version"
-executable=Broiler.Fond.Host.Windows.exe
+executable=Broiler.Fond.Host.Desktop.exe
 out=$(mktemp -d)
 
 asset() {
@@ -47,9 +47,12 @@ self_contained=$(asset self-contained)
 framework_dependent=$(asset framework-dependent)
 
 cat > "$out/notes.md" <<EOF
-Broiler Fond - Finance on Demand **$version**, a development build of the inert Windows
-console shell. It performs no banking, storage, credential, UI or network operation and is
-not a banking-capable prerelease (see \`docs/release/prerelease-checklist.md\`).
+Broiler Fond - Finance on Demand **$version**, a development build of the cross-platform desktop host.
+It includes an interactive desktop, encrypted local profiles and bounded read-only FinTS
+workflow integration. Bank procedure acquisition/selection and signed SCA remain incomplete.
+No live bank/procedure combination is qualified for this candidate. Do not interpret UI or
+scripted-test completion as general banking compatibility. See
+\`docs/bank-refresh-qualification.md\` and \`docs/release/prerelease-checklist.md\`.
 
 ## Downloads
 

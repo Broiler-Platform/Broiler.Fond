@@ -91,6 +91,7 @@ public static class MultibankOrchestrationTests
                 lock (coordinator) { if (c > maxConcurrentObserved) maxConcurrentObserved = c; }
                 barrier.Wait(ct);
                 Interlocked.Decrement(ref concurrentExecutions);
+                await Task.CompletedTask;
             });
         });
 
@@ -102,6 +103,7 @@ public static class MultibankOrchestrationTests
                 lock (coordinator) { if (c > maxConcurrentObserved) maxConcurrentObserved = c; }
                 barrier.Wait(ct);
                 Interlocked.Decrement(ref concurrentExecutions);
+                await Task.CompletedTask;
             });
         });
 
@@ -113,6 +115,7 @@ public static class MultibankOrchestrationTests
                 lock (coordinator) { if (c > maxConcurrentObserved) maxConcurrentObserved = c; }
                 barrier.Wait(ct);
                 Interlocked.Decrement(ref concurrentExecutions);
+                await Task.CompletedTask;
             });
         });
 

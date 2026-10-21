@@ -1,5 +1,11 @@
 # Broiler Fond - Finance on Demand
 
+> **Desktop banking status (2026-10-21):** Both balance-refresh actions use the
+> scripted-test-qualified batch workflow. Full bank procedure acquisition/selection
+> and signed SCA remain incomplete. No live bank/procedure combination is qualified.
+> See [setup and troubleshooting](docs/bank-refresh-qualification.md#setup-and-troubleshooting)
+> and the [qualification record](docs/bank-refresh-qualification.md).
+
 - **Brand:** Broiler
 - **Product:** Fond - Finance on Demand
 - **Technical name:** `Broiler.Fond`
@@ -45,7 +51,7 @@ in separately gated milestones.
 The [Milestone 0 foundation](docs/milestone-0.md) remains strictly enforced as [Milestone 1](docs/milestone-1.md) progresses:
 
 - `Broiler.Fond.Kernel` targets platform-neutral `net10.0` and contains pure domain models, manual endpoint validation, identity allocation and startup checks, account rediscovery, exact money and balance projections, bounded structured diagnostics and opt-in encrypted local diagnostic persistence (`EncryptedLocalDiagnosticStore`), production encrypted profile storage (`IProfileStore`, `ProfileStore`, `ConnectionRemovalPlanner`, `SeekableAuthenticatedProfileStream`, `ProfileEnvelopeCodec`, `StoreArchiveCodec`, `ZipPreflight`, `SupportedFloorKdfCalibration`), and the complete FinTS 3.0 PIN/TAN read and synchronization protocol stack (wire framing, parameter/challenge schemas, security headers/trailers/envelopes, session coordinators, capability activation, bounded HTTPS transport, store ingestion, and end-to-end execution pipelines).
-- `Broiler.Fond.Host.Windows` targets `net10.0-windows` implementing the accessible read-only banking desktop UI with dual-mode startup (headless automated self-test during CI smoke runs and interactive `MainForm` when launched by the user).
+- `Broiler.Fond.Host.Desktop` targets `net10.0` implementing the cross-platform accessible banking desktop UI powered by Broiler UI (`Broiler.UI`, `Broiler.Fond.Presentation`) across Windows, Linux, and macOS with startup platform qualification ([ADR 0130](docs/adr/0130-cross-platform-host-seam-and-platform-qualification.md), [ADR 0145](docs/adr/0145-broiler-ui-cross-platform-presentation-architecture.md)) and dual-mode startup (headless automated self-test during CI runs and interactive workspace shell when launched by the user). Legacy Windows Forms (`Broiler.Fond.Host.Windows`) has been fully deprecated and retired.
 - `Broiler.Fond.Kernel.Tests` is a self-contained BCL-only executable verification runner exercising 64 deterministic FinTS wire/session fixture suites, 5 independent storage envelope vectors, full XML schema/ZIP preflight/KDF calibration checks, 127 production `ProfileStore` lifecycle checks, 65 connection removal and encrypted diagnostic persistence checks, 57 account relinking checks, and concurrency/boundary suites; no external test framework or package feed is required.
 - Repository build rules and `eng/Verify-KernelBoundary.ps1` reject third-party packages, platform UI, native/COM, unsafe code, and out-of-kernel project dependencies in the kernel.
 - GitHub Actions verifies the full solution and smoke-runs the inert host on Windows, then independently builds the kernel and its checks on Linux. CI does not publish artifacts; the manual dispatch-only Publish workflow builds the host self-contained and framework-dependent for `win-x64` and drafts an unpublished pre-release (tag `fond-v<version>`, from `BroilerFondVersion`).

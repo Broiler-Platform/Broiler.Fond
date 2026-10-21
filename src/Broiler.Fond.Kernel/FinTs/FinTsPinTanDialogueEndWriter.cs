@@ -24,12 +24,13 @@ public static class FinTsPinTanDialogueEndWriter
             if (!context.HasMatchingEvidence) { return FinTsPinTanRequestWriteResult.ContextNeedsReview; }
             if (destination.Length < MaximumEncodedLength) { return FinTsPinTanRequestWriteResult.DestinationTooSmall; }
             string dialogue = FinTsUnsignedWireEncoding.Text(context.Request.Request.DialogueId, 30, FinTsSyntaxError.InvalidDialogueEnd);
-            string framing = "HNHBK:1:3+000000000000+300+" + dialogue + "+2'";
+            string messageNumber = context.Request.Frame.MessageNumber.ToString(CultureInfo.InvariantCulture);
+            string framing = "HNHBK:1:3+000000000000+300+" + dialogue + "+" + messageNumber + "'";
             string prefix = FinTsPinTanRequestEnvelopeWriter.PublicPrefix(context.Header, framing);
             var publicBody = new StringBuilder();
             FinTsPinTanRequestWriter.AppendPublicSegment(publicBody, context.Header.Source, 2);
             publicBody.Append("HKEND:3:1+").Append(dialogue).Append('\'');
-            const string ending = "HNHBS:5:1+2'";
+            string ending = "HNHBS:5:1+" + messageNumber + "'";
             if (publicBody.Length + FinTsPinTanSignatureTrailerWriter.MaximumEncodedLength > MaximumPayloadLength ||
                 prefix.Length + 6 + MaximumPayloadLength + ending.Length > MaximumEncodedLength)
             { return FinTsPinTanRequestWriteResult.ContextNeedsReview; }

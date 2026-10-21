@@ -57,9 +57,13 @@ public static class FinTsPinTanSignatureTrailerWriter
         return TryEncodeCore(context.Signature.Header, context.HasMatchingEvidence, false, pin, null, 4, destination, out bytesWritten, cancellationToken, context.Signature);
     }
 
+    internal static FinTsSignatureTrailerWriteResult TryEncodeTextTan(FinTsSignedTextTanRequest context, FinTsSessionCredential pin, FinTsSessionCredential tan,
+        Span<byte> destination, out int written, CancellationToken ct) => TryEncodeCore(context.Header, context.IsCurrent, true, pin, tan, 4, destination, out written, ct,
+            maximumTanLength: context.Challenge.Procedure.MaximumTanLength, numericTan: context.Challenge.Procedure.InputFormat == "1");
+
     private static FinTsSignatureTrailerWriteResult TryEncodeCore(FinTsPinTanSignatureHeader header, bool matching, bool tanPermitted,
         FinTsSessionCredential pin, FinTsSessionCredential? tan, int segmentNumber, Span<byte> destination, out int bytesWritten, CancellationToken cancellationToken,
-        FinTsPinTanReadSignatureContext? signatureContext = null)
+        FinTsPinTanReadSignatureContext? signatureContext = null, int? maximumTanLength = null, bool numericTan = false)
     {
         bytesWritten = 0;
         ArgumentNullException.ThrowIfNull(pin);
@@ -91,6 +95,8 @@ public static class FinTsPinTanSignatureTrailerWriter
                 if (tan.TryCopyTo(tanBytes, out tanLength, cancellationToken) != FinTsCredentialCopyResult.Copied)
                 { return FinTsSignatureTrailerWriteResult.CredentialUnavailable; }
                 if (!Printable(tanBytes[..tanLength])) { return FinTsSignatureTrailerWriteResult.InvalidCredentialText; }
+                if (maximumTanLength.HasValue && tanLength > maximumTanLength.Value || numericTan && tanBytes[..tanLength].ContainsAnyExceptInRange((byte)'0', (byte)'9'))
+                    return FinTsSignatureTrailerWriteResult.CredentialRequirementsNeedReview;
             }
             int position = 0;
             "HNSHA:"u8.CopyTo(wire); position += 6;

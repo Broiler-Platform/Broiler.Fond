@@ -299,6 +299,17 @@ public sealed class FinTsPinTanSynchronizationSessionAttempt : IDisposable
     public FinTsPinTanSynchronizationSessionResult AcceptSynchronizationResponse(
         FinTsSynchronizationDataSet data,
         CancellationToken cancellationToken = default)
+        => AcceptSynchronizationCore(data, cancellationToken, null);
+
+    public FinTsPinTanSynchronizationSessionResult AcceptSignedApproval(FinTsSignedTanResult approval, CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(approval);
+        if (approval.Status != FinTsSignedTanStatus.Confirmed || approval.Request is null)
+            return new(FinTsPinTanSynchronizationSessionTransition.RejectedForReview, FinTsPinTanSynchronizationSessionStage.Synchronization);
+        return AcceptSynchronizationCore(FinTsSynchronizationDataSet.Parse(approval.Request.Challenge.Response.Source, cancellationToken), cancellationToken, approval);
+    }
+    private FinTsPinTanSynchronizationSessionResult AcceptSynchronizationCore(FinTsSynchronizationDataSet data,
+        CancellationToken cancellationToken, FinTsSignedTanResult? approval)
     {
         ArgumentNullException.ThrowIfNull(data);
         lock (_gate)
@@ -351,7 +362,7 @@ public sealed class FinTsPinTanSynchronizationSessionAttempt : IDisposable
                     return new(FinTsPinTanSynchronizationSessionTransition.ContextMismatch, _stage);
                 }
 
-                var evidence = FinTsPinTanSynchronizationEvidence.Evaluate(binding, data, _recovery, cancellationToken);
+                var evidence = FinTsPinTanSynchronizationEvidence.EvaluateCore(binding, data, _recovery, cancellationToken, approval);
                 ObserveClock();
                 CheckCancellation(cancellationToken);
                 if (!IsActive) { return new(FinTsPinTanSynchronizationSessionTransition.Terminal, _stage); }
@@ -389,8 +400,14 @@ public sealed class FinTsPinTanSynchronizationSessionAttempt : IDisposable
                 }
 
                 // Successful synchronization response
+                if (approval is not null)
+                {
+                    _lastClientNumber = 2;
+                    _requestsRecorded++;
+                    _responsesHandled++;
+                }
                 _dialogueId = FinTsReadContextEvidence.Dialog(data.Source.Frame);
-                _lastBankNumber = data.Source.Frame.MessageNumber;
+                _lastBankNumber = approval is null ? data.Source.Frame.MessageNumber : 2;
                 _synchronizationEvidence = evidence;
                 _responsesHandled++;
                 _pendingSynchronization = null;

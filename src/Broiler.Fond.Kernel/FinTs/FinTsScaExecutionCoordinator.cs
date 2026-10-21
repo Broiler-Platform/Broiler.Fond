@@ -51,8 +51,8 @@ public sealed class FinTsScaExecutionResult
 }
 
 /// <summary>
-/// Coordinates in-memory SCA continuation over transport for decoupled polling and interactive TAN challenges.
-/// Transient credentials (PIN/TAN) are zeroized immediately after transmission and never persisted.
+/// Coordinates in-memory SCA continuation. Unsupported signed adapters fail before dispatch.
+/// Owns returned TAN credentials and temporary wire buffers; the caller retains ownership of the PIN.
 /// </summary>
 public static class FinTsScaExecutionCoordinator
 {
@@ -209,108 +209,13 @@ public static class FinTsScaExecutionCoordinator
             return FinTsScaExecutionResult.Failure($"SCA continuation failed to start: {startTrans}", initialEvidence);
         }
 
-        var snapshot = sca.GetSnapshot();
 
         // 1. Decoupled SCA polling loop
         if (initialEvidence.Procedure.IsDecoupled && initialEvidence.Procedure.Method.HeaderText() == "Decoupled")
         {
-            int clientMsg = initialEvidence.Request.Frame.MessageNumber;
-            int bankMsg = initialEvidence.Response.Source.Frame.MessageNumber;
-            string dialogueId = FinTsReadContextEvidence.Dialog(initialEvidence.Response.Source.Frame);
-            string orderRef = initialEvidence.Challenge?.OrderReference?.HeaderText() ?? "0";
-            string? mediumName = initialEvidence.Request.MediumName?.HeaderText();
-            int segmentVersion = initialEvidence.Procedure.SegmentVersion;
-
-            while (true)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                snapshot = sca.GetSnapshot();
-
-                if (snapshot.State != FinTsScaState.WaitingToQuery)
-                {
-                    return FinTsScaExecutionResult.Failure(
-                        $"Decoupled SCA ended in non-query state: {snapshot.State}", initialEvidence, snapshot.QueriesRecorded);
-                }
-
-                FinTsScaTransition queryTrans;
-                byte[] queryWire;
-                FinTsTanRequestContext queryContext;
-                while (true)
-                {
-                    var wait = sca.GetSnapshot().QueryWait;
-                    if (wait > TimeSpan.Zero)
-                    {
-                        if (clock is null || ReferenceEquals(clock, TimeProvider.System))
-                        {
-                            await Task.Delay(wait + TimeSpan.FromMilliseconds(25), cancellationToken).ConfigureAwait(false);
-                        }
-                    }
-
-                    clientMsg++;
-                    bankMsg++;
-
-                    queryWire = EncodeStatusQuery(dialogueId, clientMsg, segmentVersion, orderRef, mediumName, cancellationToken);
-                    var queryFrame = FinTsMessageFrame.Parse(queryWire, cancellationToken);
-                    queryContext = FinTsTanRequestContext.Parse(queryFrame, 2, bankMsg, cancellationToken);
-
-                    queryTrans = sca.RecordStatusQuery(queryContext, FinTsScaQueryTrigger.Automatic);
-                    if (queryTrans == FinTsScaTransition.TooEarly && (clock is null || ReferenceEquals(clock, TimeProvider.System)))
-                    {
-                        // System timer granularity may wake up fractionally early; retry after a short margin
-                        await Task.Delay(TimeSpan.FromMilliseconds(50), cancellationToken).ConfigureAwait(false);
-                        clientMsg--;
-                        bankMsg--;
-                        continue;
-                    }
-
-                    break;
-                }
-
-                if (queryTrans != FinTsScaTransition.QueryRecorded)
-                {
-                    return FinTsScaExecutionResult.Failure(
-                        $"Failed to record status query: {queryTrans}", initialEvidence, snapshot.QueriesRecorded);
-                }
-
-                FinTsTransportResponse transportResp;
-                try
-                {
-                    transportResp = await transport.SendAsync(endpoint, queryWire, cancellationToken).ConfigureAwait(false);
-                }
-                catch (FinTsTransportException ex)
-                {
-                    sca.Stop();
-                    return FinTsScaExecutionResult.Failure(
-                        $"Status query transport error ({ex.Issue}): {ex.Message}", initialEvidence, sca.GetSnapshot().QueriesRecorded);
-                }
-
-                if (!transportResp.IsSuccess)
-                {
-                    sca.Stop();
-                    return FinTsScaExecutionResult.Failure(
-                        $"Status query transport error: HTTP {transportResp.StatusCode}", initialEvidence, sca.GetSnapshot().QueriesRecorded);
-                }
-
-                var statusResp = FinTsReadExecutionPipeline.ParseWireResponse(transportResp.Payload.Span, cancellationToken);
-                var challengeSet = FinTsTanChallengeSet.Parse(statusResp, cancellationToken);
-                var statusEvidence = FinTsTanChallengeEvidence.Evaluate(
-                    queryContext, initialEvidence.Parameters, initialEvidence.Procedure, initialEvidence.Permissions, challengeSet, cancellationToken);
-
-                var acceptTrans = sca.AcceptStatusResponse(statusEvidence);
-
-                if (acceptTrans == FinTsScaTransition.ExecutionReported || statusEvidence.Observation == FinTsTanOutcomeObservation.ExecutionReported)
-                {
-                    return FinTsScaExecutionResult.Success(statusResp, statusEvidence, sca.GetSnapshot().QueriesRecorded);
-                }
-
-                if (acceptTrans == FinTsScaTransition.PendingAccepted)
-                {
-                    continue;
-                }
-
-                return FinTsScaExecutionResult.Failure(
-                    $"Status query response rejected: {acceptTrans}", statusEvidence, sca.GetSnapshot().QueriesRecorded);
-            }
+            sca.Stop();
+            return FinTsScaExecutionResult.Failure(
+                "Decoupled approval requires a supported signed status-query builder. No query was sent.", initialEvidence);
         }
 
         // 2. Interactive TAN Challenge
@@ -331,10 +236,10 @@ public static class FinTsScaExecutionCoordinator
             sca.Cancel();
             throw;
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             sca.Stop();
-            return FinTsScaExecutionResult.Failure($"SCA challenge handler threw an exception: {ex.Message}", initialEvidence);
+            return FinTsScaExecutionResult.Failure("SCA interaction failed. Start bank sign-in again.", initialEvidence);
         }
 
         if (tanCredential is null)
@@ -383,7 +288,7 @@ public static class FinTsScaExecutionCoordinator
                     {
                         sca.Stop();
                         return FinTsScaExecutionResult.Failure(
-                            $"Continuation transport error ({ex.Issue}): {ex.Message}", initialEvidence, sca.GetSnapshot().QueriesRecorded);
+                            $"Continuation transport error ({ex.Issue}).", initialEvidence, sca.GetSnapshot().QueriesRecorded);
                     }
 
                     if (!contTransportResp.IsSuccess)
@@ -401,32 +306,9 @@ public static class FinTsScaExecutionCoordinator
             }
             else
             {
-                string dialogueId = FinTsReadContextEvidence.Dialog(initialEvidence.Response.Source.Frame);
-                int clientMsg = initialEvidence.Request.Frame.MessageNumber + 1;
-                string orderRef = initialEvidence.Challenge?.OrderReference?.HeaderText() ?? "0";
-                int segmentVersion = initialEvidence.Procedure.SegmentVersion;
-
-                byte[] wire = EncodeTanContinuation(dialogueId, clientMsg, segmentVersion, orderRef, cancellationToken: cancellationToken);
-                FinTsTransportResponse contTransportResp;
-                try
-                {
-                    contTransportResp = await transport.SendAsync(
-                        endpoint, wire, cancellationToken).ConfigureAwait(false);
-                }
-                catch (FinTsTransportException ex)
-                {
-                    sca.Stop();
-                    return FinTsScaExecutionResult.Failure(
-                        $"Continuation transport error ({ex.Issue}): {ex.Message}", initialEvidence, sca.GetSnapshot().QueriesRecorded);
-                }
-
-                if (!contTransportResp.IsSuccess)
-                {
-                    return FinTsScaExecutionResult.Failure($"Continuation transport error: HTTP {contTransportResp.StatusCode}", initialEvidence);
-                }
-
-                var contResp = FinTsReadExecutionPipeline.ParseWireResponse(contTransportResp.Payload.Span, cancellationToken);
-                return FinTsScaExecutionResult.Success(contResp, initialEvidence, 1);
+                sca.Stop();
+                return FinTsScaExecutionResult.Failure(
+                    "Interactive approval requires a supported signed TAN-continuation builder. No continuation was sent.", initialEvidence);
             }
         }
     }

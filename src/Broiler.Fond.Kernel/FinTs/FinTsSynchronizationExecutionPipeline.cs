@@ -45,6 +45,9 @@ public enum FinTsSynchronizationExecutionStatus
 /// <summary>Configures the operational parameters and candidate builders for a FinTS synchronization execution run.</summary>
 public sealed class FinTsSynchronizationExecutionOptions
 {
+    public Func<FinTsTanChallenge, CancellationToken, ValueTask<FinTsSessionCredential?>>? TextTanPrompt { get; init; }
+    public Func<FinTsPinTanRequestBinding, FinTsResponse, FinTsSignedTextTanRequest>? TextTanCandidateFactory { get; init; }
+    public Action<FinTsDialogueCleanupOutcome>? CleanupObserver { get; init; }
     public FinTsSynchronizationMode Mode { get; init; } = FinTsSynchronizationMode.SystemId;
     public TimeSpan Timeout { get; init; } = TimeSpan.FromSeconds(60);
     public TimeProvider? Clock { get; init; }
@@ -238,6 +241,7 @@ public static class FinTsSynchronizationExecutionPipeline
 
         // 2. Open synchronization session attempt
         using var attempt = new FinTsPinTanSynchronizationSessionAttempt(options.Timeout, clock);
+        FinTsPinTanSynchronizationSessionResult? acceptedSynchronization = null;
 
         try
         {
@@ -297,69 +301,37 @@ public static class FinTsSynchronizationExecutionPipeline
 
                 var syncResp = ParseWireResponse(syncTransportResp.Payload.Span, cancellationToken);
                 var syncChallengeSet = FinTsTanChallengeSet.Parse(syncResp, cancellationToken);
+                FinTsSignedTanResult? approval = null;
                 if (syncChallengeSet.Challenges.Count > 0)
                 {
-                    FinTsTanParameterSet? procs = null;
-                    FinTsPermittedProcedureSet? perms = null;
-                    try { procs = FinTsTanParameterSet.Parse(FinTsParameterSet.Parse(syncResp, cancellationToken), cancellationToken); } catch { }
-                    try { perms = FinTsPermittedProcedureSet.Parse(syncResp, cancellationToken); } catch { }
-
-                    procs ??= options.Procedures;
-                    perms ??= options.Permissions;
-
-                    if (procs is not null && perms is not null && procs.Advertisements.Count > 0 && procs.Advertisements[0].Procedures.Count > 0)
+                    if (options.TextTanPrompt is null || options.TextTanCandidateFactory is null ||
+                        !syncCandidate.Segments.Any(s => s.Role == FinTsPinTanRequestSegmentRole.TanOperation))
+                        return FinTsSynchronizationExecutionResult.Failure(FinTsSynchronizationExecutionStatus.RejectedDialogueOutcome,
+                            connection.WithState(BankConnectionState.ReauthenticationRequired, now),
+                            "This challenge requires an actual supported signed approval request. No synthetic challenge or unsigned fallback was used.");
+                    FinTsSignedTextTanRequest candidate;
+                    try { candidate = options.TextTanCandidateFactory(syncCandidate, syncResp); }
+                    catch (Exception ex) when (ex is FinTsCandidateException or FinTsFormatException or InvalidOperationException)
                     {
-                        var matchingProc = procs.Advertisements[0].Procedures.FirstOrDefault(p => perms.Reports.Any(r => r.SecurityFunctions.Contains(p.SecurityFunction)))
-                            ?? procs.Advertisements[0].Procedures[0];
-
-                        var syncReqFrame = syncCandidate.SignatureEvidence.Request.Frame;
-                        FinTsTanRequestContext syncReqContext;
-                        if (syncReqFrame.Syntax.Segments.Any(s => s.Code == "HKTAN"))
-                        {
-                            syncReqContext = FinTsTanRequestContext.Parse(syncReqFrame, 2, 1, cancellationToken);
-                        }
-                        else
-                        {
-                            syncReqContext = FinTsScaExecutionCoordinator.CreateRequestContext(
-                                "0", 1, 1, matchingProc.SegmentVersion, "HKSYN", cancellationToken: cancellationToken);
-                        }
-
-                        var syncScaEvidence = FinTsTanChallengeEvidence.Evaluate(syncReqContext, procs, matchingProc, perms, syncChallengeSet, cancellationToken);
-                        if (syncScaEvidence.Observation == FinTsTanOutcomeObservation.ChallengeReported)
-                        {
-                            connection = connection.WithState(BankConnectionState.ChallengeRequired, now);
-                            var scaResult = await FinTsScaExecutionCoordinator.ExecuteAsync(
-                                syncScaEvidence, transport, endpoint, credential,
-                                options.Timeout, options.MaximumStatusQueries, options.AllowAutomaticQueries,
-                                options.ScaChallengeHandler, options.ScaContinuationCandidateFactory,
-                                clock, cancellationToken).ConfigureAwait(false);
-
-                            if (scaResult.IsCancelled)
-                            {
-                                return FinTsSynchronizationExecutionResult.Failure(
-                                    FinTsSynchronizationExecutionStatus.Cancelled,
-                                    connection.WithAttemptedContact(now),
-                                    scaResult.FailureReason ?? "User cancelled interactive SCA challenge.");
-                            }
-
-                            if (!scaResult.IsSuccess)
-                            {
-                                return FinTsSynchronizationExecutionResult.Failure(
-                                    FinTsSynchronizationExecutionStatus.RejectedDialogueOutcome,
-                                    connection.WithState(BankConnectionState.ReauthenticationRequired, now),
-                                    scaResult.FailureReason ?? "SCA continuation failed.");
-                            }
-
-                            if (scaResult.TerminalResponse is not null)
-                            {
-                                syncResp = scaResult.TerminalResponse;
-                            }
-                            connection = connection.WithState(BankConnectionState.Connected, now);
-                        }
+                        return FinTsSynchronizationExecutionResult.Failure(FinTsSynchronizationExecutionStatus.RejectedDialogueOutcome,
+                            connection.WithState(BankConnectionState.ReauthenticationRequired, now),
+                            "The challenge does not qualify for the selected text-TAN procedure.");
                     }
+                    approval = await FinTsSignedTextTanExecution.ExecuteAsync(candidate, transport, endpoint, credential,
+                        options.TextTanPrompt, cancellationToken).ConfigureAwait(false);
+                    if (approval.Status != FinTsSignedTanStatus.Confirmed)
+                        return FinTsSynchronizationExecutionResult.Failure(
+                            approval.Status == FinTsSignedTanStatus.Cancelled
+                                ? FinTsSynchronizationExecutionStatus.Cancelled
+                                : FinTsSynchronizationExecutionStatus.RejectedDialogueOutcome,
+                            approval.Status == FinTsSignedTanStatus.Cancelled
+                                ? connection.WithAttemptedContact(now)
+                                : connection.WithState(BankConnectionState.ReauthenticationRequired, now),
+                            "Bank approval was cancelled, rejected or could not be validated. No synchronized state was applied.");
                 }
-
-                syncResult = attempt.AcceptSynchronizationResponse(syncResp, cancellationToken);
+                syncResult = approval is null ? attempt.AcceptSynchronizationResponse(syncResp, cancellationToken)
+                    : attempt.AcceptSignedApproval(approval, cancellationToken);
+                acceptedSynchronization = syncResult;
             }
             finally
             {
@@ -499,6 +471,17 @@ public static class FinTsSynchronizationExecutionPipeline
                 FinTsSynchronizationExecutionStatus.RejectedProtocolFailure,
                 connection.WithAttemptedContact(now),
                 $"Unexpected execution failure: {ex.Message}");
+        }
+        finally
+        {
+            if (attempt.GetSnapshot().State == FinTsPinTanSynchronizationSessionState.AwaitingCloseRequest &&
+                acceptedSynchronization?.SynchronizationEvidence?.HasMatchingEvidence == true)
+            {
+                var cleanup = await FinTsDialogueCleanup.CloseAsync(
+                    () => options.ClosingCandidateFactory?.Invoke(attempt, acceptedSynchronization) ?? CreateDefaultClosingCandidate(attempt, acceptedSynchronization),
+                    transport, endpoint, credential).ConfigureAwait(false);
+                FinTsDialogueCleanup.Notify(options.CleanupObserver, cleanup);
+            }
         }
     }
 

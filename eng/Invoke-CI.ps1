@@ -9,8 +9,9 @@ $ErrorActionPreference = "Stop"
 
 $repositoryRoot = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot ".."))
 $solution = Join-Path $repositoryRoot "Broiler.Fond.slnx"
-$windowsHostProject = Join-Path $repositoryRoot "src/Broiler.Fond.Host.Windows/Broiler.Fond.Host.Windows.csproj"
+$desktopHostProject = Join-Path $repositoryRoot "src/Broiler.Fond.Host.Desktop/Broiler.Fond.Host.Desktop.csproj"
 $testProject = Join-Path $repositoryRoot "tests/Broiler.Fond.Kernel.Tests/Broiler.Fond.Kernel.Tests.csproj"
+$presentationTestProject = Join-Path $repositoryRoot "tests/Broiler.Fond.Presentation.Tests/Broiler.Fond.Presentation.Tests.csproj"
 $nugetConfig = Join-Path $repositoryRoot "NuGet.config"
 $boundaryCheck = Join-Path $PSScriptRoot "Verify-KernelBoundary.ps1"
 
@@ -27,26 +28,27 @@ function Invoke-DotNet {
     }
 }
 
-function Invoke-WindowsHostSmoke {
+function Invoke-DesktopHostSmoke {
     $arguments = @(
-        "run", "--project", $windowsHostProject,
-        "--configuration", "Release", "--no-build", "--no-restore"
+        "run", "--project", $desktopHostProject,
+        "--configuration", "Release", "--no-build", "--no-restore",
+        "--", "--smoke"
     )
     $actualLines = @(& dotnet @arguments)
     if ($LASTEXITCODE -ne 0) {
-        throw "The inert Windows host failed with exit code $LASTEXITCODE."
+        throw "The desktop host smoke test failed with exit code $LASTEXITCODE."
     }
 
     $expectedLines = @(
-        "Broiler Fond - Finance on Demand - Milestone 1 development shell",
-        "Banking, storage, credential, UI, and network operations are not implemented."
+        "Broiler Fond - Finance on Demand - Cross-Platform Desktop Host (BUI-05)",
+        "Platform qualification preflight verified."
     )
     if ($actualLines.Count -ne $expectedLines.Count) {
-        throw "The inert Windows host produced unexpected output."
+        throw "The desktop host smoke test produced unexpected line count."
     }
     for ($index = 0; $index -lt $expectedLines.Count; $index++) {
         if ([string] $actualLines[$index] -cne $expectedLines[$index]) {
-            throw "The inert Windows host produced unexpected output."
+            throw "The desktop host smoke test produced unexpected output: '$($actualLines[$index])' vs '$($expectedLines[$index])'."
         }
     }
 
@@ -62,7 +64,7 @@ try {
         Invoke-DotNet -ArgumentList @("restore", $solution, "--configfile", $nugetConfig)
         Invoke-DotNet -ArgumentList @("format", $solution, "--no-restore", "--verify-no-changes", "--verbosity", "minimal")
         Invoke-DotNet -ArgumentList @("build", $solution, "--configuration", "Release", "--no-restore")
-        Invoke-WindowsHostSmoke
+        Invoke-DesktopHostSmoke
     }
     else {
         Invoke-DotNet -ArgumentList @("restore", $testProject, "--configfile", $nugetConfig)
@@ -70,6 +72,10 @@ try {
     }
 
     Invoke-DotNet -ArgumentList @("run", "--project", $testProject, "--configuration", "Release", "--no-build", "--no-restore")
+    if ($Scope -eq "Full") {
+        Invoke-DotNet -ArgumentList @("run", "--project", $desktopHostProject, "--configuration", "Release", "--no-build", "--no-restore", "--", "--self-test")
+        Invoke-DotNet -ArgumentList @("run", "--project", $presentationTestProject, "--configuration", "Release", "--no-build", "--no-restore")
+    }
 }
 finally {
     Pop-Location
