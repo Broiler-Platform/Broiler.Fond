@@ -1,0 +1,35 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <BroilerUiVersion>0.1.0-preview.23</BroilerUiVersion>
+    <BroilerGraphicsVersion>0.1.0-preview.13</BroilerGraphicsVersion>
+    <BroilerHostingVersion>0.1.0-preview.10</BroilerHostingVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="Broiler.UI" Version="$(BroilerUiVersion)" />
+    <PackageVersion Include="Broiler.UI.Standard" Version="$(BroilerUiVersion)" />
+    <PackageVersion Include="Broiler.UI.AboutDialog.Standard" Version="$(BroilerUiVersion)" />
+    <PackageVersion Include="Broiler.UI.Button.Standard" Version="$(BroilerUiVersion)" />
+    <PackageVersion Include="Broiler.UI.CheckBox.Standard" Version="$(BroilerUiVersion)" />
+    <PackageVersion Include="Broiler.UI.ComboBox.Standard" Version="$(BroilerUiVersion)" />
+    <PackageVersion Include="Broiler.UI.Dialog.Standard" Version="$(BroilerUiVersion)" />
+    <PackageVersion Include="Broiler.UI.Edit.Standard" Version="$(BroilerUiVersion)" />
+    <PackageVersion Include="Broiler.UI.Label.Standard" Version="$(BroilerUiVersion)" />
+    <PackageVersion Include="Broiler.UI.ListView.Standard" Version="$(BroilerUiVersion)" />
+    <PackageVersion Include="Broiler.UI.Menu.Standard" Version="$(BroilerUiVersion)" />
+    <PackageVersion Include="Broiler.UI.Panel.Standard" Version="$(BroilerUiVersion)" />
+    <PackageVersion Include="Broiler.UI.ProgressBar.Standard" Version="$(BroilerUiVersion)" />
+    <PackageVersion Include="Broiler.UI.RadioButton.Standard" Version="$(BroilerUiVersion)" />
+    <PackageVersion Include="Broiler.UI.ScrollView.Standard" Version="$(BroilerUiVersion)" />
+    <PackageVersion Include="Broiler.UI.Splitter.Standard" Version="$(BroilerUiVersion)" />
+    <PackageVersion Include="Broiler.UI.TabView.Standard" Version="$(BroilerUiVersion)" />
+    <PackageVersion Include="Broiler.UI.Toolbar.Standard" Version="$(BroilerUiVersion)" />
+    <PackageVersion Include="Broiler.UI.Tooltip.Standard" Version="$(BroilerUiVersion)" />
+    <PackageVersion Include="Broiler.UI.Window.Standard" Version="$(BroilerUiVersion)" />
+    <PackageVersion Include="Broiler.Graphics" Version="$(BroilerGraphicsVersion)" />
+    <PackageVersion Include="Broiler.Graphics.Windows" Version="$(BroilerGraphicsVersion)" />
+    <PackageVersion Include="Broiler.Graphics.Linux" Version="$(BroilerGraphicsVersion)" />
+    <PackageVersion Include="Broiler.Hosting.Windows" Version="$(BroilerHostingVersion)" />
+    <PackageVersion Include="Broiler.Hosting.Linux" Version="$(BroilerHostingVersion)" />
+  </ItemGroup>
+</Project>

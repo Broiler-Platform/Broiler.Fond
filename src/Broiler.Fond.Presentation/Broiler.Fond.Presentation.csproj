@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Broiler.Fond.Presentation</RootNamespace>
+    <AssemblyName>Broiler.Fond.Presentation</AssemblyName>
+    <IsPackable>false</IsPackable>
+    <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+    <Description>Platform-neutral presentation layer, MVVM abstractions, and session coordination for Broiler Fond.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Broiler.Fond.Presentation.Tests" />
+    <ProjectReference Include="..\Broiler.Fond.Kernel\Broiler.Fond.Kernel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Broiler.Graphics" />
+    <PackageReference Include="Broiler.UI" />
+    <PackageReference Include="Broiler.UI.Standard" />
+    <PackageReference Include="Broiler.UI.AboutDialog.Standard" />
+    <PackageReference Include="Broiler.UI.Button.Standard" />
+    <PackageReference Include="Broiler.UI.CheckBox.Standard" />
+    <PackageReference Include="Broiler.UI.ComboBox.Standard" />
+    <PackageReference Include="Broiler.UI.Dialog.Standard" />
+    <PackageReference Include="Broiler.UI.Edit.Standard" />
+    <PackageReference Include="Broiler.UI.Label.Standard" />
+    <PackageReference Include="Broiler.UI.ListView.Standard" />
+    <PackageReference Include="Broiler.UI.Menu.Standard" />
+    <PackageReference Include="Broiler.UI.Panel.Standard" />
+    <PackageReference Include="Broiler.UI.ProgressBar.Standard" />
+    <PackageReference Include="Broiler.UI.RadioButton.Standard" />
+    <PackageReference Include="Broiler.UI.ScrollView.Standard" />
+    <PackageReference Include="Broiler.UI.Splitter.Standard" />
+    <PackageReference Include="Broiler.UI.TabView.Standard" />
+    <PackageReference Include="Broiler.UI.Toolbar.Standard" />
+    <PackageReference Include="Broiler.UI.Tooltip.Standard" />
+    <PackageReference Include="Broiler.UI.Window.Standard" />
+  </ItemGroup>
+</Project>

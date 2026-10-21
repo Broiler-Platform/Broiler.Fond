@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Broiler.Fond.Host.Desktop</RootNamespace>
+    <AssemblyName>Broiler.Fond.Host.Desktop</AssemblyName>
+    <IsPackable>false</IsPackable>
+    <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+    <Description>Unified cross-platform desktop application host for Broiler Fond (Windows, Linux, macOS).</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Broiler.Fond.Kernel\Broiler.Fond.Kernel.csproj" />
+    <ProjectReference Include="..\Broiler.Fond.Presentation\Broiler.Fond.Presentation.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Broiler.Graphics" />
+    <PackageReference Include="Broiler.Graphics.Windows" />
+    <PackageReference Include="Broiler.Graphics.Linux" />
+    <PackageReference Include="Broiler.Hosting.Windows" />
+    <PackageReference Include="Broiler.Hosting.Linux" />
+    <PackageReference Include="Broiler.UI" />
+    <PackageReference Include="Broiler.UI.Standard" />
+  </ItemGroup>
+</Project>

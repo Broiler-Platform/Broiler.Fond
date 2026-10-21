@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Broiler.Fond.Presentation.Tests</RootNamespace>
+    <AssemblyName>Broiler.Fond.Presentation.Tests</AssemblyName>
+    <IsPackable>false</IsPackable>
+    <Description>Headless unit tests for Broiler.Fond.Presentation view models, MVVM core, and session coordinators.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Broiler.Fond.Kernel.Tests\BankParameterTestWire.cs" Link="BankParameterTestWire.cs" />
+    <Compile Include="..\Broiler.Fond.Kernel.Tests\SignedTanTestWire.cs" Link="SignedTanTestWire.cs" />
+    <EmbeddedResource Include="..\Broiler.Fond.Kernel.Tests\Fixtures\FinTs\pin-tan-read-session-attempt-v1.json" LogicalName="Discovery.bank-responses.json" />
+    <EmbeddedResource Include="..\Broiler.Fond.Kernel.Tests\Fixtures\FinTs\pin-tan-synchronization-session-attempt-v1.json" LogicalName="Synchronization.bank-responses.json" />
+    <ProjectReference Include="..\..\src\Broiler.Fond.Kernel\Broiler.Fond.Kernel.csproj" />
+    <ProjectReference Include="..\..\src\Broiler.Fond.Presentation\Broiler.Fond.Presentation.csproj" />
+  </ItemGroup>
+</Project>
